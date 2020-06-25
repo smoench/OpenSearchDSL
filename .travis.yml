@@ -1,10 +1,11 @@
 sudo: false
+dist: trusty
 language: php
 
 matrix:
   include:
     - language: php
-      php: 7.1
+      php: 5.6
       env:
         - SYMFONY=^2.8
 
