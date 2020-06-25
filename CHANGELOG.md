@@ -1,8 +1,4 @@
 # CHANGELOG
-v5.0.0 (2017-x)
----
-- **[BC break]** Removed deprecated aggregation classes.
-- **[BC break]** Removed deprecated query classes.
 
 v2.2.1 (2017-01-26)
 ---

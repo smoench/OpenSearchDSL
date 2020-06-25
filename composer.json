@@ -38,10 +38,5 @@
     "replace": {
         "ongr/elasticsearch-dsl": "self.version"
     },
-    "minimum-stability": "dev",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.0-dev"
-        }
-    }
+    "minimum-stability": "dev"
 }
