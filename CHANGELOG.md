@@ -1,4 +1,5 @@
 # CHANGELOG
+
 v5.0.0 (2017-x)
 ---
 - **Namespace for some queries were changed**. Queries were consolidated to a domain like Elasticsearch does.  All queries were grouped to `Compound`, `FullText`, `Geo`, `Joining`, `Span`, `Specialized` and `TermLevel`.
