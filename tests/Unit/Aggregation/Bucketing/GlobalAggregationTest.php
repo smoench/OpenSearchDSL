@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\GlobalAggregation;
+use PHPUnit\Framework\TestCase;
 
-class GlobalAggregationTest extends \PHPUnit_Framework_TestCase
+class GlobalAggregationTest extends TestCase
 {
     /**
      * Data provider for testToArray().
@@ -74,11 +75,10 @@ class GlobalAggregationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test for setField method on global aggregation.
-     *
-     * @expectedException \LogicException
      */
     public function testSetField()
     {
+        $this->expectException(\LogicException::class);
         $aggregation = new GlobalAggregation('test_agg');
         $aggregation->setField('test_field');
     }

@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use ONGR\ElasticsearchDSL\Aggregation\Pipeline\MinBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for min bucket aggregation.
  */
-class MinBucketAggregationTest extends \PHPUnit_Framework_TestCase
+class MinBucketAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

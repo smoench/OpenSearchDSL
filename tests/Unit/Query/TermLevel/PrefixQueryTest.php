@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
 
 use ONGR\ElasticsearchDSL\Query\TermLevel\PrefixQuery;
+use PHPUnit\Framework\TestCase;
 
-class PrefixQueryTest extends \PHPUnit_Framework_TestCase
+class PrefixQueryTest extends TestCase
 {
     /**
      * Tests toArray().

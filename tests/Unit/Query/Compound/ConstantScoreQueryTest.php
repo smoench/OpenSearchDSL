@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 
 use ONGR\ElasticsearchDSL\Query\Compound\ConstantScoreQuery;
+use PHPUnit\Framework\TestCase;
 
-class ConstantScoreQueryTest extends \PHPUnit_Framework_TestCase
+class ConstantScoreQueryTest extends TestCase
 {
     /**
      * Tests toArray().

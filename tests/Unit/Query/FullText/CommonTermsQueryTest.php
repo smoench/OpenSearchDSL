@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
 
 use ONGR\ElasticsearchDSL\Query\FullText\CommonTermsQuery;
+use PHPUnit\Framework\TestCase;
 
-class CommonTermsQueryTest extends \PHPUnit_Framework_TestCase
+class CommonTermsQueryTest extends TestCase
 {
     /**
      * Tests toArray().

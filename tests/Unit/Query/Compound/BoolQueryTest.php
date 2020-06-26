@@ -14,20 +14,20 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for Bool.
  */
-class BoolQueryTest extends \PHPUnit_Framework_TestCase
+class BoolQueryTest extends TestCase
 {
     /**
      * Test for addToBool() without setting a correct bool operator.
-     *
-     * @expectedException        \UnexpectedValueException
-     * @expectedExceptionMessage The bool operator acme is not supported
      */
     public function testBoolAddToBoolException()
     {
+        $this->expectException(\UnexpectedValueException::class);
+        $this->expectExceptionMessage('The bool operator acme is not supported');
         $bool = new BoolQuery();
         $bool->add(new MatchAllQuery(), 'acme');
     }

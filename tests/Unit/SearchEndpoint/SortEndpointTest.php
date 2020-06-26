@@ -13,13 +13,14 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
 use ONGR\ElasticsearchDSL\SearchEndpoint\SortEndpoint;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
+use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Class SortEndpointTest.
  */
-class SortEndpointTest extends \PHPUnit_Framework_TestCase
+class SortEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\RangeAggregation;
+use PHPUnit\Framework\TestCase;
 
-class RangeAggregationTest extends \PHPUnit_Framework_TestCase
+class RangeAggregationTest extends TestCase
 {
     /**
      * Test addRange method.

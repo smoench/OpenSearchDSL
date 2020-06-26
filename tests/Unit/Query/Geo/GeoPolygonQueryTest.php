@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
 
 use ONGR\ElasticsearchDSL\Query\Geo\GeoPolygonQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoPolygonQueryTest extends \PHPUnit_Framework_TestCase
+class GeoPolygonQueryTest extends TestCase
 {
     /**
      * Data provider to testToArray.

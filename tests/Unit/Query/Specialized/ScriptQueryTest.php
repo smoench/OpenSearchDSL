@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Specialized;
 
 use ONGR\ElasticsearchDSL\Query\Specialized\ScriptQuery;
+use PHPUnit\Framework\TestCase;
 
-class ScriptQueryTest extends \PHPUnit_Framework_TestCase
+class ScriptQueryTest extends TestCase
 {
     /**
      * Data provider for testToArray().

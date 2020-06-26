@@ -6,8 +6,9 @@ use ONGR\ElasticsearchDSL\InnerHit\NestedInnerHit;
 use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
 use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
 use ONGR\ElasticsearchDSL\Search;
+use PHPUnit\Framework\TestCase;
 
-class NestedInnerHitTest extends \PHPUnit_Framework_TestCase
+class NestedInnerHitTest extends TestCase
 {
     /**
      * Data provider for testToArray().

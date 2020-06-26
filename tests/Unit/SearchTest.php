@@ -16,11 +16,12 @@ use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use ONGR\ElasticsearchDSL\Suggest\Suggest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Search.
  */
-class SearchTest extends \PHPUnit_Framework_TestCase
+class SearchTest extends TestCase
 {
     /**
      * Tests Search constructor.

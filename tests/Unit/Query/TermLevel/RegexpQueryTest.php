@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
 
 use ONGR\ElasticsearchDSL\Query\TermLevel\RegexpQuery;
+use PHPUnit\Framework\TestCase;
 
-class RegexpQueryTest extends \PHPUnit_Framework_TestCase
+class RegexpQueryTest extends TestCase
 {
     /**
      * Tests toArray().

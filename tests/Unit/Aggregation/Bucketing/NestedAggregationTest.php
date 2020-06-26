@@ -13,8 +13,9 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\NestedAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class NestedAggregationTest extends \PHPUnit_Framework_TestCase
+class NestedAggregationTest extends TestCase
 {
     /**
      * Test for nested aggregation toArray() method exception.

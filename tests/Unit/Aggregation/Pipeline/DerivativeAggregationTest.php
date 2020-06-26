@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use ONGR\ElasticsearchDSL\Aggregation\Pipeline\DerivativeAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for derivative aggregation.
  */
-class DerivativeAggregationTest extends \PHPUnit_Framework_TestCase
+class DerivativeAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

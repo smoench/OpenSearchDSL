@@ -13,8 +13,9 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 
 use ONGR\ElasticsearchDSL\BuilderInterface;
 use ONGR\ElasticsearchDSL\Query\Compound\IndicesQuery;
+use PHPUnit\Framework\TestCase;
 
-class IndicesQueryTest extends \PHPUnit_Framework_TestCase
+class IndicesQueryTest extends TestCase
 {
     /**
      * @return \PHPUnit_Framework_MockObject_MockObject|BuilderInterface

@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
 
 use ONGR\ElasticsearchDSL\Query\TermLevel\ExistsQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for ExistsQuery.
  */
-class ExistsQueryTest extends \PHPUnit_Framework_TestCase
+class ExistsQueryTest extends TestCase
 {
     /**
      * Tests toArray() method.

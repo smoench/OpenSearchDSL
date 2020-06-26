@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Span;
 
 use ONGR\ElasticsearchDSL\Query\Span\SpanContainingQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanContainingQuery.
  */
-class SpanContainingQueryTest extends \PHPUnit_Framework_TestCase
+class SpanContainingQueryTest extends TestCase
 {
     /**
      * Tests for toArray().

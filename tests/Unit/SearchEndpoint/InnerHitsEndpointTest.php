@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
 use ONGR\ElasticsearchDSL\SearchEndpoint\InnerHitsEndpoint;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AggregationsEndpointTest.
  */
-class InnerHitsEndpointTest extends \PHPUnit_Framework_TestCase
+class InnerHitsEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

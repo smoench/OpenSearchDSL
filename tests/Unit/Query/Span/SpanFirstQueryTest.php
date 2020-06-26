@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Span;
 
 use ONGR\ElasticsearchDSL\Query\Span\SpanFirstQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanFirstQuery.
  */
-class SpanFirstQueryTest extends \PHPUnit_Framework_TestCase
+class SpanFirstQueryTest extends TestCase
 {
     /**
      * Tests for toArray().

@@ -13,13 +13,14 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\SearchEndpoint\PostFilterEndpoint;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Class PostFilterEndpointTest.
  */
-class PostFilterEndpointTest extends \PHPUnit_Framework_TestCase
+class PostFilterEndpointTest extends TestCase
 {
     /**
      * Tests constructor.
