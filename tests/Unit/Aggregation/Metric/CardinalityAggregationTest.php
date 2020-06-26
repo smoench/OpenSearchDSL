@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Metric\CardinalityAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for cardinality aggregation.
  */
-class CardinalityAggregationTest extends \PHPUnit_Framework_TestCase
+class CardinalityAggregationTest extends TestCase
 {
     /**
      * Tests getArray method.
@@ -52,12 +53,11 @@ class CardinalityAggregationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Tests if CardinalityAggregation#getArray throws exception when expected.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Cardinality aggregation must have field or script set.
      */
     public function testGetArrayException()
     {
+        $this->expectException(\LogicException::class);
+        $this->expectExceptionMessage('Cardinality aggregation must have field or script set.');
         $aggregation = new CardinalityAggregation('bar');
         $aggregation->getArray();
     }

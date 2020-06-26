@@ -13,11 +13,12 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\SamplerAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class SamplerAggregationTest extends \PHPUnit_Framework_TestCase
+class SamplerAggregationTest extends TestCase
 {
     /**
      * Tests getType method.

@@ -13,13 +13,14 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
 use ONGR\ElasticsearchDSL\Highlight\Highlight;
 use ONGR\ElasticsearchDSL\SearchEndpoint\HighlightEndpoint;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Class HighlightEndpointTest.
  */
-class HighlightEndpointTest extends \PHPUnit_Framework_TestCase
+class HighlightEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

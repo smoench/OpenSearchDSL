@@ -5,8 +5,9 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\InnerHit;
 use ONGR\ElasticsearchDSL\InnerHit\ParentInnerHit;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
+use PHPUnit\Framework\TestCase;
 
-class ParentInnerHitTest extends \PHPUnit_Framework_TestCase
+class ParentInnerHitTest extends TestCase
 {
     public function testToArray()
     {

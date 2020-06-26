@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\SignificantTermsAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class SignificantTermsAggregationTest extends \PHPUnit_Framework_TestCase
+class SignificantTermsAggregationTest extends TestCase
 {
     /**
      * Tests getType method.

@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Highlight;
 
 use ONGR\ElasticsearchDSL\Highlight\Highlight;
+use PHPUnit\Framework\TestCase;
 
-class HighlightTest extends \PHPUnit_Framework_TestCase
+class HighlightTest extends TestCase
 {
     /**
      * Tests GetType method, it should return 'highlight'.

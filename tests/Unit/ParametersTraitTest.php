@@ -12,11 +12,12 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit;
 
 use ONGR\ElasticsearchDSL\ParametersTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ParametersTrait.
  */
-class ParametersTraitTest extends \PHPUnit_Framework_TestCase
+class ParametersTraitTest extends TestCase
 {
     /**
      * @var ParametersTrait

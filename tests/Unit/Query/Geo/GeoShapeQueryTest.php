@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
 
 use ONGR\ElasticsearchDSL\Query\Geo\GeoShapeQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoShapeQueryTest extends \PHPUnit_Framework_TestCase
+class GeoShapeQueryTest extends TestCase
 {
     /**
      * Tests toArray() method.

@@ -13,11 +13,12 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\MissingAggregation;
 use ONGR\ElasticsearchDSL\SearchEndpoint\AggregationsEndpoint;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AggregationsEndpointTest.
  */
-class AggregationsEndpointTest extends \PHPUnit_Framework_TestCase
+class AggregationsEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

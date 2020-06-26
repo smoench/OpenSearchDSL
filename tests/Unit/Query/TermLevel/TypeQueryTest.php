@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
 
 use ONGR\ElasticsearchDSL\Query\TermLevel\TypeQuery;
+use PHPUnit\Framework\TestCase;
 
-class TypeQueryTest extends \PHPUnit_Framework_TestCase
+class TypeQueryTest extends TestCase
 {
     /**
      * Test for query toArray() method.

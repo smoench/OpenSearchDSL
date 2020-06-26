@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
 
 use ONGR\ElasticsearchDSL\Query\FullText\SimpleQueryStringQuery;
+use PHPUnit\Framework\TestCase;
 
-class SimpleQueryStringQueryTest extends \PHPUnit_Framework_TestCase
+class SimpleQueryStringQueryTest extends TestCase
 {
     /**
      * Tests toArray().

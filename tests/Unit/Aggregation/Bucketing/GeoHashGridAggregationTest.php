@@ -12,19 +12,19 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\GeoHashGridAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for geohash grid aggregation.
  */
-class GeoHashGridAggregationTest extends \PHPUnit_Framework_TestCase
+class GeoHashGridAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown.
-     *
-     * @expectedException \LogicException
      */
     public function testGeoHashGridAggregationException()
     {
+        $this->expectException(\LogicException::class);
         $agg = new GeoHashGridAggregation('test_agg');
         $agg->getArray();
     }

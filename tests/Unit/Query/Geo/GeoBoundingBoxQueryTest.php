@@ -12,16 +12,16 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
 
 use ONGR\ElasticsearchDSL\Query\Geo\GeoBoundingBoxQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoBoundingBoxQueryTest extends \PHPUnit_Framework_TestCase
+class GeoBoundingBoxQueryTest extends TestCase
 {
     /**
      * Test if exception is thrown when geo points are not set.
-     *
-     * @expectedException \LogicException
      */
     public function testGeoBoundBoxQueryException()
     {
+        $this->expectException(\LogicException::class);
         $query = new GeoBoundingBoxQuery('location', []);
         $query->toArray();
     }

@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class TermsAggregationTest extends \PHPUnit_Framework_TestCase
+class TermsAggregationTest extends TestCase
 {
     /**
      * Tests setField method.

@@ -13,11 +13,12 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Metric\TopHitsAggregation;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for top hits aggregation.
  */
-class TopHitsAggregationTest extends \PHPUnit_Framework_TestCase
+class TopHitsAggregationTest extends TestCase
 {
     /**
      * Check if aggregation returns the expected array.

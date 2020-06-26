@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
 
 use ONGR\ElasticsearchDSL\Query\Geo\GeoDistanceQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoDistanceQueryTest extends \PHPUnit_Framework_TestCase
+class GeoDistanceQueryTest extends TestCase
 {
     /**
      * Data provider for testToArray().

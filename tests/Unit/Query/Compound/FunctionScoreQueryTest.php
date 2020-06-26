@@ -14,12 +14,13 @@ namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
 use ONGR\ElasticsearchDSL\BuilderInterface;
 use ONGR\ElasticsearchDSL\Query\Compound\FunctionScoreQuery;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
+use PHPUnit\Framework\TestCase;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
  * Tests for FunctionScoreQuery.
  */
-class FunctionScoreQueryTest extends \PHPUnit_Framework_TestCase
+class FunctionScoreQueryTest extends TestCase
 {
     /**
      * Data provider for testAddRandomFunction.
@@ -74,7 +75,7 @@ class FunctionScoreQueryTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals(['function_score' => $expectedArray], $functionScoreQuery->toArray());
     }
-    
+
     /**
      * Tests default argument values.
      */

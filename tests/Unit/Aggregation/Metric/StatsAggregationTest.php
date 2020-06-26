@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
 
 use ONGR\ElasticsearchDSL\Aggregation\Metric\StatsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class StatsAggregationTest extends \PHPUnit_Framework_TestCase
+class StatsAggregationTest extends TestCase
 {
     /**
      * Test for stats aggregation toArray() method.

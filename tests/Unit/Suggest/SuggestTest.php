@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Suggest;
 
 use ONGR\ElasticsearchDSL\Suggest\Suggest;
+use PHPUnit\Framework\TestCase;
 
-class SuggestTest extends \PHPUnit_Framework_TestCase
+class SuggestTest extends TestCase
 {
     /**
      * Tests getType method.

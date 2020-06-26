@@ -12,8 +12,9 @@
 namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Joining;
 
 use ONGR\ElasticsearchDSL\Query\Joining\HasChildQuery;
+use PHPUnit\Framework\TestCase;
 
-class HasChildQueryTest extends \PHPUnit_Framework_TestCase
+class HasChildQueryTest extends TestCase
 {
     /**
      * Tests whether __constructor calls setParameters method.
