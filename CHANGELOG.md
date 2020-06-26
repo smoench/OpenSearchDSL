@@ -1,4 +1,5 @@
 # CHANGELOG
+
 v6.0.0 (2017-01-30)
 ---
 - Added support for the Elasticsearch 6
