@@ -31,7 +31,8 @@
     "autoload": {
         "psr-4": {
             "ONGR\\ElasticsearchDSL\\": "src/"
-        }
+        },
+        "exclude-from-classmap": ["/tests/"]
     },
     "autoload-dev": {
         "psr-4": {
