@@ -19,7 +19,7 @@ use ONGR\ElasticsearchDSL\Aggregation\Type\MetricTrait;
  *
  * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-max-aggregation.html
  */
-class MaxAggregation extends AbstractAggregation
+class MaxAggregationStats extends AbstractAggregation
 {
     use MetricTrait;
 
