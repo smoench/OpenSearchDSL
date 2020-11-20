@@ -20,7 +20,10 @@ class MaxAggregation extends MaxAggregationStats
 {
     public function __construct($name, $field, $missing = null, $mode = null)
     {
-        @trigger_error('The class "MaxAggregation" is deprecated use "MaxAggregationStats" instead.', E_USER_DEPRECATED);
+        @trigger_error(
+            'The class "MaxAggregation" is deprecated use "MaxAggregationStats" instead.',
+            E_USER_DEPRECATED
+        );
 
         parent::__construct($name, $field, $missing, $mode);
     }
