@@ -11,17 +11,17 @@
 
 namespace OpenSearchDSL\Tests\Functional;
 
-use Elasticsearch\Client;
-use Elasticsearch\ClientBuilder;
+use OpenSearch\Client;
+use OpenSearch\ClientBuilder;
 use OpenSearchDSL\Search;
 use PHPUnit\Framework\TestCase;
 
-abstract class AbstractElasticsearchTestCase extends TestCase
+abstract class AbstractOpenSearchTestCase extends TestCase
 {
     /**
-     * Test index name in the elasticsearch.
+     * Test index name in the opensearch.
      */
-    const INDEX_NAME = 'elasticsaerch-dsl-test';
+    const INDEX_NAME = 'opensearch-dsl-test';
 
     /**
      * @var Client
@@ -35,7 +35,10 @@ abstract class AbstractElasticsearchTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->client = ClientBuilder::create()->build();
+        $this->client = ClientBuilder::create()
+            ->setBasicAuthentication('admin', 'admin')
+            ->build();
+
         $this->deleteIndex();
 
         $this->client->indices()->create(
@@ -83,7 +86,7 @@ abstract class AbstractElasticsearchTestCase extends TestCase
     }
 
     /**
-     * Can be overwritten in child class to populate elasticsearch index with the data.
+     * Can be overwritten in child class to populate opensearch index with the data.
      *
      * Example:
      *      [
@@ -116,7 +119,7 @@ abstract class AbstractElasticsearchTestCase extends TestCase
     }
 
     /**
-     * Execute search to the elasticsearch and handle results.
+     * Execute search to the opensearch and handle results.
      *
      * @param Search $search Search object.
      * @param null $type Types to search. Can be several types split by comma.
@@ -151,7 +154,7 @@ abstract class AbstractElasticsearchTestCase extends TestCase
     }
 
     /**
-     * Deletes index from elasticsearch.
+     * Deletes index from opensearch.
      */
     private function deleteIndex()
     {

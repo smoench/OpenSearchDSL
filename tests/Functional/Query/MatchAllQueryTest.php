@@ -13,9 +13,9 @@ namespace OpenSearchDSL\Tests\Functional\Query;
 
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\Search;
-use OpenSearchDSL\Tests\Functional\AbstractElasticsearchTestCase;
+use OpenSearchDSL\Tests\Functional\AbstractOpenSearchTestCase;
 
-class MatchAllQueryTest extends AbstractElasticsearchTestCase
+class MatchAllQueryTest extends AbstractOpenSearchTestCase
 {
     /**
      * {@inheritdoc}
