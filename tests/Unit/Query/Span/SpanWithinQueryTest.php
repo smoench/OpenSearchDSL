@@ -15,7 +15,6 @@ use OpenSearchDSL\Query\Span\SpanWithinQuery;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * Unit test for SpanWithinQuery.
  */
