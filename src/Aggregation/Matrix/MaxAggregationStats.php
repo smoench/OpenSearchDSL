@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Matrix;
+namespace OpenSearchDSL\Aggregation\Matrix;
 
-use ONGR\ElasticsearchDSL\Aggregation\AbstractAggregation;
-use ONGR\ElasticsearchDSL\Aggregation\Type\MetricTrait;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
+use OpenSearchDSL\Aggregation\Type\MetricTrait;
 
 /**
  * Class representing Max Aggregation.

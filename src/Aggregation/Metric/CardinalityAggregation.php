@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Metric;
+namespace OpenSearchDSL\Aggregation\Metric;
 
-use ONGR\ElasticsearchDSL\Aggregation\AbstractAggregation;
-use ONGR\ElasticsearchDSL\Aggregation\Type\MetricTrait;
-use ONGR\ElasticsearchDSL\ScriptAwareTrait;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
+use OpenSearchDSL\Aggregation\Type\MetricTrait;
+use OpenSearchDSL\ScriptAwareTrait;
 
 /**
  * Difference values counter.

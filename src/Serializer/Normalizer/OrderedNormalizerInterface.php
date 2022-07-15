@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Serializer\Normalizer;
+namespace OpenSearchDSL\Serializer\Normalizer;
 
 /**
  * This should be implemented by normalizable object that required to be processed in specific order.

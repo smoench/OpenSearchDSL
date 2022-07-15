@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Metric;
+namespace OpenSearchDSL\Aggregation\Metric;
 
 /**
  * Class representing Avg Aggregation.

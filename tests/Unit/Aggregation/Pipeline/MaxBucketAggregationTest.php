@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
-use ONGR\ElasticsearchDSL\Aggregation\Pipeline\MaxBucketAggregation;
+use OpenSearchDSL\Aggregation\Pipeline\MaxBucketAggregation;
 
 /**
  * Unit test for max bucket aggregation.

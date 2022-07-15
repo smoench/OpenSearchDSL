@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
-use ONGR\ElasticsearchDSL\Aggregation\Pipeline\PercentilesBucketAggregation;
+use OpenSearchDSL\Aggregation\Pipeline\PercentilesBucketAggregation;
 
 /**
  * Unit test for percentiles bucket aggregation.

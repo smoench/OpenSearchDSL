@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
-use ONGR\ElasticsearchDSL\Aggregation\Pipeline\CumulativeSumAggregation;
+use OpenSearchDSL\Aggregation\Pipeline\CumulativeSumAggregation;
 
 /**
  * Unit test for cumulative sum aggregation.

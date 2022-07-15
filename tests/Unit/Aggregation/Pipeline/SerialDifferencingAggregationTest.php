@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
-use ONGR\ElasticsearchDSL\Aggregation\Pipeline\SerialDifferencingAggregation;
+use OpenSearchDSL\Aggregation\Pipeline\SerialDifferencingAggregation;
 
 /**
  * Unit test for serial differencing aggregation.

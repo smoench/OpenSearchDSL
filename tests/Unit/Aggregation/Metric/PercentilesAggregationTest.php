@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Metric\PercentilesAggregation;
+use OpenSearchDSL\Aggregation\Metric\PercentilesAggregation;
 
 class PercentilesAggregationTest extends \PHPUnit\Framework\TestCase
 {

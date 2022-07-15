@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL;
+namespace OpenSearchDSL;
 
 /**
  * A trait which handles the behavior of parameters in queries, filters, etc.

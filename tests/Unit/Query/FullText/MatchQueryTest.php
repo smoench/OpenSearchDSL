@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
+namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
-use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
+use OpenSearchDSL\Query\FullText\MatchQuery;
 
 class MatchQueryTest extends \PHPUnit\Framework\TestCase
 {

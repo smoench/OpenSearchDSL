@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Matrix;
+namespace OpenSearchDSL\Aggregation\Matrix;
 
 /**
  * Class representing Max Aggregation Stats.

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Geo;
+namespace OpenSearchDSL\Tests\Unit\Query\Geo;
 
-use ONGR\ElasticsearchDSL\Query\Geo\GeoPolygonQuery;
+use OpenSearchDSL\Query\Geo\GeoPolygonQuery;
 
 class GeoPolygonQueryTest extends \PHPUnit\Framework\TestCase
 {

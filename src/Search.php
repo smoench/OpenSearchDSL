@@ -9,25 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL;
+namespace OpenSearchDSL;
 
-use ONGR\ElasticsearchDSL\Aggregation\AbstractAggregation;
-use ONGR\ElasticsearchDSL\Highlight\Highlight;
-use ONGR\ElasticsearchDSL\InnerHit\NestedInnerHit;
-use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
-use ONGR\ElasticsearchDSL\SearchEndpoint\AbstractSearchEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\AggregationsEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\HighlightEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\InnerHitsEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\PostFilterEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\QueryEndpoint;
-use ONGR\ElasticsearchDSL\SearchEndpoint\SearchEndpointFactory;
-use ONGR\ElasticsearchDSL\SearchEndpoint\SearchEndpointInterface;
-use ONGR\ElasticsearchDSL\SearchEndpoint\SortEndpoint;
-use ONGR\ElasticsearchDSL\Serializer\Normalizer\CustomReferencedNormalizer;
-use ONGR\ElasticsearchDSL\Serializer\OrderedSerializer;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
+use OpenSearchDSL\Highlight\Highlight;
+use OpenSearchDSL\InnerHit\NestedInnerHit;
+use OpenSearchDSL\Query\Compound\BoolQuery;
+use OpenSearchDSL\SearchEndpoint\AbstractSearchEndpoint;
+use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
+use OpenSearchDSL\SearchEndpoint\HighlightEndpoint;
+use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
+use OpenSearchDSL\SearchEndpoint\PostFilterEndpoint;
+use OpenSearchDSL\SearchEndpoint\QueryEndpoint;
+use OpenSearchDSL\SearchEndpoint\SearchEndpointFactory;
+use OpenSearchDSL\SearchEndpoint\SearchEndpointInterface;
+use OpenSearchDSL\SearchEndpoint\SortEndpoint;
+use OpenSearchDSL\SearchEndpoint\SuggestEndpoint;
+use OpenSearchDSL\Serializer\Normalizer\CustomReferencedNormalizer;
+use OpenSearchDSL\Serializer\OrderedSerializer;
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
-use ONGR\ElasticsearchDSL\SearchEndpoint\SuggestEndpoint;
 
 /**
  * Search object that can be executed by a manager.

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Serializer\Normalizer;
+namespace OpenSearchDSL\Serializer\Normalizer;
 
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 

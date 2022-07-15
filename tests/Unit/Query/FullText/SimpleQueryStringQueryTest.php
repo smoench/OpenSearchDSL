@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
+namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
-use ONGR\ElasticsearchDSL\Query\FullText\SimpleQueryStringQuery;
+use OpenSearchDSL\Query\FullText\SimpleQueryStringQuery;
 
 class SimpleQueryStringQueryTest extends \PHPUnit\Framework\TestCase
 {

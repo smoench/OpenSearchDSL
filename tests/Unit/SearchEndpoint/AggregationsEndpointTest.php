@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\MissingAggregation;
-use ONGR\ElasticsearchDSL\SearchEndpoint\AggregationsEndpoint;
+use OpenSearchDSL\Aggregation\Bucketing\MissingAggregation;
+use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
 
 /**
  * Class AggregationsEndpointTest.

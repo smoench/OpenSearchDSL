@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\SearchEndpoint\PostFilterEndpoint;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\SearchEndpoint\PostFilterEndpoint;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Class PostFilterEndpointTest.

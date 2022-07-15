@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
+namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
-use ONGR\ElasticsearchDSL\Query\FullText\MatchPhrasePrefixQuery;
+use OpenSearchDSL\Query\FullText\MatchPhrasePrefixQuery;
 use PHPUnit\Framework\TestCase;
 
 class MatchPhrasePrefixQueryTest extends \PHPUnit\Framework\TestCase

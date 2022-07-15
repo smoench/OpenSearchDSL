@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
+namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
 
 class TermQueryTest extends \PHPUnit\Framework\TestCase
 {

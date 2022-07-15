@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\MissingAggregation;
+use OpenSearchDSL\Aggregation\Bucketing\MissingAggregation;
 
 class MissingAggregationTest extends \PHPUnit\Framework\TestCase
 {

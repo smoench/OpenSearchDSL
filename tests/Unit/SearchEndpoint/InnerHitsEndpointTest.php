@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\SearchEndpoint\InnerHitsEndpoint;
+use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 
 /**
  * Class AggregationsEndpointTest.

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\SearchEndpoint\QueryEndpoint;
+use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\SearchEndpoint\QueryEndpoint;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

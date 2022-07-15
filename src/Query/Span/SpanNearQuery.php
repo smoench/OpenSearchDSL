@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Query\Span;
+namespace OpenSearchDSL\Query\Span;
 
 /**
  * Elasticsearch span near query.

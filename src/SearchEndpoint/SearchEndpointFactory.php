@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\SearchEndpoint;
+namespace OpenSearchDSL\SearchEndpoint;
 
 /**
  * Factory for search endpoints.

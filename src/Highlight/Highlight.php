@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Highlight;
+namespace OpenSearchDSL\Highlight;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
-use ONGR\ElasticsearchDSL\ParametersTrait;
+use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\ParametersTrait;
 
 /**
  * Data holder for highlight api.

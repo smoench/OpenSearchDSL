@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\SignificantTermsAggregation;
+use OpenSearchDSL\Aggregation\Bucketing\SignificantTermsAggregation;
 
 /**
  * Unit test for children aggregation.

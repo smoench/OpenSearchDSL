@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\SearchEndpoint;
+namespace OpenSearchDSL\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\InnerHit\NestedInnerHit;
+use OpenSearchDSL\InnerHit\NestedInnerHit;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**

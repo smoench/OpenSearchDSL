@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Query\TermLevel;
+namespace OpenSearchDSL\Query\TermLevel;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
+use OpenSearchDSL\BuilderInterface;
 
 /**
  * Represents Elasticsearch "type" query.

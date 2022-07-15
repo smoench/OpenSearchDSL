@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Functional\Query;
+namespace OpenSearchDSL\Tests\Functional\Query;
 
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\Search;
-use ONGR\ElasticsearchDSL\Tests\Functional\AbstractElasticsearchTestCase;
+use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\Search;
+use OpenSearchDSL\Tests\Functional\AbstractElasticsearchTestCase;
 
 class MatchAllQueryTest extends AbstractElasticsearchTestCase
 {

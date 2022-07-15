@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Query\Span;
+namespace OpenSearchDSL\Query\Span;
 
-use ONGR\ElasticsearchDSL\ParametersTrait;
+use OpenSearchDSL\ParametersTrait;
 
 /**
  * Elasticsearch span containing query.

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\FiltersAggregation;
-use ONGR\ElasticsearchDSL\BuilderInterface;
+use OpenSearchDSL\Aggregation\Bucketing\FiltersAggregation;
+use OpenSearchDSL\BuilderInterface;
 
 /**
  * Unit test for filters aggregation.

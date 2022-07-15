@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\InnerHit;
+namespace OpenSearchDSL\InnerHit;
 
-use ONGR\ElasticsearchDSL\NameAwareTrait;
-use ONGR\ElasticsearchDSL\NamedBuilderInterface;
-use ONGR\ElasticsearchDSL\ParametersTrait;
-use ONGR\ElasticsearchDSL\Search;
+use OpenSearchDSL\NameAwareTrait;
+use OpenSearchDSL\NamedBuilderInterface;
+use OpenSearchDSL\ParametersTrait;
+use OpenSearchDSL\Search;
 
 /**
  * Represents Elasticsearch top level nested inner hits.

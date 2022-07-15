@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Type;
+namespace OpenSearchDSL\Aggregation\Type;
 
 /**
  * Trait used by Aggregations which supports nesting.

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Aggregation\Pipeline;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
-use ONGR\ElasticsearchDSL\Aggregation\Pipeline\AvgBucketAggregation;
+use OpenSearchDSL\Aggregation\Pipeline\AvgBucketAggregation;
 
 /**
  * Unit test for avg_bucket aggregation.

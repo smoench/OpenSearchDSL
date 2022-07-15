@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Query\Joining;
+namespace OpenSearchDSL\Query\Joining;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
-use ONGR\ElasticsearchDSL\ParametersTrait;
+use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\ParametersTrait;
 
 /**
  * Represents Elasticsearch "has_parent" query.

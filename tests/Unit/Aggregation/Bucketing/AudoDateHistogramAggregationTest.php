@@ -9,10 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\AutoDateHistogramAggregation;
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
+use OpenSearchDSL\Aggregation\Bucketing\AutoDateHistogramAggregation;
 
 class AudoDateHistogramAggregationTest extends \PHPUnit\Framework\TestCase
 {

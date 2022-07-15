@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Bucketing;
+namespace OpenSearchDSL\Aggregation\Bucketing;
 
-use ONGR\ElasticsearchDSL\Aggregation\AbstractAggregation;
-use ONGR\ElasticsearchDSL\Aggregation\Type\BucketingTrait;
-use ONGR\ElasticsearchDSL\BuilderInterface;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
+use OpenSearchDSL\Aggregation\Type\BucketingTrait;
+use OpenSearchDSL\BuilderInterface;
 
 /**
  * Class representing AutoDateHistogramAggregation.

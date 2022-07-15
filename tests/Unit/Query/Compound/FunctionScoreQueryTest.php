@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
+namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
-use ONGR\ElasticsearchDSL\Query\Compound\FunctionScoreQuery;
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\Query\Compound\FunctionScoreQuery;
+use OpenSearchDSL\Query\MatchAllQuery;
 use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**

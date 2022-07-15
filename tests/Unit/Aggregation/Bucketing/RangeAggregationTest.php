@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\RangeAggregation;
+use OpenSearchDSL\Aggregation\Bucketing\RangeAggregation;
 
 class RangeAggregationTest extends \PHPUnit\Framework\TestCase
 {

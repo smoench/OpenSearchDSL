@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
+namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
-use ONGR\ElasticsearchDSL\Query\Compound\DisMaxQuery;
+use OpenSearchDSL\Query\Compound\DisMaxQuery;
 
 class DisMaxQueryTest extends \PHPUnit\Framework\TestCase
 {

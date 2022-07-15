@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\FilterAggregation;
-use ONGR\ElasticsearchDSL\Aggregation\Bucketing\HistogramAggregation;
-use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
-use ONGR\ElasticsearchDSL\Query\TermLevel\ExistsQuery;
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use OpenSearchDSL\Aggregation\Bucketing\FilterAggregation;
+use OpenSearchDSL\Aggregation\Bucketing\HistogramAggregation;
+use OpenSearchDSL\Query\Compound\BoolQuery;
+use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\Query\TermLevel\ExistsQuery;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
 
 class FilterAggregationTest extends \PHPUnit\Framework\TestCase
 {

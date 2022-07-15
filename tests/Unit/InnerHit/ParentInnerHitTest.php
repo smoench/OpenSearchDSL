@@ -1,10 +1,10 @@
 <?php
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\InnerHit;
+namespace OpenSearchDSL\Tests\Unit\InnerHit;
 
-use ONGR\ElasticsearchDSL\InnerHit\ParentInnerHit;
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
-use ONGR\ElasticsearchDSL\Search;
+use OpenSearchDSL\InnerHit\ParentInnerHit;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
+use OpenSearchDSL\Search;
 
 class ParentInnerHitTest extends \PHPUnit\Framework\TestCase
 {

@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Span;
+namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
-use ONGR\ElasticsearchDSL\Query\Span\FieldMaskingSpanQuery;
-use ONGR\ElasticsearchDSL\Query\Span\SpanNearQuery;
-use ONGR\ElasticsearchDSL\Query\Span\SpanTermQuery;
+use OpenSearchDSL\Query\Span\FieldMaskingSpanQuery;
+use OpenSearchDSL\Query\Span\SpanNearQuery;
+use OpenSearchDSL\Query\Span\SpanTermQuery;
 
 /**
  * Unit test for FieldMaskingSpanQuery.

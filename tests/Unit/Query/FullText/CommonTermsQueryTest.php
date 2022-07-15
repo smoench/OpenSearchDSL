@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\FullText;
+namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
-use ONGR\ElasticsearchDSL\Query\FullText\CommonTermsQuery;
+use OpenSearchDSL\Query\FullText\CommonTermsQuery;
 
 class CommonTermsQueryTest extends \PHPUnit\Framework\TestCase
 {

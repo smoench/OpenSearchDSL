@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Suggest;
+namespace OpenSearchDSL\Suggest;
 
-use ONGR\ElasticsearchDSL\NamedBuilderInterface;
-use ONGR\ElasticsearchDSL\ParametersTrait;
+use OpenSearchDSL\NamedBuilderInterface;
+use OpenSearchDSL\ParametersTrait;
 use Symfony\Component\Serializer\Exception\InvalidArgumentException;
 
 class Suggest implements NamedBuilderInterface

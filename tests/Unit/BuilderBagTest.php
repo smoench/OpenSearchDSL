@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit;
+namespace OpenSearchDSL\Tests\Unit;
 
-use ONGR\ElasticsearchDSL\BuilderBag;
-use ONGR\ElasticsearchDSL\BuilderInterface;
+use OpenSearchDSL\BuilderBag;
+use OpenSearchDSL\BuilderInterface;
 
 class BuilderBagTest extends \PHPUnit\Framework\TestCase
 {

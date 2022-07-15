@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Aggregation\Pipeline;
+namespace OpenSearchDSL\Aggregation\Pipeline;
 
 /**
  * Class representing Derivative Pipeline Aggregation.

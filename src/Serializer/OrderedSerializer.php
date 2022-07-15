@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Serializer;
+namespace OpenSearchDSL\Serializer;
 
-use ONGR\ElasticsearchDSL\Serializer\Normalizer\OrderedNormalizerInterface;
+use OpenSearchDSL\Serializer\Normalizer\OrderedNormalizerInterface;
 use Symfony\Component\Serializer\Serializer;
 
 /**

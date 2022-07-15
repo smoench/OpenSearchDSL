@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Sort;
+namespace OpenSearchDSL\Tests\Unit\Sort;
 
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
-use ONGR\ElasticsearchDSL\Sort\FieldSort;
-use ONGR\ElasticsearchDSL\Sort\NestedSort;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
+use OpenSearchDSL\Sort\FieldSort;
+use OpenSearchDSL\Sort\NestedSort;
 
 class FieldSortTest extends \PHPUnit\Framework\TestCase
 {

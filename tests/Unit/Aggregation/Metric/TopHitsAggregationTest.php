@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Metric\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
-use ONGR\ElasticsearchDSL\Aggregation\Metric\TopHitsAggregation;
-use ONGR\ElasticsearchDSL\Sort\FieldSort;
+use OpenSearchDSL\Aggregation\Metric\TopHitsAggregation;
+use OpenSearchDSL\Sort\FieldSort;
 
 /**
  * Unit tests for top hits aggregation.

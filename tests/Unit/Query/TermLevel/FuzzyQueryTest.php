@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\TermLevel;
+namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
-use ONGR\ElasticsearchDSL\Query\TermLevel\FuzzyQuery;
+use OpenSearchDSL\Query\TermLevel\FuzzyQuery;
 
 class FuzzyQueryTest extends \PHPUnit\Framework\TestCase
 {

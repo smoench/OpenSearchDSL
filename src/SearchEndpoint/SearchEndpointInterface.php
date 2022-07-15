@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\SearchEndpoint;
+namespace OpenSearchDSL\SearchEndpoint;
 
-use ONGR\ElasticsearchDSL\BuilderInterface;
-use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\Query\Compound\BoolQuery;
 use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 /**

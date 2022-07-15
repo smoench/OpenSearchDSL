@@ -9,13 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit;
+namespace OpenSearchDSL\Tests\Unit;
 
-use ONGR\ElasticsearchDSL\Query\TermLevel\ExistsQuery;
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
-use ONGR\ElasticsearchDSL\Search;
-use ONGR\ElasticsearchDSL\Sort\FieldSort;
-use ONGR\ElasticsearchDSL\Suggest\Suggest;
+use OpenSearchDSL\Search;
 
 /**
  * Test for Search.

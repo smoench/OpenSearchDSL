@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Compound;
+namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
-use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use OpenSearchDSL\Query\Compound\BoolQuery;
+use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\Query\TermLevel\TermQuery;
 
 /**
  * Unit test for Bool.

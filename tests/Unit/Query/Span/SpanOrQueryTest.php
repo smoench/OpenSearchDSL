@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace ONGR\ElasticsearchDSL\Tests\Unit\Query\Span;
+namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
-use ONGR\ElasticsearchDSL\Query\Span\SpanOrQuery;
+use OpenSearchDSL\Query\Span\SpanOrQuery;
 
 /**
  * Unit test for SpanOrQuery.
