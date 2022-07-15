@@ -2,7 +2,7 @@
 
 > More info about Boosting query is in the [official elasticsearch docs][1]
 
-Lets take an example to write a query with Elasticsearch DSL.
+Lets take an example to write a query with OpenSearch DSL.
 
 ```JSON
 {

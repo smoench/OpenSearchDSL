@@ -1,6 +1,6 @@
 # How to set custom parameters to your search
 
-Elasticsearch supports number of custom parameters which can be added to your query. Detailed explanation of each parameter can be found at [official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-body.html#_parameters_5)
+OpenSearch supports number of custom parameters which can be added to your query. Detailed explanation of each parameter can be found at [official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-body.html#_parameters_5)
 
 ## Setting `timeout` parameter
 

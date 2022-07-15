@@ -1,6 +1,6 @@
 # Aggregation
 
-Objective aggregation builder represents all available [Elasticsearch aggregations][1].
+Objective aggregation builder represents all available [OpenSearch aggregations][1].
 
 
 To form an aggregation you have to create `Search` object. See below an example of min aggregation usage.

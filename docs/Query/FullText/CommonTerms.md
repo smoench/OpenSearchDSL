@@ -4,7 +4,7 @@
 
 There are so many use cases with `Common Terms` query. We highly recommend to take a look at the [official docs][1] before continuing.
 
-Lets take first example to write easy `Common query` with Elasticsearch DSL.
+Lets take first example to write easy `Common query` with OpenSearch DSL.
 
 ```JSON
 {

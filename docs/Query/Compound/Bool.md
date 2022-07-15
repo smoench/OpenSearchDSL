@@ -6,7 +6,7 @@ It's a query that matches documents matching boolean combinations of other queri
 
 To create a bool query unlike other queries you don't have to create `BoolQuery` object. Just add queries to the search object and it will form bool query automatically.
 
-Lets take an example to write a bool query with Elasticsearch DSL.
+Lets take an example to write a bool query with OpenSearch DSL.
 
 ```JSON
 {

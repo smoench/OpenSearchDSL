@@ -1,8 +1,8 @@
 # Suggest
 
-Objective suggest builder in ONGR ElasticsearchDSL represents [Elasticsearch suggesters][1].
+Objective suggest builder in ONGR ElasticsearchDSL represents [OpenSearch suggesters][1].
 The `Suggest` class is universal for all the suggesters that are currently implemented in
-Elasticsearch.
+OpenSearch.
 
 The `Suggest` object takes up to 5 parameters during the initiation:
 
@@ -205,6 +205,6 @@ That will generate following JSON:
 
 ```
 
-Find out more about suggesters in the official [Elasticsearch suggest documentation][1]
+Find out more about suggesters in the official [OpenSearch suggest documentation][1]
 
 [1]: https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html

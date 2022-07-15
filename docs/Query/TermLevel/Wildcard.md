@@ -4,7 +4,7 @@
 
 Matches documents that have fields matching a wildcard expression (not analyzed).
 
-Lets take an example to write a wildcard query with Elasticsearch DSL.
+Lets take an example to write a wildcard query with OpenSearch DSL.
 
 ```JSON
 {

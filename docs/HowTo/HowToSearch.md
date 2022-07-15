@@ -1,6 +1,6 @@
-# How to search with Elasticsearch DSL
+# How to search with OpenSearch DSL
 
-In this chapter we will take a look how to perform a search via objective way with Elasticsearch DSL. Well, the good news is that is very simple. That's why we created this library ;).
+In this chapter we will take a look how to perform a search via objective way with OpenSearch DSL. Well, the good news is that is very simple. That's why we created this library ;).
 
 To start a search you have to create a `Search` object.
 
@@ -43,7 +43,7 @@ At the end it will form this query:
 
 ### Form a Filter
 
-Since Elasticsearch 5.0 the support for top level filters was dropped. The same functionality
+Since OpenSearch 5.0 the support for top level filters was dropped. The same functionality
 is now supported via `BoolQuery`. Adding a filter to the bool query is done like so:
  
 ```php
