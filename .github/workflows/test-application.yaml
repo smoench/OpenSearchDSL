@@ -25,17 +25,13 @@ jobs:
                       symfony-version: '^5.4'
 
         steps:
-            - name: Setup OpenSearch
-              uses: ankane/setup-opensearch@v1
-              with:
-                opensearch-version: '1.2'
-
             - name: Checkout project
-              uses: actions/checkout@v2
+              uses: actions/checkout@v3
 
             - name: Install and configure PHP
               uses: shivammathur/setup-php@v2
               with:
+                  coverage: pcov
                   php-version: ${{ matrix.php-version }}
 
             - name: Get composer cache directory
@@ -61,8 +57,10 @@ jobs:
               if: ${{ matrix.lint }}
               run: vendor/bin/phpcs -p --standard=PSR2 --ignore=vendor/ ./
 
+            - name: Setup OpenSearch
+              uses: ankane/setup-opensearch@v1
+              with:
+                opensearch-version: '1.2'
+
             - name: Run tests
               run: vendor/bin/phpunit --coverage-clover=coverage.xml
-
-            - name: Code Coverage Upload
-              run: curl -s https://codecov.io/bash
