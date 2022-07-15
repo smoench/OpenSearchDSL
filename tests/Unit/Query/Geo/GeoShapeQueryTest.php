@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Geo;
 
 use OpenSearchDSL\Query\Geo\GeoShapeQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoShapeQueryTest extends \PHPUnit\Framework\TestCase
+class GeoShapeQueryTest extends TestCase
 {
     /**
      * Tests toArray() method.

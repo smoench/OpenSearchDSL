@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\RegexpQuery;
+use PHPUnit\Framework\TestCase;
 
-class RegexpQueryTest extends \PHPUnit\Framework\TestCase
+class RegexpQueryTest extends TestCase
 {
     /**
      * Tests toArray().

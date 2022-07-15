@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\MovingFunctionAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for sum bucket aggregation.
  */
-class MovingFunctionAggregationTest extends \PHPUnit\Framework\TestCase
+class MovingFunctionAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

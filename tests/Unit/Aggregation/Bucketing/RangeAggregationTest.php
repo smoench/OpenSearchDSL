@@ -9,11 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\RangeAggregation;
+use PHPUnit\Framework\TestCase;
 
-class RangeAggregationTest extends \PHPUnit\Framework\TestCase
+class RangeAggregationTest extends TestCase
 {
     /**
      * Test addRange method.

@@ -14,8 +14,9 @@ namespace OpenSearchDSL\Tests\Unit\Sort;
 use OpenSearchDSL\Query\TermLevel\TermQuery;
 use OpenSearchDSL\Sort\FieldSort;
 use OpenSearchDSL\Sort\NestedSort;
+use PHPUnit\Framework\TestCase;
 
-class FieldSortTest extends \PHPUnit\Framework\TestCase
+class FieldSortTest extends TestCase
 {
     /**
      * Test for toArray() method.

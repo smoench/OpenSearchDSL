@@ -9,19 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\Ipv4RangeAggregation;
+use PHPUnit\Framework\TestCase;
 
-class Ipv4RangeAggregationTest extends \PHPUnit\Framework\TestCase
+class Ipv4RangeAggregationTest extends TestCase
 {
     /**
      * Test exception when field and range are not set.
-     *
-     * @expectedException \LogicException
      */
     public function testIfExceptionIsThrownWhenFieldAndRangeAreNotSet()
     {
+        $this->expectException(LogicException::class);
         $agg = new Ipv4RangeAggregation('foo');
         $agg->toArray();
     }

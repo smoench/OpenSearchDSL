@@ -12,11 +12,13 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanContainingQuery;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanContainingQuery.
  */
-class SpanContainingQueryTest extends \PHPUnit\Framework\TestCase
+class SpanContainingQueryTest extends TestCase
 {
     /**
      * Tests for toArray().
@@ -43,7 +45,7 @@ class SpanContainingQueryTest extends \PHPUnit\Framework\TestCase
     /**
      * @param string $value
      *
-     * @returns \PHPUnit_Framework_MockObject_MockObject
+     * @returns MockObject
      */
     private function getSpanQueryMock($value)
     {

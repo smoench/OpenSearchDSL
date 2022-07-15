@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\ParametersTrait;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for ParametersTrait.
  */
-class ParametersTraitTest extends \PHPUnit\Framework\TestCase
+class ParametersTraitTest extends TestCase
 {
     /**
      * @var ParametersTrait

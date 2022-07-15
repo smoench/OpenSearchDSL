@@ -13,8 +13,9 @@ namespace OpenSearchDSL\Tests\Unit\Query\Joining;
 
 use OpenSearchDSL\Query\Joining\NestedQuery;
 use OpenSearchDSL\Query\TermLevel\TermsQuery;
+use PHPUnit\Framework\TestCase;
 
-class NestedQueryTest extends \PHPUnit\Framework\TestCase
+class NestedQueryTest extends TestCase
 {
     /**
      * Data provider to testGetToArray.

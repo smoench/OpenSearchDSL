@@ -35,10 +35,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     {
         parent::setUp();
 
-        $this->client = ClientBuilder::create()
-            ->setBasicAuthentication('admin', 'admin')
-            ->build();
-
+        $this->client = ClientBuilder::create()->build();
         $this->deleteIndex();
 
         $this->client->indices()->create(

@@ -13,11 +13,12 @@ namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
 use OpenSearchDSL\Aggregation\Metric\TopHitsAggregation;
 use OpenSearchDSL\Sort\FieldSort;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit tests for top hits aggregation.
  */
-class TopHitsAggregationTest extends \PHPUnit\Framework\TestCase
+class TopHitsAggregationTest extends TestCase
 {
     /**
      * Check if aggregation returns the expected array.

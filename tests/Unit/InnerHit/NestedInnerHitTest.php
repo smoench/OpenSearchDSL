@@ -6,8 +6,10 @@ use OpenSearchDSL\InnerHit\NestedInnerHit;
 use OpenSearchDSL\Query\FullText\MatchQuery;
 use OpenSearchDSL\Query\Joining\NestedQuery;
 use OpenSearchDSL\Search;
+use PHPUnit\Framework\TestCase;
+use stdClass;
 
-class NestedInnerHitTest extends \PHPUnit\Framework\TestCase
+class NestedInnerHitTest extends TestCase
 {
     /**
      * Data provider for testToArray().
@@ -38,7 +40,7 @@ class NestedInnerHitTest extends \PHPUnit\Framework\TestCase
             $emptyInnerHit,
             [
                 'path' => [
-                    'foo' => new \stdClass(),
+                    'foo' => new stdClass(),
                 ],
             ],
         ];

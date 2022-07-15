@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\Search;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test for Search.
  */
-class SearchTest extends \PHPUnit\Framework\TestCase
+class SearchTest extends TestCase
 {
     /**
      * Tests Search constructor.

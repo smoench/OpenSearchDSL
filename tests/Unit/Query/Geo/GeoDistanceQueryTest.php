@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Geo;
 
 use OpenSearchDSL\Query\Geo\GeoDistanceQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoDistanceQueryTest extends \PHPUnit\Framework\TestCase
+class GeoDistanceQueryTest extends TestCase
 {
     /**
      * Data provider for testToArray().

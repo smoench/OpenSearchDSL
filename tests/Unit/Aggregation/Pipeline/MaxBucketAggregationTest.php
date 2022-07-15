@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\MaxBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for max bucket aggregation.
  */
-class MaxBucketAggregationTest extends \PHPUnit\Framework\TestCase
+class MaxBucketAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

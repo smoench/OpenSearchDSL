@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\SerialDifferencingAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for serial differencing aggregation.
  */
-class SerialDifferencingAggregationTest extends \PHPUnit\Framework\TestCase
+class SerialDifferencingAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

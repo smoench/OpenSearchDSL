@@ -9,11 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class TermsAggregationTest extends \PHPUnit\Framework\TestCase
+class TermsAggregationTest extends TestCase
 {
     /**
      * Tests setField method.

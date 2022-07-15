@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanNearQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanNearQuery.
  */
-class SpanNearQueryTest extends \PHPUnit\Framework\TestCase
+class SpanNearQueryTest extends TestCase
 {
     /**
      * Tests for toArray().

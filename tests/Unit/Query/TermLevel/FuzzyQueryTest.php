@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\FuzzyQuery;
+use PHPUnit\Framework\TestCase;
 
-class FuzzyQueryTest extends \PHPUnit\Framework\TestCase
+class FuzzyQueryTest extends TestCase
 {
     /**
      * Tests toArray().

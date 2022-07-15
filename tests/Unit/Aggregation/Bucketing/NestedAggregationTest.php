@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\NestedAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class NestedAggregationTest extends \PHPUnit\Framework\TestCase
+class NestedAggregationTest extends TestCase
 {
     /**
      * Test for nested aggregation toArray() method exception.

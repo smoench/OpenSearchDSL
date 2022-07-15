@@ -11,9 +11,11 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
+use InvalidArgumentException;
 use OpenSearchDSL\Query\TermLevel\TermsSetQuery;
+use PHPUnit\Framework\TestCase;
 
-class TermsSetQueryTest extends \PHPUnit\Framework\TestCase
+class TermsSetQueryTest extends TestCase
 {
     /**
      * Tests toArray().
@@ -38,7 +40,7 @@ class TermsSetQueryTest extends \PHPUnit\Framework\TestCase
     public function testItThrowsAaExceptionWhenMinimumShouldMatchFieldOrMinimumShouldMatchScriptIsNotGiven()
     {
         $message = "Either minimum_should_match_field or minimum_should_match_script must be set.";
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage($message);
 
         $terms = ['php', 'c++', 'java'];

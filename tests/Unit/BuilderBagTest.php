@@ -13,8 +13,10 @@ namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\BuilderBag;
 use OpenSearchDSL\BuilderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-class BuilderBagTest extends \PHPUnit\Framework\TestCase
+class BuilderBagTest extends TestCase
 {
     /**
      * Tests if bag knows if he has a builder.
@@ -79,7 +81,7 @@ class BuilderBagTest extends \PHPUnit\Framework\TestCase
      *
      * @param string $name
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject|BuilderInterface
+     * @return MockObject|BuilderInterface
      */
     private function getBuilder($name)
     {

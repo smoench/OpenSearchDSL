@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanMultiTermQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanMultiTermQuery.
  */
-class SpanMultiTermQueryTest extends \PHPUnit\Framework\TestCase
+class SpanMultiTermQueryTest extends TestCase
 {
     /**
      * Test for toArray().

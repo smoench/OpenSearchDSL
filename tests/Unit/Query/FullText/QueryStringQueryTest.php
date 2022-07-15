@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
 use OpenSearchDSL\Query\FullText\QueryStringQuery;
+use PHPUnit\Framework\TestCase;
 
-class QueryStringQueryTest extends \PHPUnit\Framework\TestCase
+class QueryStringQueryTest extends TestCase
 {
     /**
      * Tests toArray().

@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\CumulativeSumAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for cumulative sum aggregation.
  */
-class CumulativeSumAggregationTest extends \PHPUnit\Framework\TestCase
+class CumulativeSumAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

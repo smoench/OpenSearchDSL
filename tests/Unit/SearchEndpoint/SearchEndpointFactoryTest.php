@@ -9,24 +9,27 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
 use OpenSearchDSL\SearchEndpoint\SearchEndpointFactory;
 use OpenSearchDSL\SearchEndpoint\SearchEndpointInterface;
+use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 /**
  * Unit test class for search endpoint factory.
  */
-class SearchEndpointFactoryTest extends \PHPUnit\Framework\TestCase
+class SearchEndpointFactoryTest extends TestCase
 {
     /**
      * Tests get method exception.
      *
-     * @expectedException \RuntimeException
+     *
      */
     public function testGet()
     {
+        $this->expectException(RuntimeException::class);
         SearchEndpointFactory::get('foo');
     }
 

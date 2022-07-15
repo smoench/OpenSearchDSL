@@ -11,12 +11,14 @@
 
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Pipeline\BucketScriptAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for bucket script pipeline aggregation.
  */
-class BucketScriptAggregationTest extends \PHPUnit\Framework\TestCase
+class BucketScriptAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.
@@ -51,11 +53,13 @@ class BucketScriptAggregationTest extends \PHPUnit\Framework\TestCase
      * Tests if the exception is thrown in getArray method if no
      * buckets_path or script is set
      *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage `test` aggregation must have script set.
+     *
+     *
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("`test` aggregation must have script set.");
         $agg = new BucketScriptAggregation('test', []);
 
         $agg->getArray();

@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Suggest;
 
 use OpenSearchDSL\Suggest\Suggest;
+use PHPUnit\Framework\TestCase;
 
-class SuggestTest extends \PHPUnit\Framework\TestCase
+class SuggestTest extends TestCase
 {
     /**
      * Tests getType method.

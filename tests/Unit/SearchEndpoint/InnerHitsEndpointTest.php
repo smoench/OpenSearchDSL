@@ -9,14 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AggregationsEndpointTest.
  */
-class InnerHitsEndpointTest extends \PHPUnit\Framework\TestCase
+class InnerHitsEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

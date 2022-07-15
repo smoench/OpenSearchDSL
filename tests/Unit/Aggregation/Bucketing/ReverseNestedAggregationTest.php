@@ -9,12 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\ReverseNestedAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
+use stdClass;
 
-class ReverseNestedAggregationTest extends \PHPUnit\Framework\TestCase
+class ReverseNestedAggregationTest extends TestCase
 {
     /**
      * Test for reverse_nested aggregation toArray() method exception.
@@ -48,7 +50,7 @@ class ReverseNestedAggregationTest extends \PHPUnit\Framework\TestCase
         $aggregation->addAggregation($termAggregation);
 
         $expectedResult = [
-            'reverse_nested' => new \stdClass(),
+            'reverse_nested' => new stdClass(),
             'aggregations' => [
                 $termAggregation->getName() => $termAggregation->toArray(),
             ],

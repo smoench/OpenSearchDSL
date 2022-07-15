@@ -9,15 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\AdjacencyMatrixAggregation;
 use OpenSearchDSL\BuilderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for adjacency matrix aggregation.
  */
-class AdjacencyMatrixAggregationTest extends \PHPUnit\Framework\TestCase
+class AdjacencyMatrixAggregationTest extends TestCase
 {
 //    /**
 //     * Test if exception is thrown when not anonymous filter is without name.
@@ -95,9 +97,9 @@ class AdjacencyMatrixAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testFilterConstructor()
     {
-        /** @var BuilderInterface|\PHPUnit_Framework_MockObject_MockObject $builderInterface1 */
+        /** @var BuilderInterface|MockObject $builderInterface1 */
         $builderInterface1 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
-        /** @var BuilderInterface|\PHPUnit_Framework_MockObject_MockObject $builderInterface2 */
+        /** @var BuilderInterface|MockObject $builderInterface2 */
         $builderInterface2 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
 
         $aggregation = new AdjacencyMatrixAggregation(

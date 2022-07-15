@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\SamplerAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class SamplerAggregationTest extends \PHPUnit\Framework\TestCase
+class SamplerAggregationTest extends TestCase
 {
     /**
      * Tests getType method.

@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\AvgBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for avg_bucket aggregation.
  */
-class AvgBucketAggregationTest extends \PHPUnit\Framework\TestCase
+class AvgBucketAggregationTest extends TestCase
 {
     /**
      * Tests getArray method.

@@ -11,20 +11,23 @@
 
 namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Metric\GeoCentroidAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class GeoCentroidAggregationTest extends \PHPUnit\Framework\TestCase
+class GeoCentroidAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown when field is not provided
      *
-     * @expectedException \LogicException
+     *
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
         $aggregation = new GeoCentroidAggregation('foo');
         $aggregation->getArray();
     }

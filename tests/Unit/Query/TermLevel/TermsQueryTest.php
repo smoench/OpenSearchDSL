@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\TermsQuery;
+use PHPUnit\Framework\TestCase;
 
-class TermsQueryTest extends \PHPUnit\Framework\TestCase
+class TermsQueryTest extends TestCase
 {
     /**
      * Tests toArray().

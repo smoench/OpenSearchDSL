@@ -14,11 +14,12 @@ namespace OpenSearchDSL\Tests\Unit\Query\Span;
 use OpenSearchDSL\Query\Span\FieldMaskingSpanQuery;
 use OpenSearchDSL\Query\Span\SpanNearQuery;
 use OpenSearchDSL\Query\Span\SpanTermQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for FieldMaskingSpanQuery.
  */
-class FieldMaskingSpanQueryTest extends \PHPUnit\Framework\TestCase
+class FieldMaskingSpanQueryTest extends TestCase
 {
     /**
      * Tests for toArray().

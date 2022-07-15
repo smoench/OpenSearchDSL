@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\DerivativeAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for derivative aggregation.
  */
-class DerivativeAggregationTest extends \PHPUnit\Framework\TestCase
+class DerivativeAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

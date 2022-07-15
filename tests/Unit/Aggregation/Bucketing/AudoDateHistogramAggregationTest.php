@@ -9,11 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\AutoDateHistogramAggregation;
+use PHPUnit\Framework\TestCase;
 
-class AudoDateHistogramAggregationTest extends \PHPUnit\Framework\TestCase
+class AudoDateHistogramAggregationTest extends TestCase
 {
     /**
      * Tests agg.

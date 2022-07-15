@@ -11,18 +11,22 @@
 
 namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Metric\PercentilesAggregation;
+use PHPUnit\Framework\TestCase;
 
-class PercentilesAggregationTest extends \PHPUnit\Framework\TestCase
+class PercentilesAggregationTest extends TestCase
 {
     /**
      * Tests if PercentilesAggregation#getArray throws exception when expected.
      *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Percentiles aggregation must have field or script set.
+     *
+     *
      */
     public function testPercentilesAggregationGetArrayException()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("Percentiles aggregation must have field or script set.");
         $aggregation = new PercentilesAggregation('bar');
         $aggregation->getArray();
     }

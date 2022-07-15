@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanOrQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for SpanOrQuery.
  */
-class SpanOrQueryTest extends \PHPUnit\Framework\TestCase
+class SpanOrQueryTest extends TestCase
 {
     /**
      * Tests for toArray().
@@ -43,7 +44,7 @@ class SpanOrQueryTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($result, $query->toArray());
 
         $result = $query->getQueries();
-        $this->assertInternalType('array', $result);
+        $this->assertIsArray($result);
         $this->assertEquals(1, count($result));
     }
 }

@@ -14,12 +14,13 @@ namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\FunctionScoreQuery;
 use OpenSearchDSL\Query\MatchAllQuery;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\TestCase;
+use stdClass;
 
 /**
  * Tests for FunctionScoreQuery.
  */
-class FunctionScoreQueryTest extends \PHPUnit\Framework\TestCase
+class FunctionScoreQueryTest extends TestCase
 {
     /**
      * Data provider for testAddRandomFunction.
@@ -36,7 +37,7 @@ class FunctionScoreQueryTest extends \PHPUnit\Framework\TestCase
                     'query' => null,
                     'functions' => [
                         [
-                            'random_score' => new \stdClass(),
+                            'random_score' => new stdClass(),
                         ],
                     ],
                 ],

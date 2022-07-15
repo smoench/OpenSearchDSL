@@ -9,20 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\MissingAggregation;
+use PHPUnit\Framework\TestCase;
 
-class MissingAggregationTest extends \PHPUnit\Framework\TestCase
+class MissingAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown when field is not set.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Missing aggregation must have a field set.
      */
     public function testIfExceptionIsThrown()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("Missing aggregation must have a field set.");
         $agg = new MissingAggregation('test_agg');
         $agg->getArray();
     }

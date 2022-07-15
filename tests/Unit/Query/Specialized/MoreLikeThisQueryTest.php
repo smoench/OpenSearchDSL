@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Specialized;
 
 use OpenSearchDSL\Query\Specialized\MoreLikeThisQuery;
+use PHPUnit\Framework\TestCase;
 
-class MoreLikeThisQueryTest extends \PHPUnit\Framework\TestCase
+class MoreLikeThisQueryTest extends TestCase
 {
     /**
      * Tests toArray().

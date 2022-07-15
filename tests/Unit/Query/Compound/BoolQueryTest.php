@@ -14,20 +14,23 @@ namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 use OpenSearchDSL\Query\Compound\BoolQuery;
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\Query\TermLevel\TermQuery;
+use PHPUnit\Framework\TestCase;
+use stdClass;
+use UnexpectedValueException;
 
 /**
  * Unit test for Bool.
  */
-class BoolQueryTest extends \PHPUnit\Framework\TestCase
+class BoolQueryTest extends TestCase
 {
     /**
      * Test for addToBool() without setting a correct bool operator.
-     *
-     * @expectedException        \UnexpectedValueException
-     * @expectedExceptionMessage The bool operator acme is not supported
      */
     public function testBoolAddToBoolException()
     {
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage("The bool operator acme is not supported");
+
         $bool = new BoolQuery();
         $bool->add(new MatchAllQuery(), 'acme');
     }
@@ -82,11 +85,13 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests exception thrown if invalid BoolQuery type key is specified
      *
-     * @expectedException        \UnexpectedValueException
-     * @expectedExceptionMessage The bool operator acme is not supported
+     *
+     *
      */
     public function testBoolConstructorException()
     {
+        $this->expectException(UnexpectedValueException::class);
+        $this->expectExceptionMessage("The bool operator acme is not supported");
         new BoolQuery([
             'acme' => [new TermQuery('key1', 'value1')],
         ]);
@@ -136,7 +141,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertEquals(['bool' => new \stdClass()], $bool->toArray());
+        $this->assertEquals(['bool' => new stdClass()], $bool->toArray());
     }
 
     /**
@@ -190,7 +195,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertInternalType('array', $bool->getQueries());
+        $this->assertIsArray($bool->getQueries());
     }
 
     /**
@@ -215,7 +220,7 @@ class BoolQueryTest extends \PHPUnit\Framework\TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertInternalType('array', $bool->getQueries(BoolQuery::MUST));
+        $this->assertIsArray($bool->getQueries(BoolQuery::MUST));
     }
 
     /**

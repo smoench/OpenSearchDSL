@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\IdsQuery;
+use PHPUnit\Framework\TestCase;
 
-class IdsQueryTest extends \PHPUnit\Framework\TestCase
+class IdsQueryTest extends TestCase
 {
     /**
      * Tests toArray().

@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Aggregation\Bucketing\MissingAggregation;
 use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class AggregationsEndpointTest.
  */
-class AggregationsEndpointTest extends \PHPUnit\Framework\TestCase
+class AggregationsEndpointTest extends TestCase
 {
     /**
      * Tests constructor.
@@ -25,7 +26,7 @@ class AggregationsEndpointTest extends \PHPUnit\Framework\TestCase
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(
-            'OpenSearchDSL\SearchEndpoint\AggregationsEndpoint',
+            AggregationsEndpoint::class,
             new AggregationsEndpoint()
         );
     }

@@ -9,16 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\FilterAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\HistogramAggregation;
 use OpenSearchDSL\Query\Compound\BoolQuery;
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\Query\TermLevel\ExistsQuery;
 use OpenSearchDSL\Query\TermLevel\TermQuery;
+use PHPUnit\Framework\TestCase;
 
-class FilterAggregationTest extends \PHPUnit\Framework\TestCase
+class FilterAggregationTest extends TestCase
 {
     /**
      * Data provider for testToArray.
@@ -101,24 +103,22 @@ class FilterAggregationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test for setField().
-     *
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage doesn't support `field` parameter
      */
     public function testSetField()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("doesn't support `field` parameter");
         $aggregation = new FilterAggregation('test_agg');
         $aggregation->setField('test_field');
     }
 
     /**
      * Test for toArray() without setting a filter.
-     *
-     * @expectedException        \LogicException
-     * @expectedExceptionMessage has no filter added
      */
     public function testToArrayNoFilter()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("has no filter added");
         $aggregation = new FilterAggregation('test_agg');
         $result = $aggregation->toArray();
 

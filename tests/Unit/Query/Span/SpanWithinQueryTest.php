@@ -12,11 +12,14 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanWithinQuery;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
+
 
 /**
  * Unit test for SpanWithinQuery.
  */
-class SpanWithinQueryTest extends \PHPUnit\Framework\TestCase
+class SpanWithinQueryTest extends TestCase
 {
     /**
      * Tests for toArray().
@@ -43,7 +46,7 @@ class SpanWithinQueryTest extends \PHPUnit\Framework\TestCase
     /**
      * @param string $value
      *
-     * @returns \PHPUnit_Framework_MockObject_MockObject
+     * @returns MockObject
      */
     private function getSpanQueryMock($value)
     {

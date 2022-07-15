@@ -9,24 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\FiltersAggregation;
 use OpenSearchDSL\BuilderInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for filters aggregation.
  */
-class FiltersAggregationTest extends \PHPUnit\Framework\TestCase
+class FiltersAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown when not anonymous filter is without name.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage In not anonymous filters filter name must be set.
      */
     public function testIfExceptionIsThrown()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("In not anonymous filters filter name must be set.");
         $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
         $aggregation = new FiltersAggregation('test_agg');
         $aggregation->addFilter($mock);
@@ -95,9 +97,9 @@ class FiltersAggregationTest extends \PHPUnit\Framework\TestCase
      */
     public function testConstructorFilter()
     {
-        /** @var BuilderInterface|\PHPUnit_Framework_MockObject_MockObject $builderInterface1 */
+        /** @var BuilderInterface|MockObject $builderInterface1 */
         $builderInterface1 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
-        /** @var BuilderInterface|\PHPUnit_Framework_MockObject_MockObject $builderInterface2 */
+        /** @var BuilderInterface|MockObject $builderInterface2 */
         $builderInterface2 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
 
         $aggregation = new FiltersAggregation(

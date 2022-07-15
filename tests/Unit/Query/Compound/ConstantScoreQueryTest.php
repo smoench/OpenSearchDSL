@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
 use OpenSearchDSL\Query\Compound\ConstantScoreQuery;
+use PHPUnit\Framework\TestCase;
 
-class ConstantScoreQueryTest extends \PHPUnit\Framework\TestCase
+class ConstantScoreQueryTest extends TestCase
 {
     /**
      * Tests toArray().

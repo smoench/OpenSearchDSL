@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\WildcardQuery;
+use PHPUnit\Framework\TestCase;
 
-class WildcardQueryTest extends \PHPUnit\Framework\TestCase
+class WildcardQueryTest extends TestCase
 {
     /**
      * Test for query toArray() method.

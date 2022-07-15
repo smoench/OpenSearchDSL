@@ -9,14 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\SignificantTermsAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class SignificantTermsAggregationTest extends \PHPUnit\Framework\TestCase
+class SignificantTermsAggregationTest extends TestCase
 {
     /**
      * Tests getType method.

@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\MinBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for min bucket aggregation.
  */
-class MinBucketAggregationTest extends \PHPUnit\Framework\TestCase
+class MinBucketAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

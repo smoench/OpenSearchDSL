@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\TypeQuery;
+use PHPUnit\Framework\TestCase;
 
-class TypeQueryTest extends \PHPUnit\Framework\TestCase
+class TypeQueryTest extends TestCase
 {
     /**
      * Test for query toArray() method.

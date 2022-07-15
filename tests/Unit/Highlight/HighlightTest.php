@@ -12,8 +12,10 @@
 namespace OpenSearchDSL\Tests\Unit\Highlight;
 
 use OpenSearchDSL\Highlight\Highlight;
+use PHPUnit\Framework\TestCase;
+use StdClass;
 
-class HighlightTest extends \PHPUnit\Framework\TestCase
+class HighlightTest extends TestCase
 {
     /**
      * Tests GetType method, it should return 'highlight'.
@@ -94,7 +96,7 @@ class HighlightTest extends \PHPUnit\Framework\TestCase
         $result = $highlight->toArray();
         $expectedResult = [
             'fields' => [
-                'ok' => new \StdClass,
+                'ok' => new StdClass,
             ],
             '_source' => [
                 'include' => [

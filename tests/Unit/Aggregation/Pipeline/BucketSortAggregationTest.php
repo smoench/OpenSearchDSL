@@ -13,11 +13,12 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\BucketSortAggregation;
 use OpenSearchDSL\Sort\FieldSort;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for the bucket sort aggregation.
  */
-class BucketSortAggregationTest extends \PHPUnit\Framework\TestCase
+class BucketSortAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

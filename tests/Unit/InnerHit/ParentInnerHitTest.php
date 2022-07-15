@@ -5,8 +5,9 @@ namespace OpenSearchDSL\Tests\Unit\InnerHit;
 use OpenSearchDSL\InnerHit\ParentInnerHit;
 use OpenSearchDSL\Query\TermLevel\TermQuery;
 use OpenSearchDSL\Search;
+use PHPUnit\Framework\TestCase;
 
-class ParentInnerHitTest extends \PHPUnit\Framework\TestCase
+class ParentInnerHitTest extends TestCase
 {
     public function testToArray()
     {

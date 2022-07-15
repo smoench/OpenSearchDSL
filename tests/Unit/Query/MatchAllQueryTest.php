@@ -12,8 +12,10 @@
 namespace OpenSearchDSL\Tests\Unit\Query;
 
 use OpenSearchDSL\Query\MatchAllQuery;
+use PHPUnit\Framework\TestCase;
+use stdClass;
 
-class MatchAllQueryTest extends \PHPUnit\Framework\TestCase
+class MatchAllQueryTest extends TestCase
 {
     /**
      * Tests toArray().
@@ -21,7 +23,7 @@ class MatchAllQueryTest extends \PHPUnit\Framework\TestCase
     public function testToArrayWhenThereAreNoParams()
     {
         $query = new MatchAllQuery();
-        $this->assertEquals(['match_all' => new \stdClass()], $query->toArray());
+        $this->assertEquals(['match_all' => new stdClass()], $query->toArray());
     }
 
     /**

@@ -9,17 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Highlight\Highlight;
 use OpenSearchDSL\SearchEndpoint\HighlightEndpoint;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Class HighlightEndpointTest.
  */
-class HighlightEndpointTest extends \PHPUnit\Framework\TestCase
+class HighlightEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

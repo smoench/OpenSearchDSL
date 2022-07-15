@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\ExistsQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for ExistsQuery.
  */
-class ExistsQueryTest extends \PHPUnit\Framework\TestCase
+class ExistsQueryTest extends TestCase
 {
     /**
      * Tests toArray() method.

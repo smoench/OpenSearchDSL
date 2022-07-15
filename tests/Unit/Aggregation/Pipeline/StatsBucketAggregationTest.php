@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\StatsBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for stats bucket aggregation.
  */
-class StatsBucketAggregationTest extends \PHPUnit\Framework\TestCase
+class StatsBucketAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

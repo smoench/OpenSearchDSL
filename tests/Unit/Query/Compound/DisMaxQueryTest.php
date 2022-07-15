@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
 use OpenSearchDSL\Query\Compound\DisMaxQuery;
+use PHPUnit\Framework\TestCase;
 
-class DisMaxQueryTest extends \PHPUnit\Framework\TestCase
+class DisMaxQueryTest extends TestCase
 {
     /**
      * Tests toArray().

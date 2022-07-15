@@ -11,20 +11,23 @@
 
 namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Metric\GeoBoundsAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for geo bounds aggregation.
  */
-class GeoBoundsAggregationTest extends \PHPUnit\Framework\TestCase
+class GeoBoundsAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown.
      *
-     * @expectedException \LogicException
+     *
      */
     public function testGeoBoundsAggregationException()
     {
+        $this->expectException(LogicException::class);
         $agg = new GeoBoundsAggregation('test_agg');
         $agg->getArray();
     }

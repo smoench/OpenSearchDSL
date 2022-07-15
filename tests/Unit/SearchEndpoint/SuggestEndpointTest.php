@@ -9,14 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\SearchEndpoint\SuggestEndpoint;
 use OpenSearchDSL\Suggest\Suggest;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-class SuggestEndpointTest extends \PHPUnit\Framework\TestCase
+class SuggestEndpointTest extends TestCase
 {
     /**
      * Tests constructor.

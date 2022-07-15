@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Joining;
 
 use OpenSearchDSL\Query\Joining\HasChildQuery;
+use PHPUnit\Framework\TestCase;
 
-class HasChildQueryTest extends \PHPUnit\Framework\TestCase
+class HasChildQueryTest extends TestCase
 {
     /**
      * Tests whether __constructor calls setParameters method.

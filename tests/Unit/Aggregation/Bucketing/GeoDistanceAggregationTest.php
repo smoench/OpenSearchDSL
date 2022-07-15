@@ -9,20 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\GeoDistanceAggregation;
+use PHPUnit\Framework\TestCase;
 
-class GeoDistanceAggregationTest extends \PHPUnit\Framework\TestCase
+class GeoDistanceAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown when field is not set.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Geo distance aggregation must have a field set.
      */
     public function testGeoDistanceAggregationExceptionWhenFieldIsNotSet()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("Geo distance aggregation must have a field set.");
         $agg = new GeoDistanceAggregation('test_agg');
         $agg->setOrigin('50, 70');
         $agg->getArray();
@@ -30,12 +31,11 @@ class GeoDistanceAggregationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test if exception is thrown when origin is not set.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Geo distance aggregation must have an origin set.
      */
     public function testGeoDistanceAggregationExceptionWhenOriginIsNotSet()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("Geo distance aggregation must have an origin set.");
         $agg = new GeoDistanceAggregation('test_agg');
         $agg->setField('location');
         $agg->getArray();
@@ -43,12 +43,11 @@ class GeoDistanceAggregationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test if exception is thrown when field is not set.
-     *
-     * @expectedException \LogicException
-     * @expectedExceptionMessage Either from or to must be set. Both cannot be null.
      */
     public function testGeoDistanceAggregationAddRangeException()
     {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage("Either from or to must be set. Both cannot be null.");
         $agg = new GeoDistanceAggregation('test_agg');
         $agg->addRange();
     }

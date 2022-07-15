@@ -9,12 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\CompositeAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\TermsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class CompositeAggregationTest extends \PHPUnit\Framework\TestCase
+class CompositeAggregationTest extends TestCase
 {
     /**
      * Test for composite aggregation toArray() method exception.

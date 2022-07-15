@@ -14,7 +14,7 @@ namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 use OpenSearchDSL\Query\FullText\MatchPhrasePrefixQuery;
 use PHPUnit\Framework\TestCase;
 
-class MatchPhrasePrefixQueryTest extends \PHPUnit\Framework\TestCase
+class MatchPhrasePrefixQueryTest extends TestCase
 {
     /**
      * Tests toArray().

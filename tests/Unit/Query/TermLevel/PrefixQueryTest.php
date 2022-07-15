@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\TermLevel;
 
 use OpenSearchDSL\Query\TermLevel\PrefixQuery;
+use PHPUnit\Framework\TestCase;
 
-class PrefixQueryTest extends \PHPUnit\Framework\TestCase
+class PrefixQueryTest extends TestCase
 {
     /**
      * Tests toArray().

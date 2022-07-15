@@ -9,22 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\ChildrenAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class ChildrenAggregationTest extends \PHPUnit\Framework\TestCase
+class ChildrenAggregationTest extends TestCase
 {
     /**
      * Tests if ChildrenAggregation#getArray throws exception when expected.
-     *
-     * @expectedException \LogicException
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
         $aggregation = new ChildrenAggregation('foo');
         $aggregation->getArray();
     }

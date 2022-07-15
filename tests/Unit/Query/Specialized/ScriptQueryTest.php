@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Specialized;
 
 use OpenSearchDSL\Query\Specialized\ScriptQuery;
+use PHPUnit\Framework\TestCase;
 
-class ScriptQueryTest extends \PHPUnit\Framework\TestCase
+class ScriptQueryTest extends TestCase
 {
     /**
      * Data provider for testToArray().

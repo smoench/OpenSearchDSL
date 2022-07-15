@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
 use OpenSearchDSL\Query\Compound\BoostingQuery;
+use PHPUnit\Framework\TestCase;
 
-class BoostingQueryTest extends \PHPUnit\Framework\TestCase
+class BoostingQueryTest extends TestCase
 {
     /**
      * Tests toArray().

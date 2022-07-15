@@ -12,11 +12,12 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Pipeline;
 
 use OpenSearchDSL\Aggregation\Pipeline\PercentilesBucketAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for percentiles bucket aggregation.
  */
-class PercentilesBucketAggregationTest extends \PHPUnit\Framework\TestCase
+class PercentilesBucketAggregationTest extends TestCase
 {
     /**
      * Tests toArray method.

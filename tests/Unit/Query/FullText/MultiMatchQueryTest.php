@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\FullText;
 
 use OpenSearchDSL\Query\FullText\MultiMatchQuery;
+use PHPUnit\Framework\TestCase;
 
-class MultiMatchQueryTest extends \PHPUnit\Framework\TestCase
+class MultiMatchQueryTest extends TestCase
 {
     /**
      * Tests toArray().

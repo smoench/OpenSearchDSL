@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Geo;
 
 use OpenSearchDSL\Query\Geo\GeoPolygonQuery;
+use PHPUnit\Framework\TestCase;
 
-class GeoPolygonQueryTest extends \PHPUnit\Framework\TestCase
+class GeoPolygonQueryTest extends TestCase
 {
     /**
      * Data provider to testToArray.

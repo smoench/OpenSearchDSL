@@ -9,22 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\DateHistogramAggregation;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for children aggregation.
  */
-class DateHistogramAggregationTest extends \PHPUnit\Framework\TestCase
+class DateHistogramAggregationTest extends TestCase
 {
     /**
      * Tests if ChildrenAggregation#getArray throws exception when expected.
      *
-     * @expectedException \LogicException
+     *
      */
     public function testGetArrayException()
     {
+        $this->expectException(LogicException::class);
         $aggregation = new DateHistogramAggregation('foo');
         $aggregation->getArray();
     }

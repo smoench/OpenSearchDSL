@@ -13,8 +13,9 @@ namespace OpenSearchDSL\Tests\Unit\Sort;
 
 use OpenSearchDSL\Query\TermLevel\TermQuery;
 use OpenSearchDSL\Sort\NestedSort;
+use PHPUnit\Framework\TestCase;
 
-class NestedSortTest extends \PHPUnit\Framework\TestCase
+class NestedSortTest extends TestCase
 {
     /**
      * Test for single nested.

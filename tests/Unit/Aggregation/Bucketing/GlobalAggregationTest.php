@@ -9,11 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Bucketing\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\GlobalAggregation;
+use PHPUnit\Framework\TestCase;
+use stdClass;
 
-class GlobalAggregationTest extends \PHPUnit\Framework\TestCase
+class GlobalAggregationTest extends TestCase
 {
     /**
      * Data provider for testToArray().
@@ -28,7 +31,7 @@ class GlobalAggregationTest extends \PHPUnit\Framework\TestCase
         $aggregation = new GlobalAggregation('test_agg');
 
         $result = [
-            'global' => new \stdClass(),
+            'global' => new stdClass(),
         ];
 
         $out[] = [
@@ -42,7 +45,7 @@ class GlobalAggregationTest extends \PHPUnit\Framework\TestCase
         $aggregation->addAggregation($aggregation2);
 
         $result = [
-            'global' => new \stdClass(),
+            'global' => new stdClass(),
             'aggregations' => [
                 $aggregation2->getName() => $aggregation2->toArray(),
             ],
@@ -74,11 +77,10 @@ class GlobalAggregationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test for setField method on global aggregation.
-     *
-     * @expectedException \LogicException
      */
     public function testSetField()
     {
+        $this->expectException(LogicException::class);
         $aggregation = new GlobalAggregation('test_agg');
         $aggregation->setField('test_field');
     }

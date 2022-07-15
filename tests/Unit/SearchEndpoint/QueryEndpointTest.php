@@ -9,24 +9,25 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Unit\SearchEndpoint;
+namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\SearchEndpoint\QueryEndpoint;
-use PHPUnit_Framework_MockObject_MockObject as MockObject;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Unit test class for the QueryEndpoint.
  */
-class QueryEndpointTest extends \PHPUnit\Framework\TestCase
+class QueryEndpointTest extends TestCase
 {
     /**
      * Tests constructor.
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('OpenSearchDSL\SearchEndpoint\QueryEndpoint', new QueryEndpoint());
+        $this->assertInstanceOf(QueryEndpoint::class, new QueryEndpoint());
     }
 
     /**

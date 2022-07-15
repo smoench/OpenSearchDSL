@@ -12,8 +12,9 @@
 namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
 
 use OpenSearchDSL\Aggregation\Metric\StatsAggregation;
+use PHPUnit\Framework\TestCase;
 
-class StatsAggregationTest extends \PHPUnit\Framework\TestCase
+class StatsAggregationTest extends TestCase
 {
     /**
      * Test for stats aggregation toArray() method.

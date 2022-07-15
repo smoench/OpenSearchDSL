@@ -11,12 +11,14 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\Specialized;
 
+use InvalidArgumentException;
 use OpenSearchDSL\Query\Specialized\TemplateQuery;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Unit test for Template.
  */
-class TemplateQueryTest extends \PHPUnit\Framework\TestCase
+class TemplateQueryTest extends TestCase
 {
     /**
      * Tests toArray() method with inline.
@@ -57,10 +59,11 @@ class TemplateQueryTest extends \PHPUnit\Framework\TestCase
     /**
      * Tests toArray() exception
      *
-     * @expectedException \InvalidArgumentException
+     *
      */
     public function testToArrayException()
     {
+        $this->expectException(InvalidArgumentException::class);
         $query = new TemplateQuery();
         $query->toArray();
     }
