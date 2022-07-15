@@ -24,16 +24,12 @@ jobs:
                       lint: true
                       symfony-version: '^5.4'
 
-        services:
-            opensearch:
-                image: opensearchproject/opensearch:1.2.4
-                ports:
-                    - 9200:9200
-                env:
-                    discovery.type: 'single-node'
-                options: --health-cmd="curl http://localhost:9200/_cat/health?v -u 'admin:admin'" --health-interval=10s --health-timeout=5s --health-retries=5
-
         steps:
+            - name: Setup OpenSearch
+              uses: ankane/setup-opensearch@v1
+              with:
+                opensearch-version: '1.2'
+
             - name: Checkout project
               uses: actions/checkout@v2
 
