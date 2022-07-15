@@ -26,7 +26,7 @@ class SortEndpointTest extends \PHPUnit\Framework\TestCase
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('ONGR\ElasticsearchDSL\SearchEndpoint\SortEndpoint', new SortEndpoint());
+        $this->assertInstanceOf('OpenSearchDSL\SearchEndpoint\SortEndpoint', new SortEndpoint());
     }
 
     /**

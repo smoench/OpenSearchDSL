@@ -26,7 +26,7 @@ class QueryEndpointTest extends \PHPUnit\Framework\TestCase
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('ONGR\ElasticsearchDSL\SearchEndpoint\QueryEndpoint', new QueryEndpoint());
+        $this->assertInstanceOf('OpenSearchDSL\SearchEndpoint\QueryEndpoint', new QueryEndpoint());
     }
 
     /**

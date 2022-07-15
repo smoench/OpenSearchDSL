@@ -23,7 +23,7 @@ class SpanMultiTermQueryTest extends \PHPUnit\Framework\TestCase
      */
     public function testToArray()
     {
-        $mock = $this->getMockBuilder('ONGR\ElasticsearchDSL\BuilderInterface')->getMock();
+        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
         $mock
             ->expects($this->once())
             ->method('toArray')
