@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanNotQuery;
+use OpenSearchDSL\Query\Span\SpanQueryInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,7 +25,7 @@ class SpanNotQueryTest extends TestCase
      */
     public function testSpanNotQueryToArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Query\Span\SpanQueryInterface')->getMock();
+        $mock = $this->getMockBuilder(SpanQueryInterface::class)->getMock();
         $mock
             ->expects($this->exactly(2))
             ->method('toArray')

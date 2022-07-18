@@ -54,7 +54,10 @@ class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
         $search->addQuery($fquery);
         $results = $this->executeSearch($search);
 
-        $this->assertEquals(count($this->getDataArray()['product']), count($results));
+        $this->assertCount(
+            is_countable($this->getDataArray()['product']) ? count($this->getDataArray()['product']) : 0,
+            $results
+        );
     }
 
     public function testScriptScore()

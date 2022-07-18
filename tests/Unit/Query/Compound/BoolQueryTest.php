@@ -210,7 +210,7 @@ class BoolQueryTest extends TestCase
         $bool->add($query, BoolQuery::MUST, 'query');
         $bool->add($query2, BoolQuery::SHOULD, 'query2');
 
-        $this->assertSame(array('query' => $query, 'query2' => $query2), $bool->getQueries());
+        $this->assertSame(['query' => $query, 'query2' => $query2], $bool->getQueries());
     }
 
     /**
@@ -235,6 +235,6 @@ class BoolQueryTest extends TestCase
         $bool->add($query, BoolQuery::MUST, 'query');
         $bool->add($query2, BoolQuery::SHOULD, 'query2');
 
-        $this->assertSame(array('query' => $query), $bool->getQueries(BoolQuery::MUST));
+        $this->assertSame(['query' => $query], $bool->getQueries(BoolQuery::MUST));
     }
 }

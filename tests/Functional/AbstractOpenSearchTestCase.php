@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Functional;
 
+use Exception;
 use OpenSearch\Client;
 use OpenSearch\ClientBuilder;
 use OpenSearchDSL\Search;
@@ -21,12 +22,9 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     /**
      * Test index name in the opensearch.
      */
-    const INDEX_NAME = 'opensearch-dsl-test';
+    public const INDEX_NAME = 'opensearch-dsl-test';
 
-    /**
-     * @var Client
-     */
-    private $client;
+    private Client $client;
 
     /**
      * {@inheritdoc}
@@ -143,7 +141,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
             foreach ($response['hits']['hits'] as $document) {
                 $documents[$document['_id']] = $document['_source'];
             }
-        } catch (\Exception $e) {
+        } catch (Exception) {
             return $documents;
         }
 
@@ -157,7 +155,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     {
         try {
             $this->client->indices()->delete(['index' => self::INDEX_NAME]);
-        } catch (\Exception $e) {
+        } catch (Exception) {
             // Do nothing.
         }
     }

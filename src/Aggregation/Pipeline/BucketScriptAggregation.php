@@ -11,6 +11,8 @@
 
 namespace OpenSearchDSL\Aggregation\Pipeline;
 
+use LogicException;
+
 /**
  * Class representing Bucket Script Pipeline Aggregation.
  *
@@ -18,57 +20,35 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class BucketScriptAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * @var string
-     */
-    private $script;
+    private ?string $script = null;
 
-    /**
-     * @param string $name
-     * @param array  $bucketsPath
-     * @param string $script
-     */
-    public function __construct($name, $bucketsPath, $script = null)
+    public function __construct(string $name, string|array|null $bucketsPath = null, string $script = null)
     {
         parent::__construct($name, $bucketsPath);
         $this->setScript($script);
     }
 
-    /**
-     * @return string
-     */
-    public function getScript()
+    public function getScript(): ?string
     {
         return $this->script;
     }
 
-    /**
-     * @param string $script
-     *
-     * @return $this
-     */
-    public function setScript($script)
+    public function setScript(?string $script): self
     {
         $this->script = $script;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'bucket_script';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        if (!$this->getScript()) {
-            throw new \LogicException(
+        if ($this->getScript() === null) {
+            throw new LogicException(
                 sprintf(
                     '`%s` aggregation must have script set.',
                     $this->getName()
@@ -76,11 +56,9 @@ class BucketScriptAggregation extends AbstractPipelineAggregation
             );
         }
 
-        $out = [
+        return [
             'buckets_path' => $this->getBucketsPath(),
             'script' => $this->getScript(),
         ];
-
-        return $out;
     }
 }

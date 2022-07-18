@@ -15,6 +15,7 @@ use OpenSearchDSL\NameAwareTrait;
 use OpenSearchDSL\NamedBuilderInterface;
 use OpenSearchDSL\ParametersTrait;
 use OpenSearchDSL\Search;
+use stdClass;
 
 /**
  * Represents Elasticsearch top level nested inner hits.
@@ -26,15 +27,9 @@ class NestedInnerHit implements NamedBuilderInterface
     use ParametersTrait;
     use NameAwareTrait;
 
-    /**
-     * @var string
-     */
-    private $path;
+    private string $path;
 
-    /**
-     * @var Search
-     */
-    private $search;
+    private ?Search $search = null;
 
     /**
      * Inner hits container init.
@@ -47,7 +42,7 @@ class NestedInnerHit implements NamedBuilderInterface
     {
         $this->setName($name);
         $this->setPath($path);
-        if ($search) {
+        if ($search !== null) {
             $this->setSearch($search);
         }
     }
@@ -81,8 +76,6 @@ class NestedInnerHit implements NamedBuilderInterface
     }
 
     /**
-     * @param Search $search
-     *
      * @return $this
      */
     public function setSearch(Search $search)
@@ -95,7 +88,7 @@ class NestedInnerHit implements NamedBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'nested';
     }
@@ -103,17 +96,15 @@ class NestedInnerHit implements NamedBuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
-        $out = $this->getSearch() ? $this->getSearch()->toArray() : new \stdClass();
+        $out = $this->getSearch() ? $this->getSearch()->toArray() : new stdClass();
 
-        $out = [
+        return [
             $this->getPathType() => [
                 $this->getPath() => $out ,
             ],
         ];
-
-        return $out;
     }
 
     /**
@@ -123,16 +114,10 @@ class NestedInnerHit implements NamedBuilderInterface
      */
     private function getPathType()
     {
-        switch ($this->getType()) {
-            case 'nested':
-                $type = 'path';
-                break;
-            case 'parent':
-                $type = 'type';
-                break;
-            default:
-                $type = null;
-        }
-        return $type;
+        return match ($this->getType()) {
+            'nested' => 'path',
+            'parent' => 'type',
+            default => null,
+        };
     }
 }

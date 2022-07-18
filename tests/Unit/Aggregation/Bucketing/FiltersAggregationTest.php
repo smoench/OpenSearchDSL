@@ -29,7 +29,7 @@ class FiltersAggregationTest extends TestCase
     {
         $this->expectException(LogicException::class);
         $this->expectExceptionMessage("In not anonymous filters filter name must be set.");
-        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $aggregation = new FiltersAggregation('test_agg');
         $aggregation->addFilter($mock);
     }
@@ -39,7 +39,7 @@ class FiltersAggregationTest extends TestCase
      */
     public function testFiltersAggregationGetArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $aggregation = new FiltersAggregation('test_agg');
         $aggregation->setAnonymous(true);
         $aggregation->addFilter($mock, 'name');
@@ -63,7 +63,7 @@ class FiltersAggregationTest extends TestCase
     public function testToArray()
     {
         $aggregation = new FiltersAggregation('test_agg');
-        $filter = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')
+        $filter = $this->getMockBuilder(BuilderInterface::class)
             ->setMethods(['toArray', 'getType'])
             ->getMockForAbstractClass();
         $filter->expects($this->any())
@@ -98,9 +98,9 @@ class FiltersAggregationTest extends TestCase
     public function testConstructorFilter()
     {
         /** @var BuilderInterface|MockObject $builderInterface1 */
-        $builderInterface1 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
+        $builderInterface1 = $this->getMockForAbstractClass(BuilderInterface::class);
         /** @var BuilderInterface|MockObject $builderInterface2 */
-        $builderInterface2 = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
+        $builderInterface2 = $this->getMockForAbstractClass(BuilderInterface::class);
 
         $aggregation = new FiltersAggregation(
             'test',

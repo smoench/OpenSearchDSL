@@ -13,6 +13,7 @@ namespace OpenSearchDSL\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
+use stdClass;
 
 /**
  * Class representing ReverseNestedAggregation.
@@ -23,61 +24,36 @@ class ReverseNestedAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * @var string
-     */
-    private $path;
+    private ?string $path = null;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $path
-     */
-    public function __construct($name, $path = null)
+    public function __construct(string $name, ?string $path = null)
     {
         parent::__construct($name);
 
         $this->setPath($path);
     }
 
-    /**
-     * Return path.
-     *
-     * @return string
-     */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->path;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return $this
-     */
-    public function setPath($path)
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'reverse_nested';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array|stdClass
     {
-        $output = new \stdClass();
-        if ($this->getPath()) {
+        $output = new stdClass();
+        if ($this->getPath() !== null) {
             $output = ['path' => $this->getPath()];
         }
 

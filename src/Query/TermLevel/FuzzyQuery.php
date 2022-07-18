@@ -24,31 +24,19 @@ class FuzzyQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string
-     */
-    private $field;
-
-    /**
-     * @var string
-     */
-    private $value;
-
-    /**
      * @param string $field
      * @param string $value
      * @param array  $parameters
      */
-    public function __construct($field, $value, array $parameters = [])
+    public function __construct(private $field, private $value, array $parameters = [])
     {
-        $this->field = $field;
-        $this->value = $value;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'fuzzy';
     }
@@ -56,7 +44,7 @@ class FuzzyQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             'value' => $this->value,

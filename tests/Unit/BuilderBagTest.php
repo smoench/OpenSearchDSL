@@ -80,12 +80,10 @@ class BuilderBagTest extends TestCase
      * Returns builder.
      *
      * @param string $name
-     *
-     * @return MockObject|BuilderInterface
      */
-    private function getBuilder($name)
+    private function getBuilder($name): MockObject|BuilderInterface
     {
-        $friendlyBuilderMock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')
+        $friendlyBuilderMock = $this->getMockBuilder(BuilderInterface::class)
             ->setMethods(['getName', 'toArray', 'getType'])
             ->disableOriginalConstructor()
             ->getMock();

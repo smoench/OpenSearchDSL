@@ -19,9 +19,6 @@ class PercentilesAggregationTest extends TestCase
 {
     /**
      * Tests if PercentilesAggregation#getArray throws exception when expected.
-     *
-     *
-     *
      */
     public function testPercentilesAggregationGetArrayException()
     {

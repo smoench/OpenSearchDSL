@@ -24,7 +24,7 @@ class SuggestEndpointTest extends TestCase
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('OpenSearchDSL\SearchEndpoint\SuggestEndpoint', new SuggestEndpoint());
+        $this->assertInstanceOf(SuggestEndpoint::class, new SuggestEndpoint());
     }
 
     /**
@@ -52,7 +52,7 @@ class SuggestEndpointTest extends TestCase
 
         /** @var NormalizerInterface|MockObject $normalizerInterface */
         $normalizerInterface = $this->getMockForAbstractClass(
-            'Symfony\Component\Serializer\Normalizer\NormalizerInterface'
+            NormalizerInterface::class
         );
 
         $suggest = new Suggest('foo', 'bar', 'acme', 'foo');

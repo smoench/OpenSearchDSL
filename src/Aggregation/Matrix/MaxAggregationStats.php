@@ -26,12 +26,7 @@ class MaxAggregationStats extends AbstractAggregation
     /**
      * @var string Used for multi value aggregation fields to pick a value.
      */
-    private $mode;
-
-    /**
-     * @var array Defines how documents that are missing a value should be treated.
-     */
-    private $missing;
+    private string $mode;
 
     /**
      * Inner aggregations container init.
@@ -41,13 +36,12 @@ class MaxAggregationStats extends AbstractAggregation
      * @param array $missing
      * @param string $mode
      */
-    public function __construct($name, $field, $missing = null, $mode = null)
+    public function __construct($name, $field, private $missing = null, $mode = null)
     {
         parent::__construct($name);
 
         $this->setField($field);
         $this->setMode($mode);
-        $this->missing = $missing;
     }
 
     /**
@@ -93,19 +87,19 @@ class MaxAggregationStats extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'matrix_stats';
     }
 
-    protected function getArray()
+    public function getArray(): array
     {
         $out = [];
-        if ($this->getField()) {
+        if ($this->getField() !== '' && $this->getField() !== '0') {
             $out['fields'] = $this->getField();
         }
 
-        if ($this->getMode()) {
+        if ($this->getMode() !== '' && $this->getMode() !== '0') {
             $out['mode'] = $this->getMode();
         }
 

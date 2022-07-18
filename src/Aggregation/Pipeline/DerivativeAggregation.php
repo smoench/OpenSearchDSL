@@ -21,7 +21,7 @@ class DerivativeAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'derivative';
     }

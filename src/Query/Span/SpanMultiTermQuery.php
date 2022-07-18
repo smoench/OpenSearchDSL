@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Query\Span;
 
+use InvalidArgumentException;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
 
@@ -24,26 +25,20 @@ class SpanMultiTermQuery implements SpanQueryInterface
     use ParametersTrait;
 
     /**
-     * @var BuilderInterface
-     */
-    private $query;
-
-    /**
      * Accepts one of fuzzy, prefix, term range, wildcard, regexp query.
      *
      * @param BuilderInterface $query
      * @param array            $parameters
      */
-    public function __construct(BuilderInterface $query, array $parameters = [])
+    public function __construct(private BuilderInterface $query, array $parameters = [])
     {
-        $this->query = $query;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'span_multi';
     }
@@ -51,9 +46,9 @@ class SpanMultiTermQuery implements SpanQueryInterface
     /**
      * {@inheritdoc}
      *
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [];
         $query['match'] = $this->query->toArray();

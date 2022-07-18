@@ -14,6 +14,7 @@ namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\FunctionScoreQuery;
 use OpenSearchDSL\Query\MatchAllQuery;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -49,7 +50,7 @@ class FunctionScoreQueryTest extends TestCase
                     'query' => null,
                     'functions' => [
                         [
-                            'random_score' => [ 'seed' => 'someSeed'],
+                            'random_score' => ['seed' => 'someSeed'],
                         ],
                     ],
                 ],
@@ -75,14 +76,14 @@ class FunctionScoreQueryTest extends TestCase
 
         $this->assertEquals(['function_score' => $expectedArray], $functionScoreQuery->toArray());
     }
-    
+
     /**
      * Tests default argument values.
      */
     public function testAddFieldValueFactorFunction()
     {
         /** @var BuilderInterface|MockObject $builderInterface */
-        $builderInterface = $this->getMockForAbstractClass('OpenSearchDSL\BuilderInterface');
+        $builderInterface = $this->getMockForAbstractClass(BuilderInterface::class);
         $functionScoreQuery = new FunctionScoreQuery($builderInterface);
         $functionScoreQuery->addFieldValueFactorFunction('field1', 2);
         $functionScoreQuery->addFieldValueFactorFunction('field2', 1.5, 'ln');

@@ -21,7 +21,7 @@ class PostFilterEndpoint extends QueryEndpoint
     /**
      * Endpoint name
      */
-    const NAME = 'post_filter';
+    public const NAME = 'post_filter';
 
     /**
      * {@inheritdoc}

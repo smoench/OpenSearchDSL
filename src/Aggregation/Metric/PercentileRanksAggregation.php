@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Metric;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\MetricTrait;
 use OpenSearchDSL\ScriptAwareTrait;
@@ -25,27 +26,16 @@ class PercentileRanksAggregation extends AbstractAggregation
     use MetricTrait;
     use ScriptAwareTrait;
 
-    /**
-     * @var array
-     */
-    private $values;
+    private ?array $values = null;
+    private ?int $compression = null;
 
-    /**
-     * @var int
-     */
-    private $compression;
-
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $field
-     * @param array  $values
-     * @param string $script
-     * @param int    $compression
-     */
-    public function __construct($name, $field = null, $values = null, $script = null, $compression = null)
-    {
+    public function __construct(
+        string $name,
+        ?string $field = null,
+        ?array $values = null,
+        ?string $script = null,
+        ?int $compression = null
+    ) {
         parent::__construct($name);
 
         $this->setField($field);
@@ -62,50 +52,31 @@ class PercentileRanksAggregation extends AbstractAggregation
         return $this->values;
     }
 
-    /**
-     * @param array $values
-     *
-     * @return $this
-     */
-    public function setValues($values)
+    public function setValues(?array $values): self
     {
         $this->values = $values;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getCompression()
+    public function getCompression(): ?int
     {
         return $this->compression;
     }
 
-    /**
-     * @param int $compression
-     *
-     * @return $this
-     */
-    public function setCompression($compression)
+    public function setCompression(?int $compression): self
     {
         $this->compression = $compression;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'percentile_ranks';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
         $out = array_filter(
             [
@@ -114,9 +85,7 @@ class PercentileRanksAggregation extends AbstractAggregation
                 'values' => $this->getValues(),
                 'compression' => $this->getCompression(),
             ],
-            function ($val) {
-                return ($val || is_numeric($val));
-            }
+            fn($val) => $val || is_numeric($val)
         );
 
         $this->isRequiredParametersSet($out);
@@ -125,18 +94,15 @@ class PercentileRanksAggregation extends AbstractAggregation
     }
 
     /**
-     * @param array $a
-     *
-     * @return bool
-     * @throws \LogicException
+     * @throws LogicException
      */
-    private function isRequiredParametersSet($a)
+    private function isRequiredParametersSet(array $a): bool
     {
-        if (array_key_exists('field', $a) && array_key_exists('values', $a)
+        if ((array_key_exists('field', $a) && array_key_exists('values', $a))
             || (array_key_exists('script', $a) && array_key_exists('values', $a))
         ) {
             return true;
         }
-        throw new \LogicException('Percentile ranks aggregation must have field and values or script and values set.');
+        throw new LogicException('Percentile ranks aggregation must have field and values or script and values set.');
     }
 }

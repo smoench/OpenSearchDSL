@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL;
 
+use InvalidArgumentException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Highlight\Highlight;
 use OpenSearchDSL\InnerHit\NestedInnerHit;
@@ -37,42 +38,32 @@ class Search
     /**
      * If you don’t need to track the total number of hits at all you can improve
      * query times by setting this option to false. Defaults to true.
-     *
-     * @var bool
      */
-    private $trackTotalHits;
+    private ?bool $trackTotalHits = null;
 
     /**
      * To retrieve hits from a certain offset. Defaults to 0.
-     *
-     * @var int
      */
-    private $from;
+    private ?int $from = null;
 
     /**
      * The number of hits to return. Defaults to 10. If you do not care about getting some
      * hits back but only about the number of matches and/or aggregations, setting the value
      * to 0 will help performance.
-     *
-     * @var int
      */
-    private $size;
+    private ?int $size = null;
 
     /**
      * Allows to control how the _source field is returned with every hit. By default
      * operations return the contents of the _source field unless you have used the
      * stored_fields parameter or if the _source field is disabled.
-     *
-     * @var array|bool|string
      */
-    private $source;
+    private array|bool|string|null $source = null;
 
     /**
      * Allows to selectively load specific stored fields for each document represented by a search hit.
-     *
-     * @var array
      */
-    private $storedFields;
+    private ?array $storedFields = null;
 
     /**
      * Allows to return a script evaluation (based on different fields) for each hit.
@@ -80,10 +71,8 @@ class Search
      * values to be returned (the evaluated value of the script). Script fields can
      * also access the actual _source document indexed and extract specific elements
      * to be returned from it (can be an "object" type).
-     *
-     * @var array
      */
-    private $scriptFields;
+    private ?array $scriptFields = null;
 
     /**
      * Allows to return the doc value representation of a field for each hit. Doc value
@@ -91,40 +80,30 @@ class Search
      * specifies fields without docvalues it will try to load the value from the fielddata
      * cache causing the terms for that field to be loaded to memory (cached), which will
      * result in more memory consumption.
-     *
-     * @var array
      */
-    private $docValueFields;
+    private ?array $docValueFields = null;
 
     /**
      * Enables explanation for each hit on how its score was computed.
-     *
-     * @var bool
      */
-    private $explain;
+    private ?bool $explain = null;
 
     /**
      * Returns a version for each search hit.
-     *
-     * @var bool
      */
-    private $version;
+    private ?bool $version = null;
 
     /**
      * Allows to configure different boost level per index when searching across more
      * than one indices. This is very handy when hits coming from one index matter more
      * than hits coming from another index (think social graph where each user has an index).
-     *
-     * @var array
      */
-    private $indicesBoost;
+    private ?array $indicesBoost = null;
 
     /**
      * Exclude documents which have a _score less than the minimum specified in min_score.
-     *
-     * @var int
      */
-    private $minScore;
+    private ?int $minScore = null;
 
     /**
      * Pagination of results can be done by using the from and size but the cost becomes
@@ -135,19 +114,15 @@ class Search
      * real time user requests. The search_after parameter circumvents this problem by
      * providing a live cursor. The idea is to use the results from the previous page to
      * help the retrieval of the next page.
-     *
-     * @var array
      */
-    private $searchAfter;
+    private ?array $searchAfter = null;
 
     /**
      * URI parameters alongside Request body search.
      *
      * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html
-     *
-     * @var array
      */
-    private $uriParams = [];
+    private array $uriParams = [];
 
     /**
      * While a search request returns a single “page” of results, the scroll API can be used to retrieve
@@ -155,20 +130,15 @@ class Search
      * as you would use a cursor on a traditional database. Scrolling is not intended for real time user
      * requests, but rather for processing large amounts of data, e.g. in order to reindex the contents
      * of one index into a new index with a different configuration.
-     *
-     * @var string
      */
-    private $scroll;
+    private ?string $scroll = null;
 
-    /**
-     * @var OrderedSerializer
-     */
-    private static $serializer;
+    private static ?OrderedSerializer $serializer = null;
 
     /**
      * @var SearchEndpointInterface[]
      */
-    private $endpoints = [];
+    private array $endpoints = [];
 
     /**
      * Constructor to initialize static properties
@@ -214,10 +184,8 @@ class Search
     /**
      * Adds query to the search.
      *
-     * @param BuilderInterface $query
      * @param string           $boolType
      * @param string           $key
-     *
      * @return $this
      */
     public function addQuery(BuilderInterface $query, $boolType = BoolQuery::MUST, $key = null)
@@ -259,7 +227,6 @@ class Search
     /**
      * Sets query endpoint parameters.
      *
-     * @param array $parameters
      *
      * @return $this
      */
@@ -274,7 +241,6 @@ class Search
      * Sets parameters to the endpoint.
      *
      * @param string $endpointName
-     * @param array  $parameters
      *
      * @return $this
      */
@@ -323,7 +289,6 @@ class Search
     /**
      * Sets post filter endpoint parameters.
      *
-     * @param array $parameters
      *
      * @return $this
      */
@@ -337,7 +302,6 @@ class Search
     /**
      * Adds aggregation into search.
      *
-     * @param AbstractAggregation $aggregation
      *
      * @return $this
      */
@@ -361,7 +325,6 @@ class Search
     /**
      * Adds inner hit into search.
      *
-     * @param NestedInnerHit $innerHit
      *
      * @return $this
      */
@@ -385,7 +348,6 @@ class Search
     /**
      * Adds sort to search.
      *
-     * @param BuilderInterface $sort
      *
      * @return $this
      */
@@ -486,8 +448,6 @@ class Search
     }
 
     /**
-     * @param bool $trackTotalHits
-     *
      * @return $this
      */
     public function setTrackTotalHits(bool $trackTotalHits)
@@ -517,20 +477,15 @@ class Search
         return $this;
     }
 
-    /**
-     * @return array|bool|string
-     */
-    public function isSource()
+    public function isSource(): array|bool|string
     {
         return $this->source;
     }
 
     /**
-     * @param array|bool|string $source
-     *
      * @return $this
      */
-    public function setSource($source)
+    public function setSource(array|bool|string $source)
     {
         $this->source = $source;
 
@@ -721,11 +676,10 @@ class Search
 
     /**
      * @param string $name
-     * @param string|array|bool $value
      *
      * @return $this
      */
-    public function addUriParam($name, $value)
+    public function addUriParam($name, string|array|bool $value)
     {
         if (in_array($name, [
             'q',
@@ -756,7 +710,7 @@ class Search
         ])) {
             $this->uriParams[$name] = $value;
         } else {
-            throw new \InvalidArgumentException(sprintf('Parameter %s is not supported.', $value));
+            throw new InvalidArgumentException(sprintf('Parameter %s is not supported.', $value));
         }
 
         return $this;
@@ -775,7 +729,7 @@ class Search
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $output = array_filter(static::$serializer->normalize($this->endpoints));
 

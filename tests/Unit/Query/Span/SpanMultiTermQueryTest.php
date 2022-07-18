@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
+use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Span\SpanMultiTermQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -24,7 +25,7 @@ class SpanMultiTermQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $mock
             ->expects($this->once())
             ->method('toArray')

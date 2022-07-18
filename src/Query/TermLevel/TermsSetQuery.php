@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Query\TermLevel;
 
+use InvalidArgumentException;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
 
@@ -23,18 +24,8 @@ class TermsSetQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    const MINIMUM_SHOULD_MATCH_TYPE_FIELD = 'minimum_should_match_field';
-    const MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
-
-    /**
-     * @var string
-     */
-    private $field;
-
-    /**
-     * @var array
-     */
-    private $terms;
+    public const MINIMUM_SHOULD_MATCH_TYPE_FIELD = 'minimum_should_match_field';
+    public const MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
 
     /**
      * Constructor.
@@ -43,10 +34,8 @@ class TermsSetQuery implements BuilderInterface
      * @param array  $terms      An array of terms
      * @param array  $parameters Parameters
      */
-    public function __construct($field, $terms, array $parameters)
+    public function __construct(private $field, private $terms, array $parameters)
     {
-        $this->field = $field;
-        $this->terms = $terms;
         $this->validateParameters($parameters);
         $this->setParameters($parameters);
     }
@@ -54,7 +43,7 @@ class TermsSetQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'terms_set';
     }
@@ -62,7 +51,7 @@ class TermsSetQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             'terms' => $this->terms,
@@ -79,7 +68,7 @@ class TermsSetQuery implements BuilderInterface
             !isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_SCRIPT])
         ) {
             $message = "Either minimum_should_match_field or minimum_should_match_script must be set.";
-            throw new \InvalidArgumentException($message);
+            throw new InvalidArgumentException($message);
         }
     }
 }

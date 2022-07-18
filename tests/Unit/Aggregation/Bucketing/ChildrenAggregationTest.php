@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use LogicException;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\ChildrenAggregation;
 use PHPUnit\Framework\TestCase;
 
@@ -45,9 +46,9 @@ class ChildrenAggregationTest extends TestCase
      */
     public function testChildrenAggregationGetArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Aggregation\AbstractAggregation')
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $mock = $this->createMock(AbstractAggregation::class);
+        $mock->method('getName')->willReturn('abstract');
+
         $aggregation = new ChildrenAggregation('foo');
         $aggregation->addAggregation($mock);
         $aggregation->setChildren('question');

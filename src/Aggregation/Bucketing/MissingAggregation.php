@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 
@@ -23,34 +24,22 @@ class MissingAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $field
-     */
-    public function __construct($name, $field = null)
+    public function __construct(string $name, ?string $field = null)
     {
         parent::__construct($name);
 
         $this->setField($field);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        if ($this->getField()) {
+        if ($this->getField() !== null) {
             return ['field' => $this->getField()];
         }
-        throw new \LogicException('Missing aggregation must have a field set.');
+        throw new LogicException('Missing aggregation must have a field set.');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'missing';
     }

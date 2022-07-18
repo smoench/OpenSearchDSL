@@ -24,31 +24,19 @@ class PrefixQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string
-     */
-    protected $field;
-
-    /**
-     * @var string
-     */
-    protected $value;
-
-    /**
      * @param string $field      Field name.
      * @param string $value      Value.
      * @param array  $parameters Optional parameters.
      */
-    public function __construct($field, $value, array $parameters = [])
+    public function __construct(protected $field, protected $value, array $parameters = [])
     {
-        $this->field = $field;
-        $this->value = $value;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'prefix';
     }
@@ -56,7 +44,7 @@ class PrefixQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             'value' => $this->value,

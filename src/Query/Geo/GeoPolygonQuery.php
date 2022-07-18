@@ -24,31 +24,19 @@ class GeoPolygonQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string
-     */
-    private $field;
-
-    /**
-     * @var array
-     */
-    private $points;
-
-    /**
      * @param string $field
      * @param array  $points
      * @param array  $parameters
      */
-    public function __construct($field, array $points = [], array $parameters = [])
+    public function __construct(private $field, private array $points = [], array $parameters = [])
     {
-        $this->field = $field;
-        $this->points = $points;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'geo_polygon';
     }
@@ -56,7 +44,7 @@ class GeoPolygonQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [$this->field => ['points' => $this->points]];
         $output = $this->processArray($query);

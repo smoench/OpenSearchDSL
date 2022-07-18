@@ -22,7 +22,7 @@ class AggregationsEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    const NAME = 'aggregations';
+    public const NAME = 'aggregations';
 
     /**
      * {@inheritdoc}
@@ -30,7 +30,7 @@ class AggregationsEndpoint extends AbstractSearchEndpoint
     public function normalize(NormalizerInterface $normalizer, $format = null, array $context = [])
     {
         $output = [];
-        if (count($this->getAll()) > 0) {
+        if ($this->getAll() !== []) {
             /** @var AbstractAggregation $aggregation */
             foreach ($this->getAll() as $aggregation) {
                 $output[$aggregation->getName()] = $aggregation->toArray();

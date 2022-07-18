@@ -21,7 +21,7 @@ class SignificantTermsAggregation extends TermsAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'significant_terms';
     }

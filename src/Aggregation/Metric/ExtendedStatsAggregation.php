@@ -42,10 +42,7 @@ class ExtendedStatsAggregation extends AbstractAggregation
         $this->setScript($script);
     }
 
-    /**
-     * @var int
-     */
-    private $sigma;
+    private int $sigma;
 
     /**
      * @return int
@@ -70,7 +67,7 @@ class ExtendedStatsAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'extended_stats';
     }
@@ -78,19 +75,15 @@ class ExtendedStatsAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
-        $out = array_filter(
+        return array_filter(
             [
                 'field' => $this->getField(),
                 'script' => $this->getScript(),
                 'sigma' => $this->getSigma(),
             ],
-            function ($val) {
-                return ($val || is_numeric($val));
-            }
+            fn($val) => $val || is_numeric($val)
         );
-
-        return $out;
     }
 }

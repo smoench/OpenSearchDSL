@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use LogicException;
+use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\DateHistogramAggregation;
 use PHPUnit\Framework\TestCase;
 
@@ -47,9 +48,9 @@ class DateHistogramAggregationTest extends TestCase
      */
     public function testChildrenAggregationGetArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Aggregation\AbstractAggregation')
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $mock = $this->createMock(AbstractAggregation::class);
+        $mock->method('getName')->willReturn('abstract');
+
         $aggregation = new DateHistogramAggregation('foo');
         $aggregation->addAggregation($mock);
         $aggregation->setField('date');

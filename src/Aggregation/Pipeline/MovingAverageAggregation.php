@@ -21,7 +21,7 @@ class MovingAverageAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'moving_avg';
     }

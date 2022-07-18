@@ -25,18 +25,10 @@ class SamplerAggregation extends AbstractAggregation
 
     /**
      * Defines how many results will be received from each shard
-     * @param string $shardSize
      */
-    private $shardSize;
+    private ?int $shardSize = null;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $field
-     * @param int    $shardSize
-     */
-    public function __construct($name, $field = null, $shardSize = null)
+    public function __construct(string $name, ?string $field = null, ?int $shardSize = null)
     {
         parent::__construct($name);
 
@@ -44,46 +36,30 @@ class SamplerAggregation extends AbstractAggregation
         $this->setShardSize($shardSize);
     }
 
-    /**
-     * @return int
-     */
-    public function getShardSize()
+    public function getShardSize(): ?int
     {
         return $this->shardSize;
     }
 
-    /**
-     * @param int $shardSize
-     *
-     * @return $this
-     */
-    public function setShardSize($shardSize)
+    public function setShardSize(?int $shardSize): self
     {
         $this->shardSize = $shardSize;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'sampler';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        $out = array_filter(
+        return array_filter(
             [
                 'field' => $this->getField(),
                 'shard_size' => $this->getShardSize(),
             ]
         );
-
-        return $out;
     }
 }

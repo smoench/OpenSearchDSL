@@ -21,7 +21,7 @@ class CumulativeSumAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'cumulative_sum';
     }

@@ -21,7 +21,7 @@ class MinAggregation extends StatsAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'min';
     }

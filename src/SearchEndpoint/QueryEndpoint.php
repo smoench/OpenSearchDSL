@@ -24,17 +24,11 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
     /**
      * Endpoint name
      */
-    const NAME = 'query';
+    public const NAME = 'query';
 
-    /**
-     * @var BoolQuery
-     */
-    private $bool;
+    private ?BoolQuery $bool = null;
 
-    /**
-     * @var bool
-     */
-    private $filtersSet = false;
+    private bool $filtersSet = false;
 
     /**
      * {@inheritdoc}
@@ -48,7 +42,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
             $this->filtersSet = true;
         }
 
-        if (!$this->bool) {
+        if ($this->bool === null) {
             return null;
         }
 
@@ -68,7 +62,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
      */
     public function addToBool(BuilderInterface $builder, $boolType = null, $key = null)
     {
-        if (!$this->bool) {
+        if ($this->bool === null) {
             $this->bool = new BoolQuery();
         }
 

@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Query\Geo;
 
+use LogicException;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
 
@@ -24,31 +25,19 @@ class GeoBoundingBoxQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var array
-     */
-    private $values;
-
-    /**
-     * @var string
-     */
-    private $field;
-
-    /**
      * @param string $field
      * @param array  $values
      * @param array  $parameters
      */
-    public function __construct($field, $values, array $parameters = [])
+    public function __construct(private $field, private $values, array $parameters = [])
     {
-        $this->field = $field;
-        $this->values = $values;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'geo_bounding_box';
     }
@@ -56,7 +45,7 @@ class GeoBoundingBoxQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             $this->getType() => $this->processArray([$this->field => $this->points()])
@@ -66,7 +55,7 @@ class GeoBoundingBoxQuery implements BuilderInterface
     /**
      * @return array
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     private function points()
     {
@@ -84,6 +73,6 @@ class GeoBoundingBoxQuery implements BuilderInterface
             ];
         }
 
-        throw new \LogicException('Geo Bounding Box filter must have 2 or 4 geo points set.');
+        throw new LogicException('Geo Bounding Box filter must have 2 or 4 geo points set.');
     }
 }

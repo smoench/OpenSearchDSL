@@ -22,59 +22,42 @@ use OpenSearchDSL\BuilderInterface;
  */
 class AdjacencyMatrixAggregation extends AbstractAggregation
 {
-    const FILTERS = 'filters';
+    public const FILTERS = 'filters';
 
     use BucketingTrait;
 
     /**
-     * @var BuilderInterface[]
+     * @var array<string, array<string, array|null>>
      */
-    private $filters = [
+    private array $filters = [
         self::FILTERS => []
     ];
 
     /**
-     * Inner aggregations container init.
-     *
-     * @param string             $name
-     * @param BuilderInterface[] $filters
+     * @param array<string, BuilderInterface> $filters
      */
-    public function __construct($name, $filters = [])
+    public function __construct(string $name, array $filters = [])
     {
         parent::__construct($name);
 
-        foreach ($filters as $name => $filter) {
-            $this->addFilter($name, $filter);
+        foreach ($filters as $filterName => $filter) {
+            $this->addFilter($filterName, $filter);
         }
     }
 
-    /**
-     * @param string           $name
-     * @param BuilderInterface $filter
-     *
-     * @throws \LogicException
-     *
-     * @return self
-     */
-    public function addFilter($name, BuilderInterface $filter)
+    public function addFilter(string $name, BuilderInterface $filter): self
     {
-        $this->filters[self::FILTERS][$name] = $filter->toArray();
+        $this->filters[self::FILTERS][$name] = $filter->toArray() ?: null;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
         return $this->filters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'adjacency_matrix';
     }

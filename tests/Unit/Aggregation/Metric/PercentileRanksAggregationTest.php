@@ -28,7 +28,7 @@ class PercentileRanksAggregationTest extends TestCase
     /**
      * Phpunit setup.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->agg = new PercentileRanksAggregation('foo');
     }

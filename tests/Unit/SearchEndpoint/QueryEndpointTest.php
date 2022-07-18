@@ -47,7 +47,7 @@ class QueryEndpointTest extends TestCase
         $instance = new QueryEndpoint();
         /** @var NormalizerInterface|MockObject $normalizerInterface */
         $normalizerInterface = $this->getMockForAbstractClass(
-            'Symfony\Component\Serializer\Normalizer\NormalizerInterface'
+            NormalizerInterface::class
         );
 
         $this->assertNull($instance->normalize($normalizerInterface));

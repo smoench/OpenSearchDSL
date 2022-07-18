@@ -14,6 +14,7 @@ namespace OpenSearchDSL\Aggregation\Metric;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\MetricTrait;
 use OpenSearchDSL\BuilderInterface;
+use stdClass;
 
 /**
  * Top hits aggregation.
@@ -22,22 +23,23 @@ use OpenSearchDSL\BuilderInterface;
  */
 class TopHitsAggregation extends AbstractAggregation
 {
+    public BuilderInterface $sort;
     use MetricTrait;
 
     /**
      * @var int Number of top matching hits to return per bucket.
      */
-    private $size;
+    private int $size;
 
     /**
      * @var int The offset from the first result you want to fetch.
      */
-    private $from;
+    private int $from;
 
     /**
      * @var BuilderInterface[] How the top matching hits should be sorted.
      */
-    private $sorts = [];
+    private array $sorts = [];
 
     /**
      * Constructor for top hits.
@@ -132,7 +134,7 @@ class TopHitsAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'top_hits';
     }
@@ -140,11 +142,11 @@ class TopHitsAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
         $sortsOutput = [];
         $addedSorts = array_filter($this->getSorts());
-        if ($addedSorts) {
+        if ($addedSorts !== []) {
             foreach ($addedSorts as $sort) {
                 $sortsOutput[] = $sort->toArray();
             }
@@ -158,12 +160,10 @@ class TopHitsAggregation extends AbstractAggregation
                 'size' => $this->getSize(),
                 'from' => $this->getFrom(),
             ],
-            function ($val) {
-                return (($val || is_array($val) || ($val || is_numeric($val))));
-            }
+            fn($val) => $val || is_array($val) || ($val || is_numeric($val))
         );
 
-        return empty($output) ? new \stdClass() : $output;
+        return empty($output) ? new stdClass() : $output;
     }
 
     /**
@@ -184,7 +184,6 @@ class TopHitsAggregation extends AbstractAggregation
     /**
      * @deprecated sorts now is a container, use `addSort()`instead.
      *
-     * @param BuilderInterface $sort
      *
      * @return $this
      */

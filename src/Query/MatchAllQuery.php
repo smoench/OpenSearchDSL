@@ -13,6 +13,7 @@ namespace OpenSearchDSL\Query;
 
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
+use stdClass;
 
 /**
  * Represents Elasticsearch "match_all" query.
@@ -31,20 +32,14 @@ class MatchAllQuery implements BuilderInterface
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'match_all';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $params = $this->getParameters();
-        return [$this->getType() => !empty($params) ? $params : new \stdClass()];
+        return [$this->getType() => empty($params) ? new stdClass() : $params];
     }
 }

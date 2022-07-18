@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 use OpenSearchDSL\BuilderInterface;
@@ -24,18 +25,9 @@ class FilterAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * @var BuilderInterface
-     */
-    protected $filter;
+    protected ?BuilderInterface $filter = null;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string           $name
-     * @param BuilderInterface $filter
-     */
-    public function __construct($name, BuilderInterface $filter = null)
+    public function __construct(string $name, ?BuilderInterface $filter = null)
     {
         parent::__construct($name);
 
@@ -44,52 +36,33 @@ class FilterAggregation extends AbstractAggregation
         }
     }
 
-    /**
-     * @param BuilderInterface $filter
-     *
-     * @return $this
-     */
-    public function setFilter(BuilderInterface $filter)
+    public function setFilter(BuilderInterface $filter): self
     {
         $this->filter = $filter;
 
         return $this;
     }
 
-    /**
-     * Returns a filter.
-     *
-     * @return BuilderInterface
-     */
-    public function getFilter()
+    public function getFilter(): ?BuilderInterface
     {
         return $this->filter;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setField($field)
+    public function setField($field): static
     {
-        throw new \LogicException("Filter aggregation, doesn't support `field` parameter");
+        throw new LogicException("Filter aggregation, doesn't support `field` parameter");
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        if (!$this->filter) {
-            throw new \LogicException("Filter aggregation `{$this->getName()}` has no filter added");
+        if ($this->filter === null) {
+            throw new LogicException("Filter aggregation `{$this->getName()}` has no filter added");
         }
 
-        return $this->getFilter()->toArray();
+        return $this->filter->toArray();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'filter';
     }

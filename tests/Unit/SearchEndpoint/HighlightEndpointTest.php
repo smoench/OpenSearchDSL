@@ -48,8 +48,8 @@ class HighlightEndpointTest extends TestCase
         $instance->add($highlight);
 
         $this->assertEquals(
-            json_encode($highlight->toArray()),
-            json_encode($instance->normalize($normalizerInterface))
+            json_encode($highlight->toArray(), JSON_THROW_ON_ERROR),
+            json_encode($instance->normalize($normalizerInterface), JSON_THROW_ON_ERROR)
         );
     }
 

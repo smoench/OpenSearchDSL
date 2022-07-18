@@ -11,8 +11,10 @@
 
 namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
+use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Class AggregationsEndpointTest.
@@ -25,7 +27,7 @@ class InnerHitsEndpointTest extends TestCase
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(
-            'OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint',
+            InnerHitsEndpoint::class,
             new InnerHitsEndpoint()
         );
     }
@@ -36,7 +38,7 @@ class InnerHitsEndpointTest extends TestCase
     public function testEndpointGetter()
     {
         $hitName = 'foo';
-        $innerHit = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $innerHit = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $endpoint = new InnerHitsEndpoint();
         $endpoint->add($innerHit, $hitName);
         $builders = $endpoint->getAll();
@@ -51,10 +53,10 @@ class InnerHitsEndpointTest extends TestCase
     public function testNormalization()
     {
         $normalizer = $this
-            ->getMockBuilder('Symfony\Component\Serializer\Normalizer\NormalizerInterface')
+            ->getMockBuilder(NormalizerInterface::class)
             ->getMock();
         $innerHit = $this
-            ->getMockBuilder('OpenSearchDSL\BuilderInterface')
+            ->getMockBuilder(BuilderInterface::class)
             ->setMethods(['getName', 'toArray', 'getType'])
             ->getMock();
         $innerHit->expects($this->any())->method('getName')->willReturn('foo');

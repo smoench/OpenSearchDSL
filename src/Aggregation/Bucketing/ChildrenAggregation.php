@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 
@@ -23,59 +24,36 @@ class ChildrenAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * @var string
-     */
-    private $children;
+    private ?string $children;
 
-    /**
-     * Return children.
-     *
-     * @return string
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * @param string $name
-     * @param string $children
-     */
-    public function __construct($name, $children = null)
+    public function __construct(string $name, ?string $children = null)
     {
         parent::__construct($name);
 
         $this->setChildren($children);
     }
 
-    /**
-     * @param string $children
-     *
-     * @return $this
-     */
-    public function setChildren($children)
+    public function getChildren(): ?string
+    {
+        return $this->children;
+    }
+
+    public function setChildren(?string $children): self
     {
         $this->children = $children;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'children';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
         if (count($this->getAggregations()) == 0) {
-            throw new \LogicException("Children aggregation `{$this->getName()}` has no aggregations added");
+            throw new LogicException("Children aggregation `{$this->getName()}` has no aggregations added");
         }
 
         return ['type' => $this->getChildren()];

@@ -21,7 +21,7 @@ class SumBucketAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'sum_bucket';
     }

@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 use OpenSearchDSL\BuilderInterface;
@@ -25,42 +26,29 @@ class FiltersAggregation extends AbstractAggregation
     use BucketingTrait;
 
     /**
-     * @var BuilderInterface[]
+     * @var array<string, array<array-key, array|null>>
      */
-    private $filters = [];
+    private array $filters = [];
+    private bool $anonymous = false;
 
     /**
-     * @var bool
+     * @param array<string, BuilderInterface> $filters
      */
-    private $anonymous = false;
-
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string             $name
-     * @param BuilderInterface[] $filters
-     * @param bool               $anonymous
-     */
-    public function __construct($name, $filters = [], $anonymous = false)
+    public function __construct(string $name, array $filters = [], bool $anonymous = false)
     {
         parent::__construct($name);
 
         $this->setAnonymous($anonymous);
-        foreach ($filters as $name => $filter) {
+        foreach ($filters as $filterName => $filter) {
             if ($anonymous) {
                 $this->addFilter($filter);
             } else {
-                $this->addFilter($filter, $name);
+                $this->addFilter($filter, $filterName);
             }
         }
     }
 
-    /**
-     * @param bool $anonymous
-     *
-     * @return $this
-     */
-    public function setAnonymous($anonymous)
+    public function setAnonymous(bool $anonymous): self
     {
         $this->anonymous = $anonymous;
 
@@ -68,38 +56,29 @@ class FiltersAggregation extends AbstractAggregation
     }
 
     /**
-     * @param BuilderInterface $filter
-     * @param string           $name
-     *
-     * @throws \LogicException
-     *
-     * @return FiltersAggregation
+     * @throws LogicException
      */
-    public function addFilter(BuilderInterface $filter, $name = '')
+    public function addFilter(BuilderInterface $filter, string $name = ''): self
     {
-        if ($this->anonymous === false && empty($name)) {
-            throw new \LogicException('In not anonymous filters filter name must be set.');
-        } elseif ($this->anonymous === false && !empty($name)) {
-            $this->filters['filters'][$name] = $filter->toArray();
+        if (!$this->anonymous && empty($name)) {
+            throw new LogicException('In not anonymous filters filter name must be set.');
+        }
+
+        if (!$this->anonymous && !empty($name)) {
+            $this->filters['filters'][$name] = $filter->toArray() ?: null;
         } else {
-            $this->filters['filters'][] = $filter->toArray();
+            $this->filters['filters'][] = $filter->toArray() ?: null;
         }
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
         return $this->filters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'filters';
     }

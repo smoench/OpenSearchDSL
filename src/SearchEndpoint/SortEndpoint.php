@@ -21,7 +21,7 @@ class SortEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    const NAME = 'sort';
+    public const NAME = 'sort';
 
     /**
      * {@inheritdoc}

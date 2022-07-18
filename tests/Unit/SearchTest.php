@@ -24,7 +24,7 @@ class SearchTest extends TestCase
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('OpenSearchDSL\Search', new Search());
+        $this->assertInstanceOf(Search::class, new Search());
     }
 
     public function testScrollUriParameter()

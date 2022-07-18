@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\ParametersTrait;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,17 +20,12 @@ use PHPUnit\Framework\TestCase;
  */
 class ParametersTraitTest extends TestCase
 {
-    /**
-     * @var ParametersTrait
-     */
+    /** @var ParametersTrait&MockObject  */
     private $parametersTraitMock;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $this->parametersTraitMock = $this->getMockForTrait('OpenSearchDSL\ParametersTrait');
+        $this->parametersTraitMock = $this->getMockForTrait(ParametersTrait::class);
     }
 
     /**

@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\Joining;
 
+use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Joining\HasChildQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class HasChildQueryTest extends TestCase
      */
     public function testConstructor()
     {
-        $parentQuery = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $parentQuery = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $query = new HasChildQuery('test_type', $parentQuery, ['test_parameter1']);
         $this->assertEquals(['test_parameter1'], $query->getParameters());
     }

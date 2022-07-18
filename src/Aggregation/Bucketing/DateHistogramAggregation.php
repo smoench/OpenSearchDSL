@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 
@@ -23,24 +24,10 @@ class DateHistogramAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * @var string
-     */
-    protected $interval;
+    private ?string $interval = null;
+    private ?string $format = null;
 
-    /**
-     * @var string
-     */
-    protected $format;
-
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $field
-     * @param string $interval
-     */
-    public function __construct($name, $field = null, $interval = null, $format = null)
+    public function __construct(string $name, ?string $field = null, ?string $interval = null, ?string $format = null)
     {
         parent::__construct($name);
 
@@ -49,53 +36,34 @@ class DateHistogramAggregation extends AbstractAggregation
         $this->setFormat($format);
     }
 
-    /**
-     * @return int
-     */
-    public function getInterval()
+    public function getInterval(): string
     {
         return $this->interval;
     }
 
-    /**
-     * @param string $interval
-     *
-     * @return $this
-     */
-    public function setInterval($interval)
+    public function setInterval(?string $interval): self
     {
         $this->interval = $interval;
 
         return $this;
     }
 
-    /**
-     * @param string $format
-     *
-     * @return $this
-     */
-    public function setFormat($format)
+    public function setFormat(?string $format): self
     {
         $this->format = $format;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'date_histogram';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
         if (!$this->getField() || !$this->getInterval()) {
-            throw new \LogicException('Date histogram aggregation must have field and interval set.');
+            throw new LogicException('Date histogram aggregation must have field and interval set.');
         }
 
         $out = [

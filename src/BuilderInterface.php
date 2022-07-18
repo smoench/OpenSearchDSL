@@ -11,22 +11,19 @@
 
 namespace OpenSearchDSL;
 
-/**
- * Interface BuilderInterface.
- */
+use stdClass;
+
 interface BuilderInterface
 {
     /**
-     * Generates array which will be passed to elasticsearch-php client.
+     * Generates array which will be passed to opensearch-php client.
      *
-     * @return array
+     * @return array<string, mixed>|stdClass
      */
-    public function toArray();
+    public function toArray(): array|stdClass;
 
     /**
      * Returns element type.
-     *
-     * @return string
      */
-    public function getType();
+    public function getType(): string;
 }
