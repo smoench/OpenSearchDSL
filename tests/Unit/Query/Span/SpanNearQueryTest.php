@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
 use OpenSearchDSL\Query\Span\SpanNearQuery;
+use OpenSearchDSL\Query\Span\SpanQueryInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -24,7 +25,7 @@ class SpanNearQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Query\Span\SpanQueryInterface')->getMock();
+        $mock = $this->getMockBuilder(SpanQueryInterface::class)->getMock();
         $mock
             ->expects($this->once())
             ->method('toArray')

@@ -11,35 +11,21 @@
 
 namespace OpenSearchDSL;
 
+use stdClass;
+
 /**
  * A trait which handles the behavior of parameters in queries, filters, etc.
  */
 trait ParametersTrait
 {
-    /**
-     * @var array
-     */
-    private $parameters = [];
+    private array $parameters = [];
 
-    /**
-     * Checks if parameter exists.
-     *
-     * @param string $name
-     *
-     * @return bool
-     */
-    public function hasParameter($name)
+    public function hasParameter(string $name): bool
     {
         return isset($this->parameters[$name]);
     }
 
-    /**
-     * Removes parameter.
-     *
-     * @param string $name
-     * @return $this
-     */
-    public function removeParameter($name)
+    public function removeParameter(string $name): static
     {
         if ($this->hasParameter($name)) {
             unset($this->parameters[$name]);
@@ -48,46 +34,24 @@ trait ParametersTrait
         return $this;
     }
 
-    /**
-     * Returns one parameter by it's name.
-     *
-     * @param string $name
-     *
-     * @return array|string|int|float|bool|\stdClass
-     */
-    public function getParameter($name)
+    public function getParameter(string $name): array|string|int|float|bool|stdClass
     {
         return $this->parameters[$name];
     }
 
-    /**
-     * Returns an array of all parameters.
-     *
-     * @return array
-     */
-    public function getParameters()
+    public function getParameters(): array
     {
         return $this->parameters;
     }
 
-    /**
-     * @param string                 $name
-     * @param array|string|int|float|bool|\stdClass $value
-     * @return $this
-     */
-    public function addParameter($name, $value)
+    public function addParameter(string $name, array|string|int|float|bool|stdClass $value): static
     {
         $this->parameters[$name] = $value;
 
         return $this;
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return $this
-     */
-    public function setParameters(array $parameters)
+    public function setParameters(array $parameters): static
     {
         $this->parameters = $parameters;
 
@@ -96,12 +60,8 @@ trait ParametersTrait
 
     /**
      * Returns given array merged with parameters.
-     *
-     * @param array $array
-     *
-     * @return array
      */
-    protected function processArray(array $array = [])
+    protected function processArray(array $array = []): array
     {
         return array_merge($array, $this->parameters);
     }

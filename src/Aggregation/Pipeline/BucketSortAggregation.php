@@ -11,7 +11,6 @@
 
 namespace OpenSearchDSL\Aggregation\Pipeline;
 
-use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Sort\FieldSort;
 
 /**
@@ -21,68 +20,37 @@ use OpenSearchDSL\Sort\FieldSort;
  */
 class BucketSortAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * @var array
-     */
-    private $sort = [];
+    private array $sort = [];
 
-    /**
-     * @param string $name
-     * @param string  $bucketsPath
-     */
-    public function __construct($name, $bucketsPath = null)
+    public function __construct(string $name, ?string $bucketsPath = null)
     {
         parent::__construct($name, $bucketsPath);
     }
 
-    /**
-     * @return array
-     */
-    public function getSort()
+    public function getSort(): array
     {
         return $this->sort;
     }
 
-    /**
-     * @return self
-     */
-    public function addSort(FieldSort $sort)
+    public function addSort(FieldSort $sort): self
     {
         $this->sort[] = $sort->toArray();
-    }
-
-    /**
-     * @param string $sort
-     *
-     * @return $this
-     */
-    public function setSort($sort)
-    {
-        $this->sort = $sort;
 
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'bucket_sort';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        $out = array_filter(
+        return array_filter(
             [
-            'buckets_path' => $this->getBucketsPath(),
-            'sort' => $this->getSort(),
+                'buckets_path' => $this->getBucketsPath(),
+                'sort' => $this->getSort(),
             ]
         );
-
-        return $out;
     }
 }

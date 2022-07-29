@@ -25,14 +25,7 @@ class TermsAggregation extends AbstractAggregation
     use BucketingTrait;
     use ScriptAwareTrait;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     * @param string $field
-     * @param string $script
-     */
-    public function __construct($name, $field = null, $script = null)
+    public function __construct(string $name, ?string $field = null, ?string $script = null)
     {
         parent::__construct($name);
 
@@ -40,26 +33,18 @@ class TermsAggregation extends AbstractAggregation
         $this->setScript($script);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'terms';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): array
     {
-        $data = array_filter(
+        return array_filter(
             [
                 'field' => $this->getField(),
                 'script' => $this->getScript(),
             ]
         );
-
-        return $data;
     }
 }

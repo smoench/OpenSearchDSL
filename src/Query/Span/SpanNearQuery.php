@@ -18,10 +18,7 @@ namespace OpenSearchDSL\Query\Span;
  */
 class SpanNearQuery extends SpanOrQuery implements SpanQueryInterface
 {
-    /**
-     * @var int
-     */
-    private $slop;
+    private ?int $slop = null;
 
     /**
      * @return int
@@ -46,7 +43,7 @@ class SpanNearQuery extends SpanOrQuery implements SpanQueryInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'span_near';
     }
@@ -54,7 +51,7 @@ class SpanNearQuery extends SpanOrQuery implements SpanQueryInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [];
         foreach ($this->getQueries() as $type) {

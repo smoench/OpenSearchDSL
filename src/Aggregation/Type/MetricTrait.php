@@ -18,10 +18,8 @@ trait MetricTrait
 {
     /**
      * Metric aggregations does not support nesting.
-     *
-     * @return bool
      */
-    protected function supportsNesting()
+    protected function supportsNesting(): bool
     {
         return false;
     }

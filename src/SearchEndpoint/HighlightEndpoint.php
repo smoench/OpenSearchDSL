@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\SearchEndpoint;
 
 use OpenSearchDSL\BuilderInterface;
+use OverflowException;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -22,12 +23,9 @@ class HighlightEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    const NAME = 'highlight';
+    public const NAME = 'highlight';
 
-    /**
-     * @var BuilderInterface
-     */
-    private $highlight;
+    private ?BuilderInterface $highlight = null;
 
     /**
      * @var string Key for highlight storing.
@@ -39,7 +37,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
      */
     public function normalize(NormalizerInterface $normalizer, $format = null, array $context = [])
     {
-        if ($this->highlight) {
+        if ($this->highlight !== null) {
             return $this->highlight->toArray();
         }
 
@@ -51,8 +49,8 @@ class HighlightEndpoint extends AbstractSearchEndpoint
      */
     public function add(BuilderInterface $builder, $key = null)
     {
-        if ($this->highlight) {
-            throw new \OverflowException('Only one highlight can be set');
+        if ($this->highlight !== null) {
+            throw new OverflowException('Only one highlight can be set');
         }
 
         $this->key = $key;

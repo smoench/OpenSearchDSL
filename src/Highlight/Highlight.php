@@ -13,6 +13,7 @@ namespace OpenSearchDSL\Highlight;
 
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
+use stdClass;
 
 /**
  * Data holder for highlight api.
@@ -24,7 +25,7 @@ class Highlight implements BuilderInterface
     /**
      * @var array Holds fields for highlight.
      */
-    private $fields = [];
+    private array $fields = [];
 
     /**
      * @var array
@@ -33,7 +34,6 @@ class Highlight implements BuilderInterface
 
     /**
      * @param string $name   Field name to highlight.
-     * @param array  $params
      *
      * @return $this
      */
@@ -47,8 +47,6 @@ class Highlight implements BuilderInterface
     /**
      * Sets html tag and its class used in highlighting.
      *
-     * @param array $preTags
-     * @param array $postTags
      *
      * @return $this
      */
@@ -63,7 +61,7 @@ class Highlight implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'highlight';
     }
@@ -71,7 +69,7 @@ class Highlight implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $output = [];
 
@@ -82,7 +80,7 @@ class Highlight implements BuilderInterface
         $output = $this->processArray($output);
 
         foreach ($this->fields as $field => $params) {
-            $output['fields'][$field] = count($params) ? $params : new \stdClass();
+            $output['fields'][$field] = (is_countable($params) ? count($params) : 0) > 0 ? $params : new stdClass();
         }
 
         return $output;

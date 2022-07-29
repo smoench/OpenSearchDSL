@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
+use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Bucketing\SignificantTermsAggregation;
 use PHPUnit\Framework\TestCase;
 
@@ -34,9 +35,9 @@ class SignificantTermsAggregationTest extends TestCase
      */
     public function testSignificantTermsAggregationGetArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Aggregation\AbstractAggregation')
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
+        $mock = $this->createMock(AbstractAggregation::class);
+        $mock->method('getName')->willReturn('abstract');
+
         $aggregation = new SignificantTermsAggregation('foo', 'title');
         $aggregation->addAggregation($mock);
         $result = $aggregation->getArray();

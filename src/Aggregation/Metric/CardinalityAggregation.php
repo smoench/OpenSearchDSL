@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Metric;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\MetricTrait;
 use OpenSearchDSL\ScriptAwareTrait;
@@ -25,20 +26,14 @@ class CardinalityAggregation extends AbstractAggregation
     use MetricTrait;
     use ScriptAwareTrait;
 
-    /**
-     * @var int
-     */
-    private $precisionThreshold;
+    private ?int $precisionThreshold = null;
 
-    /**
-     * @var bool
-     */
-    private $rehash;
+    private ?bool $rehash = null;
 
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
         $out = array_filter(
             [
@@ -47,9 +42,7 @@ class CardinalityAggregation extends AbstractAggregation
                 'precision_threshold' => $this->getPrecisionThreshold(),
                 'rehash' => $this->isRehash(),
             ],
-            function ($val) {
-                return ($val || is_bool($val));
-            }
+            fn($val) => $val || is_bool($val)
         );
 
         $this->checkRequiredFields($out);
@@ -100,7 +93,7 @@ class CardinalityAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'cardinality';
     }
@@ -110,12 +103,12 @@ class CardinalityAggregation extends AbstractAggregation
      *
      * @param array $fields
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     private function checkRequiredFields($fields)
     {
         if (!array_key_exists('field', $fields) && !array_key_exists('script', $fields)) {
-            throw new \LogicException('Cardinality aggregation must have field or script set.');
+            throw new LogicException('Cardinality aggregation must have field or script set.');
         }
     }
 }

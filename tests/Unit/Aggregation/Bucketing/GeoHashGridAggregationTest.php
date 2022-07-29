@@ -32,30 +32,23 @@ class GeoHashGridAggregationTest extends TestCase
 
     /**
      * Data provider for testGeoHashGridAggregationGetArray().
-     *
-     * @return array
      */
-    public function getArrayDataProvider()
+    public function getArrayDataProvider(): iterable
     {
-        $out = [];
-
-        $filterData = [
-            'field' => 'location',
-            'precision' => 3,
-            'size' => 10,
-            'shard_size' => 10,
+        yield [
+            'filterData' => [
+                'field' => 'location',
+                'precision' => 3,
+                'size' => 10,
+                'shard_size' => 10,
+            ],
+            'expectedResults' => [
+                'field' => 'location',
+                'precision' => 3,
+                'size' => 10,
+                'shard_size' => 10,
+            ]
         ];
-
-        $expectedResults = [
-            'field' => 'location',
-            'precision' => 3,
-            'size' => 10,
-            'shard_size' => 10,
-        ];
-
-        $out[] = [$filterData, $expectedResults];
-
-        return $out;
     }
 
     /**

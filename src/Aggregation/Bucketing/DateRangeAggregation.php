@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
 
@@ -23,39 +24,28 @@ class DateRangeAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * @var string
-     */
-    private $format;
+    private ?string $format = null;
 
-    /**
-     * @var array
-     */
-    private $ranges = [];
+    private array $ranges = [];
 
-    /**
-     * @var bool
-     */
-    private $keyed = false;
+    private bool $keyed = false;
 
-    /**
-     * @param string $name
-     * @param string $field
-     * @param string $format
-     * @param array  $ranges
-     * @param bool   $keyed
-     */
-    public function __construct($name, $field = null, $format = null, array $ranges = [], $keyed = false)
-    {
+    public function __construct(
+        string $name,
+        ?string $field = null,
+        ?string $format = null,
+        array $ranges = [],
+        bool $keyed = false
+    ) {
         parent::__construct($name);
 
         $this->setField($field);
         $this->setFormat($format);
         $this->setKeyed($keyed);
         foreach ($ranges as $range) {
-            $from = isset($range['from']) ? $range['from'] : null;
-            $to = isset($range['to']) ? $range['to'] : null;
-            $key = isset($range['key']) ? $range['key'] : null;
+            $from = $range['from'] ?? null;
+            $to = $range['to'] ?? null;
+            $key = $range['key'] ?? null;
             $this->addRange($from, $to, $key);
         }
     }
@@ -99,7 +89,7 @@ class DateRangeAggregation extends AbstractAggregation
      *
      * @return $this
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function addRange($from = null, $to = null, $key = null)
     {
@@ -109,13 +99,11 @@ class DateRangeAggregation extends AbstractAggregation
                 'to' => $to,
                 'key' => $key,
             ],
-            function ($v) {
-                return !is_null($v);
-            }
+            fn($v) => !is_null($v)
         );
 
         if (empty($range)) {
-            throw new \LogicException('Either from or to must be set. Both cannot be null.');
+            throw new LogicException('Either from or to must be set. Both cannot be null.');
         }
 
         $this->ranges[] = $range;
@@ -126,25 +114,23 @@ class DateRangeAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
         if ($this->getField() && $this->getFormat() && !empty($this->ranges)) {
-            $data = [
+            return [
                 'format' => $this->getFormat(),
                 'field' => $this->getField(),
                 'ranges' => $this->ranges,
                 'keyed' => $this->keyed,
             ];
-
-            return $data;
         }
-        throw new \LogicException('Date range aggregation must have field, format set and range added.');
+        throw new LogicException('Date range aggregation must have field, format set and range added.');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'date_range';
     }

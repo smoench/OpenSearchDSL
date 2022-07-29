@@ -37,6 +37,5 @@
         "psr-4": {
             "OpenSearchDSL\\Tests\\": "tests/"
         }
-    },
-    "minimum-stability": "dev"
+    }
 }

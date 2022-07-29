@@ -24,33 +24,21 @@ class TermsQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string
-     */
-    private $field;
-
-    /**
-     * @var array
-     */
-    private $terms;
-
-    /**
      * Constructor.
      *
      * @param string $field      Field name
      * @param array  $terms      An array of terms
      * @param array  $parameters Optional parameters
      */
-    public function __construct($field, $terms, array $parameters = [])
+    public function __construct(private $field, private $terms, array $parameters = [])
     {
-        $this->field = $field;
-        $this->terms = $terms;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'terms';
     }
@@ -58,7 +46,7 @@ class TermsQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             $this->field => $this->terms,

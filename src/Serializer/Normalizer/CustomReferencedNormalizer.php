@@ -18,10 +18,7 @@ use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
  */
 class CustomReferencedNormalizer extends CustomNormalizer
 {
-    /**
-     * @var array
-     */
-    private $references = [];
+    private array $references = [];
 
     /**
      * {@inheritdoc}

@@ -18,15 +18,12 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class PercentilesBucketAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * @var array
-     */
-    private $percents;
+    private ?array $percents = null;
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'percentiles_bucket';
     }
@@ -40,8 +37,6 @@ class PercentilesBucketAggregation extends AbstractPipelineAggregation
     }
 
     /**
-     * @param array $percents
-     *
      * @return $this
      */
     public function setPercents(array $percents)
@@ -54,7 +49,7 @@ class PercentilesBucketAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
         $data = ['buckets_path' => $this->getBucketsPath()];
 

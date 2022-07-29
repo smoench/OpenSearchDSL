@@ -13,7 +13,6 @@ namespace OpenSearchDSL\Aggregation\Metric;
 
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\MetricTrait;
-use OpenSearchDSL\ScriptAwareTrait;
 
 /**
  * Class representing StatsAggregation.
@@ -70,7 +69,7 @@ class ScriptedMetricAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'scripted_metric';
     }
@@ -158,9 +157,9 @@ class ScriptedMetricAggregation extends AbstractAggregation
     /**
      * {@inheritdoc}
      */
-    public function getArray()
+    public function getArray(): array
     {
-        $out = array_filter(
+        return array_filter(
             [
                 'init_script' => $this->getInitScript(),
                 'map_script' => $this->getMapScript(),
@@ -168,7 +167,5 @@ class ScriptedMetricAggregation extends AbstractAggregation
                 'reduce_script' => $this->getReduceScript(),
             ]
         );
-
-        return $out;
     }
 }

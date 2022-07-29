@@ -21,7 +21,7 @@ class SerialDifferencingAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'serial_diff';
     }

@@ -13,6 +13,8 @@ namespace OpenSearchDSL\Query\Compound;
 
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
+use stdClass;
+use UnexpectedValueException;
 
 /**
  * Represents Elasticsearch "bool" query.
@@ -23,15 +25,12 @@ class BoolQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    const MUST = 'must';
-    const MUST_NOT = 'must_not';
-    const SHOULD = 'should';
-    const FILTER = 'filter';
+    public const MUST = 'must';
+    public const MUST_NOT = 'must_not';
+    public const SHOULD = 'should';
+    public const FILTER = 'filter';
 
-    /**
-     * @var array
-     */
-    private $container = [];
+    private array $container = [];
 
     /**
      * Constructor to prepare container.
@@ -84,12 +83,12 @@ class BoolQuery implements BuilderInterface
      *
      * @return string Key of added builder.
      *
-     * @throws \UnexpectedValueException
+     * @throws UnexpectedValueException
      */
     public function add(BuilderInterface $query, $type = self::MUST, $key = null)
     {
         if (!in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER])) {
-            throw new \UnexpectedValueException(sprintf('The bool operator %s is not supported', $type));
+            throw new UnexpectedValueException(sprintf('The bool operator %s is not supported', $type));
         }
 
         if (!$key) {
@@ -104,10 +103,10 @@ class BoolQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         if (count($this->container) === 1 && isset($this->container[self::MUST])
-                && count($this->container[self::MUST]) === 1) {
+                && (is_countable($this->container[self::MUST]) ? count($this->container[self::MUST]) : 0) === 1) {
             $query = reset($this->container[self::MUST]);
 
             return $query->toArray();
@@ -125,7 +124,7 @@ class BoolQuery implements BuilderInterface
         $output = $this->processArray($output);
 
         if (empty($output)) {
-            $output = new \stdClass();
+            $output = new stdClass();
         }
 
         return [$this->getType() => $output];
@@ -134,7 +133,7 @@ class BoolQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'bool';
     }

@@ -22,7 +22,7 @@ class SuggestEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    const NAME = 'suggest';
+    public const NAME = 'suggest';
 
     /**
      * {@inheritdoc}
@@ -30,7 +30,7 @@ class SuggestEndpoint extends AbstractSearchEndpoint
     public function normalize(NormalizerInterface $normalizer, $format = null, array $context = [])
     {
         $output = [];
-        if (count($this->getAll()) > 0) {
+        if ($this->getAll() !== []) {
             /** @var TermSuggest $suggest */
             foreach ($this->getAll() as $suggest) {
                 $output = array_merge($output, $suggest->toArray());

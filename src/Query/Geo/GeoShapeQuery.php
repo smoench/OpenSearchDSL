@@ -23,15 +23,12 @@ class GeoShapeQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    const INTERSECTS = 'intersects';
-    const DISJOINT = 'disjoint';
-    const WITHIN = 'within';
-    const CONTAINS = 'contains';
+    public const INTERSECTS = 'intersects';
+    public const DISJOINT = 'disjoint';
+    public const WITHIN = 'within';
+    public const CONTAINS = 'contains';
 
-    /**
-     * @var array
-     */
-    private $fields = [];
+    private array $fields = [];
 
     /**
      * @param array $parameters
@@ -44,7 +41,7 @@ class GeoShapeQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'geo_shape';
     }
@@ -127,7 +124,7 @@ class GeoShapeQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $output = $this->processArray($this->fields);
 

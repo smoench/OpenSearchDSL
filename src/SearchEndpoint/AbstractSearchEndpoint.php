@@ -11,9 +11,11 @@
 
 namespace OpenSearchDSL\SearchEndpoint;
 
+use BadFunctionCallException;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\ParametersTrait;
 use OpenSearchDSL\Serializer\Normalizer\AbstractNormalizable;
+use OverflowException;
 
 /**
  * Abstract class used to define search endpoint with references.
@@ -25,7 +27,7 @@ abstract class AbstractSearchEndpoint extends AbstractNormalizable implements Se
     /**
      * @var BuilderInterface[]
      */
-    private $container = [];
+    private array $container = [];
 
     /**
      * {@inheritdoc}
@@ -33,7 +35,7 @@ abstract class AbstractSearchEndpoint extends AbstractNormalizable implements Se
     public function add(BuilderInterface $builder, $key = null)
     {
         if (array_key_exists($key, $this->container)) {
-            throw new \OverflowException(sprintf('Builder with %s name for endpoint has already been added!', $key));
+            throw new OverflowException(sprintf('Builder with %s name for endpoint has already been added!', $key));
         }
 
         if (!$key) {
@@ -50,7 +52,7 @@ abstract class AbstractSearchEndpoint extends AbstractNormalizable implements Se
      */
     public function addToBool(BuilderInterface $builder, $boolType = null, $key = null)
     {
-        throw new \BadFunctionCallException(sprintf("Endpoint %s doesn't support bool statements", static::NAME));
+        throw new BadFunctionCallException(sprintf("Endpoint %s doesn't support bool statements", static::NAME));
     }
 
     /**
@@ -102,6 +104,6 @@ abstract class AbstractSearchEndpoint extends AbstractNormalizable implements Se
      */
     public function getBool()
     {
-        throw new \BadFunctionCallException(sprintf("Endpoint %s doesn't support bool statements", static::NAME));
+        throw new BadFunctionCallException(sprintf("Endpoint %s doesn't support bool statements", static::NAME));
     }
 }

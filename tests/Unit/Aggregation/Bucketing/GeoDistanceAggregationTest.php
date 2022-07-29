@@ -54,31 +54,25 @@ class GeoDistanceAggregationTest extends TestCase
 
     /**
      * Data provider for testGeoDistanceAggregationGetArray().
-     *
-     * @return array
      */
-    public function getGeoDistanceAggregationGetArrayDataProvider()
+    public function getGeoDistanceAggregationGetArrayDataProvider(): iterable
     {
-        $out = [];
-        $filterData = [
-            'field' => 'location',
-            'origin' => '52.3760, 4.894',
-            'unit' => 'mi',
-            'distance_type' => 'plane',
-            'ranges' => [100, 300],
+        yield [
+            'filterData' => [
+                'field' => 'location',
+                'origin' => '52.3760, 4.894',
+                'unit' => 'mi',
+                'distance_type' => 'plane',
+                'ranges' => [100, 300],
+            ],
+            'expectedResults' => [
+                'field' => 'location',
+                'origin' => '52.3760, 4.894',
+                'unit' => 'mi',
+                'distance_type' => 'plane',
+                'ranges' => [['from' => 100, 'to' => 300]],
+            ]
         ];
-
-        $expectedResults = [
-            'field' => 'location',
-            'origin' => '52.3760, 4.894',
-            'unit' => 'mi',
-            'distance_type' => 'plane',
-            'ranges' => [['from' => 100, 'to' => 300]],
-        ];
-
-        $out[] = [$filterData, $expectedResults];
-
-        return $out;
     }
 
     /**

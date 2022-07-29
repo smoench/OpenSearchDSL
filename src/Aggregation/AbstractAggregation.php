@@ -24,68 +24,34 @@ abstract class AbstractAggregation implements NamedBuilderInterface
     use ParametersTrait;
     use NameAwareTrait;
 
-    /**
-     * @var string
-     */
-    private $field;
+    private ?string $field = null;
 
-    /**
-     * @var BuilderBag
-     */
-    private $aggregations;
+    private ?BuilderBag $aggregations = null;
 
-    /**
-     * Abstract supportsNesting method.
-     *
-     * @return bool
-     */
-    abstract protected function supportsNesting();
+    abstract protected function supportsNesting(): bool;
 
-    /**
-     * @return array|\stdClass
-     */
-    abstract protected function getArray();
+    abstract public function getArray(): array|\stdClass;
 
-    /**
-     * Inner aggregations container init.
-     *
-     * @param string $name
-     */
-    public function __construct($name)
+    public function __construct(string $name)
     {
         $this->setName($name);
     }
 
-    /**
-     * @param string $field
-     *
-     * @return $this
-     */
-    public function setField($field)
+    public function setField(?string $field): static
     {
         $this->field = $field;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getField()
+    public function getField(): ?string
     {
         return $this->field;
     }
 
-    /**
-     * Adds a sub-aggregation.
-     *
-     * @param AbstractAggregation $abstractAggregation
-     *
-     * @return $this
-     */
-    public function addAggregation(AbstractAggregation $abstractAggregation)
+    public function addAggregation(AbstractAggregation $abstractAggregation): static
     {
-        if (!$this->aggregations) {
+        if ($this->aggregations === null) {
             $this->aggregations = $this->createBuilderBag();
         }
 
@@ -99,13 +65,13 @@ abstract class AbstractAggregation implements NamedBuilderInterface
      *
      * @return BuilderBag[]|NamedBuilderInterface[]
      */
-    public function getAggregations()
+    public function getAggregations(): array
     {
-        if ($this->aggregations) {
+        if ($this->aggregations !== null) {
             return $this->aggregations->all();
-        } else {
-            return [];
         }
+
+        return [];
     }
 
     /**
@@ -118,15 +84,12 @@ abstract class AbstractAggregation implements NamedBuilderInterface
     {
         if ($this->aggregations && $this->aggregations->has($name)) {
             return $this->aggregations->get($name);
-        } else {
-            return null;
         }
+
+        return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function toArray()
+    public function toArray(): array
     {
         $array = $this->getArray();
         $result = [
@@ -154,18 +117,13 @@ abstract class AbstractAggregation implements NamedBuilderInterface
         $result = [];
         /** @var AbstractAggregation $aggregation */
         foreach ($this->getAggregations() as $aggregation) {
-            $result[$aggregation->getName()] = $aggregation->toArray();
+            $result[$aggregation->getName()] = $aggregation->toArray() ?: null;
         }
 
         return $result;
     }
 
-    /**
-     * Creates BuilderBag new instance.
-     *
-     * @return BuilderBag
-     */
-    private function createBuilderBag()
+    private function createBuilderBag(): BuilderBag
     {
         return new BuilderBag();
     }

@@ -21,7 +21,7 @@ class MovingFunctionAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'moving_fn';
     }

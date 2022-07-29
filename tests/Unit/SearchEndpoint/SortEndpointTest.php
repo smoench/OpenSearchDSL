@@ -27,7 +27,7 @@ class SortEndpointTest extends TestCase
      */
     public function testItCanBeInstantiated()
     {
-        $this->assertInstanceOf('OpenSearchDSL\SearchEndpoint\SortEndpoint', new SortEndpoint());
+        $this->assertInstanceOf(SortEndpoint::class, new SortEndpoint());
     }
 
     /**
@@ -39,10 +39,10 @@ class SortEndpointTest extends TestCase
 
         /** @var NormalizerInterface|MockObject $normalizerInterface */
         $normalizerInterface = $this->getMockForAbstractClass(
-            'Symfony\Component\Serializer\Normalizer\NormalizerInterface'
+            NormalizerInterface::class
         );
 
-        $sort = new FieldSort('acme', ['order' => FieldSort::ASC]);
+        $sort = new FieldSort('acme', FieldSort::ASC);
         $instance->add($sort);
 
         $this->assertEquals(

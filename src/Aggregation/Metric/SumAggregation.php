@@ -21,7 +21,7 @@ class SumAggregation extends StatsAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'sum';
     }

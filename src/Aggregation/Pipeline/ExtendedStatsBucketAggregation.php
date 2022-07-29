@@ -21,7 +21,7 @@ class ExtendedStatsBucketAggregation extends AbstractPipelineAggregation
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'extended_stats_bucket';
     }

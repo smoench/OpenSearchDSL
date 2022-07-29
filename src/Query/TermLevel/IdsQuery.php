@@ -24,24 +24,18 @@ class IdsQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var array
-     */
-    private $values;
-
-    /**
      * @param array $values
      * @param array $parameters
      */
-    public function __construct(array $values, array $parameters = [])
+    public function __construct(private array $values, array $parameters = [])
     {
-        $this->values = $values;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'ids';
     }
@@ -49,7 +43,7 @@ class IdsQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             'values' => $this->values,

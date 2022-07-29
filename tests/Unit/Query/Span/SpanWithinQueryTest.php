@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\Span;
 
+use OpenSearchDSL\Query\Span\SpanQueryInterface;
 use OpenSearchDSL\Query\Span\SpanWithinQuery;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -49,7 +50,7 @@ class SpanWithinQueryTest extends TestCase
      */
     private function getSpanQueryMock($value)
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\Query\Span\SpanQueryInterface')->getMock();
+        $mock = $this->getMockBuilder(SpanQueryInterface::class)->getMock();
         $mock
             ->expects($this->once())
             ->method('toArray')

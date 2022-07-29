@@ -24,24 +24,18 @@ class MoreLikeThisQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string The text to find documents like it, required if ids or docs are not specified.
-     */
-    private $like;
-
-    /**
      * @param string $like
      * @param array  $parameters
      */
-    public function __construct($like, array $parameters = [])
+    public function __construct(private $like, array $parameters = [])
     {
-        $this->like = $like;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'more_like_this';
     }
@@ -49,11 +43,11 @@ class MoreLikeThisQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [];
 
-        if (($this->hasParameter('ids') === false) || ($this->hasParameter('docs') === false)) {
+        if ((!$this->hasParameter('ids')) || (!$this->hasParameter('docs'))) {
             $query['like'] = $this->like;
         }
 

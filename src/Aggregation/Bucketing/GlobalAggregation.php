@@ -11,8 +11,10 @@
 
 namespace OpenSearchDSL\Aggregation\Bucketing;
 
+use LogicException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
 use OpenSearchDSL\Aggregation\Type\BucketingTrait;
+use stdClass;
 
 /**
  * Class representing GlobalAggregation.
@@ -23,27 +25,18 @@ class GlobalAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function setField($field)
+    public function setField($field): static
     {
-        throw new \LogicException("Global aggregation, doesn't support `field` parameter");
+        throw new LogicException("Global aggregation, doesn't support `field` parameter");
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
+    public function getType(): string
     {
         return 'global';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray()
+    public function getArray(): stdClass
     {
-        return new \stdClass();
+        return new stdClass();
     }
 }

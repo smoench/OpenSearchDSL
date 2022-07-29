@@ -112,8 +112,6 @@ class SuggestTest extends TestCase
     }
 
     /**
-     * @param Suggest $suggest
-     * @param array $expected
      *
      * @dataProvider getTestToArrayData()
      */

@@ -24,24 +24,18 @@ class QueryStringQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * @var string The actual query to be parsed.
-     */
-    private $query;
-
-    /**
      * @param string $query
      * @param array  $parameters
      */
-    public function __construct($query, array $parameters = [])
+    public function __construct(private $query, array $parameters = [])
     {
-        $this->query = $query;
         $this->setParameters($parameters);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return 'query_string';
     }
@@ -49,7 +43,7 @@ class QueryStringQuery implements BuilderInterface
     /**
      * {@inheritdoc}
      */
-    public function toArray()
+    public function toArray(): array
     {
         $query = [
             'query' => $this->query,

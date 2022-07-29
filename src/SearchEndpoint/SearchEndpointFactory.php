@@ -11,6 +11,8 @@
 
 namespace OpenSearchDSL\SearchEndpoint;
 
+use RuntimeException;
+
 /**
  * Factory for search endpoints.
  */
@@ -19,7 +21,7 @@ class SearchEndpointFactory
     /**
      * @var array Holds namespaces for endpoints.
      */
-    private static $endpoints = [
+    private static array $endpoints = [
         'query' => QueryEndpoint::class,
         'post_filter' => PostFilterEndpoint::class,
         'sort' => SortEndpoint::class,
@@ -36,12 +38,12 @@ class SearchEndpointFactory
      *
      * @return SearchEndpointInterface
      *
-     * @throws \RuntimeException Endpoint does not exist.
+     * @throws RuntimeException Endpoint does not exist.
      */
     public static function get($type)
     {
         if (!array_key_exists($type, self::$endpoints)) {
-            throw new \RuntimeException('Endpoint does not exist.');
+            throw new RuntimeException('Endpoint does not exist.');
         }
 
         return new self::$endpoints[$type]();

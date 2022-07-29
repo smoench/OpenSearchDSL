@@ -11,6 +11,7 @@
 
 namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 
+use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\DisMaxQuery;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class DisMaxQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
         $mock
             ->expects($this->any())
             ->method('toArray')
