@@ -18,8 +18,6 @@ interface OrderedNormalizerInterface
 {
     /**
      * Returns normalization priority.
-     *
-     * @return int
      */
-    public function getOrder();
+    public function getOrder(): int;
 }

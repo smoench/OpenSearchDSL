@@ -27,14 +27,13 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
     public const NAME = 'query';
 
     private ?BoolQuery $bool = null;
-
     private bool $filtersSet = false;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize(NormalizerInterface $normalizer, $format = null, array $context = []): array|string|int|float|bool
-    {
+    public function normalize(
+        NormalizerInterface $normalizer,
+        string $format = null,
+        array $context = []
+    ): array|string|int|float|bool {
         if (!$this->filtersSet && $this->hasReference('filter_query')) {
             /** @var BuilderInterface $filter */
             $filter = $this->getReference('filter_query');
@@ -49,19 +48,16 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
         return $this->bool->toArray();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function add(BuilderInterface $builder, $key = null)
+    public function add(BuilderInterface $builder, ?string $key = null): string
     {
         return $this->addToBool($builder, BoolQuery::MUST, $key);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function addToBool(BuilderInterface $builder, $boolType = null, $key = null)
-    {
+    public function addToBool(
+        BuilderInterface $builder,
+        string $boolType = BoolQuery::MUST,
+        ?string $key = null
+    ): string {
         if ($this->bool === null) {
             $this->bool = new BoolQuery();
         }
@@ -69,26 +65,17 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
         return $this->bool->add($builder, $boolType, $key);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getOrder()
+    public function getOrder(): int
     {
         return 2;
     }
 
-    /**
-     * @return BoolQuery
-     */
-    public function getBool()
+    public function getBool(): ?BoolQuery
     {
         return $this->bool;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getAll($boolType = null)
+    public function getAll(?string $boolType = null): array
     {
         return $this->bool->getQueries($boolType);
     }

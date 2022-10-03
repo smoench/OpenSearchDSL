@@ -20,11 +20,11 @@ class CustomReferencedNormalizer extends CustomNormalizer
 {
     private array $references = [];
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize($object, $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
-    {
+    public function normalize(
+        $object,
+        $format = null,
+        array $context = []
+    ): array|string|int|float|bool|\ArrayObject|null {
         $object->setReferences($this->references);
         $data = parent::normalize($object, $format, $context);
         $this->references = array_merge($this->references, $object->getReferences());
@@ -32,9 +32,6 @@ class CustomReferencedNormalizer extends CustomNormalizer
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsNormalization($data, $format = null): bool
     {
         return $data instanceof AbstractNormalizable;

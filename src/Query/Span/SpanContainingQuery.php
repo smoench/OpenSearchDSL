@@ -22,60 +22,20 @@ class SpanContainingQuery implements SpanQueryInterface
 {
     use ParametersTrait;
 
-    /**
-     * @param SpanQueryInterface
-     */
-    private $little;
-
-    /**
-     * @param SpanQueryInterface
-     */
-    private $big;
-
-    /**
-     * @param SpanQueryInterface $little
-     * @param SpanQueryInterface $big
-     */
-    public function __construct(SpanQueryInterface $little, SpanQueryInterface $big)
-    {
-        $this->setLittle($little);
-        $this->setBig($big);
+    public function __construct(
+        private SpanQueryInterface $little,
+        private SpanQueryInterface $big
+    ) {
     }
 
-    /**
-     * @return SpanQueryInterface
-     */
-    public function getLittle()
+    public function getLittle(): SpanQueryInterface
     {
         return $this->little;
     }
 
-    /**
-     * @return $this
-     */
-    public function setLittle(SpanQueryInterface $little)
-    {
-        $this->little = $little;
-
-        return $this;
-    }
-
-    /**
-     * @return SpanQueryInterface
-     */
-    public function getBig()
+    public function getBig(): SpanQueryInterface
     {
         return $this->big;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setBig(SpanQueryInterface $big)
-    {
-        $this->big = $big;
-
-        return $this;
     }
 
     /**

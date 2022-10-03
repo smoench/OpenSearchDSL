@@ -22,9 +22,9 @@ use OpenSearchDSL\BuilderInterface;
  */
 class AdjacencyMatrixAggregation extends AbstractAggregation
 {
-    public const FILTERS = 'filters';
-
     use BucketingTrait;
+
+    public const FILTERS = 'filters';
 
     /**
      * @var array<string, array<string, array|null>>

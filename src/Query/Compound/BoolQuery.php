@@ -30,12 +30,15 @@ class BoolQuery implements BuilderInterface
     public const SHOULD = 'should';
     public const FILTER = 'filter';
 
+    /**
+     * @var array<string, array<string, BuilderInterface>>
+     */
     private array $container = [];
 
     /**
      * Constructor to prepare container.
      *
-     * @param array $container
+     * @param array<string, BuilderInterface|BuilderInterface[]> $container
      */
     public function __construct(array $container = [])
     {
@@ -51,11 +54,9 @@ class BoolQuery implements BuilderInterface
     /**
      * Returns the query instances (by bool type).
      *
-     * @param  string|null $boolType
-     *
-     * @return array
+     * @return array<string, BuilderInterface>
      */
-    public function getQueries($boolType = null)
+    public function getQueries(?string $boolType = null): array
     {
         if ($boolType === null) {
             $queries = [];
@@ -79,19 +80,19 @@ class BoolQuery implements BuilderInterface
      *
      * @param BuilderInterface $query Query add to the bool.
      * @param string           $type  Bool type. Example: must, must_not, should.
-     * @param string           $key   Key that indicates a builder id.
+     * @param string|null      $key   Key that indicates a builder id.
      *
      * @return string Key of added builder.
      *
      * @throws UnexpectedValueException
      */
-    public function add(BuilderInterface $query, $type = self::MUST, $key = null)
+    public function add(BuilderInterface $query, string $type = self::MUST, ?string $key = null): string
     {
         if (!in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER])) {
             throw new UnexpectedValueException(sprintf('The bool operator %s is not supported', $type));
         }
 
-        if (!$key) {
+        if ($key === null) {
             $key = bin2hex(random_bytes(30));
         }
 
@@ -105,8 +106,10 @@ class BoolQuery implements BuilderInterface
      */
     public function toArray(): array
     {
-        if (count($this->container) === 1 && isset($this->container[self::MUST])
-                && (is_countable($this->container[self::MUST]) ? count($this->container[self::MUST]) : 0) === 1) {
+        if (
+            count($this->container) === 1 && isset($this->container[self::MUST])
+                && (is_countable($this->container[self::MUST]) ? count($this->container[self::MUST]) : 0) === 1
+        ) {
             $query = reset($this->container[self::MUST]);
 
             return $query->toArray();
@@ -115,7 +118,6 @@ class BoolQuery implements BuilderInterface
         $output = [];
 
         foreach ($this->container as $boolType => $builders) {
-            /** @var BuilderInterface $builder */
             foreach ($builders as $builder) {
                 $output[$boolType][] = $builder->toArray();
             }
@@ -130,9 +132,6 @@ class BoolQuery implements BuilderInterface
         return [$this->getType() => $output];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'bool';

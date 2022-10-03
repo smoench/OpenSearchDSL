@@ -95,7 +95,7 @@ class HistogramAggregation extends AbstractAggregation
         return $this->interval;
     }
 
-    public function setInterval(?int $interval):self
+    public function setInterval(?int $interval): self
     {
         $this->interval = $interval;
 

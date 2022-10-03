@@ -98,7 +98,8 @@ class PercentileRanksAggregation extends AbstractAggregation
      */
     private function isRequiredParametersSet(array $a): bool
     {
-        if ((array_key_exists('field', $a) && array_key_exists('values', $a))
+        if (
+            (array_key_exists('field', $a) && array_key_exists('values', $a))
             || (array_key_exists('script', $a) && array_key_exists('values', $a))
         ) {
             return true;

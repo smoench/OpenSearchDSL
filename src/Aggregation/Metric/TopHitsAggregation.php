@@ -23,18 +23,17 @@ use stdClass;
  */
 class TopHitsAggregation extends AbstractAggregation
 {
-    public BuilderInterface $sort;
     use MetricTrait;
 
     /**
-     * @var int Number of top matching hits to return per bucket.
+     * @var int|null Number of top matching hits to return per bucket.
      */
-    private int $size;
+    private ?int $size;
 
     /**
-     * @var int The offset from the first result you want to fetch.
+     * @var int|null The offset from the first result you want to fetch.
      */
-    private int $from;
+    private ?int $from;
 
     /**
      * @var BuilderInterface[] How the top matching hits should be sorted.
@@ -42,14 +41,12 @@ class TopHitsAggregation extends AbstractAggregation
     private array $sorts = [];
 
     /**
-     * Constructor for top hits.
-     *
      * @param string                $name Aggregation name.
      * @param null|int              $size Number of top matching hits to return per bucket.
      * @param null|int              $from The offset from the first result you want to fetch.
      * @param null|BuilderInterface $sort How the top matching hits should be sorted.
      */
-    public function __construct($name, $size = null, $from = null, $sort = null)
+    public function __construct(string $name, ?int $size = null, ?int $from = null, ?BuilderInterface $sort = null)
     {
         parent::__construct($name);
         $this->setFrom($from);
@@ -57,22 +54,12 @@ class TopHitsAggregation extends AbstractAggregation
         $this->addSort($sort);
     }
 
-    /**
-     * Return from.
-     *
-     * @return int
-     */
-    public function getFrom()
+    public function getFrom(): ?int
     {
         return $this->from;
     }
 
-    /**
-     * @param int $from
-     *
-     * @return $this
-     */
-    public function setFrom($from)
+    public function setFrom(?int $from): self
     {
         $this->from = $from;
 
@@ -82,51 +69,36 @@ class TopHitsAggregation extends AbstractAggregation
     /**
      * @return BuilderInterface[]
      */
-    public function getSorts()
+    public function getSorts(): array
     {
         return $this->sorts;
     }
 
     /**
      * @param BuilderInterface[] $sorts
-     *
-     * @return $this
      */
-    public function setSorts(array $sorts)
+    public function setSorts(array $sorts): self
     {
         $this->sorts = $sorts;
 
         return $this;
     }
 
-    /**
-     * Add sort.
-     *
-     * @param BuilderInterface $sort
-     */
-    public function addSort($sort)
+    public function addSort(BuilderInterface $sort): self
     {
         $this->sorts[] = $sort;
+
+        return $this;
     }
 
-    /**
-     * @param int $size
-     *
-     * @return $this
-     */
-    public function setSize($size)
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
         return $this;
     }
 
-    /**
-     * Return size.
-     *
-     * @return int
-     */
-    public function getSize()
+    public function getSize(): ?int
     {
         return $this->size;
     }
@@ -139,10 +111,7 @@ class TopHitsAggregation extends AbstractAggregation
         return 'top_hits';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getArray(): array
+    public function getArray(): array|stdClass
     {
         $sortsOutput = [];
         $addedSorts = array_filter($this->getSorts());
@@ -154,43 +123,12 @@ class TopHitsAggregation extends AbstractAggregation
             $sortsOutput = null;
         }
 
-        $output = array_filter(
-            [
-                'sort' => $sortsOutput,
-                'size' => $this->getSize(),
-                'from' => $this->getFrom(),
-            ],
-            fn($val) => $val || is_array($val) || ($val || is_numeric($val))
-        );
+        $output = array_filter([
+            'sort' => $sortsOutput,
+            'size' => $this->getSize(),
+            'from' => $this->getFrom(),
+        ]);
 
         return empty($output) ? new stdClass() : $output;
-    }
-
-    /**
-     * @deprecated sorts now is a container, use `getSorts()`instead.
-     * Return sort.
-     *
-     * @return BuilderInterface
-     */
-    public function getSort()
-    {
-        if (isset($this->sorts[0])) {
-            return $this->sorts[0];
-        }
-
-        return null;
-    }
-
-    /**
-     * @deprecated sorts now is a container, use `addSort()`instead.
-     *
-     *
-     * @return $this
-     */
-    public function setSort(BuilderInterface $sort)
-    {
-        $this->sort = $sort;
-
-        return $this;
     }
 }

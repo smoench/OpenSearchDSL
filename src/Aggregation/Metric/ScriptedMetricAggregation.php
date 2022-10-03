@@ -57,7 +57,7 @@ class ScriptedMetricAggregation extends AbstractAggregation
         $combineScript = null,
         $reduceScript = null
     ) {
-    
+
         parent::__construct($name);
 
         $this->setInitScript($initScript);
