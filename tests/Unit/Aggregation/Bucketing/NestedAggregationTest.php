@@ -29,7 +29,9 @@ class NestedAggregationTest extends TestCase
         $aggregation->addAggregation($termAggregation);
 
         $expectedResult = [
-            'nested' => ['path' => 'test_path'],
+            'nested' => [
+                'path' => 'test_path',
+            ],
             'aggregations' => [
                 $termAggregation->getName() => $termAggregation->toArray(),
             ],

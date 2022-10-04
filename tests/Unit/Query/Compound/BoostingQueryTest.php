@@ -26,13 +26,25 @@ class BoostingQueryTest extends TestCase
         $mock
             ->expects($this->any())
             ->method('toArray')
-            ->willReturn(['term' => ['foo' => 'bar']]);
+            ->willReturn([
+                'term' => [
+                    'foo' => 'bar',
+                ],
+            ]);
 
         $query = new BoostingQuery($mock, $mock, 0.2);
         $expected = [
             'boosting' => [
-                'positive' => ['term' => ['foo' => 'bar']],
-                'negative' => ['term' => ['foo' => 'bar']],
+                'positive' => [
+                    'term' => [
+                        'foo' => 'bar',
+                    ],
+                ],
+                'negative' => [
+                    'term' => [
+                        'foo' => 'bar',
+                    ],
+                ],
                 'negative_boost' => 0.2,
             ],
         ];

@@ -64,17 +64,11 @@ class ExtendedStatsAggregation extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'extended_stats';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArray(): array
     {
         return array_filter(
@@ -83,7 +77,7 @@ class ExtendedStatsAggregation extends AbstractAggregation
                 'script' => $this->getScript(),
                 'sigma' => $this->getSigma(),
             ],
-            fn($val) => $val || is_numeric($val)
+            fn ($val) => $val || is_numeric($val)
         );
     }
 }

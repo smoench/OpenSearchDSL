@@ -200,7 +200,10 @@ class RangeAggregationTest extends TestCase
      */
     public function testConstructor()
     {
-        $aggregation = new RangeAggregation('foo', 'fieldValue', [['from' => 100, 'key' => 'nowkey']], true);
+        $aggregation = new RangeAggregation('foo', 'fieldValue', [[
+            'from' => 100,
+            'key' => 'nowkey',
+        ]], true);
         $this->assertSame(
             [
                 'range' => [

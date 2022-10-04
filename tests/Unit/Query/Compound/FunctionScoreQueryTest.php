@@ -50,7 +50,9 @@ class FunctionScoreQueryTest extends TestCase
                     'query' => null,
                     'functions' => [
                         [
-                            'random_score' => ['seed' => 'someSeed'],
+                            'random_score' => [
+                                'seed' => 'someSeed',
+                            ],
                         ],
                     ],
                 ],
@@ -61,12 +63,10 @@ class FunctionScoreQueryTest extends TestCase
     /**
      * Tests addRandomFunction method.
      *
-     * @param mixed $seed
      * @param array $expectedArray
-     *
      * @dataProvider addRandomFunctionProvider
      */
-    public function testAddRandomFunction($seed, $expectedArray)
+    public function testAddRandomFunction(mixed $seed, $expectedArray)
     {
         /** @var MatchAllQuery|MockObject $matchAllQuery */
         $matchAllQuery = $this->getMockBuilder(MatchAllQuery::class)->getMock();
@@ -74,7 +74,9 @@ class FunctionScoreQueryTest extends TestCase
         $functionScoreQuery = new FunctionScoreQuery($matchAllQuery);
         $functionScoreQuery->addRandomFunction($seed);
 
-        $this->assertEquals(['function_score' => $expectedArray], $functionScoreQuery->toArray());
+        $this->assertEquals([
+            'function_score' => $expectedArray,
+        ], $functionScoreQuery->toArray());
     }
 
     /**

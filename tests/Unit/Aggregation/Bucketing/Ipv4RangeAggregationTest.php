@@ -32,12 +32,16 @@ class Ipv4RangeAggregationTest extends TestCase
      */
     public function testConstructorFilter()
     {
-        $aggregation = new Ipv4RangeAggregation('test', 'fieldName', [['from' => 'fromValue']]);
+        $aggregation = new Ipv4RangeAggregation('test', 'fieldName', [[
+            'from' => 'fromValue',
+        ]]);
         $this->assertSame(
             [
                 'ip_range' => [
                     'field' => 'fieldName',
-                    'ranges' => [['from' => 'fromValue']],
+                    'ranges' => [[
+                        'from' => 'fromValue',
+                    ]],
                 ],
             ],
             $aggregation->toArray()
@@ -48,7 +52,9 @@ class Ipv4RangeAggregationTest extends TestCase
             [
                 'ip_range' => [
                     'field' => 'fieldName',
-                    'ranges' => [['mask' => 'maskValue']],
+                    'ranges' => [[
+                        'mask' => 'maskValue',
+                    ]],
                 ],
             ],
             $aggregation->toArray()

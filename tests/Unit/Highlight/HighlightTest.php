@@ -33,7 +33,9 @@ class HighlightTest extends TestCase
     public function testTraitHasParameter()
     {
         $highlight = new Highlight();
-        $highlight->addParameter('_source', ['include' => ['title']]);
+        $highlight->addParameter('_source', [
+            'include' => ['title'],
+        ]);
         $result = $highlight->hasParameter('_source');
         $this->assertTrue($result);
     }
@@ -44,7 +46,9 @@ class HighlightTest extends TestCase
     public function testTraitRemoveParameter()
     {
         $highlight = new Highlight();
-        $highlight->addParameter('_source', ['include' => ['title']]);
+        $highlight->addParameter('_source', [
+            'include' => ['title'],
+        ]);
         $highlight->removeParameter('_source');
         $result = $highlight->hasParameter('_source');
         $this->assertFalse($result);
@@ -56,8 +60,12 @@ class HighlightTest extends TestCase
     public function testTraitGetParameter()
     {
         $highlight = new Highlight();
-        $highlight->addParameter('_source', ['include' => 'title']);
-        $expectedResult = ['include' => 'title'];
+        $highlight->addParameter('_source', [
+            'include' => 'title',
+        ]);
+        $expectedResult = [
+            'include' => 'title',
+        ];
         $this->assertEquals($expectedResult, $highlight->getParameter('_source'));
     }
 
@@ -70,16 +78,24 @@ class HighlightTest extends TestCase
         $highlight->setParameters(
             [
                 '_source',
-                ['include' => 'title'],
+                [
+                    'include' => 'title',
+                ],
                 'content',
-                ['force_source' => true],
+                [
+                    'force_source' => true,
+                ],
             ]
         );
         $expectedResult = [
             '_source',
-            ['include' => 'title'],
+            [
+                'include' => 'title',
+            ],
             'content',
-            ['force_source' => true],
+            [
+                'force_source' => true,
+            ],
         ];
         $this->assertEquals($expectedResult, $highlight->getParameters());
     }
@@ -91,7 +107,9 @@ class HighlightTest extends TestCase
     {
         $highlight = new Highlight();
         $highlight->addField('ok');
-        $highlight->addParameter('_source', ['include' => ['title']]);
+        $highlight->addParameter('_source', [
+            'include' => ['title'],
+        ]);
         $highlight->setTags(['<tag>'], ['</tag>']);
         $result = $highlight->toArray();
         $expectedResult = [

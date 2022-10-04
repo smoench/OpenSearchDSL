@@ -26,24 +26,20 @@ class FuzzyQuery implements BuilderInterface
     /**
      * @param string $field
      * @param string $value
-     * @param array  $parameters
      */
-    public function __construct(private $field, private $value, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private $value,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'fuzzy';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -54,6 +50,8 @@ class FuzzyQuery implements BuilderInterface
             $this->field => $this->processArray($query),
         ];
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

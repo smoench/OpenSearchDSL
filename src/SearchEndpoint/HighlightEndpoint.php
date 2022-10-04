@@ -58,7 +58,9 @@ class HighlightEndpoint extends AbstractSearchEndpoint
 
     public function getAll(?string $boolType = null): array
     {
-        return [$this->key => $this->highlight];
+        return [
+            $this->key => $this->highlight,
+        ];
     }
 
     public function getHighlight(): ?BuilderInterface

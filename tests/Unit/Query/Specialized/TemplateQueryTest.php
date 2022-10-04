@@ -26,12 +26,14 @@ class TemplateQueryTest extends TestCase
     public function testToArrayInline()
     {
         $inline = '"term": {"field": "{{query_string}}"}';
-        $params = ['query_string' => 'all about search'];
+        $params = [
+            'query_string' => 'all about search',
+        ];
         $query = new TemplateQuery(null, $inline, $params);
         $expected = [
             'template' => [
                 'inline' => $inline,
-                'params' => $params
+                'params' => $params,
             ],
         ];
         $this->assertEquals($expected, $query->toArray());
@@ -43,7 +45,9 @@ class TemplateQueryTest extends TestCase
     public function testToArrayFile()
     {
         $file = 'my_template';
-        $params = ['query_string' => 'all about search'];
+        $params = [
+            'query_string' => 'all about search',
+        ];
         $query = new TemplateQuery();
         $query->setFile($file);
         $query->setParams($params);
@@ -58,8 +62,6 @@ class TemplateQueryTest extends TestCase
 
     /**
      * Tests toArray() exception
-     *
-     *
      */
     public function testToArrayException()
     {

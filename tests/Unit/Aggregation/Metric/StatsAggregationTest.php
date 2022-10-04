@@ -25,7 +25,9 @@ class StatsAggregationTest extends TestCase
         $aggregation->setField('test_field');
 
         $expectedResult = [
-            'stats' => ['field' => 'test_field'],
+            'stats' => [
+                'field' => 'test_field',
+            ],
         ];
 
         $this->assertEquals($expectedResult, $aggregation->toArray());

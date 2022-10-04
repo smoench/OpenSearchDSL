@@ -28,7 +28,7 @@ class PostFilterEndpoint extends QueryEndpoint
         $format = null,
         array $context = []
     ): array|string|int|float|bool {
-        if (!$this->getBool()) {
+        if ($this->getBool() === null) {
             return false;
         }
 

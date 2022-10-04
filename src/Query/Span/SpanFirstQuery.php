@@ -24,28 +24,23 @@ class SpanFirstQuery implements SpanQueryInterface
     use ParametersTrait;
 
     /**
-     * @param SpanQueryInterface $query
      * @param int                $end
-     * @param array              $parameters
      *
      * @throws LogicException
      */
-    public function __construct(private SpanQueryInterface $query, private $end, array $parameters = [])
-    {
+    public function __construct(
+        private SpanQueryInterface $query,
+        private $end,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'span_first';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [];
@@ -53,6 +48,8 @@ class SpanFirstQuery implements SpanQueryInterface
         $query['end'] = $this->end;
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

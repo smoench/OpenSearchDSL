@@ -29,13 +29,23 @@ class SpanMultiTermQueryTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('toArray')
-            ->willReturn(['prefix' => ['user' => ['value' => 'ki']]]);
+            ->willReturn([
+                'prefix' => [
+                    'user' => [
+                        'value' => 'ki',
+                    ],
+                ],
+            ]);
 
         $query = new SpanMultiTermQuery($mock);
         $expected = [
             'span_multi' => [
                 'match' => [
-                    'prefix' => ['user' => ['value' => 'ki']],
+                    'prefix' => [
+                        'user' => [
+                            'value' => 'ki',
+                        ],
+                    ],
                 ],
             ],
         ];

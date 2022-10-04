@@ -29,7 +29,9 @@ class CompositeAggregation extends AbstractAggregation
      * @var BuilderInterface[]
      */
     private array $sources = [];
+
     private ?int $size = null;
+
     private array $after = [];
 
     /**
@@ -54,7 +56,9 @@ class CompositeAggregation extends AbstractAggregation
         $array = is_array($array) ? array_merge($array, $agg->getParameters()) : $array;
 
         $this->sources[] = [
-            $agg->getName() => [$agg->getType() => $array]
+            $agg->getName() => [
+                $agg->getType() => $array,
+            ],
         ];
 
         return $this;

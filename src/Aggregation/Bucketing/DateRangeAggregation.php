@@ -99,7 +99,7 @@ class DateRangeAggregation extends AbstractAggregation
                 'to' => $to,
                 'key' => $key,
             ],
-            fn($v) => !is_null($v)
+            fn ($v) => ! is_null($v)
         );
 
         if (empty($range)) {
@@ -111,12 +111,9 @@ class DateRangeAggregation extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArray(): array
     {
-        if ($this->getField() && $this->getFormat() && !empty($this->ranges)) {
+        if ($this->getField() && $this->getFormat() && ! empty($this->ranges)) {
             return [
                 'format' => $this->getFormat(),
                 'field' => $this->getField(),
@@ -127,9 +124,6 @@ class DateRangeAggregation extends AbstractAggregation
         throw new LogicException('Date range aggregation must have field, format set and range added.');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'date_range';

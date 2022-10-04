@@ -97,7 +97,7 @@ abstract class AbstractAggregation implements NamedBuilderInterface
         if ($this->supportsNesting()) {
             $nestedResult = $this->collectNestedAggregations();
 
-            if (!empty($nestedResult)) {
+            if (! empty($nestedResult)) {
                 $result['aggregations'] = $nestedResult;
             }
         }
@@ -107,8 +107,6 @@ abstract class AbstractAggregation implements NamedBuilderInterface
 
     /**
      * Process all nested aggregations.
-     *
-     * @return array
      */
     protected function collectNestedAggregations(): array
     {

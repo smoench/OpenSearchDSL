@@ -38,9 +38,6 @@ class AutoDateHistogramAggregation extends AbstractAggregation
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArray(): array
     {
         return array_filter(
@@ -50,9 +47,6 @@ class AutoDateHistogramAggregation extends AbstractAggregation
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'auto_date_histogram';

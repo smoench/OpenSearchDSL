@@ -27,16 +27,20 @@ class RangeQuery implements BuilderInterface
      * Range control names.
      */
     public const LT = 'lt';
+
     public const GT = 'gt';
+
     public const LTE = 'lte';
+
     public const GTE = 'gte';
 
     /**
      * @param string $field
-     * @param array  $parameters
      */
-    public function __construct(private $field, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
 
         if ($this->hasParameter(self::GTE) && $this->hasParameter(self::GT)) {
@@ -48,23 +52,19 @@ class RangeQuery implements BuilderInterface
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'range';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $output = [
             $this->field => $this->getParameters(),
         ];
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

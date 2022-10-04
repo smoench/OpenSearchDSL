@@ -20,7 +20,9 @@ use PHPUnit\Framework\TestCase;
  */
 class ParametersTraitTest extends TestCase
 {
-    /** @var ParametersTrait&MockObject */
+    /**
+     * @var ParametersTrait&MockObject
+     */
     private $parametersTraitMock;
 
     protected function setUp(): void

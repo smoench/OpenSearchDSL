@@ -41,7 +41,9 @@ class SignificantTextAggregationTest extends TestCase
         $aggregation = new SignificantTextAggregation('foo', 'title');
         $aggregation->addAggregation($mock);
         $result = $aggregation->getArray();
-        $expected = ['field' => 'title'];
+        $expected = [
+            'field' => 'title',
+        ];
         $this->assertEquals($expected, $result);
     }
 }

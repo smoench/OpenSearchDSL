@@ -26,9 +26,6 @@ abstract class AbstractOpenSearchTestCase extends TestCase
 
     private Client $client;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         parent::setUp();
@@ -40,7 +37,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
             array_filter(
                 [
                     'index' => self::INDEX_NAME,
-                    'mapping' => $this->getMapping()
+                    'mapping' => $this->getMapping(),
                 ]
             )
         );
@@ -50,11 +47,11 @@ abstract class AbstractOpenSearchTestCase extends TestCase
         foreach ($this->getDataArray() as $type => $documents) {
             foreach ($documents as $id => $document) {
                 $bulkBody[] = [
-                   'index' => [
+                    'index' => [
                         '_index' => self::INDEX_NAME,
                         '_type' => $type,
                         '_id' => $id,
-                    ]
+                    ],
                 ];
                 $bulkBody[] = $document;
             }
@@ -62,7 +59,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
 
         $this->client->bulk(
             [
-                'body' => $bulkBody
+                'body' => $bulkBody,
             ]
         );
         $this->client->indices()->refresh();
@@ -104,9 +101,6 @@ abstract class AbstractOpenSearchTestCase extends TestCase
         return [];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function tearDown(): void
     {
         parent::tearDown();
@@ -154,7 +148,9 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     private function deleteIndex()
     {
         try {
-            $this->client->indices()->delete(['index' => self::INDEX_NAME]);
+            $this->client->indices()->delete([
+                'index' => self::INDEX_NAME,
+            ]);
         } catch (Exception) {
             // Do nothing.
         }

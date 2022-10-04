@@ -26,24 +26,20 @@ class CommonTermsQuery implements BuilderInterface
     /**
      * @param string $field
      * @param string $query
-     * @param array  $parameters
      */
-    public function __construct(private $field, private $query, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private $query,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'common';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -54,6 +50,8 @@ class CommonTermsQuery implements BuilderInterface
             $this->field => $this->processArray($query),
         ];
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

@@ -21,18 +21,18 @@ use PHPUnit\Framework\TestCase;
  */
 class AdjacencyMatrixAggregationTest extends TestCase
 {
-//    /**
-//     * Test if exception is thrown when not anonymous filter is without name.
-//     *
-//     * @expectedException \LogicException
-//     * @expectedExceptionMessage In not anonymous filters filter name must be set.
-//     */
-//    public function testIfExceptionIsThrown()
-//    {
-//        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
-//        $aggregation = new FiltersAggregation('test_agg');
-//        $aggregation->addFilter($mock);
-//    }
+    //    /**
+    //     * Test if exception is thrown when not anonymous filter is without name.
+    //     *
+    //     * @expectedException \LogicException
+    //     * @expectedExceptionMessage In not anonymous filters filter name must be set.
+    //     */
+    //    public function testIfExceptionIsThrown()
+    //    {
+    //        $mock = $this->getMockBuilder('OpenSearchDSL\BuilderInterface')->getMock();
+    //        $aggregation = new FiltersAggregation('test_agg');
+    //        $aggregation->addFilter($mock);
+    //    }
 
     /**
      * Test GetArray method.
@@ -67,7 +67,11 @@ class AdjacencyMatrixAggregationTest extends TestCase
             ->getMockForAbstractClass();
         $filter->expects($this->any())
             ->method('toArray')
-            ->willReturn(['test_field' => ['test_value' => 'test']]);
+            ->willReturn([
+                'test_field' => [
+                    'test_value' => 'test',
+                ],
+            ]);
 
         $aggregation->addFilter('first', $filter);
         $aggregation->addFilter('second', $filter);

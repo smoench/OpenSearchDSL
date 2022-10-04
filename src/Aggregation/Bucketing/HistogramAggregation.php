@@ -25,13 +25,19 @@ class HistogramAggregation extends AbstractAggregation
     use BucketingTrait;
 
     public const DIRECTION_ASC = 'asc';
+
     public const DIRECTION_DESC = 'desc';
 
     private ?int $interval = null;
+
     private ?int $minDocCount = null;
+
     private ?array $extendedBounds = null;
+
     private ?string $orderMode = null;
+
     private string $orderDirection;
+
     private ?bool $keyed = null;
 
     public function __construct(
@@ -84,7 +90,9 @@ class HistogramAggregation extends AbstractAggregation
     public function getOrder(): ?array
     {
         if ($this->orderMode && $this->orderDirection) {
-            return [$this->orderMode => $this->orderDirection];
+            return [
+                $this->orderMode => $this->orderDirection,
+            ];
         }
 
         return null;
@@ -151,7 +159,7 @@ class HistogramAggregation extends AbstractAggregation
                 'keyed' => $this->isKeyed(),
                 'order' => $this->getOrder(),
             ],
-            fn($val) => $val || is_numeric($val)
+            fn ($val) => $val || is_numeric($val)
         );
         $this->checkRequiredParameters($out, ['field', 'interval']);
 

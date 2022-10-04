@@ -36,8 +36,12 @@ class MaxAggregationStats extends AbstractAggregation
      * @param array $missing
      * @param string $mode
      */
-    public function __construct($name, $field, private $missing = null, $mode = null)
-    {
+    public function __construct(
+        $name,
+        $field,
+        private $missing = null,
+        $mode = null
+    ) {
         parent::__construct($name);
 
         $this->setField($field);
@@ -84,9 +88,6 @@ class MaxAggregationStats extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'matrix_stats';
@@ -102,7 +103,6 @@ class MaxAggregationStats extends AbstractAggregation
         if ($this->getMode() !== '' && $this->getMode() !== '0') {
             $out['mode'] = $this->getMode();
         }
-
 
         if ($this->getMissing()) {
             $out['missing'] = $this->getMissing();

@@ -28,17 +28,38 @@ class GeoDistanceQueryTest extends TestCase
             [
                 'location',
                 '200km',
-                ['lat' => 40, 'lon' => -70],
+                [
+                    'lat' => 40,
+                    'lon' => -70,
+                ],
                 [],
-                ['distance' => '200km', 'location' => ['lat' => 40, 'lon' => -70]],
+                [
+                    'distance' => '200km',
+                    'location' => [
+                        'lat' => 40,
+                        'lon' => -70,
+                    ],
+                ],
             ],
             // Case #2.
             [
                 'location',
                 '20km',
-                ['lat' => 0, 'lon' => 0],
-                ['parameter' => 'value'],
-                ['distance' => '20km', 'location' => ['lat' => 0, 'lon' => 0], 'parameter' => 'value'],
+                [
+                    'lat' => 0,
+                    'lon' => 0,
+                ],
+                [
+                    'parameter' => 'value',
+                ],
+                [
+                    'distance' => '20km',
+                    'location' => [
+                        'lat' => 0,
+                        'lon' => 0,
+                    ],
+                    'parameter' => 'value',
+                ],
             ],
         ];
     }
@@ -58,6 +79,8 @@ class GeoDistanceQueryTest extends TestCase
     {
         $query = new GeoDistanceQuery($field, $distance, $location, $parameters);
         $result = $query->toArray();
-        $this->assertEquals(['geo_distance' => $expected], $result);
+        $this->assertEquals([
+            'geo_distance' => $expected,
+        ], $result);
     }
 }

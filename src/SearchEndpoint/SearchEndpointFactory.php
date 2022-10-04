@@ -36,13 +36,11 @@ class SearchEndpointFactory
      *
      * @param string $type Type of endpoint.
      *
-     * @return SearchEndpointInterface
-     *
      * @throws RuntimeException Endpoint does not exist.
      */
     public static function get(string $type): SearchEndpointInterface
     {
-        if (!array_key_exists($type, self::$endpoints)) {
+        if (! array_key_exists($type, self::$endpoints)) {
             throw new RuntimeException('Endpoint does not exist.');
         }
 

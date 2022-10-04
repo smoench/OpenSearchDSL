@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Metric;
  */
 class AvgAggregation extends StatsAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'avg';

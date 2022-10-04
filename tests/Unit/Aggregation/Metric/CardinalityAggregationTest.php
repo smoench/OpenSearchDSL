@@ -54,9 +54,6 @@ class CardinalityAggregationTest extends TestCase
 
     /**
      * Tests if CardinalityAggregation#getArray throws exception when expected.
-     *
-     *
-     *
      */
     public function testGetArrayException()
     {

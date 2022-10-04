@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Bucketing;
  */
 class SignificantTextAggregation extends TermsAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'significant_text';

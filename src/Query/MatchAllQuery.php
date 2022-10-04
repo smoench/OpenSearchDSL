@@ -40,6 +40,8 @@ class MatchAllQuery implements BuilderInterface
     public function toArray(): array
     {
         $params = $this->getParameters();
-        return [$this->getType() => empty($params) ? new stdClass() : $params];
+        return [
+            $this->getType() => empty($params) ? new stdClass() : $params,
+        ];
     }
 }

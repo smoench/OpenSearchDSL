@@ -25,30 +25,31 @@ class GeoPolygonQuery implements BuilderInterface
 
     /**
      * @param string $field
-     * @param array  $points
-     * @param array  $parameters
      */
-    public function __construct(private $field, private array $points = [], array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private array $points = [],
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'geo_polygon';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
-        $query = [$this->field => ['points' => $this->points]];
+        $query = [
+            $this->field => [
+                'points' => $this->points,
+            ],
+        ];
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

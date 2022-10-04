@@ -23,7 +23,9 @@ class MatchAllQueryTest extends TestCase
     public function testToArrayWhenThereAreNoParams()
     {
         $query = new MatchAllQuery();
-        $this->assertEquals(['match_all' => new stdClass()], $query->toArray());
+        $this->assertEquals([
+            'match_all' => new stdClass(),
+        ], $query->toArray());
     }
 
     /**
@@ -31,8 +33,12 @@ class MatchAllQueryTest extends TestCase
      */
     public function testToArrayWithParams()
     {
-        $params = ['boost' => 5];
+        $params = [
+            'boost' => 5,
+        ];
         $query = new MatchAllQuery($params);
-        $this->assertEquals(['match_all' => $params], $query->toArray());
+        $this->assertEquals([
+            'match_all' => $params,
+        ], $query->toArray());
     }
 }

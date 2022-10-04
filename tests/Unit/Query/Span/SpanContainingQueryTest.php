@@ -33,10 +33,14 @@ class SpanContainingQueryTest extends TestCase
         $result = [
             'span_containing' => [
                 'little' => [
-                    'span_term' => ['user' => 'foo'],
+                    'span_term' => [
+                        'user' => 'foo',
+                    ],
                 ],
                 'big' => [
-                    'span_term' => ['user' => 'bar'],
+                    'span_term' => [
+                        'user' => 'bar',
+                    ],
                 ],
             ],
         ];
@@ -54,7 +58,11 @@ class SpanContainingQueryTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('toArray')
-            ->willReturn(['span_term' => ['user' => $value]]);
+            ->willReturn([
+                'span_term' => [
+                    'user' => $value,
+                ],
+            ]);
         return $mock;
     }
 }

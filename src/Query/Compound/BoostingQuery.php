@@ -27,17 +27,11 @@ class BoostingQuery implements BuilderInterface
     ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'boosting';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -46,6 +40,8 @@ class BoostingQuery implements BuilderInterface
             'negative_boost' => $this->negativeBoost,
         ];
 
-        return [$this->getType() => $query];
+        return [
+            $this->getType() => $query,
+        ];
     }
 }

@@ -19,18 +19,17 @@ class NestedSortTest extends TestCase
 {
     /**
      * Test for single nested.
-     *
      */
     public function testSingle()
     {
         $query = new NestedSort('somePath', new TermQuery('somePath.id', 10));
         $expected = [
-            'path'   => 'somePath',
+            'path' => 'somePath',
             'filter' => [
                 'term' => [
                     'somePath.id' => 10,
-                ]
-            ]
+                ],
+            ],
         ];
         $result = $query->toArray();
         $this->assertEquals($expected, $result);
@@ -38,13 +37,12 @@ class NestedSortTest extends TestCase
 
     /**
      * Test for single nested, no filter.
-     *
      */
     public function testNoFilter()
     {
         $query = new NestedSort('somePath');
         $expected = [
-            'path'   => 'somePath',
+            'path' => 'somePath',
         ];
         $result = $query->toArray();
         $this->assertEquals($expected, $result);
@@ -52,7 +50,6 @@ class NestedSortTest extends TestCase
 
     /**
      * Test for single nested.
-     *
      */
     public function testMultipleNesting()
     {
@@ -62,28 +59,28 @@ class NestedSortTest extends TestCase
         $nestedFilter1->setNestedFilter($nestedFilter2);
         $query->setNestedFilter($nestedFilter1);
         $expected = [
-            'path'   => 'somePath',
+            'path' => 'somePath',
             'filter' => [
                 'term' => [
                     'somePath.id' => 10,
-                ]
+                ],
             ],
             'nested' => [
-                'path'   => 'secondPath',
+                'path' => 'secondPath',
                 'filter' => [
                     'term' => [
                         'secondPath.foo' => 'bar',
-                    ]
+                    ],
                 ],
                 'nested' => [
-                    'path'   => 'thirdPath',
+                    'path' => 'thirdPath',
                     'filter' => [
                         'term' => [
                             'thirdPath.x' => 'y',
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ];
         $result = $query->toArray();
         $this->assertEquals($expected, $result);

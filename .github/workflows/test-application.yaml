@@ -37,8 +37,8 @@ jobs:
         - name: Install dependencies
           run: composer install --no-interaction --prefer-dist
 
-        - name: Fix code style
-          run: vendor/bin/phpcs -p --standard=PSR12 --ignore=vendor/ ./
+        - name: Check code style
+          run: vendor/bin/ecs
 
     phpstan:
       runs-on: ubuntu-latest

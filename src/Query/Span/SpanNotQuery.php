@@ -42,6 +42,8 @@ class SpanNotQuery implements SpanQueryInterface
             'exclude' => $this->exclude->toArray(),
         ];
 
-        return [$this->getType() => $this->processArray($query)];
+        return [
+            $this->getType() => $this->processArray($query),
+        ];
     }
 }

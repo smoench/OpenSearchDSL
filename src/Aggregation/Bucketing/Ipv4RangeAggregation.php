@@ -61,7 +61,9 @@ class Ipv4RangeAggregation extends AbstractAggregation
      */
     public function addMask(string $mask): self
     {
-        $this->ranges[] = ['mask' => $mask];
+        $this->ranges[] = [
+            'mask' => $mask,
+        ];
 
         return $this;
     }
@@ -73,7 +75,7 @@ class Ipv4RangeAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if ($this->getField() && !empty($this->ranges)) {
+        if ($this->getField() && ! empty($this->ranges)) {
             return [
                 'field' => $this->getField(),
                 'ranges' => array_values($this->ranges),

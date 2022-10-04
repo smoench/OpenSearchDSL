@@ -27,6 +27,7 @@ class PercentilesAggregation extends AbstractAggregation
     use ScriptAwareTrait;
 
     private ?array $percents = null;
+
     private ?int $compression = null;
 
     public function __construct(
@@ -82,7 +83,7 @@ class PercentilesAggregation extends AbstractAggregation
                 'field' => $this->getField(),
                 'script' => $this->getScript(),
             ],
-            fn($val) => $val || is_numeric($val)
+            fn ($val) => $val || is_numeric($val)
         );
 
         $this->isRequiredParametersSet($out);
@@ -95,7 +96,7 @@ class PercentilesAggregation extends AbstractAggregation
      */
     private function isRequiredParametersSet(array $a): void
     {
-        if (!array_key_exists('field', $a) && !array_key_exists('script', $a)) {
+        if (! array_key_exists('field', $a) && ! array_key_exists('script', $a)) {
             throw new LogicException('Percentiles aggregation must have field or script set.');
         }
     }

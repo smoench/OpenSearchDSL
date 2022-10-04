@@ -25,25 +25,20 @@ class NestedQuery implements BuilderInterface
 
     /**
      * @param string           $path
-     * @param BuilderInterface $query
-     * @param array            $parameters
      */
-    public function __construct(private $path, private BuilderInterface $query, array $parameters = [])
-    {
+    public function __construct(
+        private $path,
+        private BuilderInterface $query,
+        array $parameters = []
+    ) {
         $this->parameters = $parameters;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'nested';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         return [
@@ -52,7 +47,7 @@ class NestedQuery implements BuilderInterface
                     'path' => $this->path,
                     'query' => $this->query->toArray(),
                 ]
-            )
+            ),
         ];
     }
 

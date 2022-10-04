@@ -50,9 +50,6 @@ class BucketSelectorAggregationTest extends TestCase
     /**
      * Tests if the exception is thrown in getArray method if no
      * buckets_path or script is set
-     *
-     *
-     *
      */
     public function testGetArrayException()
     {

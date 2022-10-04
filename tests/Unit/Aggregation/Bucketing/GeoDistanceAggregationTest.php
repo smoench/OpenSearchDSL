@@ -70,8 +70,11 @@ class GeoDistanceAggregationTest extends TestCase
                 'origin' => '52.3760, 4.894',
                 'unit' => 'mi',
                 'distance_type' => 'plane',
-                'ranges' => [['from' => 100, 'to' => 300]],
-            ]
+                'ranges' => [[
+                    'from' => 100,
+                    'to' => 300,
+                ]],
+            ],
         ];
     }
 
@@ -116,9 +119,16 @@ class GeoDistanceAggregationTest extends TestCase
             'fieldName',
             'originValue',
             [
-                ['from' => 'value'],
-                ['to' => 'value'],
-                ['from' => 'value', 'to' => 'value2'],
+                [
+                    'from' => 'value',
+                ],
+                [
+                    'to' => 'value',
+                ],
+                [
+                    'from' => 'value',
+                    'to' => 'value2',
+                ],
             ],
             'unitValue',
             'distanceTypeValue'
@@ -132,9 +142,16 @@ class GeoDistanceAggregationTest extends TestCase
                     'unit' => 'unitValue',
                     'distance_type' => 'distanceTypeValue',
                     'ranges' => [
-                        ['from' => 'value'],
-                        ['to' => 'value'],
-                        ['from' => 'value', 'to' => 'value2'],
+                        [
+                            'from' => 'value',
+                        ],
+                        [
+                            'to' => 'value',
+                        ],
+                        [
+                            'from' => 'value',
+                            'to' => 'value2',
+                        ],
                     ],
                 ],
             ],

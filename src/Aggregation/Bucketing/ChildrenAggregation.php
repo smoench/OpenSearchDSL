@@ -56,6 +56,8 @@ class ChildrenAggregation extends AbstractAggregation
             throw new LogicException("Children aggregation `{$this->getName()}` has no aggregations added");
         }
 
-        return ['type' => $this->getChildren()];
+        return [
+            'type' => $this->getChildren(),
+        ];
     }
 }

@@ -46,7 +46,7 @@ class BoolQueryTest extends TestCase
                 new TermQuery('key2', 'value2'),
                 new TermQuery('key3', 'value3'),
             ],
-            BoolQuery::MUST_NOT => new TermQuery('key4', 'value4')
+            BoolQuery::MUST_NOT => new TermQuery('key4', 'value4'),
         ]);
 
         $expected = [
@@ -84,9 +84,6 @@ class BoolQueryTest extends TestCase
 
     /**
      * Tests exception thrown if invalid BoolQuery type key is specified
-     *
-     *
-     *
      */
     public function testBoolConstructorException()
     {
@@ -141,7 +138,9 @@ class BoolQueryTest extends TestCase
     {
         $bool = new BoolQuery();
 
-        $this->assertEquals(['bool' => new stdClass()], $bool->toArray());
+        $this->assertEquals([
+            'bool' => new stdClass(),
+        ], $bool->toArray());
     }
 
     /**
@@ -210,7 +209,10 @@ class BoolQueryTest extends TestCase
         $bool->add($query, BoolQuery::MUST, 'query');
         $bool->add($query2, BoolQuery::SHOULD, 'query2');
 
-        $this->assertSame(['query' => $query, 'query2' => $query2], $bool->getQueries());
+        $this->assertSame([
+            'query' => $query,
+            'query2' => $query2,
+        ], $bool->getQueries());
     }
 
     /**
@@ -235,6 +237,8 @@ class BoolQueryTest extends TestCase
         $bool->add($query, BoolQuery::MUST, 'query');
         $bool->add($query2, BoolQuery::SHOULD, 'query2');
 
-        $this->assertSame(['query' => $query], $bool->getQueries(BoolQuery::MUST));
+        $this->assertSame([
+            'query' => $query,
+        ], $bool->getQueries(BoolQuery::MUST));
     }
 }

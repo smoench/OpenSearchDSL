@@ -26,16 +26,30 @@ class DisMaxQueryTest extends TestCase
         $mock
             ->expects($this->any())
             ->method('toArray')
-            ->willReturn(['term' => ['foo' => 'bar']]);
+            ->willReturn([
+                'term' => [
+                    'foo' => 'bar',
+                ],
+            ]);
 
-        $query = new DisMaxQuery(['boost' => 1.2]);
+        $query = new DisMaxQuery([
+            'boost' => 1.2,
+        ]);
         $query->addQuery($mock);
         $query->addQuery($mock);
         $expected = [
             'dis_max' => [
                 'queries' => [
-                    ['term' => ['foo' => 'bar']],
-                    ['term' => ['foo' => 'bar']],
+                    [
+                        'term' => [
+                            'foo' => 'bar',
+                        ],
+                    ],
+                    [
+                        'term' => [
+                            'foo' => 'bar',
+                        ],
+                    ],
                 ],
                 'boost' => 1.2,
             ],

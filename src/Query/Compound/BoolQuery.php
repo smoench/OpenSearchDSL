@@ -26,8 +26,11 @@ class BoolQuery implements BuilderInterface
     use ParametersTrait;
 
     public const MUST = 'must';
+
     public const MUST_NOT = 'must_not';
+
     public const SHOULD = 'should';
+
     public const FILTER = 'filter';
 
     /**
@@ -88,7 +91,7 @@ class BoolQuery implements BuilderInterface
      */
     public function add(BuilderInterface $query, string $type = self::MUST, ?string $key = null): string
     {
-        if (!in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER])) {
+        if (! in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER])) {
             throw new UnexpectedValueException(sprintf('The bool operator %s is not supported', $type));
         }
 
@@ -101,9 +104,6 @@ class BoolQuery implements BuilderInterface
         return $key;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         if (
@@ -129,7 +129,9 @@ class BoolQuery implements BuilderInterface
             $output = new stdClass();
         }
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 
     public function getType(): string

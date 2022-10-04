@@ -103,9 +103,6 @@ class TopHitsAggregation extends AbstractAggregation
         return $this->size;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'top_hits';

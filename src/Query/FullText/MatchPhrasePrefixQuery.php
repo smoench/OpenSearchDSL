@@ -19,9 +19,6 @@ namespace OpenSearchDSL\Query\FullText;
  */
 class MatchPhrasePrefixQuery extends MatchQuery
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'match_phrase_prefix';

@@ -23,8 +23,6 @@ class DateHistogramAggregationTest extends TestCase
 {
     /**
      * Tests if ChildrenAggregation#getArray throws exception when expected.
-     *
-     *
      */
     public function testGetArrayException()
     {
@@ -56,7 +54,10 @@ class DateHistogramAggregationTest extends TestCase
         $aggregation->setField('date');
         $aggregation->setInterval('month');
         $result = $aggregation->getArray();
-        $expected = ['field' => 'date', 'interval' => 'month'];
+        $expected = [
+            'field' => 'date',
+            'interval' => 'month',
+        ];
         $this->assertEquals($expected, $result);
     }
 }

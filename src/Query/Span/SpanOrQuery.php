@@ -27,9 +27,6 @@ class SpanOrQuery implements SpanQueryInterface
      */
     private array $queries = [];
 
-    /**
-     * @param array $parameters
-     */
     public function __construct(array $parameters = [])
     {
         $this->setParameters($parameters);
@@ -37,8 +34,6 @@ class SpanOrQuery implements SpanQueryInterface
 
     /**
      * Add span query.
-     *
-     * @param SpanQueryInterface $query
      *
      * @return $this
      */
@@ -57,17 +52,11 @@ class SpanOrQuery implements SpanQueryInterface
         return $this->queries;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'span_or';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [];
@@ -76,6 +65,8 @@ class SpanOrQuery implements SpanQueryInterface
         }
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

@@ -25,21 +25,16 @@ class TypeQuery implements BuilderInterface
      *
      * @param string $type Type name
      */
-    public function __construct(private $type)
-    {
+    public function __construct(
+        private $type
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'type';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         return [

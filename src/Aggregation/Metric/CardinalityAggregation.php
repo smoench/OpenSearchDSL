@@ -30,9 +30,6 @@ class CardinalityAggregation extends AbstractAggregation
 
     private ?bool $rehash = null;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArray(): array
     {
         $out = array_filter(
@@ -42,7 +39,7 @@ class CardinalityAggregation extends AbstractAggregation
                 'precision_threshold' => $this->getPrecisionThreshold(),
                 'rehash' => $this->isRehash(),
             ],
-            fn($val) => $val || is_bool($val)
+            fn ($val) => $val || is_bool($val)
         );
 
         $this->checkRequiredFields($out);
@@ -90,9 +87,6 @@ class CardinalityAggregation extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'cardinality';
@@ -107,7 +101,7 @@ class CardinalityAggregation extends AbstractAggregation
      */
     private function checkRequiredFields($fields)
     {
-        if (!array_key_exists('field', $fields) && !array_key_exists('script', $fields)) {
+        if (! array_key_exists('field', $fields) && ! array_key_exists('script', $fields)) {
             throw new LogicException('Cardinality aggregation must have field or script set.');
         }
     }

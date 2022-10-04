@@ -24,6 +24,7 @@ class RangeAggregation extends AbstractAggregation
     use BucketingTrait;
 
     private array $ranges = [];
+
     private bool $keyed = false;
 
     public function __construct(string $name, ?string $field = null, array $ranges = [], bool $keyed = false)
@@ -59,7 +60,7 @@ class RangeAggregation extends AbstractAggregation
             ],
         );
 
-        if (!empty($key)) {
+        if (! empty($key)) {
             $range['key'] = $key;
         }
 
@@ -74,7 +75,10 @@ class RangeAggregation extends AbstractAggregation
     public function removeRange(float|int|null $from, float|int|null $to): bool
     {
         foreach ($this->ranges as $key => $range) {
-            if (array_diff_assoc(array_filter(['from' => $from, 'to' => $to]), $range) === []) {
+            if (array_diff_assoc(array_filter([
+                'from' => $from,
+                'to' => $to,
+            ]), $range) === []) {
                 unset($this->ranges[$key]);
 
                 return true;

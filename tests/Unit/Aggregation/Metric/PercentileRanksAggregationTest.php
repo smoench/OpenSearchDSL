@@ -35,8 +35,6 @@ class PercentileRanksAggregationTest extends TestCase
 
     /**
      * Tests if exception is thrown when required parameters not set.
-     *
-     *
      */
     public function testIfPercentileRanksAggregationThrowsAnException()
     {
@@ -46,8 +44,6 @@ class PercentileRanksAggregationTest extends TestCase
 
     /**
      * Tests exception when only field is set.
-     *
-     *
      */
     public function testIfExceptionIsThrownWhenFieldSetAndValueNotSet()
     {
@@ -58,8 +54,6 @@ class PercentileRanksAggregationTest extends TestCase
 
     /**
      * Tests exception when only value is set.
-     *
-     *
      */
     public function testIfExceptionIsThrownWhenScriptSetAndValueNotSet()
     {

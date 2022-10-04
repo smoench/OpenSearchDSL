@@ -31,7 +31,11 @@ class TopHitsAggregationTest extends TestCase
         $expected = [
             'top_hits' => [
                 'sort' => [
-                    ['acme' => ['order' => 'asc']],
+                    [
+                        'acme' => [
+                            'order' => 'asc',
+                        ],
+                    ],
                 ],
                 'size' => 1,
                 'from' => 1,
@@ -47,7 +51,9 @@ class TopHitsAggregationTest extends TestCase
     public function testParametersAddition()
     {
         $aggregation = new TopHitsAggregation('acme', 0, 1);
-        $aggregation->addParameter('_source', ['include' => ['title']]);
+        $aggregation->addParameter('_source', [
+            'include' => ['title'],
+        ]);
 
         $expected = [
             'top_hits' => [

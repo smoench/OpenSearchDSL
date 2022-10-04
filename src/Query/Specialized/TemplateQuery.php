@@ -25,7 +25,9 @@ class TemplateQuery implements BuilderInterface
     use ParametersTrait;
 
     private ?string $file = null;
+
     private ?string $inline = null;
+
     private array $params;
 
     /**
@@ -89,7 +91,7 @@ class TemplateQuery implements BuilderInterface
             ]
         );
 
-        if (!isset($output['file']) && !isset($output['inline'])) {
+        if (! isset($output['file']) && ! isset($output['inline'])) {
             throw new InvalidArgumentException(
                 'Template query requires that either `inline` or `file` parameters are set'
             );
@@ -97,6 +99,8 @@ class TemplateQuery implements BuilderInterface
 
         $output = $this->processArray($output);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

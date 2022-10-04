@@ -30,8 +30,6 @@ class DisMaxQuery implements BuilderInterface
 
     /**
      * Initializes Dis Max query.
-     *
-     * @param array $parameters
      */
     public function __construct(array $parameters = [])
     {
@@ -40,7 +38,6 @@ class DisMaxQuery implements BuilderInterface
 
     /**
      * Add query.
-     *
      *
      * @return DisMaxQuery
      */
@@ -51,25 +48,23 @@ class DisMaxQuery implements BuilderInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'dis_max';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [];
         foreach ($this->queries as $type) {
             $query[] = $type->toArray();
         }
-        $output = $this->processArray(['queries' => $query]);
+        $output = $this->processArray([
+            'queries' => $query,
+        ]);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }
