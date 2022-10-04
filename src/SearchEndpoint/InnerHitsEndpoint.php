@@ -24,11 +24,11 @@ class InnerHitsEndpoint extends AbstractSearchEndpoint
      */
     public const NAME = 'inner_hits';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize(NormalizerInterface $normalizer, $format = null, array $context = []): array|string|int|float|bool
-    {
+    public function normalize(
+        NormalizerInterface $normalizer,
+        $format = null,
+        array $context = []
+    ): array|string|int|float|bool {
         $output = [];
         if ($this->getAll() !== []) {
             /** @var NestedInnerHit $innerHit */

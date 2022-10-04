@@ -12,6 +12,7 @@
 namespace OpenSearchDSL\Aggregation;
 
 use OpenSearchDSL\BuilderBag;
+use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\NameAwareTrait;
 use OpenSearchDSL\NamedBuilderInterface;
 use OpenSearchDSL\ParametersTrait;
@@ -56,14 +57,14 @@ abstract class AbstractAggregation implements NamedBuilderInterface
         }
 
         $this->aggregations->add($abstractAggregation);
-        
+
         return $this;
     }
 
     /**
      * Returns all sub aggregations.
      *
-     * @return BuilderBag[]|NamedBuilderInterface[]
+     * @return BuilderInterface[]
      */
     public function getAggregations(): array
     {
@@ -76,11 +77,8 @@ abstract class AbstractAggregation implements NamedBuilderInterface
 
     /**
      * Returns sub aggregation.
-     * @param string $name Aggregation name to return.
-     *
-     * @return AbstractAggregation|NamedBuilderInterface|null
      */
-    public function getAggregation($name)
+    public function getAggregation(string $name): ?BuilderInterface
     {
         if ($this->aggregations && $this->aggregations->has($name)) {
             return $this->aggregations->get($name);
@@ -112,7 +110,7 @@ abstract class AbstractAggregation implements NamedBuilderInterface
      *
      * @return array
      */
-    protected function collectNestedAggregations()
+    protected function collectNestedAggregations(): array
     {
         $result = [];
         /** @var AbstractAggregation $aggregation */

@@ -18,6 +18,9 @@ use stdClass;
  */
 trait ParametersTrait
 {
+    /**
+     * @var array<string, array|string|int|float|bool|stdClass>
+     */
     private array $parameters = [];
 
     public function hasParameter(string $name): bool
@@ -39,6 +42,9 @@ trait ParametersTrait
         return $this->parameters[$name];
     }
 
+    /**
+     * @return array<string, array|string|int|float|bool|stdClass>
+     */
     public function getParameters(): array
     {
         return $this->parameters;

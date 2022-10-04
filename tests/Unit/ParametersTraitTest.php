@@ -20,7 +20,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ParametersTraitTest extends TestCase
 {
-    /** @var ParametersTrait&MockObject  */
+    /** @var ParametersTrait&MockObject */
     private $parametersTraitMock;
 
     protected function setUp(): void
@@ -31,12 +31,12 @@ class ParametersTraitTest extends TestCase
     /**
      * Tests addParameter method.
      */
-    public function testGetAndAddParameter()
+    public function testGetAndAddParameter(): void
     {
-        $this->assertTrue(is_object($this->parametersTraitMock->addParameter('acme', 123)));
+        $this->assertIsObject($this->parametersTraitMock->addParameter('acme', 123));
         $this->assertEquals(123, $this->parametersTraitMock->getParameter('acme'));
         $this->parametersTraitMock->addParameter('bar', 321);
         $this->assertEquals(321, $this->parametersTraitMock->getParameter('bar'));
-        $this->assertTrue(is_object($this->parametersTraitMock->removeParameter('acme')));
+        $this->assertIsObject($this->parametersTraitMock->removeParameter('acme'));
     }
 }

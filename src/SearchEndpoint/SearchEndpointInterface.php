@@ -24,55 +24,48 @@ interface SearchEndpointInterface extends NormalizableInterface
      * Adds builder to search endpoint.
      *
      * @param BuilderInterface $builder Builder to add.
-     * @param array            $key     Additional parameters relevant to builder.
+     * @param string|null $key Optional key for builder to add.
      *
      * @return string Key of added builder.
      */
-    public function add(BuilderInterface $builder, $key = null);
+    public function add(BuilderInterface $builder, ?string $key = null): string;
 
     /**
      * Adds builder to search endpoint's specific bool type container.
      *
-     * @param BuilderInterface $builder  Builder to add.
-     * @param array            $boolType Bool type for query or filter. If bool type is left null
-     *                                       it will be treated as MUST.
-     * @param array            $key      Additional parameters relevant to builder.
+     * @param BuilderInterface $builder Builder to add.
+     * @param string $boolType Bool type for query or filter.
+     * @param string|null $key Additional parameters relevant to builder.
      *
      * @return string Key of added builder.
      */
-    public function addToBool(BuilderInterface $builder, $boolType = null, $key = null);
+    public function addToBool(
+        BuilderInterface $builder,
+        string $boolType = BoolQuery::MUST,
+        ?string $key = null
+    ): string;
 
     /**
      * Removes contained builder.
-     *
-     * @param int $key
-     *
-     * @return $this
      */
-    public function remove($key);
+    public function remove(string $key): static;
 
     /**
      * Returns contained builder or null if Builder is not found.
-     *
-     * @param int $key
-     *
-     * @return BuilderInterface|null
      */
-    public function get($key);
+    public function get(string $key): ?BuilderInterface;
 
     /**
      * Returns contained builder or null if Builder is not found.
      *
      * @param string|null $boolType If bool type is left null it will return all builders from container.
      *
-     * @return array
+     * @return array<string, BuilderInterface>
      */
-    public function getAll($boolType = null);
+    public function getAll(?string $boolType = null): array;
 
     /**
      * Returns Bool filter or query instance with all builder objects inside.
-     *
-     * @return BoolQuery
      */
-    public function getBool();
+    public function getBool(): ?BoolQuery;
 }

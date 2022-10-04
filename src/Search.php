@@ -28,6 +28,7 @@ use OpenSearchDSL\SearchEndpoint\SortEndpoint;
 use OpenSearchDSL\SearchEndpoint\SuggestEndpoint;
 use OpenSearchDSL\Serializer\Normalizer\CustomReferencedNormalizer;
 use OpenSearchDSL\Serializer\OrderedSerializer;
+use stdClass;
 use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 
 /**
@@ -121,6 +122,8 @@ class Search
      * URI parameters alongside Request body search.
      *
      * @link https://www.elastic.co/guide/en/elasticsearch/reference/current/search-uri-request.html
+     *
+     * @var array<string, string|array|bool>
      */
     private array $uriParams = [];
 
@@ -140,29 +143,20 @@ class Search
      */
     private array $endpoints = [];
 
-    /**
-     * Constructor to initialize static properties
-     */
     public function __construct()
     {
         $this->initializeSerializer();
     }
 
-    /**
-     * Wakeup method to initialize static properties
-     */
     public function __wakeup()
     {
         $this->initializeSerializer();
     }
 
-    /**
-     * Initializes the serializer
-     */
-    private function initializeSerializer()
+    private function initializeSerializer(): void
     {
-        if (static::$serializer === null) {
-            static::$serializer = new OrderedSerializer(
+        if (self::$serializer === null) {
+            self::$serializer = new OrderedSerializer(
                 [
                     new CustomReferencedNormalizer(),
                     new CustomNormalizer(),
@@ -176,19 +170,12 @@ class Search
      *
      * @param string $type Endpoint type.
      */
-    public function destroyEndpoint($type)
+    public function destroyEndpoint(string $type): void
     {
         unset($this->endpoints[$type]);
     }
 
-    /**
-     * Adds query to the search.
-     *
-     * @param string           $boolType
-     * @param string           $key
-     * @return $this
-     */
-    public function addQuery(BuilderInterface $query, $boolType = BoolQuery::MUST, $key = null)
+    public function addQuery(BuilderInterface $query, string $boolType = BoolQuery::MUST, ?string $key = null): self
     {
         $endpoint = $this->getEndpoint(QueryEndpoint::NAME);
         $endpoint->addToBool($query, $boolType, $key);
@@ -196,28 +183,15 @@ class Search
         return $this;
     }
 
-    /**
-     * Returns endpoint instance.
-     *
-     * @param string $type Endpoint type.
-     *
-     * @return SearchEndpointInterface
-     */
-    private function getEndpoint($type)
+    private function getEndpoint(string $type): SearchEndpointInterface
     {
-        if (!array_key_exists($type, $this->endpoints)) {
-            $this->endpoints[$type] = SearchEndpointFactory::get($type);
-        }
-
-        return $this->endpoints[$type];
+        return $this->endpoints[$type] ??= SearchEndpointFactory::get($type);
     }
 
     /**
      * Returns queries inside BoolQuery instance.
-     *
-     * @return BoolQuery
      */
-    public function getQueries()
+    public function getQueries(): ?BoolQuery
     {
         $endpoint = $this->getEndpoint(QueryEndpoint::NAME);
 
@@ -226,11 +200,8 @@ class Search
 
     /**
      * Sets query endpoint parameters.
-     *
-     *
-     * @return $this
      */
-    public function setQueryParameters(array $parameters)
+    public function setQueryParameters(array $parameters): self
     {
         $this->setEndpointParameters(QueryEndpoint::NAME, $parameters);
 
@@ -240,11 +211,9 @@ class Search
     /**
      * Sets parameters to the endpoint.
      *
-     * @param string $endpointName
-     *
-     * @return $this
+     * @param array<string, array|string|int|float|bool|stdClass> $parameters
      */
-    public function setEndpointParameters($endpointName, array $parameters)
+    public function setEndpointParameters(string $endpointName, array $parameters): self
     {
         /** @var AbstractSearchEndpoint $endpoint */
         $endpoint = $this->getEndpoint($endpointName);
@@ -255,18 +224,12 @@ class Search
 
     /**
      * Adds a post filter to search.
-     *
-     * @param BuilderInterface $filter   Filter.
-     * @param string           $boolType Example boolType values:
-     *                                   - must
-     *                                   - must_not
-     *                                   - should.
-     * @param string           $key
-     *
-     * @return $this.
      */
-    public function addPostFilter(BuilderInterface $filter, $boolType = BoolQuery::MUST, $key = null)
-    {
+    public function addPostFilter(
+        BuilderInterface $filter,
+        string $boolType = BoolQuery::MUST,
+        ?string $key = null
+    ): self {
         $this
             ->getEndpoint(PostFilterEndpoint::NAME)
             ->addToBool($filter, $boolType, $key);
@@ -276,10 +239,8 @@ class Search
 
     /**
      * Returns queries inside BoolFilter instance.
-     *
-     * @return BoolQuery
      */
-    public function getPostFilters()
+    public function getPostFilters(): ?BoolQuery
     {
         $endpoint = $this->getEndpoint(PostFilterEndpoint::NAME);
 
@@ -288,11 +249,8 @@ class Search
 
     /**
      * Sets post filter endpoint parameters.
-     *
-     *
-     * @return $this
      */
-    public function setPostFilterParameters(array $parameters)
+    public function setPostFilterParameters(array $parameters): self
     {
         $this->setEndpointParameters(PostFilterEndpoint::NAME, $parameters);
 
@@ -301,11 +259,8 @@ class Search
 
     /**
      * Adds aggregation into search.
-     *
-     *
-     * @return $this
      */
-    public function addAggregation(AbstractAggregation $aggregation)
+    public function addAggregation(AbstractAggregation $aggregation): self
     {
         $this->getEndpoint(AggregationsEndpoint::NAME)->add($aggregation, $aggregation->getName());
 
@@ -317,18 +272,15 @@ class Search
      *
      * @return BuilderInterface[]
      */
-    public function getAggregations()
+    public function getAggregations(): array
     {
         return $this->getEndpoint(AggregationsEndpoint::NAME)->getAll();
     }
 
     /**
      * Adds inner hit into search.
-     *
-     *
-     * @return $this
      */
-    public function addInnerHit(NestedInnerHit $innerHit)
+    public function addInnerHit(NestedInnerHit $innerHit): self
     {
         $this->getEndpoint(InnerHitsEndpoint::NAME)->add($innerHit, $innerHit->getName());
 
@@ -338,20 +290,17 @@ class Search
     /**
      * Returns all inner hits.
      *
-     * @return BuilderInterface[]
+     * @return array<string, BuilderInterface>
      */
-    public function getInnerHits()
+    public function getInnerHits(): array
     {
         return $this->getEndpoint(InnerHitsEndpoint::NAME)->getAll();
     }
 
     /**
      * Adds sort to search.
-     *
-     *
-     * @return $this
      */
-    public function addSort(BuilderInterface $sort)
+    public function addSort(BuilderInterface $sort): self
     {
         $this->getEndpoint(SortEndpoint::NAME)->add($sort);
 
@@ -363,19 +312,15 @@ class Search
      *
      * @return BuilderInterface[]
      */
-    public function getSorts()
+    public function getSorts(): array
     {
         return $this->getEndpoint(SortEndpoint::NAME)->getAll();
     }
 
     /**
      * Allows to highlight search results on one or more fields.
-     *
-     * @param Highlight $highlight
-     *
-     * @return $this.
      */
-    public function addHighlight($highlight)
+    public function addHighlight(Highlight $highlight): self
     {
         $this->getEndpoint(HighlightEndpoint::NAME)->add($highlight);
 
@@ -384,10 +329,8 @@ class Search
 
     /**
      * Returns highlight builder.
-     *
-     * @return BuilderInterface
      */
-    public function getHighlights()
+    public function getHighlights(): ?BuilderInterface
     {
         /** @var HighlightEndpoint $highlightEndpoint */
         $highlightEndpoint = $this->getEndpoint(HighlightEndpoint::NAME);
@@ -397,12 +340,8 @@ class Search
 
     /**
     * Adds suggest into search.
-    *
-    * @param BuilderInterface $suggest
-    *
-    * @return $this
     */
-    public function addSuggest(NamedBuilderInterface $suggest)
+    public function addSuggest(NamedBuilderInterface $suggest): self
     {
         $this->getEndpoint(SuggestEndpoint::NAME)->add($suggest, $suggest->getName());
 
@@ -414,258 +353,161 @@ class Search
     *
     * @return BuilderInterface[]
     */
-    public function getSuggests()
+    public function getSuggests(): array
     {
         return $this->getEndpoint(SuggestEndpoint::NAME)->getAll();
     }
 
-    /**
-     * @return null|int
-     */
-    public function getFrom()
+    public function getFrom(): ?int
     {
         return $this->from;
     }
 
-    /**
-     * @param null|int $from
-     *
-     * @return $this
-     */
-    public function setFrom($from)
+    public function setFrom(?int $from): self
     {
         $this->from = $from;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isTrackTotalHits()
+    public function isTrackTotalHits(): ?bool
     {
         return $this->trackTotalHits;
     }
 
-    /**
-     * @return $this
-     */
-    public function setTrackTotalHits(bool $trackTotalHits)
+    public function setTrackTotalHits(bool $trackTotalHits): self
     {
         $this->trackTotalHits = $trackTotalHits;
 
         return $this;
     }
 
-    /**
-     * @return null|int
-     */
-    public function getSize()
+    public function getSize(): ?int
     {
         return $this->size;
     }
 
-    /**
-     * @param null|int $size
-     *
-     * @return $this
-     */
-    public function setSize($size)
+    public function setSize(?int $size): self
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function isSource(): array|bool|string
+    public function isSource(): array|bool|string|null
     {
         return $this->source;
     }
 
-    /**
-     * @return $this
-     */
-    public function setSource(array|bool|string $source)
+    public function setSource(array|bool|string $source): self
     {
         $this->source = $source;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getStoredFields()
+    public function getStoredFields(): ?array
     {
         return $this->storedFields;
     }
 
-    /**
-     * @param array $storedFields
-     *
-     * @return $this
-     */
-    public function setStoredFields($storedFields)
+    public function setStoredFields(array $storedFields): self
     {
         $this->storedFields = $storedFields;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getScriptFields()
+    public function getScriptFields(): ?array
     {
         return $this->scriptFields;
     }
 
-    /**
-     * @param array $scriptFields
-     *
-     * @return $this
-     */
-    public function setScriptFields($scriptFields)
+    public function setScriptFields(array $scriptFields): self
     {
         $this->scriptFields = $scriptFields;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getDocValueFields()
+    public function getDocValueFields(): ?array
     {
         return $this->docValueFields;
     }
 
-    /**
-     * @param array $docValueFields
-     *
-     * @return $this
-     */
-    public function setDocValueFields($docValueFields)
+    public function setDocValueFields(array $docValueFields): self
     {
         $this->docValueFields = $docValueFields;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isExplain()
+    public function isExplain(): ?bool
     {
         return $this->explain;
     }
 
-    /**
-     * @param bool $explain
-     *
-     * @return $this
-     */
-    public function setExplain($explain)
+    public function setExplain(bool $explain): self
     {
         $this->explain = $explain;
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function isVersion()
+    public function isVersion(): ?bool
     {
         return $this->version;
     }
 
-    /**
-     * @param bool $version
-     *
-     * @return $this
-     */
-    public function setVersion($version)
+    public function setVersion(bool $version): self
     {
         $this->version = $version;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getIndicesBoost()
+    public function getIndicesBoost(): ?array
     {
         return $this->indicesBoost;
     }
 
-    /**
-     * @param array $indicesBoost
-     *
-     * @return $this
-     */
-    public function setIndicesBoost($indicesBoost)
+    public function setIndicesBoost(array $indicesBoost): self
     {
         $this->indicesBoost = $indicesBoost;
 
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function getMinScore()
+    public function getMinScore(): ?int
     {
         return $this->minScore;
     }
 
-    /**
-     * @param int $minScore
-     *
-     * @return $this
-     */
-    public function setMinScore($minScore)
+    public function setMinScore(int $minScore): self
     {
         $this->minScore = $minScore;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getSearchAfter()
+    public function getSearchAfter(): ?array
     {
         return $this->searchAfter;
     }
 
-    /**
-     * @param array $searchAfter
-     *
-     * @return $this
-     */
-    public function setSearchAfter($searchAfter)
+    public function setSearchAfter(array $searchAfter): self
     {
         $this->searchAfter = $searchAfter;
 
         return $this;
     }
 
-    /**
-     * @return string
-     */
-    public function getScroll()
+    public function getScroll(): ?string
     {
         return $this->scroll;
     }
 
-    /**
-     * @param string $scroll
-     *
-     * @return $this
-     */
-    public function setScroll($scroll = '5m')
+    public function setScroll(string $scroll = '5m'): self
     {
         $this->scroll = $scroll;
 
@@ -674,14 +516,10 @@ class Search
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return $this
-     */
-    public function addUriParam($name, string|array|bool $value)
+    public function addUriParam(string $name, string|array|bool $value): self
     {
-        if (in_array($name, [
+        if (
+            in_array($name, [
             'q',
             'df',
             'analyzer',
@@ -707,7 +545,8 @@ class Search
             'pre_filter_shard_size',
             'ignore_unavailable',
             'rest_total_hits_as_int',
-        ])) {
+            ])
+        ) {
             $this->uriParams[$name] = $value;
         } else {
             throw new InvalidArgumentException(sprintf('Parameter %s is not supported.', $value));
@@ -719,19 +558,16 @@ class Search
     /**
      * Returns query url parameters.
      *
-     * @return array
+     * @return array<string, string|array|bool>
      */
-    public function getUriParams()
+    public function getUriParams(): array
     {
         return $this->uriParams;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
-        $output = array_filter(static::$serializer->normalize($this->endpoints));
+        $output = array_filter(self::$serializer->normalize($this->endpoints));
 
         $params = [
             'from' => 'from',

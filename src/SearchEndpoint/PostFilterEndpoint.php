@@ -23,11 +23,11 @@ class PostFilterEndpoint extends QueryEndpoint
      */
     public const NAME = 'post_filter';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize(NormalizerInterface $normalizer, $format = null, array $context = []): array|string|int|float|bool
-    {
+    public function normalize(
+        NormalizerInterface $normalizer,
+        $format = null,
+        array $context = []
+    ): array|string|int|float|bool {
         if (!$this->getBool()) {
             return false;
         }
@@ -35,10 +35,7 @@ class PostFilterEndpoint extends QueryEndpoint
         return $this->getBool()->toArray();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getOrder()
+    public function getOrder(): int
     {
         return 1;
     }

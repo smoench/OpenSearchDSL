@@ -11,7 +11,6 @@
 
 namespace OpenSearchDSL\SearchEndpoint;
 
-use OpenSearchDSL\Suggest\TermSuggest;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
@@ -24,14 +23,13 @@ class SuggestEndpoint extends AbstractSearchEndpoint
      */
     public const NAME = 'suggest';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize(NormalizerInterface $normalizer, $format = null, array $context = []): array|string|int|float|bool
-    {
+    public function normalize(
+        NormalizerInterface $normalizer,
+        $format = null,
+        array $context = []
+    ): array|string|int|float|bool {
         $output = [];
         if ($this->getAll() !== []) {
-            /** @var TermSuggest $suggest */
             foreach ($this->getAll() as $suggest) {
                 $output = array_merge($output, $suggest->toArray());
             }

@@ -23,11 +23,11 @@ class SortEndpoint extends AbstractSearchEndpoint
      */
     public const NAME = 'sort';
 
-    /**
-     * {@inheritdoc}
-     */
-    public function normalize(NormalizerInterface $normalizer, $format = null, array $context = []): array|string|int|float|bool
-    {
+    public function normalize(
+        NormalizerInterface $normalizer,
+        $format = null,
+        array $context = []
+    ): array|string|int|float|bool {
         $output = [];
 
         foreach ($this->getAll() as $sort) {
