@@ -26,7 +26,6 @@ class TermQuery implements BuilderInterface
     /**
      * @param string                $field
      * @param scalar $value
-     * @param array                 $parameters
      */
     public function __construct(private $field, private $value, array $parameters = [])
     {

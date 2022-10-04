@@ -14,8 +14,6 @@ class ParentIdQuery implements BuilderInterface
 
     /**
      * @param string $parentId
-     * @param string $childType
-     * @param array  $parameters
      */
     public function __construct(private $parentId, private string $childType, array $parameters = [])
     {

@@ -27,7 +27,6 @@ class GeoBoundingBoxQuery implements BuilderInterface
     /**
      * @param string $field
      * @param array  $values
-     * @param array  $parameters
      */
     public function __construct(private $field, private $values, array $parameters = [])
     {

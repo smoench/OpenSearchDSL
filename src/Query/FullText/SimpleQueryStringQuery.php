@@ -25,7 +25,6 @@ class SimpleQueryStringQuery implements BuilderInterface
 
     /**
      * @param string $query
-     * @param array  $parameters
      */
     public function __construct(private $query, array $parameters = [])
     {

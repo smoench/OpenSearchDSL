@@ -61,12 +61,10 @@ class FunctionScoreQueryTest extends TestCase
     /**
      * Tests addRandomFunction method.
      *
-     * @param mixed $seed
      * @param array $expectedArray
-     *
      * @dataProvider addRandomFunctionProvider
      */
-    public function testAddRandomFunction($seed, $expectedArray)
+    public function testAddRandomFunction(mixed $seed, $expectedArray)
     {
         /** @var MatchAllQuery|MockObject $matchAllQuery */
         $matchAllQuery = $this->getMockBuilder(MatchAllQuery::class)->getMock();

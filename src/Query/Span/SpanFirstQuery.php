@@ -24,9 +24,7 @@ class SpanFirstQuery implements SpanQueryInterface
     use ParametersTrait;
 
     /**
-     * @param SpanQueryInterface $query
      * @param int                $end
-     * @param array              $parameters
      *
      * @throws LogicException
      */

@@ -33,7 +33,6 @@ class RangeQuery implements BuilderInterface
 
     /**
      * @param string $field
-     * @param array  $parameters
      */
     public function __construct(private $field, array $parameters = [])
     {

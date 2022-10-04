@@ -107,8 +107,6 @@ abstract class AbstractAggregation implements NamedBuilderInterface
 
     /**
      * Process all nested aggregations.
-     *
-     * @return array
      */
     protected function collectNestedAggregations(): array
     {

@@ -36,7 +36,6 @@ class SearchEndpointFactory
      *
      * @param string $type Type of endpoint.
      *
-     * @return SearchEndpointInterface
      *
      * @throws RuntimeException Endpoint does not exist.
      */

@@ -25,8 +25,6 @@ class GeoPolygonQuery implements BuilderInterface
 
     /**
      * @param string $field
-     * @param array  $points
-     * @param array  $parameters
      */
     public function __construct(private $field, private array $points = [], array $parameters = [])
     {

@@ -26,9 +26,6 @@ class SpanMultiTermQuery implements SpanQueryInterface
 
     /**
      * Accepts one of fuzzy, prefix, term range, wildcard, regexp query.
-     *
-     * @param BuilderInterface $query
-     * @param array            $parameters
      */
     public function __construct(private BuilderInterface $query, array $parameters = [])
     {

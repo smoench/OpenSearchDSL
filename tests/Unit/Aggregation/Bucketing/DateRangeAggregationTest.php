@@ -111,14 +111,13 @@ class DateRangeAggregationTest extends TestCase
      *
      * @param string $field
      * @param string $format
-     * @param array  $ranges
      *
      * @dataProvider getDateRangeAggregationConstructorProvider
      */
     public function testDateRangeAggregationConstructor($field = null, $format = null, array $ranges = null)
     {
         /** @var DateRangeAggregation|MockObject $aggregation */
-        $aggregation = $this->getMockBuilder('OpenSearchDSL\Aggregation\Bucketing\DateRangeAggregation')
+        $aggregation = $this->getMockBuilder(\OpenSearchDSL\Aggregation\Bucketing\DateRangeAggregation::class)
             ->setMethods(['setField', 'setFormat', 'addRange'])
             ->disableOriginalConstructor()
             ->getMock();

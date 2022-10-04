@@ -26,7 +26,6 @@ class FuzzyQuery implements BuilderInterface
     /**
      * @param string $field
      * @param string $value
-     * @param array  $parameters
      */
     public function __construct(private $field, private $value, array $parameters = [])
     {

@@ -30,9 +30,6 @@ class GeoShapeQuery implements BuilderInterface
 
     private array $fields = [];
 
-    /**
-     * @param array $parameters
-     */
     public function __construct(array $parameters = [])
     {
         $this->setParameters($parameters);

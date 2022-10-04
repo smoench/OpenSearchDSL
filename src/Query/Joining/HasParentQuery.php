@@ -25,8 +25,6 @@ class HasParentQuery implements BuilderInterface
 
     /**
      * @param string           $parentType
-     * @param BuilderInterface $query
-     * @param array            $parameters
      */
     public function __construct(private $parentType, private BuilderInterface $query, array $parameters = [])
     {

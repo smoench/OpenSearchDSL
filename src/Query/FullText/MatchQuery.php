@@ -26,7 +26,6 @@ class MatchQuery implements BuilderInterface
     /**
      * @param string $field
      * @param string $query
-     * @param array  $parameters
      */
     public function __construct(private $field, private $query, array $parameters = [])
     {

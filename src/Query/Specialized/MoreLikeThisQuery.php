@@ -25,7 +25,6 @@ class MoreLikeThisQuery implements BuilderInterface
 
     /**
      * @param string $like
-     * @param array  $parameters
      */
     public function __construct(private $like, array $parameters = [])
     {

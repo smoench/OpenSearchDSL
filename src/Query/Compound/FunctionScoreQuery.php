@@ -29,10 +29,6 @@ class FunctionScoreQuery implements BuilderInterface
      */
     private array $functions;
 
-    /**
-     * @param BuilderInterface $query
-     * @param array            $parameters
-     */
     public function __construct(private BuilderInterface $query, array $parameters = [])
     {
         $this->setParameters($parameters);
@@ -54,7 +50,6 @@ class FunctionScoreQuery implements BuilderInterface
      * @param string           $field
      * @param float            $factor
      * @param string           $modifier
-     * @param mixed            $missing
      * @return $this
      */
     public function addFieldValueFactorFunction(
@@ -62,7 +57,7 @@ class FunctionScoreQuery implements BuilderInterface
         $factor,
         $modifier = 'none',
         BuilderInterface $query = null,
-        $missing = null
+        mixed $missing = null
     ) {
         $function = [
             'field_value_factor' => array_filter([
@@ -147,11 +142,10 @@ class FunctionScoreQuery implements BuilderInterface
     /**
      * Adds random score function. Seed is optional.
      *
-     * @param mixed            $seed
      *
      * @return $this
      */
-    public function addRandomFunction($seed = null, BuilderInterface $query = null)
+    public function addRandomFunction(mixed $seed = null, BuilderInterface $query = null)
     {
         $function = [
             'random_score' => $seed ? [ 'seed' => $seed ] : new stdClass(),

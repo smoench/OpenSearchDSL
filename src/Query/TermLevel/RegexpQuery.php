@@ -26,7 +26,6 @@ class RegexpQuery implements BuilderInterface
     /**
      * @param string $field
      * @param string $regexpValue
-     * @param array  $parameters
      */
     public function __construct(private $field, private $regexpValue, array $parameters = [])
     {

@@ -27,9 +27,6 @@ class SpanOrQuery implements SpanQueryInterface
      */
     private array $queries = [];
 
-    /**
-     * @param array $parameters
-     */
     public function __construct(array $parameters = [])
     {
         $this->setParameters($parameters);
@@ -38,7 +35,6 @@ class SpanOrQuery implements SpanQueryInterface
     /**
      * Add span query.
      *
-     * @param SpanQueryInterface $query
      *
      * @return $this
      */
