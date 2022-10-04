@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class ExtendedStatsBucketAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'extended_stats_bucket';

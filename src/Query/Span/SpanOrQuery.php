@@ -35,7 +35,6 @@ class SpanOrQuery implements SpanQueryInterface
     /**
      * Add span query.
      *
-     *
      * @return $this
      */
     public function addQuery(SpanQueryInterface $query)
@@ -53,17 +52,11 @@ class SpanOrQuery implements SpanQueryInterface
         return $this->queries;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'span_or';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [];
@@ -72,6 +65,8 @@ class SpanOrQuery implements SpanQueryInterface
         }
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

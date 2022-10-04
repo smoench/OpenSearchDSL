@@ -17,14 +17,8 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * Class PostFilterEndpointTest.
- */
 class PostFilterEndpointTest extends TestCase
 {
-    /**
-     * Tests constructor.
-     */
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(PostFilterEndpoint::class, new PostFilterEndpoint());

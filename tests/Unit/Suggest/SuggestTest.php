@@ -39,17 +39,19 @@ class SuggestTest extends TestCase
                     'term',
                     'bar',
                     'acme',
-                    ['size' => 5]
+                    [
+                        'size' => 5,
+                    ]
                 ),
                 'expected' => [
                     'foo' => [
                         'text' => 'bar',
                         'term' => [
                             'field' => 'acme',
-                            'size' => 5
-                        ]
-                    ]
-                ]
+                            'size' => 5,
+                        ],
+                    ],
+                ],
             ],
             [
                 'suggest' => new Suggest(
@@ -57,7 +59,9 @@ class SuggestTest extends TestCase
                     'phrase',
                     'bar',
                     'acme',
-                    ['max_errors' => 0.5]
+                    [
+                        'max_errors' => 0.5,
+                    ]
                 ),
                 'expected' => [
                     'foo' => [
@@ -66,8 +70,8 @@ class SuggestTest extends TestCase
                             'field' => 'acme',
                             'max_errors' => 0.5,
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             [
                 'suggest' => new Suggest(
@@ -75,17 +79,19 @@ class SuggestTest extends TestCase
                     'completion',
                     'bar',
                     'acme',
-                    ['fuzziness' => 2]
+                    [
+                        'fuzziness' => 2,
+                    ]
                 ),
                 'expected' => [
                     'foo' => [
                         'text' => 'bar',
                         'completion' => [
                             'field' => 'acme',
-                            'fuzziness' => 2
-                        ]
-                    ]
-                ]
+                            'fuzziness' => 2,
+                        ],
+                    ],
+                ],
             ],
             [
                 'suggest' => new Suggest(
@@ -93,7 +99,12 @@ class SuggestTest extends TestCase
                     'completion',
                     'bar',
                     'acme',
-                    ['context' => ['color' => 'red'], 'size' => 3]
+                    [
+                        'context' => [
+                            'color' => 'red',
+                        ],
+                        'size' => 3,
+                    ]
                 ),
                 'expected' => [
                     'foo' => [
@@ -102,17 +113,16 @@ class SuggestTest extends TestCase
                             'field' => 'acme',
                             'size' => 3,
                             'context' => [
-                                'color' => 'red'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                                'color' => 'red',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ];
     }
 
     /**
-     *
      * @dataProvider getTestToArrayData()
      */
     public function testToArray(Suggest $suggest, array $expected)

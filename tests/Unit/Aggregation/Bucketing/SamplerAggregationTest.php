@@ -60,6 +60,8 @@ class SamplerAggregationTest extends TestCase
     public function testGetArrayNoShardSize()
     {
         $aggregation = new SamplerAggregation('foo', 'bar');
-        $this->assertEquals(['field' => 'bar'], $aggregation->getArray());
+        $this->assertEquals([
+            'field' => 'bar',
+        ], $aggregation->getArray());
     }
 }

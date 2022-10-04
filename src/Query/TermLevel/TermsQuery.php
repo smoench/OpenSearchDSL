@@ -30,22 +30,19 @@ class TermsQuery implements BuilderInterface
      * @param array  $terms      An array of terms
      * @param array  $parameters Optional parameters
      */
-    public function __construct(private $field, private $terms, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private $terms,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'terms';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -54,6 +51,8 @@ class TermsQuery implements BuilderInterface
 
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

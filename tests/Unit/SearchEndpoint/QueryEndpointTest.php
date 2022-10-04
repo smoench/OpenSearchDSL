@@ -22,9 +22,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 class QueryEndpointTest extends TestCase
 {
-    /**
-     * Tests constructor.
-     */
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(QueryEndpoint::class, new QueryEndpoint());

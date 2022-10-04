@@ -19,9 +19,6 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class SuggestEndpointTest extends TestCase
 {
-    /**
-     * Tests constructor.
-     */
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(SuggestEndpoint::class, new SuggestEndpoint());

@@ -29,16 +29,24 @@ class SpanNotQueryTest extends TestCase
         $mock
             ->expects($this->exactly(2))
             ->method('toArray')
-            ->willReturn(['span_term' => ['key' => 'value']]);
+            ->willReturn([
+                'span_term' => [
+                    'key' => 'value',
+                ],
+            ]);
 
         $query = new SpanNotQuery($mock, $mock);
         $result = [
             'span_not' => [
                 'include' => [
-                    'span_term' => ['key' => 'value'],
+                    'span_term' => [
+                        'key' => 'value',
+                    ],
                 ],
                 'exclude' => [
-                    'span_term' => ['key' => 'value'],
+                    'span_term' => [
+                        'key' => 'value',
+                    ],
                 ],
             ],
         ];

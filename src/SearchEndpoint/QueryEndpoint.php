@@ -27,6 +27,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
     public const NAME = 'query';
 
     private ?BoolQuery $bool = null;
+
     private bool $filtersSet = false;
 
     public function normalize(
@@ -34,7 +35,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
         string $format = null,
         array $context = []
     ): array|string|int|float|bool {
-        if (!$this->filtersSet && $this->hasReference('filter_query')) {
+        if (! $this->filtersSet && $this->hasReference('filter_query')) {
             /** @var BuilderInterface $filter */
             $filter = $this->getReference('filter_query');
             $this->addToBool($filter, BoolQuery::FILTER);

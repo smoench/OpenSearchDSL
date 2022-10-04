@@ -27,22 +27,19 @@ class WildcardQuery implements BuilderInterface
      * @param string $field
      * @param string $value
      */
-    public function __construct(private $field, private $value, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private $value,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'wildcard';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -53,6 +50,8 @@ class WildcardQuery implements BuilderInterface
             $this->field => $this->processArray($query),
         ];
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

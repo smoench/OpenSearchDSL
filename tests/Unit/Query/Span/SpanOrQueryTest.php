@@ -29,7 +29,11 @@ class SpanOrQueryTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('toArray')
-            ->willReturn(['span_term' => ['key' => 'value']]);
+            ->willReturn([
+                'span_term' => [
+                    'key' => 'value',
+                ],
+            ]);
 
         $query = new SpanOrQuery();
         $query->addQuery($mock);
@@ -37,7 +41,9 @@ class SpanOrQueryTest extends TestCase
             'span_or' => [
                 'clauses' => [
                     0 => [
-                        'span_term' => ['key' => 'value'],
+                        'span_term' => [
+                            'key' => 'value',
+                        ],
                     ],
                 ],
             ],

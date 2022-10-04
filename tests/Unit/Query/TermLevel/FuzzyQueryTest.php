@@ -21,7 +21,9 @@ class FuzzyQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $query = new FuzzyQuery('user', 'ki', ['boost' => 1.2]);
+        $query = new FuzzyQuery('user', 'ki', [
+            'boost' => 1.2,
+        ]);
         $expected = [
             'fuzzy' => [
                 'user' => [

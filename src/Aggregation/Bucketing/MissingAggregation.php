@@ -34,7 +34,9 @@ class MissingAggregation extends AbstractAggregation
     public function getArray(): array
     {
         if ($this->getField() !== null) {
-            return ['field' => $this->getField()];
+            return [
+                'field' => $this->getField(),
+            ];
         }
         throw new LogicException('Missing aggregation must have a field set.');
     }

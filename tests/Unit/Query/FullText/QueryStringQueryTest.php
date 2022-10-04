@@ -25,7 +25,7 @@ class QueryStringQueryTest extends TestCase
         $expected = [
             'query_string' => [
                 'query' => 'this AND that OR thus',
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $query->toArray());

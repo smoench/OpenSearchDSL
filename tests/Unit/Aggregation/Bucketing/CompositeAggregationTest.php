@@ -28,11 +28,15 @@ class CompositeAggregationTest extends TestCase
 
         $expectedResult = [
             'composite' => [
-                'sources' =>  [
+                'sources' => [
                     [
-                        'test_term_agg' => [ 'terms' => ['field' => 'test_field'] ],
-                    ]
-                ]
+                        'test_term_agg' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
@@ -48,17 +52,25 @@ class CompositeAggregationTest extends TestCase
         $termsAgg = new TermsAggregation('test_term_agg', 'test_field');
         $compositeAgg->addSource($termsAgg);
         $compositeAgg->setSize(5);
-        $compositeAgg->setAfter(['test_term_agg' => 'test']);
+        $compositeAgg->setAfter([
+            'test_term_agg' => 'test',
+        ]);
 
         $expectedResult = [
             'composite' => [
-                'sources' =>  [
+                'sources' => [
                     [
-                        'test_term_agg' => [ 'terms' => ['field' => 'test_field'] ],
-                    ]
+                        'test_term_agg' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                            ],
+                        ],
+                    ],
                 ],
                 'size' => 5,
-                'after' => ['test_term_agg' => 'test']
+                'after' => [
+                    'test_term_agg' => 'test',
+                ],
             ],
         ];
 
@@ -82,9 +94,13 @@ class CompositeAggregationTest extends TestCase
     public function testGetAfter()
     {
         $compositeAgg = new CompositeAggregation('composite_test_agg');
-        $compositeAgg->setAfter(['test_term_agg' => 'test']);
+        $compositeAgg->setAfter([
+            'test_term_agg' => 'test',
+        ]);
 
-        $this->assertEquals(['test_term_agg' => 'test'], $compositeAgg->getAfter());
+        $this->assertEquals([
+            'test_term_agg' => 'test',
+        ], $compositeAgg->getAfter());
     }
 
     /**
@@ -106,17 +122,21 @@ class CompositeAggregationTest extends TestCase
 
         $expectedResult = [
             'composite' => [
-                'sources' =>  [
+                'sources' => [
                     [
-                        'test_term_agg' => [ 'terms' => ['field' => 'test_field', 'order' => 'asc'] ],
-                    ]
-                ]
+                        'test_term_agg' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                                'order' => 'asc',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
         $this->assertEquals($expectedResult, $compositeAgg->toArray());
     }
-
 
     public function testTermsSourceWithDescOrderParameter()
     {
@@ -127,17 +147,21 @@ class CompositeAggregationTest extends TestCase
 
         $expectedResult = [
             'composite' => [
-                'sources' =>  [
+                'sources' => [
                     [
-                        'test_term_agg' => [ 'terms' => ['field' => 'test_field', 'order' => 'desc'] ],
-                    ]
-                ]
+                        'test_term_agg' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                                'order' => 'desc',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 
         $this->assertEquals($expectedResult, $compositeAgg->toArray());
     }
-
 
     public function testMultipleSourcesWithDifferentOrders()
     {
@@ -153,14 +177,24 @@ class CompositeAggregationTest extends TestCase
 
         $expectedResult = [
             'composite' => [
-                'sources' =>  [
+                'sources' => [
                     [
-                        'test_term_agg_1' => [ 'terms' => ['field' => 'test_field', 'order' => 'desc'] ],
+                        'test_term_agg_1' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                                'order' => 'desc',
+                            ],
+                        ],
                     ],
                     [
-                        'test_term_agg_2' => [ 'terms' => ['field' => 'test_field', 'order' => 'asc'] ],
-                    ]
-                ]
+                        'test_term_agg_2' => [
+                            'terms' => [
+                                'field' => 'test_field',
+                                'order' => 'asc',
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ];
 

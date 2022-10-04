@@ -51,6 +51,8 @@ class NestedAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        return ['path' => $this->getPath()];
+        return [
+            'path' => $this->getPath(),
+        ];
     }
 }

@@ -22,8 +22,6 @@ class GeoCentroidAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown when field is not provided
-     *
-     *
      */
     public function testGetArrayException()
     {
@@ -47,6 +45,8 @@ class GeoCentroidAggregationTest extends TestCase
     public function testGeoCentroidAggregationGetArray()
     {
         $aggregation = new GeoCentroidAggregation('foo', 'location');
-        $this->assertEquals(['field' => 'location'], $aggregation->getArray());
+        $this->assertEquals([
+            'field' => 'location',
+        ], $aggregation->getArray());
     }
 }

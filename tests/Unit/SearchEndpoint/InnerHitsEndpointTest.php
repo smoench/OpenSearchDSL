@@ -16,14 +16,8 @@ use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
-/**
- * Class AggregationsEndpointTest.
- */
 class InnerHitsEndpointTest extends TestCase
 {
-    /**
-     * Tests constructor.
-     */
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(
@@ -60,14 +54,16 @@ class InnerHitsEndpointTest extends TestCase
             ->setMethods(['getName', 'toArray', 'getType'])
             ->getMock();
         $innerHit->expects($this->any())->method('getName')->willReturn('foo');
-        $innerHit->expects($this->any())->method('toArray')->willReturn(['foo' => 'bar']);
+        $innerHit->expects($this->any())->method('toArray')->willReturn([
+            'foo' => 'bar',
+        ]);
 
         $endpoint = new InnerHitsEndpoint();
         $endpoint->add($innerHit, 'foo');
         $expected = [
             'foo' => [
-                'foo' => 'bar'
-            ]
+                'foo' => 'bar',
+            ],
         ];
 
         $this->assertEquals(

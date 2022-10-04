@@ -31,6 +31,8 @@ abstract class AbstractPipelineAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        return ['buckets_path' => $this->getBucketsPath()];
+        return [
+            'buckets_path' => $this->getBucketsPath(),
+        ];
     }
 }

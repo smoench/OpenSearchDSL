@@ -30,7 +30,7 @@ class AdjacencyMatrixAggregation extends AbstractAggregation
      * @var array<string, array<string, array|null>>
      */
     private array $filters = [
-        self::FILTERS => []
+        self::FILTERS => [],
     ];
 
     /**

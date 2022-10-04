@@ -28,17 +28,35 @@ class GeoPolygonQueryTest extends TestCase
             [
                 'location',
                 [
-                    ['lat' => 20, 'lon' => -80],
-                    ['lat' => 30, 'lon' => -40],
-                    ['lat' => 70, 'lon' => -90],
+                    [
+                        'lat' => 20,
+                        'lon' => -80,
+                    ],
+                    [
+                        'lat' => 30,
+                        'lon' => -40,
+                    ],
+                    [
+                        'lat' => 70,
+                        'lon' => -90,
+                    ],
                 ],
                 [],
                 [
                     'location' => [
                         'points' => [
-                            ['lat' => 20, 'lon' => -80],
-                            ['lat' => 30, 'lon' => -40],
-                            ['lat' => 70, 'lon' => -90],
+                            [
+                                'lat' => 20,
+                                'lon' => -80,
+                            ],
+                            [
+                                'lat' => 30,
+                                'lon' => -40,
+                            ],
+                            [
+                                'lat' => 70,
+                                'lon' => -90,
+                            ],
                         ],
                     ],
                 ],
@@ -47,9 +65,13 @@ class GeoPolygonQueryTest extends TestCase
             [
                 'location',
                 [],
-                ['parameter' => 'value'],
                 [
-                    'location' => ['points' => []],
+                    'parameter' => 'value',
+                ],
+                [
+                    'location' => [
+                        'points' => [],
+                    ],
                     'parameter' => 'value',
                 ],
             ],
@@ -57,12 +79,20 @@ class GeoPolygonQueryTest extends TestCase
             [
                 'location',
                 [
-                    ['lat' => 20, 'lon' => -80],
+                    [
+                        'lat' => 20,
+                        'lon' => -80,
+                    ],
                 ],
-                ['parameter' => 'value'],
+                [
+                    'parameter' => 'value',
+                ],
                 [
                     'location' => [
-                        'points' => [['lat' => 20, 'lon' => -80]],
+                        'points' => [[
+                            'lat' => 20,
+                            'lon' => -80,
+                        ]],
                     ],
                     'parameter' => 'value',
                 ],
@@ -84,6 +114,8 @@ class GeoPolygonQueryTest extends TestCase
     {
         $filter = new GeoPolygonQuery($field, $points, $parameters);
         $result = $filter->toArray();
-        $this->assertEquals(['geo_polygon' => $expected], $result);
+        $this->assertEquals([
+            'geo_polygon' => $expected,
+        ], $result);
     }
 }

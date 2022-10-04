@@ -24,8 +24,6 @@ class SearchEndpointFactoryTest extends TestCase
 {
     /**
      * Tests get method exception.
-     *
-     *
      */
     public function testGet()
     {

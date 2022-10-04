@@ -26,13 +26,21 @@ class ConstantScoreQueryTest extends TestCase
         $mock
             ->expects($this->any())
             ->method('toArray')
-            ->willReturn(['term' => ['foo' => 'bar']]);
+            ->willReturn([
+                'term' => [
+                    'foo' => 'bar',
+                ],
+            ]);
 
-        $query = new ConstantScoreQuery($mock, ['boost' => 1.2]);
+        $query = new ConstantScoreQuery($mock, [
+            'boost' => 1.2,
+        ]);
         $expected = [
             'constant_score' => [
                 'filter' => [
-                    'term' => ['foo' => 'bar']
+                    'term' => [
+                        'foo' => 'bar',
+                    ],
                 ],
                 'boost' => 1.2,
             ],

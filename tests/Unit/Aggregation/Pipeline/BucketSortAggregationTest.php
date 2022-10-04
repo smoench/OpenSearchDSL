@@ -51,9 +51,11 @@ class BucketSortAggregationTest extends TestCase
             'bucket_sort' => [
                 'sort' => [
                     [
-                        'test_field' => ['order' => 'asc'],
-                    ]
-                ]
+                        'test_field' => [
+                            'order' => 'asc',
+                        ],
+                    ],
+                ],
             ],
         ];
 

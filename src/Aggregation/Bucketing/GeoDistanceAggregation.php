@@ -25,8 +25,11 @@ class GeoDistanceAggregation extends AbstractAggregation
     use BucketingTrait;
 
     private mixed $origin = null;
+
     private ?string $distanceType = null;
+
     private ?string $unit = null;
+
     private array $ranges = [];
 
     public function __construct(
@@ -97,7 +100,6 @@ class GeoDistanceAggregation extends AbstractAggregation
      *
      * @return GeoDistanceAggregation
      * @throws LogicException
-     *
      */
     public function addRange($from = null, $to = null)
     {
@@ -146,9 +148,6 @@ class GeoDistanceAggregation extends AbstractAggregation
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'geo_distance';

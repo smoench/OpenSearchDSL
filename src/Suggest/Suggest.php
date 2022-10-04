@@ -91,8 +91,10 @@ class Suggest implements NamedBuilderInterface
         return [
             $this->getName() => [
                 'text' => $this->getText(),
-                $this->getType() => $this->processArray(['field' => $this->getField()]),
-            ]
+                $this->getType() => $this->processArray([
+                    'field' => $this->getField(),
+                ]),
+            ],
         ];
     }
 }

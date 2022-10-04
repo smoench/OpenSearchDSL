@@ -73,9 +73,6 @@ class FieldMaskingSpanQuery implements SpanQueryInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $output = [
@@ -85,12 +82,11 @@ class FieldMaskingSpanQuery implements SpanQueryInterface
 
         $output = $this->processArray($output);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'field_masking_span';

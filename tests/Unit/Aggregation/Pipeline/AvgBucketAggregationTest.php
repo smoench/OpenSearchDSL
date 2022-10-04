@@ -26,7 +26,9 @@ class AvgBucketAggregationTest extends TestCase
     {
         $aggregation = new AvgBucketAggregation('foo', 'foo>bar');
 
-        $this->assertEquals(['buckets_path' => 'foo>bar'], $aggregation->getArray());
+        $this->assertEquals([
+            'buckets_path' => 'foo>bar',
+        ], $aggregation->getArray());
     }
 
     /**

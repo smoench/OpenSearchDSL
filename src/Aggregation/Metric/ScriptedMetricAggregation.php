@@ -42,6 +42,7 @@ class ScriptedMetricAggregation extends AbstractAggregation
      * @var mixed
      */
     private $reduceScript;
+
     /**
      * ScriptedMetricAggregation constructor.
      * @param string $name
@@ -57,7 +58,6 @@ class ScriptedMetricAggregation extends AbstractAggregation
         $combineScript = null,
         $reduceScript = null
     ) {
-
         parent::__construct($name);
 
         $this->setInitScript($initScript);
@@ -66,9 +66,6 @@ class ScriptedMetricAggregation extends AbstractAggregation
         $this->setReduceScript($reduceScript);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'scripted_metric';
@@ -146,9 +143,6 @@ class ScriptedMetricAggregation extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getArray(): array
     {
         return array_filter(

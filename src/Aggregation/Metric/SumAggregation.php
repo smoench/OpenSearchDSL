@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Metric;
  */
 class SumAggregation extends StatsAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'sum';

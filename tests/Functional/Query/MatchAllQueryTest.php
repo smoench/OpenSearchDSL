@@ -17,9 +17,6 @@ use OpenSearchDSL\Tests\Functional\AbstractOpenSearchTestCase;
 
 class MatchAllQueryTest extends AbstractOpenSearchTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getDataArray()
     {
         return [
@@ -30,7 +27,7 @@ class MatchAllQueryTest extends AbstractOpenSearchTestCase
                 [
                     'title' => 'foo',
                 ],
-            ]
+            ],
         ];
     }
 

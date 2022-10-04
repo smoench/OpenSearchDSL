@@ -18,9 +18,6 @@ use OpenSearchDSL\Tests\Functional\AbstractOpenSearchTestCase;
 
 class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
 {
-    /**
-     * {@inheritdoc}
-     */
     protected function getDataArray()
     {
         return [
@@ -37,7 +34,7 @@ class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
                     'title' => 'bar',
                     'price' => 10,
                 ],
-            ]
+            ],
         ];
     }
 

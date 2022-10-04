@@ -20,7 +20,6 @@ class FieldSortTest extends TestCase
 {
     /**
      * Test for toArray() method.
-     *
      */
     public function testToArray()
     {
@@ -31,14 +30,14 @@ class FieldSortTest extends TestCase
         $expected = [
             'someField' => [
                 'nested' => [
-                    'path'   => 'somePath',
+                    'path' => 'somePath',
                     'filter' => [
                         'term' => [
                             'somePath.id' => 10,
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
-                'order'  => 'asc'
+                'order' => 'asc',
             ],
         ];
         $result = $sort->toArray();

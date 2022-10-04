@@ -50,7 +50,9 @@ class FunctionScoreQueryTest extends TestCase
                     'query' => null,
                     'functions' => [
                         [
-                            'random_score' => ['seed' => 'someSeed'],
+                            'random_score' => [
+                                'seed' => 'someSeed',
+                            ],
                         ],
                     ],
                 ],
@@ -72,7 +74,9 @@ class FunctionScoreQueryTest extends TestCase
         $functionScoreQuery = new FunctionScoreQuery($matchAllQuery);
         $functionScoreQuery->addRandomFunction($seed);
 
-        $this->assertEquals(['function_score' => $expectedArray], $functionScoreQuery->toArray());
+        $this->assertEquals([
+            'function_score' => $expectedArray,
+        ], $functionScoreQuery->toArray());
     }
 
     /**

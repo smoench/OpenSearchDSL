@@ -25,7 +25,9 @@ class GeoHashGridAggregation extends AbstractAggregation
     use BucketingTrait;
 
     private ?int $precision = null;
+
     private ?int $size = null;
+
     private ?int $shardSize = null;
 
     public function __construct(
@@ -104,9 +106,6 @@ class GeoHashGridAggregation extends AbstractAggregation
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'geohash_grid';

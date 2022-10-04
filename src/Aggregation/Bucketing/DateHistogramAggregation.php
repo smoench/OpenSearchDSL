@@ -25,6 +25,7 @@ class DateHistogramAggregation extends AbstractAggregation
     use BucketingTrait;
 
     private ?string $interval = null;
+
     private ?string $format = null;
 
     public function __construct(string $name, ?string $field = null, ?string $interval = null, ?string $format = null)
@@ -62,7 +63,7 @@ class DateHistogramAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if (!$this->getField() || !$this->getInterval()) {
+        if (! $this->getField() || ! $this->getInterval()) {
             throw new LogicException('Date histogram aggregation must have field and interval set.');
         }
 
@@ -71,7 +72,7 @@ class DateHistogramAggregation extends AbstractAggregation
             'interval' => $this->getInterval(),
         ];
 
-        if (!empty($this->format)) {
+        if (! empty($this->format)) {
             $out['format'] = $this->format;
         }
 

@@ -25,21 +25,16 @@ class ExistsQuery implements BuilderInterface
      *
      * @param string $field Field value
      */
-    public function __construct(private $field)
-    {
+    public function __construct(
+        private $field
+    ) {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'exists';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         return [

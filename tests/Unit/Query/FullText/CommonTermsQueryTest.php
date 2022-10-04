@@ -21,7 +21,9 @@ class CommonTermsQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $query = new CommonTermsQuery('body', 'this is bonsai cool', ['cutoff_frequency' => 0.01]);
+        $query = new CommonTermsQuery('body', 'this is bonsai cool', [
+            'cutoff_frequency' => 0.01,
+        ]);
         $expected = [
             'common' => [
                 'body' => [

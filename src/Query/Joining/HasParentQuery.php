@@ -26,22 +26,19 @@ class HasParentQuery implements BuilderInterface
     /**
      * @param string           $parentType
      */
-    public function __construct(private $parentType, private BuilderInterface $query, array $parameters = [])
-    {
+    public function __construct(
+        private $parentType,
+        private BuilderInterface $query,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'has_parent';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -51,6 +48,8 @@ class HasParentQuery implements BuilderInterface
 
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

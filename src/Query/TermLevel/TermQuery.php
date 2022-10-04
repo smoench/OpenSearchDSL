@@ -27,22 +27,19 @@ class TermQuery implements BuilderInterface
      * @param string                $field
      * @param scalar $value
      */
-    public function __construct(private $field, private $value, array $parameters = [])
-    {
+    public function __construct(
+        private $field,
+        private $value,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'term';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = $this->processArray();
@@ -57,6 +54,8 @@ class TermQuery implements BuilderInterface
             $this->field => $query,
         ];
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

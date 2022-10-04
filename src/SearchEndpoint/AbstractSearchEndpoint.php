@@ -38,7 +38,7 @@ abstract class AbstractSearchEndpoint extends AbstractNormalizable implements Se
             throw new OverflowException(sprintf('Builder with %s name for endpoint has already been added!', $key));
         }
 
-        if (!$key) {
+        if (! $key) {
             $key = bin2hex(random_bytes(30));
         }
 

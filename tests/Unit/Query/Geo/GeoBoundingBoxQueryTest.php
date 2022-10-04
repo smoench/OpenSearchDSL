@@ -19,8 +19,6 @@ class GeoBoundingBoxQueryTest extends TestCase
 {
     /**
      * Test if exception is thrown when geo points are not set.
-     *
-     *
      */
     public function testGeoBoundBoxQueryException()
     {
@@ -41,14 +39,28 @@ class GeoBoundingBoxQueryTest extends TestCase
             [
                 'location',
                 [
-                    ['lat' => 40.73, 'lon' => -74.1],
-                    ['lat' => 40.01, 'lon' => -71.12],
+                    [
+                        'lat' => 40.73,
+                        'lon' => -74.1,
+                    ],
+                    [
+                        'lat' => 40.01,
+                        'lon' => -71.12,
+                    ],
                 ],
-                ['parameter' => 'value'],
+                [
+                    'parameter' => 'value',
+                ],
                 [
                     'location' => [
-                        'top_left' => ['lat' => 40.73, 'lon' => -74.1],
-                        'bottom_right' => ['lat' => 40.01, 'lon' => -71.12],
+                        'top_left' => [
+                            'lat' => 40.73,
+                            'lon' => -74.1,
+                        ],
+                        'bottom_right' => [
+                            'lat' => 40.01,
+                            'lon' => -71.12,
+                        ],
                     ],
                     'parameter' => 'value',
                 ],
@@ -57,14 +69,28 @@ class GeoBoundingBoxQueryTest extends TestCase
             [
                 'location',
                 [
-                    'bottom_right' => ['lat' => 40.01, 'lon' => -71.12],
-                    'top_left' => ['lat' => 40.73, 'lon' => -74.1],
+                    'bottom_right' => [
+                        'lat' => 40.01,
+                        'lon' => -71.12,
+                    ],
+                    'top_left' => [
+                        'lat' => 40.73,
+                        'lon' => -74.1,
+                    ],
                 ],
-                ['parameter' => 'value'],
+                [
+                    'parameter' => 'value',
+                ],
                 [
                     'location' => [
-                        'top_left' => ['lat' => 40.73, 'lon' => -74.1],
-                        'bottom_right' => ['lat' => 40.01, 'lon' => -71.12],
+                        'top_left' => [
+                            'lat' => 40.73,
+                            'lon' => -74.1,
+                        ],
+                        'bottom_right' => [
+                            'lat' => 40.01,
+                            'lon' => -71.12,
+                        ],
                     ],
                     'parameter' => 'value',
                 ],
@@ -73,7 +99,9 @@ class GeoBoundingBoxQueryTest extends TestCase
             [
                 'location',
                 [40.73, -74.1, 40.01, -71.12],
-                ['parameter' => 'value'],
+                [
+                    'parameter' => 'value',
+                ],
                 [
                     'location' => [
                         'top' => 40.73,
@@ -92,9 +120,11 @@ class GeoBoundingBoxQueryTest extends TestCase
                     'right' => -71.12,
                     'bottom' => 40.01,
                     'top' => 40.73,
-                    'left' => -74.1
+                    'left' => -74.1,
                 ],
-                ['parameter' => 'value'],
+                [
+                    'parameter' => 'value',
+                ],
                 [
                     'location' => [
                         'top' => 40.73,
@@ -122,6 +152,8 @@ class GeoBoundingBoxQueryTest extends TestCase
     {
         $query = new GeoBoundingBoxQuery($field, $values, $parameters);
         $result = $query->toArray();
-        $this->assertEquals(['geo_bounding_box' => $expected], $result);
+        $this->assertEquals([
+            'geo_bounding_box' => $expected,
+        ], $result);
     }
 }

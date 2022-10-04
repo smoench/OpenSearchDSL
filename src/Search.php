@@ -339,8 +339,8 @@ class Search
     }
 
     /**
-    * Adds suggest into search.
-    */
+     * Adds suggest into search.
+     */
     public function addSuggest(NamedBuilderInterface $suggest): self
     {
         $this->getEndpoint(SuggestEndpoint::NAME)->add($suggest, $suggest->getName());
@@ -349,10 +349,10 @@ class Search
     }
 
     /**
-    * Returns all suggests.
-    *
-    * @return BuilderInterface[]
-    */
+     * Returns all suggests.
+     *
+     * @return BuilderInterface[]
+     */
     public function getSuggests(): array
     {
         return $this->getEndpoint(SuggestEndpoint::NAME)->getAll();
@@ -520,31 +520,31 @@ class Search
     {
         if (
             in_array($name, [
-            'q',
-            'df',
-            'analyzer',
-            'analyze_wildcard',
-            'default_operator',
-            'lenient',
-            'explain',
-            '_source',
-            '_source_exclude',
-            '_source_include',
-            'stored_fields',
-            'sort',
-            'track_scores',
-            'timeout',
-            'terminate_after',
-            'from',
-            'size',
-            'search_type',
-            'scroll',
-            'allow_no_indices',
-            'ignore_unavailable',
-            'typed_keys',
-            'pre_filter_shard_size',
-            'ignore_unavailable',
-            'rest_total_hits_as_int',
+                'q',
+                'df',
+                'analyzer',
+                'analyze_wildcard',
+                'default_operator',
+                'lenient',
+                'explain',
+                '_source',
+                '_source_exclude',
+                '_source_include',
+                'stored_fields',
+                'sort',
+                'track_scores',
+                'timeout',
+                'terminate_after',
+                'from',
+                'size',
+                'search_type',
+                'scroll',
+                'allow_no_indices',
+                'ignore_unavailable',
+                'typed_keys',
+                'pre_filter_shard_size',
+                'ignore_unavailable',
+                'rest_total_hits_as_int',
             ])
         ) {
             $this->uriParams[$name] = $value;

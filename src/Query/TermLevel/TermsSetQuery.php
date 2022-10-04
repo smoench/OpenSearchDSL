@@ -25,6 +25,7 @@ class TermsSetQuery implements BuilderInterface
     use ParametersTrait;
 
     public const MINIMUM_SHOULD_MATCH_TYPE_FIELD = 'minimum_should_match_field';
+
     public const MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
 
     /**
@@ -34,39 +35,38 @@ class TermsSetQuery implements BuilderInterface
      * @param array  $terms      An array of terms
      * @param array  $parameters Parameters
      */
-    public function __construct(private $field, private $terms, array $parameters)
-    {
+    public function __construct(
+        private $field,
+        private $terms,
+        array $parameters
+    ) {
         $this->validateParameters($parameters);
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'terms_set';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
             'terms' => $this->terms,
         ];
 
-        return [$this->getType() => [
-            $this->field => $this->processArray($query),
-        ]];
+        return [
+            $this->getType() => [
+                $this->field => $this->processArray($query),
+            ],
+        ];
     }
 
     private function validateParameters(array $parameters)
     {
         if (
-            !isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_FIELD]) &&
-            !isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_SCRIPT])
+            ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_FIELD]) &&
+            ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_SCRIPT])
         ) {
             $message = "Either minimum_should_match_field or minimum_should_match_script must be set.";
             throw new InvalidArgumentException($message);

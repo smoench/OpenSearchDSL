@@ -29,6 +29,7 @@ class FiltersAggregation extends AbstractAggregation
      * @var array<string, array<array-key, array|null>>
      */
     private array $filters = [];
+
     private bool $anonymous = false;
 
     /**
@@ -60,11 +61,11 @@ class FiltersAggregation extends AbstractAggregation
      */
     public function addFilter(BuilderInterface $filter, string $name = ''): self
     {
-        if (!$this->anonymous && empty($name)) {
+        if (! $this->anonymous && empty($name)) {
             throw new LogicException('In not anonymous filters filter name must be set.');
         }
 
-        if (!$this->anonymous && !empty($name)) {
+        if (! $this->anonymous && ! empty($name)) {
             $this->filters['filters'][$name] = $filter->toArray() ?: null;
         } else {
             $this->filters['filters'][] = $filter->toArray() ?: null;

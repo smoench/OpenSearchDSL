@@ -34,11 +34,17 @@ class NestedQueryTest extends TestCase
             'query_only' => [
                 'product.sub_item',
                 [],
-                ['path' => 'product.sub_item', 'query' => $query],
+                [
+                    'path' => 'product.sub_item',
+                    'query' => $query,
+                ],
             ],
             'query_with_parameters' => [
                 'product.sub_item',
-                ['_cache' => true, '_name' => 'named_result'],
+                [
+                    '_cache' => true,
+                    '_name' => 'named_result',
+                ],
                 [
                     'path' => 'product.sub_item',
                     'query' => $query,
@@ -63,6 +69,8 @@ class NestedQueryTest extends TestCase
         $query = new TermsQuery('foo', 'bar');
         $query = new NestedQuery($path, $query, $parameters);
         $result = $query->toArray();
-        $this->assertEquals(['nested' => $expected], $result);
+        $this->assertEquals([
+            'nested' => $expected,
+        ], $result);
     }
 }

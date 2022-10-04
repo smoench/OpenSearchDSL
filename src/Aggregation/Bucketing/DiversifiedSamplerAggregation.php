@@ -54,17 +54,11 @@ class DiversifiedSamplerAggregation extends AbstractAggregation
         return $this;
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getType(): string
     {
         return 'diversified_sampler';
     }
 
-    /**
-     * @inheritdoc
-     */
     public function getArray(): array
     {
         return array_filter(

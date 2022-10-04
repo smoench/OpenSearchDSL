@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class MinBucketAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'min_bucket';

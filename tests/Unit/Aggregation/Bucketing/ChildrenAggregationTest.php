@@ -53,7 +53,9 @@ class ChildrenAggregationTest extends TestCase
         $aggregation->addAggregation($mock);
         $aggregation->setChildren('question');
         $result = $aggregation->getArray();
-        $expected = ['type' => 'question'];
+        $expected = [
+            'type' => 'question',
+        ];
         $this->assertEquals($expected, $result);
     }
 }

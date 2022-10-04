@@ -29,9 +29,15 @@ class SpanNearQueryTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('toArray')
-            ->willReturn(['span_term' => ['key' => 'value']]);
+            ->willReturn([
+                'span_term' => [
+                    'key' => 'value',
+                ],
+            ]);
 
-        $query = new SpanNearQuery(['in_order' => false]);
+        $query = new SpanNearQuery([
+            'in_order' => false,
+        ]);
         $query->setSlop(5);
         $query->addQuery($mock);
         $result = [

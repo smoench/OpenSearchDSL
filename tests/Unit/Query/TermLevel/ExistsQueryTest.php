@@ -25,6 +25,10 @@ class ExistsQueryTest extends TestCase
     public function testToArray()
     {
         $query = new ExistsQuery('bar');
-        $this->assertEquals(['exists' => ['field' => 'bar']], $query->toArray());
+        $this->assertEquals([
+            'exists' => [
+                'field' => 'bar',
+            ],
+        ], $query->toArray());
     }
 }

@@ -22,8 +22,6 @@ class GeoBoundsAggregationTest extends TestCase
 {
     /**
      * Test if exception is thrown.
-     *
-     *
      */
     public function testGeoBoundsAggregationException()
     {

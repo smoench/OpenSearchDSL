@@ -27,6 +27,7 @@ class PercentileRanksAggregation extends AbstractAggregation
     use ScriptAwareTrait;
 
     private ?array $values = null;
+
     private ?int $compression = null;
 
     public function __construct(
@@ -85,7 +86,7 @@ class PercentileRanksAggregation extends AbstractAggregation
                 'values' => $this->getValues(),
                 'compression' => $this->getCompression(),
             ],
-            fn($val) => $val || is_numeric($val)
+            fn ($val) => $val || is_numeric($val)
         );
 
         $this->isRequiredParametersSet($out);

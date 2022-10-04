@@ -54,7 +54,9 @@ class ReverseNestedAggregation extends AbstractAggregation
     {
         $output = new stdClass();
         if ($this->getPath() !== null) {
-            $output = ['path' => $this->getPath()];
+            $output = [
+                'path' => $this->getPath(),
+            ];
         }
 
         return $output;

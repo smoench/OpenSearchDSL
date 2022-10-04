@@ -21,7 +21,9 @@ class MoreLikeThisQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $query = new MoreLikeThisQuery('this is a test', ['fields' => ['title', 'description']]);
+        $query = new MoreLikeThisQuery('this is a test', [
+            'fields' => ['title', 'description'],
+        ]);
         $expected = [
             'more_like_this' => [
                 'fields' => ['title', 'description'],

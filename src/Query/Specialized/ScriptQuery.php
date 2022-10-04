@@ -27,27 +27,29 @@ class ScriptQuery implements BuilderInterface
      * @param string $script     Script
      * @param array  $parameters Optional parameters
      */
-    public function __construct(private $script, array $parameters = [])
-    {
+    public function __construct(
+        private $script,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'script';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
-        $query = ['inline' => $this->script];
+        $query = [
+            'inline' => $this->script,
+        ];
         $output = $this->processArray($query);
 
-        return [$this->getType() => ['script' => $output]];
+        return [
+            $this->getType() => [
+                'script' => $output,
+            ],
+        ];
     }
 }

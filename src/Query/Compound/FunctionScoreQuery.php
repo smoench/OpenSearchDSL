@@ -29,8 +29,10 @@ class FunctionScoreQuery implements BuilderInterface
      */
     private array $functions;
 
-    public function __construct(private BuilderInterface $query, array $parameters = [])
-    {
+    public function __construct(
+        private BuilderInterface $query,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
@@ -64,7 +66,7 @@ class FunctionScoreQuery implements BuilderInterface
                 'field' => $field,
                 'factor' => $factor,
                 'modifier' => $modifier,
-                'missing' => $missing
+                'missing' => $missing,
             ]),
         ];
 
@@ -105,7 +107,9 @@ class FunctionScoreQuery implements BuilderInterface
         $function = array_filter(
             [
                 $type => array_merge(
-                    [$field => $function],
+                    [
+                        $field => $function,
+                    ],
                     $options
                 ),
                 'weight' => $weight,
@@ -142,13 +146,14 @@ class FunctionScoreQuery implements BuilderInterface
     /**
      * Adds random score function. Seed is optional.
      *
-     *
      * @return $this
      */
     public function addRandomFunction(mixed $seed = null, BuilderInterface $query = null)
     {
         $function = [
-            'random_score' => $seed ? [ 'seed' => $seed ] : new stdClass(),
+            'random_score' => $seed ? [
+                'seed' => $seed,
+            ] : new stdClass(),
         ];
 
         $this->applyFilter($function, $query);
@@ -179,11 +184,11 @@ class FunctionScoreQuery implements BuilderInterface
                             [
                                 'lang' => 'painless',
                                 'source' => $source,
-                                'params' => $params
+                                'params' => $params,
                             ],
                             $options
                         )
-                    )
+                    ),
             ],
         ];
 
@@ -196,7 +201,6 @@ class FunctionScoreQuery implements BuilderInterface
     /**
      * Adds custom simple function. You can add to the array whatever you want.
      *
-     *
      * @return $this
      */
     public function addSimpleFunction(array $function)
@@ -206,9 +210,6 @@ class FunctionScoreQuery implements BuilderInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -218,12 +219,11 @@ class FunctionScoreQuery implements BuilderInterface
 
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'function_score';

@@ -76,7 +76,7 @@ class NestedInnerHitTest extends TestCase
                                         'query' => $matchQuery->toArray(),
                                     ],
                                 ],
-                            ]
+                            ],
                         ],
                     ],
                 ],
@@ -85,7 +85,6 @@ class NestedInnerHitTest extends TestCase
 
         return $out;
     }
-
 
     /**
      * Tests toArray() method.
@@ -99,7 +98,6 @@ class NestedInnerHitTest extends TestCase
     {
         $this->assertEquals($expected, $innerHit->toArray());
     }
-
 
     /**
      * Tests getters and setters for $name, $path and $query

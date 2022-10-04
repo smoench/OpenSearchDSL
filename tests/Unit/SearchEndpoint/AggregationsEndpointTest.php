@@ -15,14 +15,8 @@ use OpenSearchDSL\Aggregation\Bucketing\MissingAggregation;
 use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class AggregationsEndpointTest.
- */
 class AggregationsEndpointTest extends TestCase
 {
-    /**
-     * Tests constructor.
-     */
     public function testItCanBeInstantiated()
     {
         $this->assertInstanceOf(

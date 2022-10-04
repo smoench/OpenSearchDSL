@@ -38,17 +38,11 @@ class SpanContainingQuery implements SpanQueryInterface
         return $this->big;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'span_containing';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $output = [
@@ -58,6 +52,8 @@ class SpanContainingQuery implements SpanQueryInterface
 
         $output = $this->processArray($output);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

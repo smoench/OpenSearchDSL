@@ -47,7 +47,6 @@ class Highlight implements BuilderInterface
     /**
      * Sets html tag and its class used in highlighting.
      *
-     *
      * @return $this
      */
     public function setTags(array $preTags, array $postTags)
@@ -58,17 +57,11 @@ class Highlight implements BuilderInterface
         return $this;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'highlight';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $output = [];

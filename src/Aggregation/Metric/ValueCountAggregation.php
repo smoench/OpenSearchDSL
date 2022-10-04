@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Metric;
  */
 class ValueCountAggregation extends StatsAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'value_count';

@@ -23,14 +23,16 @@ class TermsSetQueryTest extends TestCase
     public function testToArray()
     {
         $terms = ['php', 'c++', 'java'];
-        $parameters = ['minimum_should_match_field' => 'required_matches'];
+        $parameters = [
+            'minimum_should_match_field' => 'required_matches',
+        ];
         $query = new TermsSetQuery('programming_languages', $terms, $parameters);
         $expected = [
             'terms_set' => [
                 'programming_languages' => [
                     'terms' => ['php', 'c++', 'java'],
                     'minimum_should_match_field' => 'required_matches',
-                ]
+                ],
             ],
         ];
 

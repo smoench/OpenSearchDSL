@@ -15,7 +15,6 @@ class ParentInnerHitTest extends TestCase
         $search = new Search();
         $search->addQuery($query);
 
-
         $hit = new ParentInnerHit('test', 'acme', $search);
         $expected = [
             'type' => [

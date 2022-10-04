@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class SerialDifferencingAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'serial_diff';

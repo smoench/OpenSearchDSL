@@ -25,7 +25,9 @@ class AudoDateHistogramAggregationTest extends TestCase
         $aggregation = new AutoDateHistogramAggregation('test_agg', 'test_field');
 
         $result = [
-            'auto_date_histogram' => ['field' => 'test_field'],
+            'auto_date_histogram' => [
+                'field' => 'test_field',
+            ],
         ];
 
         $this->assertEquals($aggregation->toArray(), $result);
@@ -45,7 +47,6 @@ class AudoDateHistogramAggregationTest extends TestCase
             'auto_date_histogram' => [
                 'field' => 'test_field',
                 'format' => $date,
-
             ],
         ];
 

@@ -21,14 +21,17 @@ class RangeQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $query = new RangeQuery('age', ['gte' => 10, 'lte' => 20]);
+        $query = new RangeQuery('age', [
+            'gte' => 10,
+            'lte' => 20,
+        ]);
         $expected = [
             'range' => [
                 'age' => [
                     'gte' => 10,
                     'lte' => 20,
                 ],
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $query->toArray());

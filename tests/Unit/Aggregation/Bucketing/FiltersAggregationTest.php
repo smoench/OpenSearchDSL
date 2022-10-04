@@ -68,7 +68,11 @@ class FiltersAggregationTest extends TestCase
             ->getMockForAbstractClass();
         $filter->expects($this->any())
             ->method('toArray')
-            ->willReturn(['test_field' => ['test_value' => 'test']]);
+            ->willReturn([
+                'test_field' => [
+                    'test_value' => 'test',
+                ],
+            ]);
 
         $aggregation->addFilter($filter, 'first');
         $aggregation->addFilter($filter, 'second');

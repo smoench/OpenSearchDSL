@@ -21,7 +21,9 @@ class GeoShapeQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $filter = new GeoShapeQuery(['param1' => 'value1']);
+        $filter = new GeoShapeQuery([
+            'param1' => 'value1',
+        ]);
         $filter->addShape('location', 'envelope', [[13, 53], [14, 52]], GeoShapeQuery::INTERSECTS);
 
         $expected = [
@@ -31,7 +33,7 @@ class GeoShapeQueryTest extends TestCase
                         'type' => 'envelope',
                         'coordinates' => [[13, 53], [14, 52]],
                     ],
-                    'relation' => 'intersects'
+                    'relation' => 'intersects',
                 ],
                 'param1' => 'value1',
             ],
@@ -45,7 +47,9 @@ class GeoShapeQueryTest extends TestCase
      */
     public function testToArrayIndexed()
     {
-        $filter = new GeoShapeQuery(['param1' => 'value1']);
+        $filter = new GeoShapeQuery([
+            'param1' => 'value1',
+        ]);
         $filter->addPreIndexedShape('location', 'DEU', 'countries', 'shapes', 'location', GeoShapeQuery::WITHIN);
 
         $expected = [
@@ -57,7 +61,7 @@ class GeoShapeQueryTest extends TestCase
                         'index' => 'shapes',
                         'path' => 'location',
                     ],
-                    'relation' => 'within'
+                    'relation' => 'within',
                 ],
                 'param1' => 'value1',
             ],

@@ -26,7 +26,9 @@ class TermsAggregationTest extends TestCase
         $aggregation->setField('test_field');
 
         $result = [
-            'terms' => ['field' => 'test_field'],
+            'terms' => [
+                'field' => 'test_field',
+            ],
         ];
 
         $this->assertEquals($aggregation->toArray(), $result);
@@ -46,7 +48,6 @@ class TermsAggregationTest extends TestCase
             'terms' => [
                 'field' => 'test_field',
                 'size' => 1,
-
             ],
         ];
 
@@ -159,12 +160,16 @@ class TermsAggregationTest extends TestCase
         // Case #6 terms aggregation with order default direction.
         $aggregation = new TermsAggregation('test_agg');
         $aggregation->setField('test_field');
-        $aggregation->addParameter('order', ['_count' => 'asc']);
+        $aggregation->addParameter('order', [
+            '_count' => 'asc',
+        ]);
 
         $result = [
             'terms' => [
                 'field' => 'test_field',
-                'order' => ['_count' => 'asc'],
+                'order' => [
+                    '_count' => 'asc',
+                ],
             ],
         ];
 
@@ -179,12 +184,16 @@ class TermsAggregationTest extends TestCase
         // Case #7 terms aggregation with order term mode, desc direction.
         $aggregation = new TermsAggregation('test_agg');
         $aggregation->setField('test_field');
-        $aggregation->addParameter('order', ['_term' => 'desc']);
+        $aggregation->addParameter('order', [
+            '_term' => 'desc',
+        ]);
 
         $result = [
             'terms' => [
                 'field' => 'test_field',
-                'order' => ['_term' => 'desc'],
+                'order' => [
+                    '_term' => 'desc',
+                ],
             ],
         ];
 

@@ -29,13 +29,19 @@ class SpanFirstQueryTest extends TestCase
         $mock
             ->expects($this->once())
             ->method('toArray')
-            ->willReturn(['span_term' => ['user' => 'bob']]);
+            ->willReturn([
+                'span_term' => [
+                    'user' => 'bob',
+                ],
+            ]);
 
         $query = new SpanFirstQuery($mock, 5);
         $result = [
             'span_first' => [
                 'match' => [
-                    'span_term' => ['user' => 'bob'],
+                    'span_term' => [
+                        'user' => 'bob',
+                    ],
                 ],
                 'end' => 5,
             ],

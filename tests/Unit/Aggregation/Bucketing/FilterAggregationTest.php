@@ -79,7 +79,6 @@ class FilterAggregationTest extends TestCase
             'filter' => $boolFilter->toArray(),
         ];
 
-
         $out[] = [
             $aggregation,
             $result,
@@ -126,9 +125,9 @@ class FilterAggregationTest extends TestCase
             [
                 'aggregation' => [
                     'test_agg' => [
-                        'filter' => []
-                    ]
-                ]
+                        'filter' => [],
+                    ],
+                ],
             ],
             $result
         );
@@ -147,9 +146,9 @@ class FilterAggregationTest extends TestCase
             [
                 'filter' => [
                     'exists' => [
-                        'field' => 'test'
-                    ]
-                ]
+                        'field' => 'test',
+                    ],
+                ],
             ],
             $result
         );

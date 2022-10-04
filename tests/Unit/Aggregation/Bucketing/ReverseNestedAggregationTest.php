@@ -30,7 +30,9 @@ class ReverseNestedAggregationTest extends TestCase
         $aggregation->addAggregation($termAggregation);
 
         $expectedResult = [
-            'reverse_nested' => ['path' => 'test_path'],
+            'reverse_nested' => [
+                'path' => 'test_path',
+            ],
             'aggregations' => [
                 $termAggregation->getName() => $termAggregation->toArray(),
             ],

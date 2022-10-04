@@ -26,32 +26,30 @@ class MoreLikeThisQuery implements BuilderInterface
     /**
      * @param string $like
      */
-    public function __construct(private $like, array $parameters = [])
-    {
+    public function __construct(
+        private $like,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'more_like_this';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [];
 
-        if ((!$this->hasParameter('ids')) || (!$this->hasParameter('docs'))) {
+        if ((! $this->hasParameter('ids')) || (! $this->hasParameter('docs'))) {
             $query['like'] = $this->like;
         }
 
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

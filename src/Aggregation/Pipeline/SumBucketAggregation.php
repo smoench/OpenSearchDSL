@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class SumBucketAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'sum_bucket';

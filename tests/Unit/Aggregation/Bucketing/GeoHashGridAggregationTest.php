@@ -47,7 +47,7 @@ class GeoHashGridAggregationTest extends TestCase
                 'precision' => 3,
                 'size' => 10,
                 'shard_size' => 10,
-            ]
+            ],
         ];
     }
 

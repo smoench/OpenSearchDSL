@@ -26,7 +26,9 @@ class SpanTermQueryTest extends TestCase
     {
         $query = new SpanTermQuery('user', 'bob');
         $expected = [
-            'span_term' => ['user' => 'bob'],
+            'span_term' => [
+                'user' => 'bob',
+            ],
         ];
 
         $this->assertEquals($expected, $query->toArray());
@@ -37,9 +39,16 @@ class SpanTermQueryTest extends TestCase
      */
     public function testToArrayWithParameters()
     {
-        $query = new SpanTermQuery('user', 'bob', ['boost' => 2]);
+        $query = new SpanTermQuery('user', 'bob', [
+            'boost' => 2,
+        ]);
         $expected = [
-            'span_term' => ['user' => ['value' => 'bob', 'boost' => 2]],
+            'span_term' => [
+                'user' => [
+                    'value' => 'bob',
+                    'boost' => 2,
+                ],
+            ],
         ];
 
         $this->assertEquals($expected, $query->toArray());

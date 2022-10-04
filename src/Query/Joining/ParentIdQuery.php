@@ -15,22 +15,19 @@ class ParentIdQuery implements BuilderInterface
     /**
      * @param string $parentId
      */
-    public function __construct(private $parentId, private string $childType, array $parameters = [])
-    {
+    public function __construct(
+        private $parentId,
+        private string $childType,
+        array $parameters = []
+    ) {
         $this->setParameters($parameters);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'parent_id';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function toArray(): array
     {
         $query = [
@@ -39,6 +36,8 @@ class ParentIdQuery implements BuilderInterface
         ];
         $output = $this->processArray($query);
 
-        return [$this->getType() => $output];
+        return [
+            $this->getType() => $output,
+        ];
     }
 }

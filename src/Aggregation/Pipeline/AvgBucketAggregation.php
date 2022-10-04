@@ -18,9 +18,6 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class AvgBucketAggregation extends AbstractPipelineAggregation
 {
-    /**
-     * {@inheritdoc}
-     */
     public function getType(): string
     {
         return 'avg_bucket';
