@@ -50,7 +50,7 @@ class QueryEndpointTest extends TestCase
             NormalizerInterface::class
         );
 
-        $this->assertNull($instance->normalize($normalizerInterface));
+        $this->assertFalse($instance->normalize($normalizerInterface));
 
         $matchAll = new MatchAllQuery();
         $instance->add($matchAll);
