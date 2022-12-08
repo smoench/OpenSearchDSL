@@ -49,7 +49,7 @@ class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
 
         $search = new Search();
         $search->addQuery($fquery);
-        $results = $this->executeSearch($search);
+        $results = $this->executeSearch($search, 'product');
 
         $this->assertCount(
             is_countable($this->getDataArray()['product']) ? count($this->getDataArray()['product']) : 0,
@@ -76,7 +76,7 @@ class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
 
         $search = new Search();
         $search->addQuery($fquery);
-        $results = $this->executeSearch($search);
+        $results = $this->executeSearch($search, 'product');
 
         foreach ($results as $document) {
             $this->assertLessThanOrEqual(20, $document['price']);

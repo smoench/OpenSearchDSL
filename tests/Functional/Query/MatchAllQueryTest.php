@@ -41,7 +41,7 @@ class MatchAllQueryTest extends AbstractOpenSearchTestCase
 
         $search->addQuery($matchAll);
         $q = $search->getQueries();
-        $results = $this->executeSearch($search);
+        $results = $this->executeSearch($search, 'product');
 
         $this->assertEquals($this->getDataArray()['product'], $results);
     }

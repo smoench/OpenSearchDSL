@@ -3,9 +3,9 @@
 This is a fork of the [ongr/elasticsearch-dsl](https://github.com/ongr-io/elasticsearchbundle).
 With some basic changes to support wider range of Symfony Versions.
 
-| Version | Supported OpenSearch Version | Supported Symfony Version |
-|---------|------------------------------|---------------------------|
-| `1.x`   | `^1.2`                       | `5.4.*`, `6.0.*`, `6.1.*` |
+| Version | Supported OpenSearch Version | Supported Symfony Version          |
+|---------|------------------------------|------------------------------------|
+| `1.x`   | `^1.2`, `^2.0`               | `5.4.*`, `6.0.*`, `6.1.*`, `6.2.*` |
 
 ## Documentation
 

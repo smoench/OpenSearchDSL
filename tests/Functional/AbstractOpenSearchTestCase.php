@@ -33,23 +33,22 @@ abstract class AbstractOpenSearchTestCase extends TestCase
         $this->client = ClientBuilder::create()->build();
         $this->deleteIndex();
 
-        $this->client->indices()->create(
-            array_filter(
-                [
-                    'index' => self::INDEX_NAME,
-                    'mapping' => $this->getMapping(),
-                ]
-            )
-        );
-
         $bulkBody = [];
-
         foreach ($this->getDataArray() as $type => $documents) {
+            $index = self::INDEX_NAME . '_' . $type;
+            $this->client->indices()->create(
+                array_filter(
+                    [
+                        'index' => $index,
+                        'mapping' => $this->getMapping(),
+                    ]
+                )
+            );
+
             foreach ($documents as $id => $document) {
                 $bulkBody[] = [
                     'index' => [
-                        '_index' => self::INDEX_NAME,
-                        '_type' => $type,
+                        '_index' => $index,
                         '_id' => $id,
                     ],
                 ];
@@ -111,16 +110,15 @@ abstract class AbstractOpenSearchTestCase extends TestCase
      * Execute search to the opensearch and handle results.
      *
      * @param Search $search Search object.
-     * @param null $type Types to search. Can be several types split by comma.
+     * @param string $type Type to search.
      * @param bool $returnRaw Return raw response from the client.
      * @return array
      */
-    protected function executeSearch(Search $search, $type = null, $returnRaw = false)
+    protected function executeSearch(Search $search, string $type, bool $returnRaw = false)
     {
         $response = $this->client->search(
             array_filter([
-                'index' => self::INDEX_NAME,
-                'type' => $type,
+                'index' => self::INDEX_NAME . '_' . $type,
                 'body' => $search->toArray(),
             ])
         );
@@ -149,7 +147,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     {
         try {
             $this->client->indices()->delete([
-                'index' => self::INDEX_NAME,
+                'index' => self::INDEX_NAME . '*',
             ]);
         } catch (Exception) {
             // Do nothing.

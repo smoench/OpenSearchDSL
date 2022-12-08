@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace OpenSearchDSL\Tests\Unit\Metric\Aggregation;
+namespace OpenSearchDSL\Tests\Unit\Aggregation\Metric;
 
 use LogicException;
 use OpenSearchDSL\Aggregation\Metric\GeoBoundsAggregation;

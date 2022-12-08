@@ -49,9 +49,13 @@ class TopHitsAggregation extends AbstractAggregation
     public function __construct(string $name, ?int $size = null, ?int $from = null, ?BuilderInterface $sort = null)
     {
         parent::__construct($name);
-        $this->setFrom($from);
+
         $this->setSize($size);
-        $this->addSort($sort);
+        $this->setFrom($from);
+
+        if ($sort !== null) {
+            $this->addSort($sort);
+        }
     }
 
     public function getFrom(): ?int
@@ -120,11 +124,14 @@ class TopHitsAggregation extends AbstractAggregation
             $sortsOutput = null;
         }
 
-        $output = array_filter([
-            'sort' => $sortsOutput,
-            'size' => $this->getSize(),
-            'from' => $this->getFrom(),
-        ]);
+        $output = array_filter(
+            [
+                'sort' => $sortsOutput,
+                'size' => $this->getSize(),
+                'from' => $this->getFrom(),
+            ],
+            static fn ($value) => $value !== null
+        );
 
         return empty($output) ? new stdClass() : $output;
     }
