@@ -50,6 +50,10 @@ class HighlightEndpoint extends AbstractSearchEndpoint
             throw new OverflowException('Only one highlight can be set');
         }
 
+        if (! $key) {
+            $key = bin2hex(random_bytes(30));
+        }
+
         $this->key = $key;
         $this->highlight = $builder;
 

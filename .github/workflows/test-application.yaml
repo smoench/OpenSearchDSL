@@ -1,163 +1,177 @@
 name: Test application
 
 on:
-    pull_request:
-    push:
-        branches:
-            - '[0-9]+.[0-9]+'
-            - '[0-9]+.x'
+  pull_request:
+  push:
+    branches:
+      - '[0-9]+.[0-9]+'
+      - '[0-9]+.x'
 
 jobs:
-    code-style:
-      runs-on: ubuntu-latest
+  code-style:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout project
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
 
-        - name: Install and configure PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            coverage: none
-            php-version: 8.1
+      - name: Install and configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: 8.1
 
-        - name: Get composer cache directory
-          id: composer-cache-dir
-          run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Get composer cache directory
+        id: composer-cache-dir
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-        - name: Cache dependencies
-          uses: actions/cache@v2
-          id: composer-cache
-          with:
-            path: ${{ steps.composer-cache-dir.outputs.dir }}
-            key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-composer-
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: composer-cache
+        with:
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-        - name: Install dependencies
-          run: composer install --no-interaction --prefer-dist
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
 
-        - name: Check code style
-          run: vendor/bin/ecs
+      - name: Check code style
+        run: vendor/bin/ecs
 
-    phpstan:
-      runs-on: ubuntu-latest
+  phpstan:
+    runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout project
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
 
-        - name: Install and configure PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            coverage: none
-            php-version: 8.1
+      - name: Install and configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: 8.1
 
-        - name: Get composer cache directory
-          id: composer-cache-dir
-          run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Get composer cache directory
+        id: composer-cache-dir
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-        - name: Cache dependencies
-          uses: actions/cache@v2
-          id: composer-cache
-          with:
-            path: ${{ steps.composer-cache-dir.outputs.dir }}
-            key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-composer-
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: composer-cache
+        with:
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-        - name: Install dependencies
-          run: composer install --no-interaction --prefer-dist
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
 
-        - name: Run PHPStan
-          run: vendor/bin/phpstan analyse
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
 
-    unit-test:
-        name: 'Run unit tests with php ${{ matrix.php-version }} with symfony ${{ matrix.symfony-version}}'
-        runs-on: ubuntu-latest
+  unit-test:
+    name: 'Run unit tests with php ${{ matrix.php-version }} with symfony ${{ matrix.symfony-version}}'
+    runs-on: ubuntu-latest
 
-        strategy:
-            fail-fast: false
-            matrix:
-                include:
-                    - php-version: '8.0'
-                      symfony-version: '5.4.*'
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php-version: '8.0'
+            symfony-version: '5.4.*'
 
-                    - php-version: '8.1'
-                      symfony-version: '5.4.*'
+          - php-version: '8.1'
+            symfony-version: '5.4.*'
 
-                    - php-version: '8.1'
-                      symfony-version: '6.0.*'
+          - php-version: '8.1'
+            symfony-version: '6.0.*'
 
-                    - php-version: '8.1'
-                      symfony-version: '6.1.*'
+          - php-version: '8.1'
+            symfony-version: '6.1.*'
 
-        steps:
-            - name: Checkout project
-              uses: actions/checkout@v3
+          - php-version: '8.1'
+            symfony-version: '6.2.*'
 
-            - name: Install and configure PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  coverage: pcov
-                  php-version: ${{ matrix.php-version }}
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
 
-            - name: Get composer cache directory
-              id: composer-cache-dir
-              run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - name: Install and configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: pcov
+          php-version: ${{ matrix.php-version }}
 
-            - name: Cache dependencies
-              uses: actions/cache@v2
-              id: composer-cache
-              with:
-                  path: ${{ steps.composer-cache-dir.outputs.dir }}
-                  key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-composer-
+      - name: Get composer cache directory
+        id: composer-cache-dir
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-            - name: Install dependencies
-              run: |
-                  composer validate --strict
-                  composer require --no-update symfony/serializer:${{ matrix.symfony-version }}
-                  composer install --no-interaction --prefer-dist
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: composer-cache
+        with:
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-            - name: Run tests
-              run: vendor/bin/phpunit --testsuite=unit --coverage-clover=coverage.xml
+      - name: Install dependencies
+        run: |
+          composer validate --strict
+          composer require --no-update symfony/serializer:${{ matrix.symfony-version }}
+          composer install --no-interaction --prefer-dist
 
-    functional-test:
-      name: 'Run functional tests'
-      runs-on: ubuntu-latest
+      - name: Run tests
+        run: vendor/bin/phpunit --testsuite=unit --coverage-clover=coverage.xml
 
-      steps:
-        - name: Checkout project
-          uses: actions/checkout@v3
+  functional-test:
+    name: 'Run functional tests with OS ${{ matrix.opensearch-version }}'
+    runs-on: ubuntu-latest
 
-        - name: Install and configure PHP
-          uses: shivammathur/setup-php@v2
-          with:
-            coverage: none
-            php-version: 8.1
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - opensearch-version: '1.3'
+            opensearch-composer-version: '^1'
+          - opensearch-version: '2.4'
+            opensearch-composer-version: '^2'
 
-        - name: Get composer cache directory
-          id: composer-cache-dir
-          run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
 
-        - name: Cache dependencies
-          uses: actions/cache@v2
-          id: composer-cache
-          with:
-            path: ${{ steps.composer-cache-dir.outputs.dir }}
-            key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
-            restore-keys: |
-              ${{ runner.os }}-composer-
+      - name: Install and configure PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: 8.1
 
-        - name: Install dependencies
-          run: composer install --no-interaction --prefer-dist
+      - name: Get composer cache directory
+        id: composer-cache-dir
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-        - name: Setup OpenSearch
-          uses: ankane/setup-opensearch@v1
-          with:
-            opensearch-version: '1.2'
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        id: composer-cache
+        with:
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
 
-        - name: Run tests
-          run: vendor/bin/phpunit --testsuite=functional
+      - name: Install dependencies
+        run: |
+          composer require --no-update opensearch-project/opensearch-php:${{ matrix.opensearch-composer-version }}
+          composer install --no-interaction --prefer-dist
+
+      - name: Setup OpenSearch
+        uses: ankane/setup-opensearch@v1
+        with:
+          opensearch-version: ${{ matrix.opensearch-version }}
+
+      - name: Run tests
+        run: vendor/bin/phpunit --testsuite=functional
