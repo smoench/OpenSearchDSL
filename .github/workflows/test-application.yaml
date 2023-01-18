@@ -19,7 +19,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
-          php-version: 8.1
+          php-version: 8.2
 
       - name: Get composer cache directory
         id: composer-cache-dir
@@ -51,7 +51,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
-          php-version: 8.1
+          php-version: 8.2
 
       - name: Get composer cache directory
         id: composer-cache-dir
@@ -93,6 +93,9 @@ jobs:
             symfony-version: '6.1.*'
 
           - php-version: '8.1'
+            symfony-version: '6.2.*'
+
+          - php-version: '8.2'
             symfony-version: '6.2.*'
 
     steps:
@@ -148,7 +151,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           coverage: none
-          php-version: 8.1
+          php-version: 8.2
 
       - name: Get composer cache directory
         id: composer-cache-dir
