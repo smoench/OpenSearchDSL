@@ -13,7 +13,6 @@ namespace OpenSearchDSL\SearchEndpoint;
 
 use OpenSearchDSL\BuilderInterface;
 use OverflowException;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Search highlight dsl endpoint.
@@ -32,16 +31,13 @@ class HighlightEndpoint extends AbstractSearchEndpoint
      */
     private ?string $key = null;
 
-    public function normalize(
-        NormalizerInterface $normalizer,
-        $format = null,
-        array $context = []
-    ): array|string|int|float|bool {
+    public function normalize(): ?array
+    {
         if ($this->highlight !== null) {
             return $this->highlight->toArray();
         }
 
-        return false;
+        return null;
     }
 
     public function add(BuilderInterface $builder, ?string $key = null): string

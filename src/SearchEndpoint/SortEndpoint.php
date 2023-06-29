@@ -11,8 +11,6 @@
 
 namespace OpenSearchDSL\SearchEndpoint;
 
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
 /**
  * Search sort dsl endpoint.
  */
@@ -23,11 +21,8 @@ class SortEndpoint extends AbstractSearchEndpoint
      */
     public const NAME = 'sort';
 
-    public function normalize(
-        NormalizerInterface $normalizer,
-        $format = null,
-        array $context = []
-    ): array|string|int|float|bool {
+    public function normalize(): ?array
+    {
         $output = [];
 
         foreach ($this->getAll() as $sort) {

@@ -14,7 +14,6 @@ namespace OpenSearchDSL\SearchEndpoint;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\BoolQuery;
 use OpenSearchDSL\Serializer\Normalizer\OrderedNormalizerInterface;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Search query dsl endpoint.
@@ -30,11 +29,8 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
 
     private bool $filtersSet = false;
 
-    public function normalize(
-        NormalizerInterface $normalizer,
-        string $format = null,
-        array $context = []
-    ): array|string|int|float|bool {
+    public function normalize(): ?array
+    {
         if (! $this->filtersSet && $this->hasReference('filter_query')) {
             /** @var BuilderInterface $filter */
             $filter = $this->getReference('filter_query');
@@ -42,11 +38,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
             $this->filtersSet = true;
         }
 
-        if ($this->bool === null) {
-            return false;
-        }
-
-        return $this->bool->toArray();
+        return $this->bool?->toArray();
     }
 
     public function add(BuilderInterface $builder, ?string $key = null): string

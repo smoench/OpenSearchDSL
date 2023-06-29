@@ -13,9 +13,7 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\SearchEndpoint\PostFilterEndpoint;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class PostFilterEndpointTest extends TestCase
 {
@@ -39,18 +37,14 @@ class PostFilterEndpointTest extends TestCase
     public function testNormalization()
     {
         $instance = new PostFilterEndpoint();
-        /** @var NormalizerInterface|MockObject $normalizerInterface */
-        $normalizerInterface = $this->getMockForAbstractClass(
-            NormalizerInterface::class
-        );
-        $this->assertFalse($instance->normalize($normalizerInterface));
+        $this->assertNull($instance->normalize());
 
         $matchAll = new MatchAllQuery();
         $instance->add($matchAll);
 
         $this->assertEquals(
             json_encode($matchAll->toArray(), JSON_THROW_ON_ERROR),
-            json_encode($instance->normalize($normalizerInterface), JSON_THROW_ON_ERROR)
+            json_encode($instance->normalize(), JSON_THROW_ON_ERROR)
         );
     }
 

@@ -12,12 +12,11 @@
 namespace OpenSearchDSL\Serializer\Normalizer;
 
 use OpenSearchDSL\ParametersTrait;
-use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 /**
  * Custom abstract normalizer which can save references for other objects.
  */
-abstract class AbstractNormalizable implements NormalizableInterface
+abstract class AbstractNormalizable
 {
     use ParametersTrait {
         ParametersTrait::hasParameter as hasReference;
@@ -27,4 +26,6 @@ abstract class AbstractNormalizable implements NormalizableInterface
         ParametersTrait::removeParameter as removeReference;
         ParametersTrait::setParameters as setReferences;
     }
+
+    abstract public function normalize(): ?array;
 }

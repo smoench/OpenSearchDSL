@@ -12,7 +12,6 @@
 namespace OpenSearchDSL\SearchEndpoint;
 
 use OpenSearchDSL\InnerHit\NestedInnerHit;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Search inner hits dsl endpoint.
@@ -24,11 +23,8 @@ class InnerHitsEndpoint extends AbstractSearchEndpoint
      */
     public const NAME = 'inner_hits';
 
-    public function normalize(
-        NormalizerInterface $normalizer,
-        $format = null,
-        array $context = []
-    ): array|string|int|float|bool {
+    public function normalize(): ?array
+    {
         $output = [];
         if ($this->getAll() !== []) {
             /** @var NestedInnerHit $innerHit */

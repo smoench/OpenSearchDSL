@@ -13,9 +13,7 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\SearchEndpoint\SuggestEndpoint;
 use OpenSearchDSL\Suggest\Suggest;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class SuggestEndpointTest extends TestCase
 {
@@ -47,17 +45,12 @@ class SuggestEndpointTest extends TestCase
     {
         $instance = new SuggestEndpoint();
 
-        /** @var NormalizerInterface|MockObject $normalizerInterface */
-        $normalizerInterface = $this->getMockForAbstractClass(
-            NormalizerInterface::class
-        );
-
         $suggest = new Suggest('foo', 'bar', 'acme', 'foo');
         $instance->add($suggest);
 
         $this->assertEquals(
             $suggest->toArray(),
-            $instance->normalize($normalizerInterface)
+            $instance->normalize()
         );
     }
 }

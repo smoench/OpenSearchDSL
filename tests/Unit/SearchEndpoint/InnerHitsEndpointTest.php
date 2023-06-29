@@ -14,7 +14,6 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class InnerHitsEndpointTest extends TestCase
 {
@@ -46,9 +45,6 @@ class InnerHitsEndpointTest extends TestCase
      */
     public function testNormalization()
     {
-        $normalizer = $this
-            ->getMockBuilder(NormalizerInterface::class)
-            ->getMock();
         $innerHit = $this
             ->getMockBuilder(BuilderInterface::class)
             ->setMethods(['getName', 'toArray', 'getType'])
@@ -68,7 +64,7 @@ class InnerHitsEndpointTest extends TestCase
 
         $this->assertEquals(
             $expected,
-            $endpoint->normalize($normalizer)
+            $endpoint->normalize()
         );
     }
 }
