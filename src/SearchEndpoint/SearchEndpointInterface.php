@@ -13,12 +13,11 @@ namespace OpenSearchDSL\SearchEndpoint;
 
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\BoolQuery;
-use Symfony\Component\Serializer\Normalizer\NormalizableInterface;
 
 /**
  * Interface used to define search endpoint.
  */
-interface SearchEndpointInterface extends NormalizableInterface
+interface SearchEndpointInterface
 {
     /**
      * Adds builder to search endpoint.

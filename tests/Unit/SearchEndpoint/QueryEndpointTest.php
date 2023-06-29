@@ -13,9 +13,7 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Query\MatchAllQuery;
 use OpenSearchDSL\SearchEndpoint\QueryEndpoint;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * Unit test class for the QueryEndpoint.
@@ -42,19 +40,15 @@ class QueryEndpointTest extends TestCase
     public function testEndpoint()
     {
         $instance = new QueryEndpoint();
-        /** @var NormalizerInterface|MockObject $normalizerInterface */
-        $normalizerInterface = $this->getMockForAbstractClass(
-            NormalizerInterface::class
-        );
 
-        $this->assertFalse($instance->normalize($normalizerInterface));
+        $this->assertNull($instance->normalize());
 
         $matchAll = new MatchAllQuery();
         $instance->add($matchAll);
 
         $this->assertEquals(
             $matchAll->toArray(),
-            $instance->normalize($normalizerInterface)
+            $instance->normalize()
         );
     }
 

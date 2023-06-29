@@ -26,10 +26,8 @@ use OpenSearchDSL\SearchEndpoint\SearchEndpointFactory;
 use OpenSearchDSL\SearchEndpoint\SearchEndpointInterface;
 use OpenSearchDSL\SearchEndpoint\SortEndpoint;
 use OpenSearchDSL\SearchEndpoint\SuggestEndpoint;
-use OpenSearchDSL\Serializer\Normalizer\CustomReferencedNormalizer;
 use OpenSearchDSL\Serializer\OrderedSerializer;
 use stdClass;
-use Symfony\Component\Serializer\Normalizer\CustomNormalizer;
 
 /**
  * Search object that can be executed by a manager.
@@ -156,12 +154,7 @@ class Search
     private function initializeSerializer(): void
     {
         if (self::$serializer === null) {
-            self::$serializer = new OrderedSerializer(
-                [
-                    new CustomReferencedNormalizer(),
-                    new CustomNormalizer(),
-                ]
-            );
+            self::$serializer = new OrderedSerializer();
         }
     }
 

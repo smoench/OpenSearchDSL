@@ -11,31 +11,33 @@
 
 namespace OpenSearchDSL\Serializer;
 
+use OpenSearchDSL\SearchEndpoint\AbstractSearchEndpoint;
 use OpenSearchDSL\Serializer\Normalizer\OrderedNormalizerInterface;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * Custom serializer which orders data before normalization.
  */
-class OrderedSerializer extends Serializer
+class OrderedSerializer
 {
-    public function normalize($data, $format = null, array $context = []): array|string|int|float|bool|\ArrayObject|null
+    public function normalize(mixed $data): mixed
     {
-        return parent::normalize(
-            is_array($data) ? $this->order($data) : $data,
-            $format,
-            $context
-        );
-    }
+        $data = is_array($data) ? $this->order($data) : $data;
 
-    public function denormalize($data, $type, $format = null, array $context = []): mixed
-    {
-        return parent::denormalize(
-            is_array($data) ? $this->order($data) : $data,
-            $type,
-            $format,
-            $context
-        );
+        if (is_iterable($data)) {
+            foreach ($data as $key => $value) {
+                if ($value instanceof AbstractSearchEndpoint) {
+                    $normalize = $value->normalize();
+
+                    if ($normalize !== null) {
+                        $data[$key] = $normalize;
+                    } else {
+                        unset($data[$key]);
+                    }
+                }
+            }
+        }
+
+        return $data;
     }
 
     /**

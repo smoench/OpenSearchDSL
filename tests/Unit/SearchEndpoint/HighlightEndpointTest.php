@@ -13,9 +13,7 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Highlight\Highlight;
 use OpenSearchDSL\SearchEndpoint\HighlightEndpoint;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class HighlightEndpointTest extends TestCase
 {
@@ -30,12 +28,8 @@ class HighlightEndpointTest extends TestCase
     public function testNormalization()
     {
         $instance = new HighlightEndpoint();
-        /** @var NormalizerInterface|MockObject $normalizerInterface */
-        $normalizerInterface = $this->getMockForAbstractClass(
-            NormalizerInterface::class
-        );
 
-        $this->assertFalse($instance->normalize($normalizerInterface));
+        $this->assertNull($instance->normalize());
 
         $highlight = new Highlight();
         $highlight->addField('acme');
@@ -43,7 +37,7 @@ class HighlightEndpointTest extends TestCase
 
         $this->assertEquals(
             json_encode($highlight->toArray(), JSON_THROW_ON_ERROR),
-            json_encode($instance->normalize($normalizerInterface), JSON_THROW_ON_ERROR)
+            json_encode($instance->normalize(), JSON_THROW_ON_ERROR)
         );
     }
 

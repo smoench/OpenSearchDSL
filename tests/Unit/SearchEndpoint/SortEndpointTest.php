@@ -13,9 +13,7 @@ namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\SearchEndpoint\SortEndpoint;
 use OpenSearchDSL\Sort\FieldSort;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 class SortEndpointTest extends TestCase
 {
@@ -31,17 +29,12 @@ class SortEndpointTest extends TestCase
     {
         $instance = new SortEndpoint();
 
-        /** @var NormalizerInterface|MockObject $normalizerInterface */
-        $normalizerInterface = $this->getMockForAbstractClass(
-            NormalizerInterface::class
-        );
-
         $sort = new FieldSort('acme', FieldSort::ASC);
         $instance->add($sort);
 
         $this->assertEquals(
             [$sort->toArray()],
-            $instance->normalize($normalizerInterface)
+            $instance->normalize()
         );
     }
 
