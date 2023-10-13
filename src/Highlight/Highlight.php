@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -27,10 +29,7 @@ class Highlight implements BuilderInterface
      */
     private array $fields = [];
 
-    /**
-     * @var array
-     */
-    private $tags;
+    private ?array $tags = null;
 
     /**
      * @param string $name   Field name to highlight.

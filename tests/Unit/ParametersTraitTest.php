@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -23,7 +25,7 @@ class ParametersTraitTest extends TestCase
     /**
      * @var ParametersTrait&MockObject
      */
-    private $parametersTraitMock;
+    private ParametersTrait&MockObject $parametersTraitMock;
 
     protected function setUp(): void
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -79,7 +81,7 @@ class FieldSort implements BuilderInterface
             $this->addParameter('order', $this->order);
         }
 
-        if ($this->nestedFilter !== null) {
+        if ($this->nestedFilter instanceof \OpenSearchDSL\BuilderInterface) {
             $this->addParameter('nested', $this->nestedFilter->toArray());
         }
 

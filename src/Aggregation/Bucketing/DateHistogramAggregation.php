@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -72,7 +74,7 @@ class DateHistogramAggregation extends AbstractAggregation
             'interval' => $this->getInterval(),
         ];
 
-        if (! empty($this->format)) {
+        if ($this->format !== null && $this->format !== '') {
             $out['format'] = $this->format;
         }
 

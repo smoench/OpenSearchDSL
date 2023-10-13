@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -52,7 +54,7 @@ class ChildrenAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if (count($this->getAggregations()) == 0) {
+        if (count($this->getAggregations()) === 0) {
             throw new LogicException("Children aggregation `{$this->getName()}` has no aggregations added");
         }
 

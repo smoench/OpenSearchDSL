@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -51,7 +53,7 @@ class QueryEndpoint extends AbstractSearchEndpoint implements OrderedNormalizerI
         string $boolType = BoolQuery::MUST,
         ?string $key = null
     ): string {
-        if ($this->bool === null) {
+        if (! $this->bool instanceof \OpenSearchDSL\Query\Compound\BoolQuery) {
             $this->bool = new BoolQuery();
         }
 

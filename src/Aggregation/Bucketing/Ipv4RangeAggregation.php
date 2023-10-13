@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -75,7 +77,7 @@ class Ipv4RangeAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if ($this->getField() && ! empty($this->ranges)) {
+        if ($this->getField() && $this->ranges !== []) {
             return [
                 'field' => $this->getField(),
                 'ranges' => array_values($this->ranges),

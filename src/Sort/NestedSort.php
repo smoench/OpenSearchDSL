@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -44,11 +46,11 @@ class NestedSort implements BuilderInterface
             'path' => $this->path,
         ];
 
-        if ($this->filter !== null) {
+        if ($this->filter instanceof \OpenSearchDSL\BuilderInterface) {
             $output['filter'] = $this->filter->toArray();
         }
 
-        if ($this->nestedFilter !== null) {
+        if ($this->nestedFilter instanceof \OpenSearchDSL\BuilderInterface) {
             $output[$this->getType()] = $this->nestedFilter->toArray();
         }
 

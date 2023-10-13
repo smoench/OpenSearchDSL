@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -82,7 +84,7 @@ class FunctionScoreQuery implements BuilderInterface
      */
     private function applyFilter(array &$function, BuilderInterface $query = null)
     {
-        if ($query !== null) {
+        if ($query instanceof \OpenSearchDSL\BuilderInterface) {
             $function['filter'] = $query->toArray();
         }
     }

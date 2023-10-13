@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -52,7 +54,7 @@ abstract class AbstractAggregation implements NamedBuilderInterface
 
     public function addAggregation(AbstractAggregation $abstractAggregation): static
     {
-        if ($this->aggregations === null) {
+        if (! $this->aggregations instanceof \OpenSearchDSL\BuilderBag) {
             $this->aggregations = $this->createBuilderBag();
         }
 
@@ -68,7 +70,7 @@ abstract class AbstractAggregation implements NamedBuilderInterface
      */
     public function getAggregations(): array
     {
-        if ($this->aggregations !== null) {
+        if ($this->aggregations instanceof \OpenSearchDSL\BuilderBag) {
             return $this->aggregations->all();
         }
 
@@ -97,7 +99,7 @@ abstract class AbstractAggregation implements NamedBuilderInterface
         if ($this->supportsNesting()) {
             $nestedResult = $this->collectNestedAggregations();
 
-            if (! empty($nestedResult)) {
+            if ($nestedResult !== []) {
                 $result['aggregations'] = $nestedResult;
             }
         }

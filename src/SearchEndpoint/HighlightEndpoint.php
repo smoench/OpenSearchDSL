@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -33,7 +35,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
 
     public function normalize(): ?array
     {
-        if ($this->highlight !== null) {
+        if ($this->highlight instanceof \OpenSearchDSL\BuilderInterface) {
             return $this->highlight->toArray();
         }
 
@@ -42,7 +44,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
 
     public function add(BuilderInterface $builder, ?string $key = null): string
     {
-        if ($this->highlight !== null) {
+        if ($this->highlight instanceof \OpenSearchDSL\BuilderInterface) {
             throw new OverflowException('Only one highlight can be set');
         }
 

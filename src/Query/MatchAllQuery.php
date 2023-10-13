@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -41,7 +43,7 @@ class MatchAllQuery implements BuilderInterface
     {
         $params = $this->getParameters();
         return [
-            $this->getType() => empty($params) ? new stdClass() : $params,
+            $this->getType() => $params === [] ? new stdClass() : $params,
         ];
     }
 }
