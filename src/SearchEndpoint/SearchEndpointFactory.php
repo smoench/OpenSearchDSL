@@ -20,17 +20,15 @@ use RuntimeException;
  */
 class SearchEndpointFactory
 {
-    /**
-     * @var array Holds namespaces for endpoints.
-     */
     private static array $endpoints = [
-        'query' => QueryEndpoint::class,
-        'post_filter' => PostFilterEndpoint::class,
-        'sort' => SortEndpoint::class,
-        'highlight' => HighlightEndpoint::class,
-        'aggregations' => AggregationsEndpoint::class,
-        'suggest' => SuggestEndpoint::class,
-        'inner_hits' => InnerHitsEndpoint::class,
+        QueryEndpoint::NAME => QueryEndpoint::class,
+        PostFilterEndpoint::NAME => PostFilterEndpoint::class,
+        SortEndpoint::NAME => SortEndpoint::class,
+        HighlightEndpoint::NAME => HighlightEndpoint::class,
+        AggregationsEndpoint::NAME => AggregationsEndpoint::class,
+        SuggestEndpoint::NAME => SuggestEndpoint::class,
+        InnerHitsEndpoint::NAME => InnerHitsEndpoint::class,
+        CollapseEndpoint::NAME => CollapseEndpoint::class,
     ];
 
     /**

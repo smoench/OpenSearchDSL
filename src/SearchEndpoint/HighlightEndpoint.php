@@ -13,7 +13,9 @@ declare(strict_types=1);
 
 namespace OpenSearchDSL\SearchEndpoint;
 
+use InvalidArgumentException;
 use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\Highlight\Highlight;
 use OverflowException;
 
 /**
@@ -21,21 +23,15 @@ use OverflowException;
  */
 class HighlightEndpoint extends AbstractSearchEndpoint
 {
-    /**
-     * Endpoint name
-     */
     final public const NAME = 'highlight';
 
-    private ?BuilderInterface $highlight = null;
+    private ?Highlight $highlight = null;
 
-    /**
-     * @var string|null Key for highlight storing.
-     */
     private ?string $key = null;
 
     public function normalize(): ?array
     {
-        if ($this->highlight instanceof \OpenSearchDSL\BuilderInterface) {
+        if ($this->highlight instanceof Highlight) {
             return $this->highlight->toArray();
         }
 
@@ -44,7 +40,10 @@ class HighlightEndpoint extends AbstractSearchEndpoint
 
     public function add(BuilderInterface $builder, ?string $key = null): string
     {
-        if ($this->highlight instanceof \OpenSearchDSL\BuilderInterface) {
+        if (! $builder instanceof Highlight) {
+            throw new InvalidArgumentException('Only highlight can be added');
+        }
+        if ($this->highlight instanceof Highlight) {
             throw new OverflowException('Only one highlight can be set');
         }
 
@@ -65,7 +64,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
         ];
     }
 
-    public function getHighlight(): ?BuilderInterface
+    public function getHighlight(): ?Highlight
     {
         return $this->highlight;
     }

@@ -15,11 +15,13 @@ namespace OpenSearchDSL;
 
 use InvalidArgumentException;
 use OpenSearchDSL\Aggregation\AbstractAggregation;
+use OpenSearchDSL\FieldCollapse\FieldCollapse;
 use OpenSearchDSL\Highlight\Highlight;
 use OpenSearchDSL\InnerHit\NestedInnerHit;
 use OpenSearchDSL\Query\Compound\BoolQuery;
 use OpenSearchDSL\SearchEndpoint\AbstractSearchEndpoint;
 use OpenSearchDSL\SearchEndpoint\AggregationsEndpoint;
+use OpenSearchDSL\SearchEndpoint\CollapseEndpoint;
 use OpenSearchDSL\SearchEndpoint\HighlightEndpoint;
 use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 use OpenSearchDSL\SearchEndpoint\PostFilterEndpoint;
@@ -188,9 +190,7 @@ class Search
      */
     public function getQueries(): ?BoolQuery
     {
-        $endpoint = $this->getEndpoint(QueryEndpoint::NAME);
-
-        return $endpoint->getBool();
+        return $this->getEndpoint(QueryEndpoint::NAME)->getBool();
     }
 
     /**
@@ -237,9 +237,7 @@ class Search
      */
     public function getPostFilters(): ?BoolQuery
     {
-        $endpoint = $this->getEndpoint(PostFilterEndpoint::NAME);
-
-        return $endpoint->getBool();
+        return $this->getEndpoint(PostFilterEndpoint::NAME)->getBool();
     }
 
     /**
@@ -325,7 +323,7 @@ class Search
     /**
      * Returns highlight builder.
      */
-    public function getHighlights(): ?BuilderInterface
+    public function getHighlights(): ?Highlight
     {
         /** @var HighlightEndpoint $highlightEndpoint */
         $highlightEndpoint = $this->getEndpoint(HighlightEndpoint::NAME);
@@ -351,6 +349,24 @@ class Search
     public function getSuggests(): array
     {
         return $this->getEndpoint(SuggestEndpoint::NAME)->getAll();
+    }
+
+    /**
+     * Allows to highlight search results on one or more fields.
+     */
+    public function addCollapse(FieldCollapse $collapse): self
+    {
+        $this->getEndpoint(CollapseEndpoint::NAME)->add($collapse, 'collapse');
+
+        return $this;
+    }
+
+    public function getCollapse(): ?FieldCollapse
+    {
+        /** @var CollapseEndpoint $endpoint */
+        $endpoint = $this->getEndpoint(CollapseEndpoint::NAME);
+
+        return $endpoint->getCollapse();
     }
 
     public function getFrom(): ?int
