@@ -18,7 +18,7 @@ class NestedInnerHitTest extends TestCase
      *
      * @return array
      */
-    public function getTestToArrayData()
+    public static function getTestToArrayData()
     {
         $out = [];
 
@@ -93,9 +93,8 @@ class NestedInnerHitTest extends TestCase
      *
      * @param NestedInnerHit $innerHit
      * @param array          $expected
-     *
-     * @dataProvider getTestToArrayData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTestToArrayData')]
     public function testToArray($innerHit, $expected)
     {
         $this->assertEquals($expected, $innerHit->toArray());

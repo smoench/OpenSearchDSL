@@ -32,7 +32,7 @@ class SuggestTest extends TestCase
      *
      * @return array[]
      */
-    public function getTestToArrayData()
+    public static function getTestToArrayData()
     {
         return [
             [
@@ -124,9 +124,7 @@ class SuggestTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider getTestToArrayData()
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTestToArrayData')]
     public function testToArray(Suggest $suggest, array $expected)
     {
         $this->assertEquals($expected, $suggest->toArray());

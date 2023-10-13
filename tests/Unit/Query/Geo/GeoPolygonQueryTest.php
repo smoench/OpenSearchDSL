@@ -23,7 +23,7 @@ class GeoPolygonQueryTest extends TestCase
      *
      * @return array
      */
-    public function getArrayDataProvider()
+    public static function getArrayDataProvider()
     {
         return [
             // Case #1.
@@ -109,9 +109,8 @@ class GeoPolygonQueryTest extends TestCase
      * @param array  $points     Polygon's points.
      * @param array  $parameters Optional parameters.
      * @param array  $expected   Expected result.
-     *
-     * @dataProvider getArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
     public function testToArray($field, $points, $parameters, $expected)
     {
         $filter = new GeoPolygonQuery($field, $points, $parameters);

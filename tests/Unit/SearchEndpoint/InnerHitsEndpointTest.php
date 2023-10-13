@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\NamedBuilderInterface;
 use OpenSearchDSL\SearchEndpoint\InnerHitsEndpoint;
 use PHPUnit\Framework\TestCase;
 
@@ -48,8 +49,8 @@ class InnerHitsEndpointTest extends TestCase
     public function testNormalization()
     {
         $innerHit = $this
-            ->getMockBuilder(BuilderInterface::class)
-            ->setMethods(['getName', 'toArray', 'getType'])
+            ->getMockBuilder(NamedBuilderInterface::class)
+            ->onlyMethods(['getName', 'toArray', 'getType'])
             ->getMock();
         $innerHit->expects($this->any())->method('getName')->willReturn('foo');
         $innerHit->expects($this->any())->method('toArray')->willReturn([

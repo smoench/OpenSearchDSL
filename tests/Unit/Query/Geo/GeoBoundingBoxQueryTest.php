@@ -34,7 +34,7 @@ class GeoBoundingBoxQueryTest extends TestCase
      *
      * @return array
      */
-    public function getArrayDataProvider()
+    public static function getArrayDataProvider()
     {
         return [
             // Case #1 (2 values).
@@ -147,9 +147,8 @@ class GeoBoundingBoxQueryTest extends TestCase
      * @param array  $values     Bounding box values.
      * @param array  $parameters Optional parameters.
      * @param array  $expected   Expected result.
-     *
-     * @dataProvider getArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
     public function testToArray($field, $values, $parameters, $expected)
     {
         $query = new GeoBoundingBoxQuery($field, $values, $parameters);

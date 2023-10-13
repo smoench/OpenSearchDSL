@@ -3,8 +3,12 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector;
+use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
+use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictGetterMethodReturnTypeRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -16,14 +20,14 @@ return static function (RectorConfig $rectorConfig): void {
     //$rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
 
     $rectorConfig->rules([
-        \Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector::class,
-        \Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector::class,
-        \Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictGetterMethodReturnTypeRector::class,
+        TypedPropertyFromAssignsRector::class,
+        TypedPropertyFromStrictConstructorRector::class,
+        TypedPropertyFromStrictGetterMethodReturnTypeRector::class,
     ]);
-    $rectorConfig->rule(\Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector::class);
 
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_81,
-        SetList::CODE_QUALITY
+        PHPUnitSetList::PHPUNIT_100,
+        SetList::CODE_QUALITY,
     ]);
 };

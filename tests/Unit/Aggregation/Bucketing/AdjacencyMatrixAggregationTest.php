@@ -35,7 +35,6 @@ class AdjacencyMatrixAggregationTest extends TestCase
     //        $aggregation = new FiltersAggregation('test_agg');
     //        $aggregation->addFilter($mock);
     //    }
-
     /**
      * Test GetArray method.
      */
@@ -65,7 +64,7 @@ class AdjacencyMatrixAggregationTest extends TestCase
     {
         $aggregation = new AdjacencyMatrixAggregation('test_agg');
         $filter = $this->getMockBuilder(BuilderInterface::class)
-            ->setMethods(['toArray', 'getType'])
+            ->onlyMethods(['toArray', 'getType'])
             ->getMockForAbstractClass();
         $filter->expects($this->any())
             ->method('toArray')

@@ -29,7 +29,7 @@ class FilterAggregationTest extends TestCase
      *
      * @return array
      */
-    public function getToArrayData()
+    public static function getToArrayData()
     {
         $out = [];
 
@@ -94,9 +94,8 @@ class FilterAggregationTest extends TestCase
      *
      * @param FilterAggregation $aggregation
      * @param array             $expectedResult
-     *
-     * @dataProvider getToArrayData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getToArrayData')]
     public function testToArray($aggregation, $expectedResult)
     {
         $this->assertEquals($expectedResult, $aggregation->toArray());
