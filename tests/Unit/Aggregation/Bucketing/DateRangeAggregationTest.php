@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -77,7 +79,7 @@ class DateRangeAggregationTest extends TestCase
      *
      * @return array
      */
-    public function getDateRangeAggregationConstructorProvider()
+    public static function getDateRangeAggregationConstructorProvider()
     {
         return [
             // Case #0. Minimum arguments.
@@ -136,14 +138,13 @@ class DateRangeAggregationTest extends TestCase
      *
      * @param string $field
      * @param string $format
-     *
-     * @dataProvider getDateRangeAggregationConstructorProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getDateRangeAggregationConstructorProvider')]
     public function testDateRangeAggregationConstructor($field = null, $format = null, array $ranges = null)
     {
         /** @var DateRangeAggregation|MockObject $aggregation */
         $aggregation = $this->getMockBuilder(\OpenSearchDSL\Aggregation\Bucketing\DateRangeAggregation::class)
-            ->setMethods(['setField', 'setFormat', 'addRange'])
+            ->onlyMethods(['setField', 'setFormat', 'addRange'])
             ->disableOriginalConstructor()
             ->getMock();
         $aggregation->expects($this->once())->method('setField')->with($field);

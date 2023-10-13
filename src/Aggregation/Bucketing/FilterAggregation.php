@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -31,7 +33,7 @@ class FilterAggregation extends AbstractAggregation
     {
         parent::__construct($name);
 
-        if ($filter !== null) {
+        if ($filter instanceof \OpenSearchDSL\BuilderInterface) {
             $this->setFilter($filter);
         }
     }
@@ -55,7 +57,7 @@ class FilterAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if ($this->filter === null) {
+        if (! $this->filter instanceof \OpenSearchDSL\BuilderInterface) {
             throw new LogicException("Filter aggregation `{$this->getName()}` has no filter added");
         }
 

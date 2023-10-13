@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -22,7 +24,7 @@ class NestedQueryTest extends TestCase
      *
      * @return array
      */
-    public function getArrayDataProvider()
+    public static function getArrayDataProvider()
     {
         $query = [
             'terms' => [
@@ -61,9 +63,8 @@ class NestedQueryTest extends TestCase
      * @param string $path
      * @param array  $parameters
      * @param array  $expected
-     *
-     * @dataProvider getArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
     public function testToArray($path, $parameters, $expected)
     {
         $query = new TermsQuery('foo', 'bar');

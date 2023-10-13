@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -12,7 +14,7 @@
 namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\BuilderBag;
-use OpenSearchDSL\BuilderInterface;
+use OpenSearchDSL\NamedBuilderInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -76,27 +78,20 @@ class BuilderBagTest extends TestCase
         $this->assertNotEmpty($bag->get($builderName));
     }
 
-    /**
-     * Returns builder.
-     *
-     * @param string $name
-     */
-    private function getBuilder($name): MockObject|BuilderInterface
+    private function getBuilder(string $name): MockObject&NamedBuilderInterface
     {
-        $friendlyBuilderMock = $this->getMockBuilder(BuilderInterface::class)
-            ->setMethods(['getName', 'toArray', 'getType'])
+        $friendlyBuilderMock = $this->getMockBuilder(NamedBuilderInterface::class)
+            ->onlyMethods(['getName', 'toArray', 'getType'])
             ->disableOriginalConstructor()
             ->getMock();
 
         $friendlyBuilderMock
-            ->expects($this->any())
             ->method('getName')
-            ->will($this->returnValue($name));
+            ->willReturn($name);
 
         $friendlyBuilderMock
-            ->expects($this->any())
             ->method('toArray')
-            ->will($this->returnValue([]));
+            ->willReturn([]);
 
         return $friendlyBuilderMock;
     }

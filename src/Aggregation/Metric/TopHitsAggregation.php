@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -53,7 +55,7 @@ class TopHitsAggregation extends AbstractAggregation
         $this->setSize($size);
         $this->setFrom($from);
 
-        if ($sort !== null) {
+        if ($sort instanceof \OpenSearchDSL\BuilderInterface) {
             $this->addSort($sort);
         }
     }
@@ -133,6 +135,6 @@ class TopHitsAggregation extends AbstractAggregation
             static fn ($value) => $value !== null
         );
 
-        return empty($output) ? new stdClass() : $output;
+        return $output === [] ? new stdClass() : $output;
     }
 }

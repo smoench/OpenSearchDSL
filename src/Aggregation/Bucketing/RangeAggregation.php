@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -60,7 +62,7 @@ class RangeAggregation extends AbstractAggregation
             ],
         );
 
-        if (! empty($key)) {
+        if ($key !== '') {
             $range['key'] = $key;
         }
 

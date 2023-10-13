@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -153,7 +155,7 @@ class Search
 
     private function initializeSerializer(): void
     {
-        if (self::$serializer === null) {
+        if (! self::$serializer instanceof \OpenSearchDSL\Serializer\OrderedSerializer) {
             self::$serializer = new OrderedSerializer();
         }
     }
@@ -538,7 +540,7 @@ class Search
                 'pre_filter_shard_size',
                 'ignore_unavailable',
                 'rest_total_hits_as_int',
-            ])
+            ], true)
         ) {
             $this->uriParams[$name] = $value;
         } else {

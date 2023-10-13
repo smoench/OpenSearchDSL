@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -55,7 +57,7 @@ class GeoDistanceAggregationTest extends TestCase
     /**
      * Data provider for testGeoDistanceAggregationGetArray().
      */
-    public function getGeoDistanceAggregationGetArrayDataProvider(): iterable
+    public static function getGeoDistanceAggregationGetArrayDataProvider(): iterable
     {
         yield [
             'filterData' => [
@@ -83,9 +85,8 @@ class GeoDistanceAggregationTest extends TestCase
      *
      * @param array $filterData
      * @param array $expected
-     *
-     * @dataProvider getGeoDistanceAggregationGetArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getGeoDistanceAggregationGetArrayDataProvider')]
     public function testGeoDistanceAggregationGetArray($filterData, $expected)
     {
         $aggregation = new GeoDistanceAggregation('foo');

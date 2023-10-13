@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -99,10 +101,10 @@ class DateRangeAggregation extends AbstractAggregation
                 'to' => $to,
                 'key' => $key,
             ],
-            fn ($v) => ! is_null($v)
+            fn ($v) => null !== $v
         );
 
-        if (empty($range)) {
+        if ($range === []) {
             throw new LogicException('Either from or to must be set. Both cannot be null.');
         }
 
@@ -113,7 +115,7 @@ class DateRangeAggregation extends AbstractAggregation
 
     public function getArray(): array
     {
-        if ($this->getField() && $this->getFormat() && ! empty($this->ranges)) {
+        if ($this->getField() && $this->getFormat() && $this->ranges !== []) {
             return [
                 'format' => $this->getFormat(),
                 'field' => $this->getField(),

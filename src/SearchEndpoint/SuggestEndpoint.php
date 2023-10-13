@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -19,7 +21,7 @@ class SuggestEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'suggest';
+    final public const NAME = 'suggest';
 
     public function normalize(): ?array
     {

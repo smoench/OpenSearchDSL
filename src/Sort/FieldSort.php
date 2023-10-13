@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -22,9 +24,9 @@ class FieldSort implements BuilderInterface
 {
     use ParametersTrait;
 
-    public const ASC = 'asc';
+    final public const ASC = 'asc';
 
-    public const DESC = 'desc';
+    final public const DESC = 'desc';
 
     private ?BuilderInterface $nestedFilter = null;
 
@@ -32,7 +34,7 @@ class FieldSort implements BuilderInterface
      * @param array $params Params that can be set to field sort.
      */
     public function __construct(
-        private string $field,
+        private readonly string $field,
         private ?string $order = null,
         array $params = []
     ) {
@@ -79,7 +81,7 @@ class FieldSort implements BuilderInterface
             $this->addParameter('order', $this->order);
         }
 
-        if ($this->nestedFilter !== null) {
+        if ($this->nestedFilter instanceof \OpenSearchDSL\BuilderInterface) {
             $this->addParameter('nested', $this->nestedFilter->toArray());
         }
 

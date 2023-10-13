@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -33,7 +35,7 @@ class GeoHashGridAggregationTest extends TestCase
     /**
      * Data provider for testGeoHashGridAggregationGetArray().
      */
-    public function getArrayDataProvider(): iterable
+    public static function getArrayDataProvider(): iterable
     {
         yield [
             'filterData' => [
@@ -56,9 +58,8 @@ class GeoHashGridAggregationTest extends TestCase
      *
      * @param array $filterData
      * @param array $expected
-     *
-     * @dataProvider getArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
     public function testGeoHashGridAggregationGetArray($filterData, $expected)
     {
         $aggregation = new GeoHashGridAggregation('foo');

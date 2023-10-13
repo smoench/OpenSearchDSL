@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -64,7 +66,7 @@ class FiltersAggregationTest extends TestCase
     {
         $aggregation = new FiltersAggregation('test_agg');
         $filter = $this->getMockBuilder(BuilderInterface::class)
-            ->setMethods(['toArray', 'getType'])
+            ->onlyMethods(['toArray', 'getType'])
             ->getMockForAbstractClass();
         $filter->expects($this->any())
             ->method('toArray')

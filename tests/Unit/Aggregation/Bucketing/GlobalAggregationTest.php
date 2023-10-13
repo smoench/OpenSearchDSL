@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -23,7 +25,7 @@ class GlobalAggregationTest extends TestCase
      *
      * @return array
      */
-    public function getToArrayData()
+    public static function getToArrayData()
     {
         $out = [];
 
@@ -64,9 +66,8 @@ class GlobalAggregationTest extends TestCase
      *
      * @param GlobalAggregation $aggregation
      * @param array             $expectedResult
-     *
-     * @dataProvider getToArrayData
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getToArrayData')]
     public function testToArray($aggregation, $expectedResult)
     {
         $this->assertEquals(

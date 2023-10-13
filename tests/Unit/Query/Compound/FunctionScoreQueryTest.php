@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -28,7 +30,7 @@ class FunctionScoreQueryTest extends TestCase
      *
      * @return array
      */
-    public function addRandomFunctionProvider()
+    public static function addRandomFunctionProvider()
     {
         return [
             // Case #0. No seed.
@@ -64,8 +66,8 @@ class FunctionScoreQueryTest extends TestCase
      * Tests addRandomFunction method.
      *
      * @param array $expectedArray
-     * @dataProvider addRandomFunctionProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('addRandomFunctionProvider')]
     public function testAddRandomFunction(mixed $seed, $expectedArray)
     {
         /** @var MatchAllQuery|MockObject $matchAllQuery */

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -61,11 +63,11 @@ class FiltersAggregation extends AbstractAggregation
      */
     public function addFilter(BuilderInterface $filter, string $name = ''): self
     {
-        if (! $this->anonymous && empty($name)) {
+        if (! $this->anonymous && $name === '') {
             throw new LogicException('In not anonymous filters filter name must be set.');
         }
 
-        if (! $this->anonymous && ! empty($name)) {
+        if (! $this->anonymous && $name !== '') {
             $this->filters['filters'][$name] = $filter->toArray() ?: null;
         } else {
             $this->filters['filters'][] = $filter->toArray() ?: null;

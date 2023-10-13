@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -25,13 +27,13 @@ class BoolQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    public const MUST = 'must';
+    final public const MUST = 'must';
 
-    public const MUST_NOT = 'must_not';
+    final public const MUST_NOT = 'must_not';
 
-    public const SHOULD = 'should';
+    final public const SHOULD = 'should';
 
-    public const FILTER = 'filter';
+    final public const FILTER = 'filter';
 
     /**
      * @var array<string, array<string, BuilderInterface>>
@@ -71,11 +73,7 @@ class BoolQuery implements BuilderInterface
             return $queries;
         }
 
-        if (isset($this->container[$boolType])) {
-            return $this->container[$boolType];
-        }
-
-        return [];
+        return $this->container[$boolType] ?? [];
     }
 
     /**
@@ -91,7 +89,7 @@ class BoolQuery implements BuilderInterface
      */
     public function add(BuilderInterface $query, string $type = self::MUST, ?string $key = null): string
     {
-        if (! in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER])) {
+        if (! in_array($type, [self::MUST, self::MUST_NOT, self::SHOULD, self::FILTER], true)) {
             throw new UnexpectedValueException(sprintf('The bool operator %s is not supported', $type));
         }
 
@@ -125,7 +123,7 @@ class BoolQuery implements BuilderInterface
 
         $output = $this->processArray($output);
 
-        if (empty($output)) {
+        if ($output === []) {
             $output = new stdClass();
         }
 

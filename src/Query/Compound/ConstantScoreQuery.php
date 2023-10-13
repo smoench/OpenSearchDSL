@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -24,7 +26,7 @@ class ConstantScoreQuery implements BuilderInterface
     use ParametersTrait;
 
     public function __construct(
-        private BuilderInterface $query,
+        private readonly BuilderInterface $query,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

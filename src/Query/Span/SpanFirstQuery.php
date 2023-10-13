@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -29,7 +31,7 @@ class SpanFirstQuery implements SpanQueryInterface
      * @throws LogicException
      */
     public function __construct(
-        private SpanQueryInterface $query,
+        private readonly SpanQueryInterface $query,
         private $end,
         array $parameters = []
     ) {

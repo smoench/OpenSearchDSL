@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -44,7 +46,7 @@ class TermQuery implements BuilderInterface
     {
         $query = $this->processArray();
 
-        if (empty($query)) {
+        if ($query === []) {
             $query = $this->value;
         } else {
             $query['value'] = $this->value;

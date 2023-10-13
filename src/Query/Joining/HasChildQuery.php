@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -28,7 +30,7 @@ class HasChildQuery implements BuilderInterface
      */
     public function __construct(
         private $type,
-        private BuilderInterface $query,
+        private readonly BuilderInterface $query,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

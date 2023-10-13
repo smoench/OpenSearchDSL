@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -41,7 +43,7 @@ class NestedInnerHit implements NamedBuilderInterface
     {
         $this->setName($name);
         $this->setPath($path);
-        if ($search !== null) {
+        if ($search instanceof \OpenSearchDSL\Search) {
             $this->setSearch($search);
         }
     }

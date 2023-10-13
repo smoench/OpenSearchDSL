@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -21,7 +23,7 @@ class InnerHitsEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'inner_hits';
+    final public const NAME = 'inner_hits';
 
     public function normalize(): ?array
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -12,22 +14,17 @@
 namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\ParametersTrait;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Test for ParametersTrait.
- */
 class ParametersTraitTest extends TestCase
 {
-    /**
-     * @var ParametersTrait&MockObject
-     */
-    private $parametersTraitMock;
+    private object $parametersTraitMock;
 
     protected function setUp(): void
     {
-        $this->parametersTraitMock = $this->getMockForTrait(ParametersTrait::class);
+        $this->parametersTraitMock = new class() {
+            use ParametersTrait;
+        };
     }
 
     /**

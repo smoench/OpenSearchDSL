@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -21,7 +23,7 @@ class ScriptQueryTest extends TestCase
      *
      * @return array
      */
-    public function getArrayDataProvider()
+    public static function getArrayDataProvider()
     {
         return [
             'simple_script' => [
@@ -58,9 +60,8 @@ class ScriptQueryTest extends TestCase
      * @param string $script     Script
      * @param array  $parameters Optional parameters
      * @param array  $expected   Expected values
-     *
-     * @dataProvider getArrayDataProvider
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
     public function testToArray($script, $parameters, $expected)
     {
         $filter = new ScriptQuery($script, $parameters);

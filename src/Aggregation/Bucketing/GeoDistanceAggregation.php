@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -110,7 +112,7 @@ class GeoDistanceAggregation extends AbstractAggregation
             ],
         );
 
-        if (empty($range)) {
+        if ($range === []) {
             throw new LogicException('Either from or to must be set. Both cannot be null.');
         }
 

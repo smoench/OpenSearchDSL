@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -24,9 +26,9 @@ class HistogramAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    public const DIRECTION_ASC = 'asc';
+    final public const DIRECTION_ASC = 'asc';
 
-    public const DIRECTION_DESC = 'desc';
+    final public const DIRECTION_DESC = 'desc';
 
     private ?int $interval = null;
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the ONGR package.
  *
@@ -24,7 +26,7 @@ class AdjacencyMatrixAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    public const FILTERS = 'filters';
+    final public const FILTERS = 'filters';
 
     /**
      * @var array<string, array<string, array|null>>

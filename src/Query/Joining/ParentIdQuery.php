@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace OpenSearchDSL\Query\Joining;
 
 use OpenSearchDSL\BuilderInterface;
@@ -17,7 +19,7 @@ class ParentIdQuery implements BuilderInterface
      */
     public function __construct(
         private $parentId,
-        private string $childType,
+        private readonly string $childType,
         array $parameters = []
     ) {
         $this->setParameters($parameters);
