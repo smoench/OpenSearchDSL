@@ -24,7 +24,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'highlight';
+    final public const NAME = 'highlight';
 
     private ?BuilderInterface $highlight = null;
 

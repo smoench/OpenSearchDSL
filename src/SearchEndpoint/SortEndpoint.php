@@ -21,7 +21,7 @@ class SortEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'sort';
+    final public const NAME = 'sort';
 
     public function normalize(): ?array
     {

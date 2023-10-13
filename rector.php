@@ -23,7 +23,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->rule(\Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector::class);
 
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_80,
+        LevelSetList::UP_TO_PHP_81,
         SetList::CODE_QUALITY
     ]);
 };

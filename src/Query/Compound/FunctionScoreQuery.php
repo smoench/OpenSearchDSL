@@ -32,7 +32,7 @@ class FunctionScoreQuery implements BuilderInterface
     private array $functions;
 
     public function __construct(
-        private BuilderInterface $query,
+        private readonly BuilderInterface $query,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

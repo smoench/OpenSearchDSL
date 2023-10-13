@@ -30,7 +30,7 @@ class GeoPolygonQuery implements BuilderInterface
      */
     public function __construct(
         private $field,
-        private array $points = [],
+        private readonly array $points = [],
         array $parameters = []
     ) {
         $this->setParameters($parameters);

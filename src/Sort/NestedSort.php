@@ -28,8 +28,8 @@ class NestedSort implements BuilderInterface
     private ?BuilderInterface $nestedFilter = null;
 
     public function __construct(
-        private string $path,
-        private ?BuilderInterface $filter = null,
+        private readonly string $path,
+        private readonly ?BuilderInterface $filter = null,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

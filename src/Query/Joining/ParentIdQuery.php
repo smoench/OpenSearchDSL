@@ -19,7 +19,7 @@ class ParentIdQuery implements BuilderInterface
      */
     public function __construct(
         private $parentId,
-        private string $childType,
+        private readonly string $childType,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

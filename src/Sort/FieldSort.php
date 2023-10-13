@@ -24,9 +24,9 @@ class FieldSort implements BuilderInterface
 {
     use ParametersTrait;
 
-    public const ASC = 'asc';
+    final public const ASC = 'asc';
 
-    public const DESC = 'desc';
+    final public const DESC = 'desc';
 
     private ?BuilderInterface $nestedFilter = null;
 
@@ -34,7 +34,7 @@ class FieldSort implements BuilderInterface
      * @param array $params Params that can be set to field sort.
      */
     public function __construct(
-        private string $field,
+        private readonly string $field,
         private ?string $order = null,
         array $params = []
     ) {

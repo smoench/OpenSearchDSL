@@ -23,7 +23,7 @@ class AggregationsEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'aggregations';
+    final public const NAME = 'aggregations';
 
     public function normalize(): ?array
     {

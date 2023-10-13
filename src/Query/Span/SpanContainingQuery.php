@@ -25,8 +25,8 @@ class SpanContainingQuery implements SpanQueryInterface
     use ParametersTrait;
 
     public function __construct(
-        private SpanQueryInterface $little,
-        private SpanQueryInterface $big
+        private readonly SpanQueryInterface $little,
+        private readonly SpanQueryInterface $big
     ) {
     }
 

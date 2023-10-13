@@ -26,7 +26,7 @@ class ConstantScoreQuery implements BuilderInterface
     use ParametersTrait;
 
     public function __construct(
-        private BuilderInterface $query,
+        private readonly BuilderInterface $query,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

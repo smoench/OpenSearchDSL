@@ -24,7 +24,7 @@ abstract class AbstractOpenSearchTestCase extends TestCase
     /**
      * Test index name in the opensearch.
      */
-    public const INDEX_NAME = 'opensearch-dsl-test';
+    final public const INDEX_NAME = 'opensearch-dsl-test';
 
     private Client $client;
 

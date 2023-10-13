@@ -23,7 +23,7 @@ class InnerHitsEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'inner_hits';
+    final public const NAME = 'inner_hits';
 
     public function normalize(): ?array
     {

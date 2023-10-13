@@ -21,7 +21,7 @@ class PostFilterEndpoint extends QueryEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'post_filter';
+    final public const NAME = 'post_filter';
 
     public function normalize(): ?array
     {

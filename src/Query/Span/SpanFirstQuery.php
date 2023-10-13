@@ -31,7 +31,7 @@ class SpanFirstQuery implements SpanQueryInterface
      * @throws LogicException
      */
     public function __construct(
-        private SpanQueryInterface $query,
+        private readonly SpanQueryInterface $query,
         private $end,
         array $parameters = []
     ) {

@@ -26,7 +26,7 @@ class IdsQuery implements BuilderInterface
     use ParametersTrait;
 
     public function __construct(
-        private array $values,
+        private readonly array $values,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

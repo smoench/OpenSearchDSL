@@ -1,6 +1,0 @@
-parameters:
-	ignoreErrors:
-		-
-			message: "#^PHPDoc tag @var for property OpenSearchDSL\\\\Tests\\\\Unit\\\\ParametersTraitTest\\:\\:\\$parametersTraitMock contains unresolvable type\\.$#"
-			count: 1
-			path: tests/Unit/ParametersTraitTest.php

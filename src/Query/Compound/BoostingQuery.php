@@ -23,9 +23,9 @@ use OpenSearchDSL\BuilderInterface;
 class BoostingQuery implements BuilderInterface
 {
     public function __construct(
-        private BuilderInterface $positive,
-        private BuilderInterface $negative,
-        private float|int $negativeBoost
+        private readonly BuilderInterface $positive,
+        private readonly BuilderInterface $negative,
+        private readonly float|int $negativeBoost
     ) {
     }
 

@@ -30,7 +30,7 @@ class HasChildQuery implements BuilderInterface
      */
     public function __construct(
         private $type,
-        private BuilderInterface $query,
+        private readonly BuilderInterface $query,
         array $parameters = []
     ) {
         $this->setParameters($parameters);

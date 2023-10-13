@@ -28,13 +28,13 @@ class RangeQuery implements BuilderInterface
     /**
      * Range control names.
      */
-    public const LT = 'lt';
+    final public const LT = 'lt';
 
-    public const GT = 'gt';
+    final public const GT = 'gt';
 
-    public const LTE = 'lte';
+    final public const LTE = 'lte';
 
-    public const GTE = 'gte';
+    final public const GTE = 'gte';
 
     /**
      * @param string $field

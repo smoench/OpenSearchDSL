@@ -21,7 +21,7 @@ class SuggestEndpoint extends AbstractSearchEndpoint
     /**
      * Endpoint name
      */
-    public const NAME = 'suggest';
+    final public const NAME = 'suggest';
 
     public function normalize(): ?array
     {
