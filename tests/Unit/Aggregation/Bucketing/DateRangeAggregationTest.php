@@ -15,6 +15,7 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\DateRangeAggregation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -133,17 +134,11 @@ class DateRangeAggregationTest extends TestCase
         ];
     }
 
-    /**
-     * Tests constructor method.
-     *
-     * @param string $field
-     * @param string $format
-     */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getDateRangeAggregationConstructorProvider')]
-    public function testDateRangeAggregationConstructor($field = null, $format = null, array $ranges = null)
+    #[DataProvider('getDateRangeAggregationConstructorProvider')]
+    public function testDateRangeAggregationConstructor(?string $field = null, ?string $format = null, ?array $ranges = null)
     {
         /** @var DateRangeAggregation|MockObject $aggregation */
-        $aggregation = $this->getMockBuilder(\OpenSearchDSL\Aggregation\Bucketing\DateRangeAggregation::class)
+        $aggregation = $this->getMockBuilder(DateRangeAggregation::class)
             ->onlyMethods(['setField', 'setFormat', 'addRange'])
             ->disableOriginalConstructor()
             ->getMock();

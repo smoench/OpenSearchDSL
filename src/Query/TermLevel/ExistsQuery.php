@@ -23,8 +23,6 @@ use OpenSearchDSL\BuilderInterface;
 class ExistsQuery implements BuilderInterface
 {
     /**
-     * Constructor.
-     *
      * @param string $field Field value
      */
     public function __construct(

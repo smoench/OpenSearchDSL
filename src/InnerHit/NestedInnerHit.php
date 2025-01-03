@@ -35,51 +35,34 @@ class NestedInnerHit implements NamedBuilderInterface
 
     /**
      * Inner hits container init.
-     *
-     * @param string $name
-     * @param string $path
      */
-    public function __construct($name, $path, Search $search = null)
+    public function __construct(string $name, string $path, ?Search $search = null)
     {
         $this->setName($name);
         $this->setPath($path);
-        if ($search instanceof \OpenSearchDSL\Search) {
+        if ($search instanceof Search) {
             $this->setSearch($search);
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return $this
-     */
-    public function setPath($path)
+    public function setPath(string $path): static
     {
         $this->path = $path;
 
         return $this;
     }
 
-    /**
-     * @return Search
-     */
-    public function getSearch()
+    public function getSearch(): ?Search
     {
         return $this->search;
     }
 
-    /**
-     * @return $this
-     */
-    public function setSearch(Search $search)
+    public function setSearch(Search $search): static
     {
         $this->search = $search;
 
@@ -93,7 +76,7 @@ class NestedInnerHit implements NamedBuilderInterface
 
     public function toArray(): array
     {
-        $out = $this->getSearch() ? $this->getSearch()->toArray() : new stdClass();
+        $out = $this->getSearch() instanceof \OpenSearchDSL\Search ? $this->getSearch()->toArray() : new stdClass();
 
         return [
             $this->getPathType() => [
@@ -104,10 +87,8 @@ class NestedInnerHit implements NamedBuilderInterface
 
     /**
      * Returns 'path' for nested and 'type' for parent inner hits
-     *
-     * @return null|string
      */
-    private function getPathType()
+    private function getPathType(): ?string
     {
         return match ($this->getType()) {
             'nested' => 'path',

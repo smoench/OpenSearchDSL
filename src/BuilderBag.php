@@ -81,7 +81,7 @@ class BuilderBag
      *
      * @return BuilderInterface[]
      */
-    public function all(string $type = null): array
+    public function all(?string $type = null): array
     {
         return array_filter(
             $this->bag,

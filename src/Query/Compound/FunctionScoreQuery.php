@@ -40,10 +40,8 @@ class FunctionScoreQuery implements BuilderInterface
 
     /**
      * Returns the query instance.
-     *
-     * @return BuilderInterface object
      */
-    public function getQuery()
+    public function getQuery(): BuilderInterface
     {
         return $this->query;
     }
@@ -60,7 +58,7 @@ class FunctionScoreQuery implements BuilderInterface
         $field,
         $factor,
         $modifier = 'none',
-        BuilderInterface $query = null,
+        ?BuilderInterface $query = null,
         mixed $missing = null
     ) {
         $function = [
@@ -82,30 +80,24 @@ class FunctionScoreQuery implements BuilderInterface
     /**
      * Modifier to apply filter to the function score function.
      */
-    private function applyFilter(array &$function, BuilderInterface $query = null)
+    private function applyFilter(array &$function, ?BuilderInterface $query = null): void
     {
-        if ($query instanceof \OpenSearchDSL\BuilderInterface) {
+        if ($query instanceof BuilderInterface) {
             $function['filter'] = $query->toArray();
         }
     }
 
     /**
      * Add decay function to function score. Weight and query are optional.
-     *
-     * @param string           $type
-     * @param string           $field
-     * @param int              $weight
-     *
-     * @return $this
      */
     public function addDecayFunction(
-        $type,
-        $field,
+        string $type,
+        string $field,
         array $function,
         array $options = [],
-        BuilderInterface $query = null,
-        $weight = null
-    ) {
+        ?BuilderInterface $query = null,
+        int|float|null $weight = null
+    ): static {
         $function = array_filter(
             [
                 $type => array_merge(
@@ -127,12 +119,8 @@ class FunctionScoreQuery implements BuilderInterface
 
     /**
      * Adds function to function score without decay function. Influence search score only for specific query.
-     *
-     * @param float            $weight
-     *
-     * @return $this
      */
-    public function addWeightFunction($weight, BuilderInterface $query = null)
+    public function addWeightFunction(int|float $weight, ?BuilderInterface $query = null)
     {
         $function = [
             'weight' => $weight,
@@ -150,7 +138,7 @@ class FunctionScoreQuery implements BuilderInterface
      *
      * @return $this
      */
-    public function addRandomFunction(mixed $seed = null, BuilderInterface $query = null)
+    public function addRandomFunction(mixed $seed = null, ?BuilderInterface $query = null)
     {
         $function = [
             'random_score' => $seed ? [
@@ -176,7 +164,7 @@ class FunctionScoreQuery implements BuilderInterface
         $source,
         array $params = [],
         array $options = [],
-        BuilderInterface $query = null
+        ?BuilderInterface $query = null
     ) {
         $function = [
             'script_score' => [

@@ -35,7 +35,7 @@ class TemplateQuery implements BuilderInterface
     /**
      * @param array  $params Parameters to insert into template
      */
-    public function __construct(string $file = null, string $inline = null, array $params = [])
+    public function __construct(?string $file = null, ?string $inline = null, array $params = [])
     {
         $this->setFile($file);
         $this->setInline($inline);

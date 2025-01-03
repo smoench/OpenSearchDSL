@@ -26,8 +26,6 @@ class TermsQuery implements BuilderInterface
     use ParametersTrait;
 
     /**
-     * Constructor.
-     *
      * @param string $field      Field name
      * @param array  $terms      An array of terms
      * @param array  $parameters Optional parameters
