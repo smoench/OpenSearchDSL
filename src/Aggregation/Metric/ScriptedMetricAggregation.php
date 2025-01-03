@@ -46,7 +46,6 @@ class ScriptedMetricAggregation extends AbstractAggregation
     private $reduceScript;
 
     /**
-     * ScriptedMetricAggregation constructor.
      * @param string $name
      * @param mixed $initScript
      * @param mixed $mapScript

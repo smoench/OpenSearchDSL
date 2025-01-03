@@ -24,7 +24,7 @@ class BucketScriptAggregation extends AbstractPipelineAggregation
 {
     private ?string $script = null;
 
-    public function __construct(string $name, string|array|null $bucketsPath = null, string $script = null)
+    public function __construct(string $name, string|array|null $bucketsPath = null, ?string $script = null)
     {
         parent::__construct($name, $bucketsPath);
         $this->setScript($script);

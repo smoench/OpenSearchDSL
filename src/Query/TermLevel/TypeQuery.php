@@ -23,8 +23,6 @@ use OpenSearchDSL\BuilderInterface;
 class TypeQuery implements BuilderInterface
 {
     /**
-     * Constructor.
-     *
      * @param string $type Type name
      */
     public function __construct(

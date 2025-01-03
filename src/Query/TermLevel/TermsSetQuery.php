@@ -31,8 +31,6 @@ class TermsSetQuery implements BuilderInterface
     final public const MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
 
     /**
-     * Constructor.
-     *
      * @param string $field      Field name
      * @param array  $terms      An array of terms
      * @param array  $parameters Parameters
