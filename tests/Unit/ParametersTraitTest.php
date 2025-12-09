@@ -22,7 +22,7 @@ class ParametersTraitTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->parametersTraitMock = new class() {
+        $this->parametersTraitMock = new class {
             use ParametersTrait;
         };
     }

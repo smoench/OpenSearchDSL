@@ -26,9 +26,9 @@ class HistogramAggregation extends AbstractAggregation
 {
     use BucketingTrait;
 
-    final public const DIRECTION_ASC = 'asc';
+    final public const string DIRECTION_ASC = 'asc';
 
-    final public const DIRECTION_DESC = 'desc';
+    final public const string DIRECTION_DESC = 'desc';
 
     private ?int $interval = null;
 
@@ -161,7 +161,7 @@ class HistogramAggregation extends AbstractAggregation
                 'keyed' => $this->isKeyed(),
                 'order' => $this->getOrder(),
             ],
-            fn ($val) => $val || is_numeric($val)
+            fn($val) => $val || is_numeric($val)
         );
         $this->checkRequiredParameters($out, ['field', 'interval']);
 

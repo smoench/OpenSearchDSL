@@ -27,8 +27,7 @@ class SpanContainingQuery implements SpanQueryInterface
     public function __construct(
         private readonly SpanQueryInterface $little,
         private readonly SpanQueryInterface $big
-    ) {
-    }
+    ) {}
 
     public function getLittle(): SpanQueryInterface
     {

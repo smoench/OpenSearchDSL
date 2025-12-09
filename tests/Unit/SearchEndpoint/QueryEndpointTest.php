@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace OpenSearchDSL\Tests\Unit\SearchEndpoint;
 
 use OpenSearchDSL\Query\MatchAllQuery;
+use OpenSearchDSL\Query\TermLevel\TermsQuery;
 use OpenSearchDSL\SearchEndpoint\QueryEndpoint;
 use PHPUnit\Framework\TestCase;
 
@@ -67,5 +68,63 @@ class QueryEndpointTest extends TestCase
 
         $this->assertCount(1, $builders);
         $this->assertSame($query, $builders[$queryName]);
+    }
+
+    public function testSearchForFilterQueryReference(): void
+    {
+        $instance = new QueryEndpoint();
+        $instance->add(new TermsQuery('foo', ['bla']));
+
+        $instance->addReference('filter_query', new TermsQuery('foo', ['bar']));
+
+        self::assertSame(
+            [
+                'bool' => [
+                    'must' => [[
+                        'terms' => [
+                            'foo' => [
+                                'bla',
+                            ],
+                        ],
+                    ],
+                    ],
+                    'filter' => [
+                        [
+                            'terms' => [
+                                'foo' => [
+                                    'bar',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            $instance->normalize()
+        );
+
+        self::assertSame(
+            [
+                'bool' => [
+                    'must' => [[
+                        'terms' => [
+                            'foo' => [
+                                'bla',
+                            ],
+                        ],
+                    ],
+                    ],
+                    'filter' => [
+                        [
+                            'terms' => [
+                                'foo' => [
+                                    'bar',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            $instance->normalize()
+        );
     }
 }

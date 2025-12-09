@@ -19,6 +19,7 @@ use OpenSearchDSL\Tests\Functional\AbstractOpenSearchTestCase;
 
 class MatchAllQueryTest extends AbstractOpenSearchTestCase
 {
+    #[\Override]
     protected function getDataArray()
     {
         return [

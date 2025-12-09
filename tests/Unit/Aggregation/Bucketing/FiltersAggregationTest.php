@@ -16,7 +16,6 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\FiltersAggregation;
 use OpenSearchDSL\BuilderInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -31,7 +30,7 @@ class FiltersAggregationTest extends TestCase
     {
         $this->expectException(LogicException::class);
         $this->expectExceptionMessage("In not anonymous filters filter name must be set.");
-        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $mock = $this->createStub(BuilderInterface::class);
         $aggregation = new FiltersAggregation('test_agg');
         $aggregation->addFilter($mock);
     }
@@ -41,7 +40,7 @@ class FiltersAggregationTest extends TestCase
      */
     public function testFiltersAggregationGetArray()
     {
-        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $mock = $this->createStub(BuilderInterface::class);
         $aggregation = new FiltersAggregation('test_agg');
         $aggregation->setAnonymous(true);
         $aggregation->addFilter($mock, 'name');
@@ -65,10 +64,8 @@ class FiltersAggregationTest extends TestCase
     public function testToArray()
     {
         $aggregation = new FiltersAggregation('test_agg');
-        $filter = $this->getMockBuilder(BuilderInterface::class)
-            ->onlyMethods(['toArray', 'getType'])
-            ->getMockForAbstractClass();
-        $filter->expects($this->any())
+        $filter = $this->createStub(BuilderInterface::class);
+        $filter
             ->method('toArray')
             ->willReturn([
                 'test_field' => [
@@ -103,10 +100,8 @@ class FiltersAggregationTest extends TestCase
      */
     public function testConstructorFilter()
     {
-        /** @var BuilderInterface|MockObject $builderInterface1 */
-        $builderInterface1 = $this->getMockForAbstractClass(BuilderInterface::class);
-        /** @var BuilderInterface|MockObject $builderInterface2 */
-        $builderInterface2 = $this->getMockForAbstractClass(BuilderInterface::class);
+        $builderInterface1 = $this->createStub(BuilderInterface::class);
+        $builderInterface2 = $this->createStub(BuilderInterface::class);
 
         $aggregation = new FiltersAggregation(
             'test',

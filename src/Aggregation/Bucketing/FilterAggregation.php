@@ -50,6 +50,7 @@ class FilterAggregation extends AbstractAggregation
         return $this->filter;
     }
 
+    #[\Override]
     public function setField($field): static
     {
         throw new LogicException("Filter aggregation, doesn't support `field` parameter");

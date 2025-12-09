@@ -101,7 +101,7 @@ class DateRangeAggregation extends AbstractAggregation
                 'to' => $to,
                 'key' => $key,
             ],
-            fn ($v) => null !== $v
+            fn($v) => null !== $v
         );
 
         if ($range === []) {

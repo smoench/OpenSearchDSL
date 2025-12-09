@@ -20,6 +20,7 @@ namespace OpenSearchDSL\Aggregation\Pipeline;
  */
 class BucketSelectorAggregation extends BucketScriptAggregation
 {
+    #[\Override]
     public function getType(): string
     {
         return 'bucket_selector';

@@ -27,8 +27,7 @@ class TypeQuery implements BuilderInterface
      */
     public function __construct(
         private $type
-    ) {
-    }
+    ) {}
 
     public function getType(): string
     {

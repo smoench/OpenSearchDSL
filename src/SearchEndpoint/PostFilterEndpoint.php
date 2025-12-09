@@ -23,11 +23,13 @@ class PostFilterEndpoint extends QueryEndpoint
      */
     final public const NAME = 'post_filter';
 
+    #[\Override]
     public function normalize(): ?array
     {
         return $this->getBool()?->toArray();
     }
 
+    #[\Override]
     public function getOrder(): int
     {
         return 1;

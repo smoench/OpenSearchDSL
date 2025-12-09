@@ -16,7 +16,7 @@ namespace OpenSearchDSL\Tests\Unit\Query\Compound;
 use OpenSearchDSL\BuilderInterface;
 use OpenSearchDSL\Query\Compound\FunctionScoreQuery;
 use OpenSearchDSL\Query\MatchAllQuery;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -62,16 +62,10 @@ class FunctionScoreQueryTest extends TestCase
         ];
     }
 
-    /**
-     * Tests addRandomFunction method.
-     *
-     * @param array $expectedArray
-     */
-    #[\PHPUnit\Framework\Attributes\DataProvider('addRandomFunctionProvider')]
-    public function testAddRandomFunction(mixed $seed, $expectedArray)
+    #[DataProvider('addRandomFunctionProvider')]
+    public function testAddRandomFunction(mixed $seed, array $expectedArray)
     {
-        /** @var MatchAllQuery|MockObject $matchAllQuery */
-        $matchAllQuery = $this->getMockBuilder(MatchAllQuery::class)->getMock();
+        $matchAllQuery = $this->createStub(MatchAllQuery::class);
 
         $functionScoreQuery = new FunctionScoreQuery($matchAllQuery);
         $functionScoreQuery->addRandomFunction($seed);
@@ -86,8 +80,7 @@ class FunctionScoreQueryTest extends TestCase
      */
     public function testAddFieldValueFactorFunction()
     {
-        /** @var BuilderInterface|MockObject $builderInterface */
-        $builderInterface = $this->getMockForAbstractClass(BuilderInterface::class);
+        $builderInterface = $this->createStub(BuilderInterface::class);
         $functionScoreQuery = new FunctionScoreQuery($builderInterface);
         $functionScoreQuery->addFieldValueFactorFunction('field1', 2);
         $functionScoreQuery->addFieldValueFactorFunction('field2', 1.5, 'ln');

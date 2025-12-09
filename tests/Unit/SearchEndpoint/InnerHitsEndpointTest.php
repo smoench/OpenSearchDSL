@@ -34,7 +34,7 @@ class InnerHitsEndpointTest extends TestCase
     public function testEndpointGetter()
     {
         $hitName = 'foo';
-        $innerHit = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $innerHit = $this->createStub(BuilderInterface::class);
         $endpoint = new InnerHitsEndpoint();
         $endpoint->add($innerHit, $hitName);
         $builders = $endpoint->getAll();
@@ -48,12 +48,9 @@ class InnerHitsEndpointTest extends TestCase
      */
     public function testNormalization()
     {
-        $innerHit = $this
-            ->getMockBuilder(NamedBuilderInterface::class)
-            ->onlyMethods(['getName', 'toArray', 'getType'])
-            ->getMock();
-        $innerHit->expects($this->any())->method('getName')->willReturn('foo');
-        $innerHit->expects($this->any())->method('toArray')->willReturn([
+        $innerHit = $this->createStub(NamedBuilderInterface::class);
+        $innerHit->method('getName')->willReturn('foo');
+        $innerHit->method('toArray')->willReturn([
             'foo' => 'bar',
         ]);
 

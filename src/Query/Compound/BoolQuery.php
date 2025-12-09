@@ -27,13 +27,13 @@ class BoolQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    final public const MUST = 'must';
+    final public const string MUST = 'must';
 
-    final public const MUST_NOT = 'must_not';
+    final public const string MUST_NOT = 'must_not';
 
-    final public const SHOULD = 'should';
+    final public const string SHOULD = 'should';
 
-    final public const FILTER = 'filter';
+    final public const string FILTER = 'filter';
 
     /**
      * @var array<string, array<string, BuilderInterface>>

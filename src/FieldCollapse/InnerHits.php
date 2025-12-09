@@ -15,8 +15,7 @@ class InnerHits implements BuilderInterface
 
     public function __construct(
         private readonly string $name,
-    ) {
-    }
+    ) {}
 
     public function setFieldCollapse(FieldCollapse $collapse): self
     {

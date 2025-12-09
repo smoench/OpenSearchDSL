@@ -132,7 +132,7 @@ class TopHitsAggregation extends AbstractAggregation
                 'size' => $this->getSize(),
                 'from' => $this->getFrom(),
             ],
-            static fn ($value) => $value !== null
+            static fn($value) => $value !== null
         );
 
         return $output === [] ? new stdClass() : $output;

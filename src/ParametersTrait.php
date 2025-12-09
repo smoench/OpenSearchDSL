@@ -13,15 +13,13 @@ declare(strict_types=1);
 
 namespace OpenSearchDSL;
 
-use stdClass;
-
 /**
  * A trait which handles the behavior of parameters in queries, filters, etc.
  */
 trait ParametersTrait
 {
     /**
-     * @var array<string, array|string|int|float|bool|stdClass>
+     * @var array<string, array|string|int|float|bool|object>
      */
     private array $parameters = [];
 
@@ -39,20 +37,20 @@ trait ParametersTrait
         return $this;
     }
 
-    public function getParameter(string $name): array|string|int|float|bool|stdClass
+    public function getParameter(string $name): array|string|int|float|bool|object
     {
         return $this->parameters[$name];
     }
 
     /**
-     * @return array<string, array|string|int|float|bool|stdClass>
+     * @return array<string, array|string|int|float|bool|object>
      */
     public function getParameters(): array
     {
         return $this->parameters;
     }
 
-    public function addParameter(string $name, array|string|int|float|bool|stdClass $value): static
+    public function addParameter(string $name, array|string|int|float|bool|object $value): static
     {
         $this->parameters[$name] = $value;
 

@@ -38,6 +38,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
         return null;
     }
 
+    #[\Override]
     public function add(BuilderInterface $builder, ?string $key = null): string
     {
         if (! $builder instanceof Highlight) {
@@ -57,6 +58,7 @@ class HighlightEndpoint extends AbstractSearchEndpoint
         return $this->key;
     }
 
+    #[\Override]
     public function getAll(?string $boolType = null): array
     {
         return [

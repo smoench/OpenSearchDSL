@@ -168,8 +168,8 @@ class FunctionScoreQuery implements BuilderInterface
     ) {
         $function = [
             'script_score' => [
-                'script' =>
-                    array_filter(
+                'script'
+                    => array_filter(
                         array_merge(
                             [
                                 'lang' => 'painless',
