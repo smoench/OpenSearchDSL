@@ -106,7 +106,7 @@ class Search
     /**
      * Exclude documents which have a _score less than the minimum specified in min_score.
      */
-    private ?int $minScore = null;
+    private int|float|null $minScore = null;
 
     /**
      * Pagination of results can be done by using the from and size but the cost becomes
@@ -489,12 +489,12 @@ class Search
         return $this;
     }
 
-    public function getMinScore(): ?int
+    public function getMinScore(): int|float|null
     {
         return $this->minScore;
     }
 
-    public function setMinScore(int $minScore): self
+    public function setMinScore(int|float $minScore): self
     {
         $this->minScore = $minScore;
 
