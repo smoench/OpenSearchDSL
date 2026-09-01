@@ -24,9 +24,9 @@ class FieldSort implements BuilderInterface
 {
     use ParametersTrait;
 
-    final public const ASC = 'asc';
+    final public const string ASC = 'asc';
 
-    final public const DESC = 'desc';
+    final public const string DESC = 'desc';
 
     private ?BuilderInterface $nestedFilter = null;
 

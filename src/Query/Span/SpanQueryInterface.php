@@ -18,6 +18,4 @@ use OpenSearchDSL\BuilderInterface;
 /**
  * Interface SpanQueryInterface to recognise span queries.
  */
-interface SpanQueryInterface extends BuilderInterface
-{
-}
+interface SpanQueryInterface extends BuilderInterface {}

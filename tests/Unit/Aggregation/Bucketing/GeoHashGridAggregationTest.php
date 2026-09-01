@@ -15,6 +15,7 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\GeoHashGridAggregation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -57,10 +58,10 @@ class GeoHashGridAggregationTest extends TestCase
      * Tests getArray method.
      *
      * @param array $filterData
-     * @param array $expected
+     * @param array $expectedResults
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getArrayDataProvider')]
-    public function testGeoHashGridAggregationGetArray($filterData, $expected)
+    #[DataProvider('getArrayDataProvider')]
+    public function testGeoHashGridAggregationGetArray($filterData, $expectedResults)
     {
         $aggregation = new GeoHashGridAggregation('foo');
         $aggregation->setPrecision($filterData['precision']);
@@ -69,7 +70,7 @@ class GeoHashGridAggregationTest extends TestCase
         $aggregation->setField($filterData['field']);
 
         $result = $aggregation->getArray();
-        $this->assertEquals($result, $expected);
+        $this->assertEquals($result, $expectedResults);
     }
 
     /**

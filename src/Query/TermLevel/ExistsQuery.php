@@ -27,8 +27,7 @@ class ExistsQuery implements BuilderInterface
      */
     public function __construct(
         private $field
-    ) {
-    }
+    ) {}
 
     public function getType(): string
     {

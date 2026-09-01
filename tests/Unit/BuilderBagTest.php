@@ -15,7 +15,7 @@ namespace OpenSearchDSL\Tests\Unit;
 
 use OpenSearchDSL\BuilderBag;
 use OpenSearchDSL\NamedBuilderInterface;
-use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use PHPUnit\Framework\TestCase;
 
 class BuilderBagTest extends TestCase
@@ -78,12 +78,9 @@ class BuilderBagTest extends TestCase
         $this->assertNotEmpty($bag->get($builderName));
     }
 
-    private function getBuilder(string $name): MockObject&NamedBuilderInterface
+    private function getBuilder(string $name): Stub&NamedBuilderInterface
     {
-        $friendlyBuilderMock = $this->getMockBuilder(NamedBuilderInterface::class)
-            ->onlyMethods(['getName', 'toArray', 'getType'])
-            ->disableOriginalConstructor()
-            ->getMock();
+        $friendlyBuilderMock = $this->createStub(NamedBuilderInterface::class);
 
         $friendlyBuilderMock
             ->method('getName')

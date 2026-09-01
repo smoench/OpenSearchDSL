@@ -24,9 +24,8 @@ class BoostingQueryTest extends TestCase
      */
     public function testToArray()
     {
-        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $mock = $this->createStub(BuilderInterface::class);
         $mock
-            ->expects($this->any())
             ->method('toArray')
             ->willReturn([
                 'term' => [

@@ -22,6 +22,7 @@ use OpenSearchDSL\Query\TermLevel\TermQuery;
  */
 class SpanTermQuery extends TermQuery implements SpanQueryInterface
 {
+    #[\Override]
     public function getType(): string
     {
         return 'span_term';

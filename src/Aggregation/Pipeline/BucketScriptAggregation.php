@@ -47,6 +47,7 @@ class BucketScriptAggregation extends AbstractPipelineAggregation
         return 'bucket_script';
     }
 
+    #[\Override]
     public function getArray(): array
     {
         if ($this->getScript() === null) {

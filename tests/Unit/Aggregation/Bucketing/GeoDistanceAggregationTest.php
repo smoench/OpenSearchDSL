@@ -15,6 +15,7 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use LogicException;
 use OpenSearchDSL\Aggregation\Bucketing\GeoDistanceAggregation;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class GeoDistanceAggregationTest extends TestCase
@@ -84,10 +85,10 @@ class GeoDistanceAggregationTest extends TestCase
      * Tests getArray method.
      *
      * @param array $filterData
-     * @param array $expected
+     * @param array $expectedResults
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('getGeoDistanceAggregationGetArrayDataProvider')]
-    public function testGeoDistanceAggregationGetArray($filterData, $expected)
+    #[DataProvider('getGeoDistanceAggregationGetArrayDataProvider')]
+    public function testGeoDistanceAggregationGetArray($filterData, $expectedResults)
     {
         $aggregation = new GeoDistanceAggregation('foo');
         $aggregation->setOrigin($filterData['origin']);
@@ -97,7 +98,7 @@ class GeoDistanceAggregationTest extends TestCase
         $aggregation->addRange($filterData['ranges'][0], $filterData['ranges'][1]);
 
         $result = $aggregation->getArray();
-        $this->assertEquals($result, $expected);
+        $this->assertEquals($result, $expectedResults);
     }
 
     /**

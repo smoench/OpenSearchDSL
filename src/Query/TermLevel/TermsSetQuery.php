@@ -26,9 +26,9 @@ class TermsSetQuery implements BuilderInterface
 {
     use ParametersTrait;
 
-    final public const MINIMUM_SHOULD_MATCH_TYPE_FIELD = 'minimum_should_match_field';
+    final public const string MINIMUM_SHOULD_MATCH_TYPE_FIELD = 'minimum_should_match_field';
 
-    final public const MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
+    final public const string MINIMUM_SHOULD_MATCH_TYPE_SCRIPT = 'minimum_should_match_script';
 
     /**
      * @param string $field      Field name
@@ -65,8 +65,8 @@ class TermsSetQuery implements BuilderInterface
     private function validateParameters(array $parameters)
     {
         if (
-            ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_FIELD]) &&
-            ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_SCRIPT])
+            ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_FIELD])
+            && ! isset($parameters[self::MINIMUM_SHOULD_MATCH_TYPE_SCRIPT])
         ) {
             $message = "Either minimum_should_match_field or minimum_should_match_script must be set.";
             throw new InvalidArgumentException($message);

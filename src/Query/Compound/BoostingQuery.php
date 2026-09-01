@@ -26,8 +26,7 @@ class BoostingQuery implements BuilderInterface
         private readonly BuilderInterface $positive,
         private readonly BuilderInterface $negative,
         private readonly float|int $negativeBoost
-    ) {
-    }
+    ) {}
 
     public function getType(): string
     {

@@ -20,6 +20,7 @@ namespace OpenSearchDSL\Aggregation\Metric;
  */
 class MinAggregation extends StatsAggregation
 {
+    #[\Override]
     public function getType(): string
     {
         return 'min';

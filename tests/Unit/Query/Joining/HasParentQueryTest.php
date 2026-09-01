@@ -24,7 +24,7 @@ class HasParentQueryTest extends TestCase
      */
     public function testConstructor()
     {
-        $parentQuery = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $parentQuery = $this->createStub(BuilderInterface::class);
         $query = new HasParentQuery('test_type', $parentQuery, ['test_parameter1']);
         $this->assertEquals(['test_parameter1'], $query->getParameters());
     }

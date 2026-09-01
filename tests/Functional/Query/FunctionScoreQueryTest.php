@@ -20,6 +20,7 @@ use OpenSearchDSL\Tests\Functional\AbstractOpenSearchTestCase;
 
 class FunctionScoreQueryTest extends AbstractOpenSearchTestCase
 {
+    #[\Override]
     protected function getDataArray()
     {
         return [

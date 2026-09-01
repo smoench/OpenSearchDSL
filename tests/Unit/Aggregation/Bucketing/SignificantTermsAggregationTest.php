@@ -37,7 +37,7 @@ class SignificantTermsAggregationTest extends TestCase
      */
     public function testSignificantTermsAggregationGetArray()
     {
-        $mock = $this->createMock(AbstractAggregation::class);
+        $mock = $this->createStub(AbstractAggregation::class);
         $mock->method('getName')->willReturn('abstract');
 
         $aggregation = new SignificantTermsAggregation('foo', 'title');

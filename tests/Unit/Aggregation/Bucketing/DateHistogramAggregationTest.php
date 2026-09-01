@@ -48,7 +48,7 @@ class DateHistogramAggregationTest extends TestCase
      */
     public function testChildrenAggregationGetArray()
     {
-        $mock = $this->createMock(AbstractAggregation::class);
+        $mock = $this->createStub(AbstractAggregation::class);
         $mock->method('getName')->willReturn('abstract');
 
         $aggregation = new DateHistogramAggregation('foo');

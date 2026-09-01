@@ -19,8 +19,7 @@ class FieldCollapse implements BuilderInterface
 
     public function __construct(
         private readonly string $field
-    ) {
-    }
+    ) {}
 
     public function addInnerHits(InnerHits $innerHits): self
     {
@@ -42,7 +41,7 @@ class FieldCollapse implements BuilderInterface
 
         if ($this->innerHits !== []) {
             $array['inner_hits'] = array_map(
-                static fn (InnerHits $innerHits) => $innerHits->toArray(),
+                static fn(InnerHits $innerHits) => $innerHits->toArray(),
                 $this->innerHits
             );
         }

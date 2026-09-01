@@ -15,7 +15,6 @@ namespace OpenSearchDSL\Tests\Unit\Aggregation\Bucketing;
 
 use OpenSearchDSL\Aggregation\Bucketing\AdjacencyMatrixAggregation;
 use OpenSearchDSL\BuilderInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -40,7 +39,7 @@ class AdjacencyMatrixAggregationTest extends TestCase
      */
     public function testFiltersAggregationGetArray()
     {
-        $mock = $this->getMockBuilder(BuilderInterface::class)->getMock();
+        $mock = $this->createStub(BuilderInterface::class);
         $aggregation = new AdjacencyMatrixAggregation('test_agg');
         $aggregation->addFilter('name', $mock);
         $result = $aggregation->getArray();
@@ -63,10 +62,8 @@ class AdjacencyMatrixAggregationTest extends TestCase
     public function testToArray()
     {
         $aggregation = new AdjacencyMatrixAggregation('test_agg');
-        $filter = $this->getMockBuilder(BuilderInterface::class)
-            ->onlyMethods(['toArray', 'getType'])
-            ->getMockForAbstractClass();
-        $filter->expects($this->any())
+        $filter = $this->createStub(BuilderInterface::class);
+        $filter
             ->method('toArray')
             ->willReturn([
                 'test_field' => [
@@ -102,10 +99,8 @@ class AdjacencyMatrixAggregationTest extends TestCase
      */
     public function testFilterConstructor()
     {
-        /** @var BuilderInterface|MockObject $builderInterface1 */
-        $builderInterface1 = $this->getMockForAbstractClass(BuilderInterface::class);
-        /** @var BuilderInterface|MockObject $builderInterface2 */
-        $builderInterface2 = $this->getMockForAbstractClass(BuilderInterface::class);
+        $builderInterface1 = $this->createStub(BuilderInterface::class);
+        $builderInterface2 = $this->createStub(BuilderInterface::class);
 
         $aggregation = new AdjacencyMatrixAggregation(
             'test',

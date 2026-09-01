@@ -56,7 +56,7 @@ class OrderedSerializer
         if (! empty($filteredData)) {
             uasort(
                 $filteredData,
-                fn (OrderedNormalizerInterface $a, OrderedNormalizerInterface $b) => $a->getOrder() <=> $b->getOrder()
+                fn(OrderedNormalizerInterface $a, OrderedNormalizerInterface $b) => $a->getOrder() <=> $b->getOrder()
             );
 
             return array_merge($filteredData, array_diff_key($data, $filteredData));
@@ -76,7 +76,7 @@ class OrderedSerializer
     {
         return array_filter(
             $array,
-            fn ($value) => $value instanceof OrderedNormalizerInterface
+            fn($value) => $value instanceof OrderedNormalizerInterface
         );
     }
 }
